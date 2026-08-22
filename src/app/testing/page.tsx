@@ -72,7 +72,7 @@ export default function TestingPage() {
               { step: 1, title: "Synthesis complete", desc: "SPPS, 32 coupling steps" },
               { step: 2, title: "RP-HPLC purification", desc: "Pooled fractions ≥ 99.4%" },
               { step: 3, title: "Lyophilization", desc: "Residual H₂O 3.1%" },
-              { step: 4, title: "ISO 17025 release panel", desc: "All assays pass" },
+              { step: 4, title: "Glyvantix release panel", desc: "All assays pass" },
               { step: 5, title: "Fill & seal", desc: "Argon-purged headspace" },
               { step: 6, title: "COA published", desc: "Available on product page" },
             ].map((item) => (

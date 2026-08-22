@@ -30,7 +30,7 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold mb-10 text-center">Six principles, written down.</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: "Transparency by default", desc: "Every batch ships with a published certificate of analysis from an ISO 17025 lab — linked from the product page, not buried in an email." },
+              { title: "Transparency by default", desc: "Every batch ships with a published certificate of analysis from a Glyvantix lab — linked from the product page, not buried in an email." },
               { title: "Reference-grade or nothing", desc: "We hold a 99% purity floor on every lot. Material that doesn't clear it is destroyed, not downgraded." },
               { title: "Built by lab people", desc: "Our QC team are working chemists. Documentation, packaging, and labeling are designed for how research actually runs." },
               { title: "Researcher-only", desc: "We verify research intent at the gate and refuse any order that suggests human or veterinary use. No exceptions, no quotas." },
@@ -51,7 +51,7 @@ export default function AboutPage() {
         <div className="max-w-2xl mx-auto space-y-6">
           {[
             { year: "2022", desc: "Founded by a team of chemists frustrated with opaque sourcing in the reference-compound market." },
-            { year: "2023", desc: "First ISO 17025 partnership signed. 100% of catalog moved to published, third-party COAs." },
+            { year: "2023", desc: "First Glyvantix partnership signed. 100% of catalog moved to published, third-party COAs." },
             { year: "2024", desc: "Cold-chain fulfillment standardized. Membership tier launched for working labs." },
             { year: "2025", desc: "Lot-level verification tool released. Partner Program opens to qualified institutions." },
           ].map((item) => (

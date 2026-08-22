@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Allow all origins in development for sandbox preview
 };
 
 export default nextConfig;

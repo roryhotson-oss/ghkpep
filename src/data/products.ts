@@ -22,7 +22,7 @@ export const products: Product[] = [
     categoryLabel: "Copper Complex",
     description: "Copper complex of the Gly-His-Lys sequence. Supplied for in-vitro laboratory research.",
     lot: "GHK-2419-A",
-    image: "/images/ghk-cu-100mg.webp"
+    image: "/images/ghk-cu-100mg.svg"
   },
   {
     slug: "mots-c",
@@ -34,7 +34,7 @@ export const products: Product[] = [
     categoryLabel: "Mitochondrial",
     description: "Mitochondrial-derived 16-residue sequence. Supplied for in-vitro laboratory research.",
     lot: "GHK-2411-I",
-    image: "/images/mots-c-10mg.webp"
+    image: "/images/mots-c-10mg.svg"
   },
   {
     slug: "nad-plus",
@@ -46,7 +46,7 @@ export const products: Product[] = [
     categoryLabel: "Cellular Cofactor",
     description: "Nicotinamide adenine dinucleotide, oxidized form. Supplied for in-vitro laboratory research.",
     lot: "GHK-2417-C",
-    image: "/images/nad-plus-500mg.webp"
+    image: "/images/nad-plus-500mg.svg"
   },
   {
     slug: "klow",
@@ -58,7 +58,7 @@ export const products: Product[] = [
     categoryLabel: "Research Blend",
     description: "Co-lyophilized composite of GHK-Cu, KPV, BPC-157, and TB-500. Supplied for in-vitro laboratory research.",
     lot: "GHK-2415-E",
-    image: "/images/klow-80mg.webp"
+    image: "/images/klow-80mg.svg"
   },
   {
     slug: "glp3-rt",
@@ -70,7 +70,7 @@ export const products: Product[] = [
     categoryLabel: "Incretin Analog",
     description: "Triple receptor agonist analog. Supplied for in-vitro laboratory research.",
     lot: "GHK-2418-B",
-    image: "/images/glp3-rt-10mg.webp"
+    image: "/images/glp3-rt-10mg.svg"
   },
   {
     slug: "glutathione",
@@ -82,7 +82,7 @@ export const products: Product[] = [
     categoryLabel: "Antioxidant",
     description: "Reduced glutathione (GSH), gamma-Glu-Cys-Gly. Supplied for in-vitro laboratory research.",
     lot: "GHK-2414-F",
-    image: "/images/glutathione-1500mg.webp"
+    image: "/images/glutathione-1500mg.png"
   },
   {
     slug: "igf-1-lr3",
@@ -94,7 +94,7 @@ export const products: Product[] = [
     categoryLabel: "Growth Factor",
     description: "Long R3 analog of IGF-1. Supplied for in-vitro laboratory research.",
     lot: "GHK-2413-G",
-    image: "/images/igf-1-lr3-10mg.webp"
+    image: "/images/igf-1-lr3-10mg.svg"
   },
   {
     slug: "tesamorelin",
@@ -106,7 +106,7 @@ export const products: Product[] = [
     categoryLabel: "Growth Hormone",
     description: "Stabilized GHRH analog. Supplied for in-vitro laboratory research.",
     lot: "GHK-2412-H",
-    image: "/images/tesamorelin-10mg.webp"
+    image: "/images/tesamorelin-10mg.svg"
   },
   {
     slug: "glp2-tz",
@@ -118,7 +118,7 @@ export const products: Product[] = [
     categoryLabel: "GLP-2 Analog",
     description: "Long-acting GLP-2 receptor analog. Supplied for in-vitro laboratory research.",
     lot: "GHK-2416-D",
-    image: "/images/glp2-tz-10mg.webp"
+    image: "/images/glp2-tz-10mg.svg"
   },
   {
     slug: "cjc-1295-ipamorelin",
@@ -130,7 +130,7 @@ export const products: Product[] = [
     categoryLabel: "Research Blend",
     description: "Co-lyophilized blend of Mod GRF(1-29) and Ipamorelin. Supplied for in-vitro laboratory research.",
     lot: "GHK-2410-J",
-    image: "/images/cjc-1295-no-dac-ipamorelin-10mg.webp"
+    image: "/images/cjc-1295-no-dac-ipamorelin-10mg.svg"
   },
   {
     slug: "refined-h2o",
@@ -142,7 +142,7 @@ export const products: Product[] = [
     categoryLabel: "Research Supplies",
     description: "Sterile bacteriostatic water for laboratory reconstitution. Supplied for in-vitro laboratory research.",
     lot: "GHK-2420-K",
-    image: "/images/refined-h2o-10ml.webp"
+    image: "/images/refined-h2o-10ml.png"
   },
   {
     slug: "pt-141",
@@ -154,7 +154,7 @@ export const products: Product[] = [
     categoryLabel: "Melanocortin",
     description: "Melanocortin receptor agonist analog. Supplied for in-vitro laboratory research.",
     lot: "GHK-2421-L",
-    image: "/images/pt-141-10mg.webp"
+    image: "/images/pt-141-10mg.png"
   },
   {
     slug: "melanotan-2",
@@ -166,7 +166,7 @@ export const products: Product[] = [
     categoryLabel: "Melanocortin",
     description: "Non-selective melanocortin receptor agonist analog. Supplied for in-vitro laboratory research.",
     lot: "GHK-2422-M",
-    image: "/images/mt-2-10mg.webp"
+    image: "/images/mt-2-10mg.svg"
   },
   {
     slug: "ss-31",
@@ -178,7 +178,7 @@ export const products: Product[] = [
     categoryLabel: "Mitochondrial",
     description: "Mitochondria-targeted four-residue synthetic sequence. Supplied for in-vitro laboratory research.",
     lot: "GHK-2423-N",
-    image: "/images/ss-31-10mg.webp"
+    image: "/images/ss-31-10mg.svg"
   },
   {
     slug: "melanotan-1",
@@ -190,7 +190,7 @@ export const products: Product[] = [
     categoryLabel: "Melanocortin",
     description: "Synthetic alpha-MSH analog. Supplied for in-vitro laboratory research.",
     lot: "GHK-2424-O",
-    image: "/images/mt-1-10mg.webp"
+    image: "/images/mt-1-10mg.svg"
   },
   {
     slug: "wolverine",
@@ -202,7 +202,7 @@ export const products: Product[] = [
     categoryLabel: "Copper Composite",
     description: "Copper-bound composite, lyophilized powder. Supplied for in-vitro laboratory research.",
     lot: "GHK-2425-P",
-    image: "/images/wolverine-10mg.webp"
+    image: "/images/wolverine-10mg.svg"
   },
   {
     slug: "kiss-peptin",
@@ -214,7 +214,7 @@ export const products: Product[] = [
     categoryLabel: "Peptide",
     description: "Synthetic kisspeptin-10 sequence. Supplied for in-vitro laboratory research.",
     lot: "GHK-2426-Q",
-    image: "/images/kisspeptin-10mg.webp"
+    image: "/images/kisspeptin-10mg.svg"
   },
   {
     slug: "cagrilintide",
@@ -226,7 +226,7 @@ export const products: Product[] = [
     categoryLabel: "Amylin Analog",
     description: "Long-acting amylin analog. Supplied for in-vitro laboratory research.",
     lot: "GHK-2427-R",
-    image: "/images/cagrilintide-5mg.webp"
+    image: "/images/cagrilintide-5mg.svg"
   },
   {
     slug: "kpv",
@@ -238,7 +238,7 @@ export const products: Product[] = [
     categoryLabel: "Anti-Inflammatory",
     description: "Lys-Pro-Val sequence, C-terminal fragment of alpha-MSH. Supplied for in-vitro laboratory research.",
     lot: "GHK-2428-S",
-    image: "/images/kpv-10mg.webp"
+    image: "/images/kpv-10mg.png"
   },
   {
     slug: "ipamorelin",
@@ -250,7 +250,7 @@ export const products: Product[] = [
     categoryLabel: "Growth Hormone",
     description: "Selective GHS-R1a agonist. Supplied for in-vitro laboratory research.",
     lot: "GHK-2429-T",
-    image: "/images/ipamorelin-10mg.webp"
+    image: "/images/ipamorelin-10mg.png"
   },
   {
     slug: "glow",
@@ -262,7 +262,7 @@ export const products: Product[] = [
     categoryLabel: "Research Blend",
     description: "Co-lyophilized composite of GHK-Cu, BPC-157, and TB-500. Supplied for in-vitro laboratory research.",
     lot: "GHK-2430-U",
-    image: "/images/glow-70mg.webp"
+    image: "/images/glow-70mg.png"
   },
   {
     slug: "adamax",
@@ -274,7 +274,7 @@ export const products: Product[] = [
     categoryLabel: "Research Blend",
     description: "Synthetic research compound blend, lyophilized powder. Supplied for in-vitro laboratory research.",
     lot: "GHK-2431-V",
-    image: "/images/adamax-10mg.webp"
+    image: "/images/adamax-10mg.png"
   },
   {
     slug: "ahk-cu",
@@ -286,7 +286,7 @@ export const products: Product[] = [
     categoryLabel: "Copper Complex",
     description: "Copper complex of the Ala-His-Lys sequence. Supplied for in-vitro laboratory research.",
     lot: "GHK-2432-W",
-    image: "/images/ahk-cu-100mg.webp"
+    image: "/images/ahk-cu-100mg.png"
   },
   {
     slug: "bpc-157",
@@ -298,7 +298,7 @@ export const products: Product[] = [
     categoryLabel: "Healing Peptide",
     description: "Synthetic 15-residue sequence (GEPPPGKPADDAGLV). Supplied for in-vitro laboratory research.",
     lot: "GHK-2433-X",
-    image: "/images/bpc-157-10mg.webp"
+    image: "/images/bpc-157-10mg.svg"
   },
   {
     slug: "selank",
@@ -310,7 +310,7 @@ export const products: Product[] = [
     categoryLabel: "Tuftsin Analog",
     description: "Synthetic tuftsin analog (TP-7 sequence). Supplied for in-vitro laboratory research.",
     lot: "GHK-2434-Y",
-    image: "/images/selank-10mg.webp"
+    image: "/images/selank-10mg.png"
   },
   {
     slug: "tb-500",
@@ -322,7 +322,7 @@ export const products: Product[] = [
     categoryLabel: "Thymosin Fragment",
     description: "Acetylated Thymosin beta-4 fragment. Lyophilized powder, ≥99% purity (HPLC). Supplied for in-vitro laboratory research.",
     lot: "GHK-2435-Z",
-    image: "/images/tb-500-10mg.webp"
+    image: "/images/tb-500-10mg.svg"
   },
   {
     slug: "semax",
@@ -334,7 +334,7 @@ export const products: Product[] = [
     categoryLabel: "ACTH Analog",
     description: "Synthetic ACTH(4-10) analog, seven-residue sequence. Supplied for in-vitro laboratory research.",
     lot: "GHK-2436-AA",
-    image: "/images/semax-10mg.webp"
+    image: "/images/semax-10mg.png"
   }
 ];
 

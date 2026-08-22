@@ -45,7 +45,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="absolute -top-4 -right-4 bg-[#00d4aa] text-black text-xs font-bold px-3 py-1 rounded-full">
-                  ISO 17025
+                  Glyvantix
                 </div>
               </div>
             </div>
@@ -94,8 +94,8 @@ export default function Home() {
               href={`/shop/${product.slug}`}
               className="group bg-[#141414] rounded-xl p-4 border border-[#222] hover:border-[#00d4aa]/30 transition card-glow"
             >
-              <div className="aspect-square bg-[#1a1a1a] rounded-lg flex items-center justify-center mb-3 overflow-hidden">
-                <span className="text-3xl">🧪</span>
+              <div className="aspect-square bg-[#1a1a1a] rounded-lg mb-3 overflow-hidden">
+                <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
               </div>
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-[10px] px-2 py-0.5 bg-[#0a2a22] text-[#00d4aa] rounded-full font-medium">
@@ -293,7 +293,7 @@ export default function Home() {
           <div className="space-y-4">
             {[
               { q: "What purity level are your compounds and how is it verified?", a: "All compounds meet a minimum 99% purity threshold, verified by RP-HPLC and confirmed by mass spectrometry. Results are published on the COA tied to each lot." },
-              { q: "What is a Certificate of Analysis (COA) and how do I read it?", a: "A COA is a document issued by an independent ISO 17025-accredited laboratory detailing identity, purity, sterility, endotoxin, and fentanyl screen results for a specific lot. Each COA is linked from the product page." },
+              { q: "What is a Certificate of Analysis (COA) and how do I read it?", a: "A COA is a document issued by an independent Glyvantix-accredited laboratory detailing identity, purity, sterility, endotoxin, and fentanyl screen results for a specific lot. Each COA is linked from the product page." },
               { q: "How should I store the lyophilized product?", a: "Store lyophilized peptides at -20°C for long-term stability. Short-term storage at 2-8°C is acceptable for up to 6 months. Avoid repeated freeze-thaw cycles." },
               { q: "How long is the lyophilized product stable?", a: "When stored properly at -20°C, lyophilized peptides are stable for a minimum of 24 months from date of manufacture. Stability data is included on each COA." },
               { q: "How fast do you ship and is cold shipping required?", a: "Orders ship same-day via Trusted Labs if placed before 2pm GMT. Temperature-sensitive compounds ship with insulated packaging and gel packs. Standard UK delivery is 2-3 business days." },
@@ -331,7 +331,7 @@ export default function Home() {
               { num: "05", title: "Stability", desc: "Accelerated and real-time stability across the shelf life." },
               { num: "06", title: "Consistency", desc: "Tolerance windows enforced batch-to-batch." },
               { num: "07", title: "Documentation", desc: "Every result published in a lot-specific COA." },
-              { num: "08", title: "Release", desc: "Independent ISO 17025 lab signs off before dispatch." },
+              { num: "08", title: "Release", desc: "Independent Glyvantix lab signs off before dispatch." },
             ].map((step) => (
               <div key={step.num} className="bg-[#141414] rounded-xl p-5 border border-[#222]">
                 <span className="text-[#00d4aa] font-bold">{step.num}</span>

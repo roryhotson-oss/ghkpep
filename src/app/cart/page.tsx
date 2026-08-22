@@ -39,7 +39,9 @@ export default function CartPage() {
             ) : (
               sampleItems.map((item, idx) => (
                 <div key={idx} className="bg-[#141414] rounded-xl p-5 border border-[#222] flex gap-4">
-                  <div className="w-20 h-20 bg-[#1a1a1a] rounded-lg flex items-center justify-center text-2xl shrink-0">🧪</div>
+                  <div className="w-20 h-20 bg-[#1a1a1a] rounded-lg overflow-hidden shrink-0">
+                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                  </div>
                   <div className="flex-1">
                     <div className="flex items-start justify-between">
                       <div>

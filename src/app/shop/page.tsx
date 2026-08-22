@@ -38,8 +38,8 @@ export default function ShopPage() {
               href={`/shop/${product.slug}`}
               className="group bg-[#141414] rounded-xl p-4 border border-[#222] hover:border-[#00d4aa]/30 transition card-glow"
             >
-              <div className="aspect-square bg-[#1a1a1a] rounded-lg flex items-center justify-center mb-3 overflow-hidden">
-                <span className="text-4xl">🧪</span>
+              <div className="aspect-square bg-[#1a1a1a] rounded-lg mb-3 overflow-hidden">
+                <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
               </div>
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-[10px] px-2 py-0.5 bg-[#0a2a22] text-[#00d4aa] rounded-full font-medium">

@@ -58,7 +58,7 @@ export default function COAPage() {
           <div className="mt-6 pt-6 border-t border-[#222] flex flex-wrap gap-6 text-sm">
             <div>
               <span className="text-[#666] text-xs block">Tested by</span>
-              <span className="font-medium">ILS Laboratories</span>
+              <span className="font-medium">Glyvantix Laboratories</span>
             </div>
             <div>
               <span className="text-[#666] text-xs block">Test date</span>

@@ -28,15 +28,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Product Image */}
           <div>
-            <div className="aspect-square bg-[#141414] rounded-2xl border border-[#222] flex items-center justify-center">
-              <div className="text-center">
-                <span className="text-8xl">🧪</span>
-                <p className="text-[#00d4aa] font-bold mt-4">GHK</p>
-                <p className="text-[#888] text-sm">{product.name}</p>
-              </div>
+            <div className="aspect-square bg-[#141414] rounded-2xl border border-[#222] overflow-hidden">
+              <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
             </div>
             <div className="mt-4 grid grid-cols-3 gap-2">
-              <div className="aspect-square bg-[#141414] rounded-lg border border-[#222] flex items-center justify-center text-2xl">🧪</div>
+              <div className="aspect-square bg-[#141414] rounded-lg border border-[#222] overflow-hidden">
+                <img src={product.image} alt={product.name} className="w-full h-full object-cover opacity-70" />
+              </div>
               <div className="aspect-square bg-[#141414] rounded-lg border border-[#222] flex items-center justify-center text-2xl">📋</div>
               <div className="aspect-square bg-[#141414] rounded-lg border border-[#222] flex items-center justify-center text-2xl">📦</div>
             </div>
@@ -141,8 +139,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   href={`/shop/${rp.slug}`}
                   className="group bg-[#141414] rounded-xl p-4 border border-[#222] hover:border-[#00d4aa]/30 transition card-glow"
                 >
-                  <div className="aspect-square bg-[#1a1a1a] rounded-lg flex items-center justify-center mb-3">
-                    <span className="text-3xl">🧪</span>
+                  <div className="aspect-square bg-[#1a1a1a] rounded-lg overflow-hidden mb-3">
+                    <img src={rp.image} alt={rp.name} className="w-full h-full object-cover" />
                   </div>
                   <h3 className="font-semibold text-sm group-hover:text-[#00d4aa] transition">{rp.name}</h3>
                   <p className="text-[#888] text-xs mt-1">{rp.categoryLabel}</p>
