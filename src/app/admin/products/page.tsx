@@ -38,7 +38,8 @@ export default function AdminProductsPage() {
   };
 
   useEffect(() => {
-    fetchProducts();
+    const loadProducts = async () => { await fetchProducts(); };
+    loadProducts();
   }, []);
 
   const handleDelete = async (slug: string) => {

@@ -36,7 +36,8 @@ export default function AdminOrdersPage() {
   };
 
   useEffect(() => {
-    fetchOrders();
+    const loadOrders = async () => { await fetchOrders(); };
+    loadOrders();
   }, []);
 
   const updateStatus = async (orderId: string, newStatus: string) => {
