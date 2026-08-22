@@ -66,6 +66,32 @@ export default function ShippingPage() {
           <p className="text-[#888] text-sm leading-relaxed">At checkout you can add shipping protection. The premium is priced against your order total and shown before you pay — it is optional and can be removed. When a protected parcel is lost, stolen, or damaged in transit, the claim is filed directly with Trusted Labs and resolved by them.</p>
         </div>
 
+        {/* Delivery Guarantee */}
+        <div className="mt-8 bg-gradient-to-r from-[#0a2a22] to-[#0a1a2a] rounded-xl p-6 border border-[#00d4aa]/20">
+          <div className="flex items-start gap-4">
+            <div className="text-3xl">📦</div>
+            <div>
+              <h3 className="font-bold mb-2 text-[#00d4aa]">Delivery Guarantee</h3>
+              <p className="text-[#ccc] text-sm leading-relaxed">
+                We stand behind every shipment. If your package is marked as delivered but you haven&apos;t received it, or if it&apos;s lost in transit, we&apos;ll <span className="font-semibold text-[#00d4aa]">reship your order completely free of charge</span>. No questions asked, no additional cost to you. Your satisfaction and trust are our priorities.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Quality Guarantee */}
+        <div className="mt-6 bg-gradient-to-r from-[#0a2a22] to-[#0a1a2a] rounded-xl p-6 border border-[#00d4aa]/20">
+          <div className="flex items-start gap-4">
+            <div className="text-3xl">🔬</div>
+            <div>
+              <h3 className="font-bold mb-2 text-[#00d4aa]">Quality Testing Guarantee</h3>
+              <p className="text-[#ccc] text-sm leading-relaxed">
+                We&apos;re confident in our quality standards. If you independently test our products and find they don&apos;t meet the specifications stated on the COA, simply <span className="font-semibold text-[#00d4aa]">send us your test results and we&apos;ll provide free replacements</span>. We work only with internationally recognised manufacturers and independently verify every batch, but we understand the importance of giving you complete peace of mind.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div className="mt-8 text-center">
           <Link href="/returns" className="text-[#00d4aa] text-sm hover:underline">View returns policy →</Link>
         </div>

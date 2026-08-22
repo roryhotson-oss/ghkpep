@@ -7,7 +7,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <p className="text-[#00d4aa] text-sm font-medium mb-2">Our story</p>
           <h1 className="text-3xl font-bold">A new standard for the lab.</h1>
-          <p className="text-[#888] mt-3 max-w-2xl">GHK exists because reference-grade research compounds shouldn't require a leap of faith. We built the supplier we wished we had.</p>
+          <p className="text-[#888] mt-3 max-w-2xl">GHK exists because reference-grade research compounds shouldn&apos;t require a leap of faith. We built the supplier we wished we had.</p>
         </div>
       </section>
 
@@ -17,7 +17,7 @@ export default function AboutPage() {
             GHK was founded in 2022 by a small group of chemists and researchers who were tired of opaque sourcing, unverifiable claims, and packaging that felt anything but professional.
           </p>
           <p className="text-[#888] mt-6 leading-relaxed">
-            The catalog is intentionally narrow. Every product is one we'd actually order ourselves, every batch is independently assayed, and every certificate of analysis is published openly on the product page before the lot ships. No exceptions.
+            The catalog is intentionally narrow. Every product is one we&apos;d actually order ourselves, every batch is independently assayed, and every certificate of analysis is published openly on the product page before the lot ships. No exceptions.
           </p>
           <p className="text-[#888] mt-4 leading-relaxed">
             Our products are sold strictly for in-vitro research. We do not provide dosing guidance, we do not claim therapeutic benefit, and we refuse any order that suggests human or animal consumption.
@@ -31,11 +31,11 @@ export default function AboutPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { title: "Transparency by default", desc: "Every batch ships with a published certificate of analysis from a Glyvantix lab — linked from the product page, not buried in an email." },
-              { title: "Reference-grade or nothing", desc: "We hold a 99% purity floor on every lot. Material that doesn't clear it is destroyed, not downgraded." },
-              { title: "Built by lab people", desc: "Our QC team are working chemists. Documentation, packaging, and labeling are designed for how research actually runs." },
-              { title: "Researcher-only", desc: "We verify research intent at the gate and refuse any order that suggests human or veterinary use. No exceptions, no quotas." },
-              { title: "Long-term partnerships", desc: "We'd rather earn one lab for ten years than chase one-time buyers. Pricing, allocation, and support are built around that." },
-              { title: "Quietly premium", desc: "Discreet packaging, fast support, and an honest catalog. Nothing flashy, nothing hidden." },
+            { title: "Reference-grade or nothing", desc: "We hold a 99% purity floor on every lot. Material that doesn&apos;t clear it is destroyed, not downgraded." },
+            { title: "Built by lab people", desc: "Our QC team are working chemists. Documentation, packaging, and labeling are designed for how research actually runs." },
+            { title: "Researcher-only", desc: "We verify research intent at the gate and refuse any order that suggests human or veterinary use. No exceptions, no quotas." },
+            { title: "Long-term partnerships", desc: "We&apos;d rather earn one lab for ten years than chase one-time buyers. Pricing, allocation, and support are built around that." },
+            { title: "Quietly premium", desc: "Discreet packaging, fast support, and an honest catalog. Nothing flashy, nothing hidden." },
             ].map((item) => (
               <div key={item.title} className="bg-[#141414] rounded-xl p-6 border border-[#222]">
                 <h3 className="font-bold mb-2">{item.title}</h3>

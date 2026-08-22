@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { products } from '@/data/products';
+import { getProducts } from '@/lib/admin-store';
 
-const featuredProducts = products.slice(0, 10);
+const allProducts = getProducts();
+const featuredProducts = allProducts.slice(0, 10);
 
 export default function Home() {
   return (
@@ -36,16 +37,15 @@ export default function Home() {
             </div>
             <div className="hidden lg:flex items-center justify-center">
               <div className="relative">
-                <div className="w-64 h-80 rounded-2xl bg-gradient-to-b from-[#0a2a22] to-[#0a1a2a] border border-[#222] flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-6xl mb-4">🧪</div>
-                    <p className="text-[#00d4aa] font-bold">GHK</p>
-                    <p className="text-[#888] text-xs mt-1">Research Grade</p>
-                    <p className="text-[#888] text-xs">99.84% Pure</p>
-                  </div>
+                <div className="w-72 h-80 rounded-2xl bg-gradient-to-b from-[#0a2a22] to-[#0a1a2a] border border-[#222] overflow-hidden">
+                  <img src="/images/hero-lab.png" alt="GHK Research Vials" className="w-full h-full object-cover" />
                 </div>
                 <div className="absolute -top-4 -right-4 bg-[#00d4aa] text-black text-xs font-bold px-3 py-1 rounded-full">
-                  Glyvantix
+                  Glyvantix Tested
+                </div>
+                <div className="absolute -bottom-3 -left-3 bg-[#141414] border border-[#00d4aa]/30 rounded-lg px-3 py-2 text-xs">
+                  <p className="text-[#00d4aa] font-bold">99.84%</p>
+                  <p className="text-[#888]">Verified Purity</p>
                 </div>
               </div>
             </div>

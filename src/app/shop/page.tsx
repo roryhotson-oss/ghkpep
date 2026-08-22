@@ -1,7 +1,38 @@
+'use client';
+
 import Link from 'next/link';
-import { products } from '@/data/products';
+import { useState, useEffect } from 'react';
+import type { Product } from '@/data/products';
 
 export default function ShopPage() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+
+  useEffect(() => {
+    fetch('/api/products')
+      .then(res => res.json())
+      .then(data => {
+        setProducts(data.products || []);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
+  const filteredProducts = selectedCategory === 'all' 
+    ? products 
+    : products.filter(p => p.category === selectedCategory);
+
+  const categories = [
+    { id: 'all', label: 'All', count: products.length },
+    { id: 'recovery', label: 'Tissue & Matrix', count: products.filter(p => p.category === 'recovery').length },
+    { id: 'cognitive', label: 'Neuro Research', count: products.filter(p => p.category === 'cognitive').length },
+    { id: 'longevity', label: 'Mitochondrial & Cellular', count: products.filter(p => p.category === 'longevity').length },
+    { id: 'metabolic', label: 'Incretin & Amylin', count: products.filter(p => p.category === 'metabolic').length },
+    { id: 'blend', label: 'Research Blends', count: products.filter(p => p.category === 'blend').length },
+    { id: 'accessories', label: 'Accessories', count: products.filter(p => p.category === 'accessories').length },
+  ];
+
   return (
     <div>
       {/* Hero */}
@@ -12,27 +43,33 @@ export default function ShopPage() {
           <p className="text-[#888] mt-3 max-w-2xl">
             Every vial is independently tested and accompanied by a downloadable certificate of analysis. All prices in GBP. Box of 10 vials available.
           </p>
-          <p className="text-[#888] text-sm mt-2">{products.length} in catalog</p>
+          <p className="text-[#888] text-sm mt-2">{filteredProducts.length} products</p>
         </div>
       </section>
 
       {/* Categories */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 border-b border-[#222]">
         <div className="flex flex-wrap gap-2 text-sm">
-          <Link href="/shop" className="px-4 py-2 bg-[#00d4aa] text-black rounded-full font-medium">All</Link>
-          <Link href="/shop?cat=recovery" className="px-4 py-2 bg-[#141414] text-[#ccc] rounded-full hover:border-[#00d4aa] border border-[#222] transition">Tissue &amp; Matrix</Link>
-          <Link href="/shop?cat=cognitive" className="px-4 py-2 bg-[#141414] text-[#ccc] rounded-full hover:border-[#00d4aa] border border-[#222] transition">Neuro Research</Link>
-          <Link href="/shop?cat=longevity" className="px-4 py-2 bg-[#141414] text-[#ccc] rounded-full hover:border-[#00d4aa] border border-[#222] transition">Mitochondrial &amp; Cellular</Link>
-          <Link href="/shop?cat=metabolic" className="px-4 py-2 bg-[#141414] text-[#ccc] rounded-full hover:border-[#00d4aa] border border-[#222] transition">Incretin &amp; Amylin</Link>
-          <Link href="/shop?cat=blend" className="px-4 py-2 bg-[#141414] text-[#ccc] rounded-full hover:border-[#00d4aa] border border-[#222] transition">Research Blends</Link>
-          <Link href="/shop?cat=accessories" className="px-4 py-2 bg-[#141414] text-[#ccc] rounded-full hover:border-[#00d4aa] border border-[#222] transition">Accessories</Link>
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`px-4 py-2 rounded-full font-medium transition ${
+                selectedCategory === cat.id
+                  ? 'bg-[#00d4aa] text-black'
+                  : 'bg-[#141414] text-[#ccc] border border-[#222] hover:border-[#00d4aa]'
+              }`}
+            >
+              {cat.label} ({cat.count})
+            </button>
+          ))}
         </div>
       </div>
 
       {/* Products Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <Link
               key={product.slug}
               href={`/shop/${product.slug}`}
