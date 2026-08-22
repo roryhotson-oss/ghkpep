@@ -25,7 +25,7 @@ function isRateLimited(ip: string, limit: number, windowMs: number): boolean {
   return false;
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const response = NextResponse.next();
   const ip = getIP(request);
 
