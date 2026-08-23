@@ -143,7 +143,7 @@ export default function COAPage() {
 
       {/* COA Detail Modal */}
       {selectedCOA && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4 overflow-y-auto">
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="coa-modal-title">
           <div className="bg-[#141414] rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-[#222]">
             <div className="p-6 border-b border-[#222] sticky top-0 bg-[#141414]">
               <div className="flex justify-between items-center">

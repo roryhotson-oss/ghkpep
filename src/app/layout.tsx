@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import ErrorBoundary from '@/components/ErrorBoundary';
 import './globals.css';
 import SiteChrome from '@/components/SiteChrome';
 import FooterConditional from '@/components/FooterConditional';
@@ -103,7 +104,7 @@ export default function RootLayout({
       <body>
         <StructuredData />
         <SiteChrome />
-        <main>{children}</main>
+        <main><ErrorBoundary>{children}</ErrorBoundary></main>
         <FooterConditional />
       </body>
     </html>

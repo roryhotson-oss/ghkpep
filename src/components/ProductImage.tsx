@@ -1,3 +1,4 @@
+import Image from 'next/image';
 interface ProductImageProps {
   src: string;
   alt: string;
@@ -7,11 +8,11 @@ interface ProductImageProps {
 export default function ProductImage({ src, alt, className = "w-full h-full object-cover" }: ProductImageProps) {
   return (
     <div className="relative w-full h-full bg-gradient-to-br from-[#1a1a1a] to-[#0d1a17]">
-      <img
+      <Image
         src={src}
-        alt={alt}
+        alt={alt} fill
         className={className}
-        onError={(e) => {
+        sizes="100vw" onError={(e) => {
           e.currentTarget.style.display = 'none';
         }}
       />

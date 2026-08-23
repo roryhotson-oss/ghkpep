@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
@@ -107,8 +108,8 @@ export default function CartPage() {
             ) : (
               cartItems.map((item, idx) => (
                 <div key={idx} className="bg-[#141414] rounded-xl p-5 border border-[#222] flex gap-4">
-                  <div className="w-20 h-20 bg-[#1a1a1a] rounded-lg overflow-hidden shrink-0">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                  <div className="w-20 h-20 bg-[#1a1a1a] rounded-lg overflow-hidden shrink-0 relative">
+                    <Image src={item.image} alt={item.name} fill className="object-cover" sizes="80px" />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-start justify-between">

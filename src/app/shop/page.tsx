@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
@@ -75,8 +76,8 @@ export default function ShopPage() {
               href={`/shop/${product.slug}`}
               className="group bg-[#141414] rounded-xl p-4 border border-[#222] hover:border-[#00d4aa]/30 transition card-glow"
             >
-              <div className="aspect-square bg-[#1a1a1a] rounded-lg mb-3 overflow-hidden">
-                <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+              <div className="aspect-square bg-[#1a1a1a] rounded-lg mb-3 overflow-hidden relative">
+                <Image src={product.image} alt={product.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 25vw" />
               </div>
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-[10px] px-2 py-0.5 bg-[#0a2a22] text-[#00d4aa] rounded-full font-medium">

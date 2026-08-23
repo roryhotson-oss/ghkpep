@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -117,12 +118,12 @@ export default function AdminProductsPage() {
         {filtered.map((product) => (
           <div key={product.slug} className="bg-[#141414] rounded-xl border border-[#222] overflow-hidden hover:border-[#333] transition">
             {/* Image */}
-            <div className="h-48 bg-[#1a1a1a] flex items-center justify-center p-4">
-              <img
+            <div className="h-48 bg-[#1a1a1a] flex items-center justify-center p-4 relative">
+              <Image
                 src={product.image}
-                alt={product.name}
+                alt={product.name} fill
                 className="max-h-full max-w-full object-contain"
-                onError={(e) => {
+                sizes="200px" onError={(e) => {
                   (e.target as HTMLImageElement).src = '/images/hero-lab.png';
                 }}
               />

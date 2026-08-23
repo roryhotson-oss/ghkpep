@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -128,8 +129,8 @@ export default function OrdersPage() {
             <div className="p-6 space-y-4">
               {order.items.map((item, idx) => (
                 <div key={idx} className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-[#1a1a1a] rounded-lg overflow-hidden flex-shrink-0">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                  <div className="w-16 h-16 bg-[#1a1a1a] rounded-lg overflow-hidden flex-shrink-0 relative">
+                    <Image src={item.image} alt={item.name} fill className="object-cover" sizes="64px" />
                   </div>
                   <div className="flex-1">
                     <p className="font-medium">{item.name}</p>
