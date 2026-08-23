@@ -13,6 +13,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   useEffect(() => {
     const checkAuth = async () => {
+      // Skip auth check for login page
+      if (pathname === '/admin/login') {
+        setLoading(false);
+        return;
+      }
       try {
         const res = await fetch('/api/admin/auth');
         const data = await res.json();
@@ -28,7 +33,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       }
     };
     checkAuth();
-  }, [router]);
+  }, [router, pathname]);
 
   const handleLogout = async () => {
     await fetch('/api/admin/auth', { method: 'DELETE' });

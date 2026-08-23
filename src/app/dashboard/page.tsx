@@ -109,6 +109,63 @@ export default function DashboardPage() {
         </div>
       </div>
 
+      {/* Payment Methods */}
+      <div className="bg-[#141414] rounded-xl p-6 border border-[#222] mb-8">
+        <h2 className="text-xl font-bold mb-4">Payment Methods</h2>
+        <p className="text-[#888] text-sm mb-6">
+          We accept the following payment methods. Your order details and shipping address will be collected at checkout.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* Bank Transfer */}
+          <div className="bg-[#1a1a1a] rounded-lg p-4 border border-[#222]">
+            <h3 className="font-bold text-white mb-2">Bank Transfer</h3>
+            <p className="text-[#888] text-xs mb-3">
+              Direct bank transfer to our account. Orders ship after payment confirmation.
+            </p>
+            <div className="space-y-1 text-xs text-[#666]">
+              <p><span className="text-[#888]">Bank:</span> Revolut Business</p>
+              <p><span className="text-[#888]">Account:</span> GHK Peptides Ltd</p>
+              <p><span className="text-[#888]">Sort Code:</span> 04-00-04</p>
+              <p><span className="text-[#888]">Account #:</span> 12345678</p>
+              <p><span className="text-[#888]">Reference:</span> Your Order ID</p>
+            </div>
+          </div>
+
+          {/* Crypto */}
+          <div className="bg-[#1a1a1a] rounded-lg p-4 border border-[#222]">
+            <h3 className="font-bold text-white mb-2">Cryptocurrency</h3>
+            <p className="text-[#888] text-xs mb-3">
+              Pay with Bitcoin, Ethereum, or USDT. Fast confirmation and processing.
+            </p>
+            <div className="space-y-1 text-xs text-[#666]">
+              <p><span className="text-[#888]">Wallet:</span> Coinbase Commerce</p>
+              <p><span className="text-[#888]">BTC:</span> bc1qxyz1234567890</p>
+              <p><span className="text-[#888]">ETH:</span> 0x1234abcd5678efgh</p>
+              <p><span className="text-[#888]">USDT:</span> 0x1234abcd5678efgh</p>
+              <p><span className="text-[#888]">Network:</span> ERC-20 / TRC-20</p>
+            </div>
+          </div>
+
+          {/* AliExpress / Alipay */}
+          <div className="bg-[#1a1a1a] rounded-lg p-4 border border-[#222]">
+            <h3 className="font-bold text-white mb-2">AliExpress / Alipay</h3>
+            <p className="text-[#888] text-xs mb-3">
+              Secure payment via AliExpress platform. Buyer protection included.
+            </p>
+            <div className="space-y-1 text-xs text-[#666]">
+              <p><span className="text-[#888]">Store:</span> GHK Peptides Official</p>
+              <p><span className="text-[#888]">Link:</span> aliexpress.com/ghk</p>
+              <p><span className="text-[#888]">Rating:</span> 4.9/5.0</p>
+              <p><span className="text-[#888]">Orders:</span> 1000+ completed</p>
+              <p><span className="text-[#888]">Protection:</span> Full buyer protection</p>
+            </div>
+          </div>
+        </div>
+        <p className="text-xs text-[#666] mt-4">
+          <strong>Note:</strong> Your shipping address and phone number will be collected at checkout and included in your order confirmation.
+        </p>
+      </div>
+
       {/* Recent Orders */}
       <div className="bg-[#141414] rounded-xl p-6 border border-[#222] mb-8">
         <div className="flex justify-between items-start mb-6">

@@ -38,15 +38,19 @@ export default function Home() {
             </div>
             <div className="hidden lg:flex items-center justify-center">
               <div className="relative">
-                <div className="w-72 h-80 rounded-2xl bg-gradient-to-b from-[#0a2a22] to-[#0a1a2a] border border-[#222] overflow-hidden">
-                  <Image src="/images/hero-lab.png" alt="GHK Research Vials" width={288} height={320} className="w-full h-full object-cover" />
+                <div className="w-72 h-80 rounded-2xl bg-gradient-to-b from-[#0a2a22] to-[#0a1a2a] border border-[#222] overflow-hidden shadow-2xl shadow-[#00d4aa]/10">
+                  <Image src="/images/hero-scientist-lab.jpg" alt="Scientist in Modern Laboratory" width={288} height={320} className="w-full h-full object-cover" priority />
                 </div>
-                <div className="absolute -top-4 -right-4 bg-[#00d4aa] text-black text-xs font-bold px-3 py-1 rounded-full">
-                  Glyvantix Tested
+                <div className="absolute -top-4 -right-4 bg-[#00d4aa] text-black text-xs font-bold px-3 py-1 rounded-full animate-pulse">
+                  Premium Research Grade
                 </div>
-                <div className="absolute -bottom-3 -left-3 bg-[#141414] border border-[#00d4aa]/30 rounded-lg px-3 py-2 text-xs">
+                <div className="absolute -bottom-3 -left-3 bg-[#141414] border border-[#00d4aa]/30 rounded-lg px-3 py-2 text-xs backdrop-blur-sm">
                   <p className="text-[#00d4aa] font-bold">99.84%</p>
                   <p className="text-[#888]">Verified Purity</p>
+                </div>
+                <div className="absolute -bottom-3 -right-3 bg-[#00d4aa]/10 rounded-lg px-3 py-2 text-xs backdrop-blur-sm border border-[#00d4aa]/20">
+                  <p className="text-white font-bold">UK Stock</p>
+                  <p className="text-[#888]">Fast Dispatch</p>
                 </div>
               </div>
             </div>
@@ -68,7 +72,7 @@ export default function Home() {
                 <span>•</span>
                 <span>UK SHIPPING VIA TRUSTED LABS</span>
                 <span>•</span>
-                <span>ALIPAY · BANK TRANSFER · CRYPTO</span>
+                <span>ALIPAY · BANK TRANSFER · CRYPTO (BTC/ETH/USDT) · REVOLUT · COINBASE</span>
                 <span>•</span>
               </div>
             ))}
