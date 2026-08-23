@@ -21,20 +21,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const baseUrl = 'https://ghkpep.com';
 
   return {
-    title: `${product.name} | GHK Peptides UK`,
-    description: `Buy ${product.name} in the UK. Premium research peptide, independently tested by Glyvantix Labs. Purity ${product.purity}. Free UK shipping over £150.`,
+    title: `${product.name} | GHKpep UK`,
+    description: `${product.name} for in-vitro laboratory research, independently tested by Glyvantix Labs. Purity ${product.purity}. Free discreet tracked shipping.`,
     keywords: [
       product.name.toLowerCase(),
       `${product.name.toLowerCase()} UK`,
-      `buy ${product.name.toLowerCase()}`,
-      `${product.name.toLowerCase()} peptide`,
-      `${product.name.toLowerCase()} research peptide`,
-      `${product.categoryLabel.toLowerCase()} peptide UK`,
-      'research peptides UK',
-      'buy peptides UK',
+      `${product.name.toLowerCase()} research compound`,
+      `${product.categoryLabel.toLowerCase()} research UK`,
+      'laboratory research compounds UK',
     ],
     openGraph: {
-      title: `${product.name} | GHK Peptides UK`,
+      title: `${product.name} | GHKpep UK`,
       description: `Buy ${product.name} in the UK. Premium research peptide, independently tested. Purity ${product.purity}.`,
       type: 'website',
       url: `${baseUrl}/shop/${product.slug}`,
@@ -49,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${product.name} | GHK Peptides UK`,
+      title: `${product.name} | GHKpep UK`,
       description: `Buy ${product.name} in the UK. Premium research peptide, independently tested.`,
       images: [product.image || '/images/og-image.jpg'],
     },

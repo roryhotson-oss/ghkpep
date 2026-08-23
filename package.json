@@ -6,9 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint ."
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
     "@types/pdfkit": "^0.17.6",
     "next": "16.3.2",
     "pdf-lib": "^1.17.1",

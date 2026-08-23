@@ -1,32 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
 import { getProduct, updateProduct, deleteProduct } from '@/lib/admin-store';
-
-const SESSION_SECRET = process.env.SESSION_SECRET || 'ghk-peptides-admin-secret-key-2024';
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@ghkpep.com';
-
-function verifyToken(token: string): boolean {
-  try {
-    const decoded = Buffer.from(token, 'base64').toString('utf-8');
-    const parts = decoded.split(':');
-    if (parts.length < 3) return false;
-    const email = parts[0];
-    const timestamp = parseInt(parts[1]);
-    const secret = parts.slice(2).join(':');
-    if (Date.now() - timestamp > 24 * 60 * 60 * 1000) return false;
-    if (secret !== SESSION_SECRET) return false;
-    if (email !== ADMIN_EMAIL) return false;
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-async function checkAdmin(): Promise<boolean> {
-  const cookieStore = await cookies();
-  const token = cookieStore.get('admin_session');
-  return !!token && verifyToken(token.value);
-}
+import { checkAdmin } from '@/lib/admin-auth';
 
 export async function GET(
   _request: NextRequest,
@@ -59,8 +33,20 @@ export async function PUT(
 
     // Parse numeric fields
     const updates: Record<string, unknown> = {};
-    if (body.price !== undefined) updates.price = parseFloat(body.price);
-    if (body.boxPrice !== undefined) updates.boxPrice = parseFloat(body.boxPrice);
+    if (body.price !== undefined) {
+      const price = Number(body.price);
+      if (!Number.isFinite(price) || price <= 0) {
+        return NextResponse.json({ error: 'Price must be a positive number' }, { status: 400 });
+      }
+      updates.price = price;
+    }
+    if (body.boxPrice !== undefined) {
+      const boxPrice = Number(body.boxPrice);
+      if (!Number.isFinite(boxPrice) || boxPrice <= 0) {
+        return NextResponse.json({ error: 'Box price must be a positive number' }, { status: 400 });
+      }
+      updates.boxPrice = boxPrice;
+    }
     if (body.name !== undefined) updates.name = body.name;
     if (body.purity !== undefined) updates.purity = body.purity;
     if (body.category !== undefined) updates.category = body.category;
@@ -68,6 +54,20 @@ export async function PUT(
     if (body.description !== undefined) updates.description = body.description;
     if (body.lot !== undefined) updates.lot = body.lot;
     if (body.image !== undefined) updates.image = body.image;
+    if (body.stockQuantity !== undefined) {
+      const stockQuantity = Number(body.stockQuantity);
+      if (!Number.isInteger(stockQuantity) || stockQuantity < 0) {
+        return NextResponse.json({ error: 'Stock must be a whole number of zero or more' }, { status: 400 });
+      }
+      updates.stockQuantity = stockQuantity;
+    }
+    if (body.discountPercent !== undefined) {
+      const discountPercent = Number(body.discountPercent);
+      if (!Number.isFinite(discountPercent) || discountPercent < 0 || discountPercent > 100) {
+        return NextResponse.json({ error: 'Discount must be between 0 and 100 percent' }, { status: 400 });
+      }
+      updates.discountPercent = discountPercent;
+    }
 
     const updated = updateProduct(slug, updates);
     if (!updated) {

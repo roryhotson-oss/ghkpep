@@ -1,33 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
 import { getProducts, addProduct } from '@/lib/admin-store';
 import type { Product } from '@/data/products';
-
-const SESSION_SECRET = process.env.SESSION_SECRET || 'ghk-peptides-admin-secret-key-2024';
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@ghkpep.com';
-
-function verifyToken(token: string): boolean {
-  try {
-    const decoded = Buffer.from(token, 'base64').toString('utf-8');
-    const parts = decoded.split(':');
-    if (parts.length < 3) return false;
-    const email = parts[0];
-    const timestamp = parseInt(parts[1]);
-    const secret = parts.slice(2).join(':');
-    if (Date.now() - timestamp > 24 * 60 * 60 * 1000) return false;
-    if (secret !== SESSION_SECRET) return false;
-    if (email !== ADMIN_EMAIL) return false;
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-async function checkAdmin(): Promise<boolean> {
-  const cookieStore = await cookies();
-  const token = cookieStore.get('admin_session');
-  return !!token && verifyToken(token.value);
-}
+import { checkAdmin } from '@/lib/admin-auth';
 
 export async function GET() {
   if (!(await checkAdmin())) {
@@ -45,9 +19,13 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json();
-    const { slug, name, price, boxPrice, purity, category, categoryLabel, description, lot, image } = body;
+    const { slug, name, price, boxPrice, purity, category, categoryLabel, description, lot, image, stockQuantity, discountPercent } = body;
 
-    if (!slug || !name || price === undefined) {
+    const parsedPrice = Number(price);
+    const parsedBoxPrice = boxPrice === undefined ? parsedPrice * 9 : Number(boxPrice);
+    const parsedStock = stockQuantity === undefined ? 100 : Number(stockQuantity);
+    const parsedDiscount = discountPercent === undefined ? 0 : Number(discountPercent);
+    if (typeof slug !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/i.test(slug) || typeof name !== 'string' || !name.trim() || !Number.isFinite(parsedPrice) || parsedPrice <= 0 || !Number.isFinite(parsedBoxPrice) || parsedBoxPrice <= 0 || !Number.isInteger(parsedStock) || parsedStock < 0 || !Number.isFinite(parsedDiscount) || parsedDiscount < 0 || parsedDiscount > 100) {
       return NextResponse.json({ error: 'slug, name, and price are required' }, { status: 400 });
     }
 
@@ -59,14 +37,16 @@ export async function POST(request: NextRequest) {
     const newProduct: Product = {
       slug,
       name,
-      price: parseFloat(price),
-      boxPrice: parseFloat(boxPrice) || parseFloat(price) * 9,
+      price: parsedPrice,
+      boxPrice: parsedBoxPrice,
       purity: purity || '≥99%',
       category: category || 'recovery',
       categoryLabel: categoryLabel || 'Research Compound',
       description: description || '',
       lot: lot || `GHK-${Date.now().toString(36).toUpperCase()}`,
       image: image || `/images/${slug}.png`,
+      stockQuantity: parsedStock,
+      discountPercent: parsedDiscount,
     };
 
     addProduct(newProduct);

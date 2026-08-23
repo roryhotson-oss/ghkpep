@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { validateEmail, validateName, validateMessage, validateSubject } from '@/lib/validation';
+import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
@@ -39,6 +40,22 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: messageValidation.error }, { status: 400 });
     }
 
+    const supabase = getSupabaseAdmin();
+    if (supabase) {
+      const { error } = await supabase.from('contact_messages').insert({
+        name: nameValidation.sanitized,
+        email: emailValidation.sanitized,
+        institution: typeof institution === 'string' ? institution.slice(0, 255) : null,
+        subject: subjectValidation.sanitized,
+        message: messageValidation.sanitized,
+        status: 'new',
+      });
+      if (error) {
+        console.error('Failed to save contact message:', error);
+        return NextResponse.json({ error: 'Failed to save message' }, { status: 500 });
+      }
+    }
+
     // Get contact email from environment or use default
     const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'orders@ghkpep.com';
 
@@ -49,18 +66,18 @@ export async function POST(request: NextRequest) {
       subject: `Contact Form: ${subjectValidation.sanitized}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #00d4aa;">New Contact Form Submission</h2>
+          <h2 style="color: #21c7a5;">New Contact Form Submission</h2>
           <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <p><strong>Name:</strong> ${nameValidation.sanitized}</p>
             <p><strong>Email:</strong> ${emailValidation.sanitized}</p>
             ${institution ? `<p><strong>Institution:</strong> ${institution}</p>` : ''}
             <p><strong>Subject:</strong> ${subjectValidation.sanitized}</p>
           </div>
-          <div style="background: #fff; padding: 20px; border-left: 4px solid #00d4aa;">
+          <div style="background: #fff; padding: 20px; border-left: 4px solid #21c7a5;">
             <h3 style="margin-top: 0;">Message:</h3>
             <p style="white-space: pre-wrap;">${messageValidation.sanitized}</p>
           </div>
-          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; color: #666; font-size: 12px;">
+          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; color: #7b898e; font-size: 12px;">
             <p>This email was sent from the GHK contact form.</p>
           </div>
         </div>
@@ -76,10 +93,10 @@ export async function POST(request: NextRequest) {
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="color: #00d4aa; font-size: 32px; margin: 0;">GHK Peptides</h1>
+            <h1 style="color: #21c7a5; font-size: 32px; margin: 0;">GHK Peptides</h1>
           </div>
           <h2 style="color: #333;">Thank you for contacting us!</h2>
-          <p style="color: #666; line-height: 1.6;">
+          <p style="color: #7b898e; line-height: 1.6;">
             We've received your message and our team will get back to you within 24 hours.
           </p>
           <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">

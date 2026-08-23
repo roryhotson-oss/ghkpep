@@ -29,6 +29,7 @@ CREATE TABLE products (
   lot_number VARCHAR(100),
   image_url VARCHAR(500),
   stock_quantity INTEGER DEFAULT 100,
+  discount_percent DECIMAL(5, 2) DEFAULT 0,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
@@ -108,6 +109,25 @@ CREATE TABLE contact_messages (
   status VARCHAR(50) DEFAULT 'new', -- new, read, responded
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+
+-- ============================================
+-- SITE SETTINGS
+-- ============================================
+CREATE TABLE site_settings (
+
+  -- Supported payment keys include alipayUrl, cryptoUrl, bankTransferUrl,
+  -- wiseUrl, revolutDetails, coinbaseUrl, bitcoinAddress, ethereumAddress,
+  -- and usdtAddress.
+  key VARCHAR(100) PRIMARY KEY,
+  value TEXT NOT NULL DEFAULT '',
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- ============================================
+-- SUPPORT INBOX ACCESS
+-- ============================================
+-- The server-only Supabase service role is used by the admin API.
+-- Do not expose SUPABASE_SERVICE_ROLE_KEY to the browser.
 
 -- ============================================
 -- CART TABLE (for logged-in users)

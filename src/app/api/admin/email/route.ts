@@ -1,36 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
 import { Resend } from 'resend';
-import { getSubscribers } from '@/lib/admin-store';
+import { getOrders, getSubscribers } from '@/lib/admin-store';
 import { validateEmail } from '@/lib/validation';
+import { checkAdmin } from '@/lib/admin-auth';
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-
-const SESSION_SECRET = process.env.SESSION_SECRET || 'ghk-peptides-admin-secret-key-2024';
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@ghkpep.com';
-
-function verifyToken(token: string): boolean {
-  try {
-    const decoded = Buffer.from(token, 'base64').toString('utf-8');
-    const parts = decoded.split(':');
-    if (parts.length < 3) return false;
-    const email = parts[0];
-    const timestamp = parseInt(parts[1]);
-    const secret = parts.slice(2).join(':');
-    if (Date.now() - timestamp > 24 * 60 * 60 * 1000) return false;
-    if (secret !== SESSION_SECRET) return false;
-    if (email !== ADMIN_EMAIL) return false;
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-async function checkAdmin(): Promise<boolean> {
-  const cookieStore = await cookies();
-  const token = cookieStore.get('admin_session');
-  return !!token && verifyToken(token.value);
-}
 
 export async function POST(request: NextRequest) {
   if (!(await checkAdmin())) {
@@ -54,6 +28,9 @@ export async function POST(request: NextRequest) {
     if (recipients === 'all-subscribers') {
       const subscribers = getSubscribers();
       recipientList = subscribers.map(s => s.email);
+    } else if (recipients === 'all-customers') {
+      const orders = getOrders();
+      recipientList = [...new Set(orders.map(order => order.customerEmail).filter(Boolean))];
     } else if (recipients === 'custom' && Array.isArray(to)) {
       recipientList = to.filter((email: string) => {
         const validation = validateEmail(email);
@@ -113,5 +90,9 @@ export async function GET() {
   }
 
   const subscribers = getSubscribers();
-  return NextResponse.json({ subscribers });
+  const customers = [...new Map(getOrders().filter(order => order.customerEmail).map(order => [order.customerEmail, {
+    email: order.customerEmail,
+    name: order.customerName,
+  }])).values()];
+  return NextResponse.json({ subscribers, customers });
 }

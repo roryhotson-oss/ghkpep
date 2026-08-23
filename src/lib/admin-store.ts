@@ -30,7 +30,11 @@ if (!fs.existsSync(SUBSCRIBERS_FILE)) {
 // --- Products ---
 export function getProducts(): Product[] {
   const data = fs.readFileSync(PRODUCTS_FILE, 'utf-8');
-  return JSON.parse(data);
+  return JSON.parse(data).map((product: Product) => ({
+    ...product,
+    stockQuantity: product.stockQuantity ?? 100,
+    discountPercent: product.discountPercent ?? 0,
+  }));
 }
 
 export function getProduct(slug: string): Product | undefined {
@@ -124,14 +128,15 @@ export function getStats() {
   const orders = getOrders();
   const subscribers = getSubscribers();
 
-  const totalRevenue = orders.reduce((sum, o) => sum + o.total, 0);
+  const validOrders = orders.filter(o => o.status !== 'cancelled');
+  const totalRevenue = validOrders.reduce((sum, o) => sum + o.total, 0);
   const totalOrders = orders.length;
   const pendingOrders = orders.filter(o => o.status === 'pending').length;
-  const avgOrderValue = totalOrders > 0 ? totalRevenue / totalOrders : 0;
+  const avgOrderValue = validOrders.length > 0 ? totalRevenue / validOrders.length : 0;
 
   // Product popularity from orders
   const productSales: Record<string, { name: string; quantity: number; revenue: number }> = {};
-  orders.forEach(order => {
+  validOrders.forEach(order => {
     order.items.forEach(item => {
       if (!productSales[item.slug]) {
         productSales[item.slug] = { name: item.name, quantity: 0, revenue: 0 };
@@ -152,7 +157,7 @@ export function getStats() {
     const date = new Date();
     date.setMonth(date.getMonth() - i);
     const monthStr = date.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
-    const monthOrders = orders.filter(o => {
+    const monthOrders = validOrders.filter(o => {
       const oDate = new Date(o.date);
       return oDate.getMonth() === date.getMonth() && oDate.getFullYear() === date.getFullYear();
     });
@@ -182,6 +187,8 @@ export function getStats() {
     avgOrderValue,
     totalProducts: products.length,
     totalSubscribers: subscribers.length,
+    lowStockProducts: products.filter(product => product.stockQuantity !== undefined && product.stockQuantity < 10).length,
+    fulfilledOrders: validOrders.length,
     topProducts,
     revenueByMonth,
     recentOrders,

@@ -62,6 +62,13 @@ NEXT_PUBLIC_WHATSAPP_NUMBER=441234567890
 NEXT_PUBLIC_TELEGRAM_USERNAME=your_username
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 RESEND_API_KEY=your_resend_api_key_here
+ADMIN_EMAIL=your-admin-email@example.com
+ADMIN_PASSWORD=use-a-strong-admin-password
+SESSION_SECRET=use-a-long-random-session-secret
+NEXT_PUBLIC_ALIPAY_URL=https://your-alipay-instructions-url.example
+NEXT_PUBLIC_CRYPTO_PAYMENT_URL=https://your-crypto-payment-url.example
+NEXT_PUBLIC_BANK_TRANSFER_URL=https://your-bank-transfer-instructions-url.example
+NEXT_PUBLIC_WISE_URL=https://your-wise-payment-url.example
 ```
 
 ### 4. Run the development server
@@ -164,6 +171,13 @@ ghkpep-site/
 | `NEXT_PUBLIC_SITE_URL` | Site URL | Yes |
 | `RESEND_API_KEY` | Resend API key for emails | Yes |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Google Analytics ID | No |
+| `ADMIN_EMAIL` | Admin login email | Yes |
+| `ADMIN_PASSWORD` | Admin login password | Yes |
+| `SESSION_SECRET` | Random secret used to sign admin sessions | Yes |
+| `NEXT_PUBLIC_ALIPAY_URL` | Alipay payment instructions URL | No |
+| `NEXT_PUBLIC_CRYPTO_PAYMENT_URL` | Cryptocurrency payment instructions URL | No |
+| `NEXT_PUBLIC_BANK_TRANSFER_URL` | Bank transfer instructions URL | No |
+| `NEXT_PUBLIC_WISE_URL` | Wise payment instructions URL | No |
 
 ### Resend Setup
 

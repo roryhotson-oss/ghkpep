@@ -1,11 +1,11 @@
 export default function QualityPage() {
   return (
     <div>
-      <section className="bg-[#0d0d0d] border-b border-[#222]">
+      <section className="bg-[#0d0d0d] border-b border-[#2b3538]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <p className="text-[#00d4aa] text-sm font-medium mb-2">Quality Commitment</p>
+          <p className="text-[#21c7a5] text-sm font-medium mb-2">Quality Commitment</p>
           <h1 className="text-3xl font-bold">Our Quality Commitment</h1>
-          <p className="text-[#888] mt-3 max-w-2xl">From synthesis to shipment, every step is designed to deliver the purest research compounds for your laboratory.</p>
+          <p className="text-[#a7b0b2] mt-3 max-w-2xl">From synthesis to shipment, every step is designed to deliver the purest research compounds for your laboratory.</p>
         </div>
       </section>
 
@@ -19,15 +19,15 @@ export default function QualityPage() {
             { title: "Stability-Preserved Shipping", desc: "Temperature-sensitive compounds ship with insulated packaging and gel packs sized to the destination zone, so the vial you receive matches the COA." },
             { title: "Plain, Sealed Packaging", desc: "Outer packaging is unmarked. Documentation, lot numbers, and COA links live inside the box — never on the label." },
           ].map((item) => (
-            <div key={item.title} className="bg-[#141414] rounded-xl p-6 border border-[#222]">
+            <div key={item.title} className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
               <h3 className="font-bold text-lg mb-2">{item.title}</h3>
-              <p className="text-[#888] text-sm leading-relaxed">{item.desc}</p>
+              <p className="text-[#a7b0b2] text-sm leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="bg-[#0d0d0d] border-y border-[#222]">
+      <section className="bg-[#0d0d0d] border-y border-[#2b3538]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <h2 className="text-2xl font-bold mb-10 text-center">Six steps, every batch.</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -39,10 +39,10 @@ export default function QualityPage() {
               { num: "05", title: "Verify", desc: "Independent Glyvantix lab confirms identity and content; COA generated." },
               { num: "06", title: "Release", desc: "Lot is barcoded, sealed, and released to fulfillment. COA goes live on the product page." },
             ].map((step) => (
-              <div key={step.num} className="bg-[#141414] rounded-xl p-6 border border-[#222]">
-                <span className="text-[#00d4aa] font-bold text-lg">{step.num}</span>
+              <div key={step.num} className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+                <span className="text-[#21c7a5] font-bold text-lg">{step.num}</span>
                 <h4 className="font-semibold text-lg mt-2 mb-1">— {step.title}</h4>
-                <p className="text-[#888] text-sm">{step.desc}</p>
+                <p className="text-[#a7b0b2] text-sm">{step.desc}</p>
               </div>
             ))}
           </div>

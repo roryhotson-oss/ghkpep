@@ -86,7 +86,7 @@ export default function AdminOrdersPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-full">
-        <p className="text-[#888]">Loading orders...</p>
+        <p className="text-[#a7b0b2]">Loading orders...</p>
       </div>
     );
   }
@@ -96,7 +96,7 @@ export default function AdminOrdersPage() {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-2">Orders</h1>
-        <p className="text-[#888]">{orders.length} total orders · {orders.filter(o => o.status === 'pending').length} pending</p>
+        <p className="text-[#a7b0b2]">{orders.length} total orders · {orders.filter(o => o.status === 'pending').length} pending</p>
       </div>
 
       {/* Filters */}
@@ -107,8 +107,8 @@ export default function AdminOrdersPage() {
             onClick={() => setStatusFilter(status)}
             className={`px-4 py-2 rounded-lg text-sm transition ${
               statusFilter === status
-                ? 'bg-[#00d4aa] text-black font-semibold'
-                : 'bg-[#141414] text-[#888] border border-[#222] hover:border-[#00d4aa] hover:text-[#00d4aa]'
+                ? 'bg-[#21c7a5] text-black font-semibold'
+                : 'bg-[#141414] text-[#a7b0b2] border border-[#2b3538] hover:border-[#21c7a5] hover:text-[#21c7a5]'
             }`}
           >
             {status.charAt(0).toUpperCase() + status.slice(1)}
@@ -125,7 +125,7 @@ export default function AdminOrdersPage() {
       {filtered.length > 0 ? (
         <div className="space-y-3">
           {filtered.map((order) => (
-            <div key={order.id} className="bg-[#141414] rounded-xl border border-[#222] overflow-hidden">
+            <div key={order.id} className="bg-[#141414] rounded-xl border border-[#2b3538] overflow-hidden">
               {/* Order Header */}
               <div
                 className="flex items-center justify-between p-4 cursor-pointer hover:bg-[#1a1a1a] transition"
@@ -134,7 +134,7 @@ export default function AdminOrdersPage() {
                 <div className="flex items-center gap-4">
                   <div>
                     <p className="text-white font-medium">{order.id}</p>
-                    <p className="text-[#888] text-sm">{order.customerName} · {new Date(order.date).toLocaleDateString('en-GB')}</p>
+                    <p className="text-[#a7b0b2] text-sm">{order.customerName} · {new Date(order.date).toLocaleDateString('en-GB')}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -143,7 +143,7 @@ export default function AdminOrdersPage() {
                   </span>
                   <span className="text-white font-bold">£{order.total.toFixed(2)}</span>
                   <svg
-                    className={`w-5 h-5 text-[#888] transition ${expandedOrder === order.id ? 'rotate-180' : ''}`}
+                    className={`w-5 h-5 text-[#a7b0b2] transition ${expandedOrder === order.id ? 'rotate-180' : ''}`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -155,35 +155,35 @@ export default function AdminOrdersPage() {
 
               {/* Expanded Details */}
               {expandedOrder === order.id && (
-                <div className="px-4 pb-4 border-t border-[#222]">
+                <div className="px-4 pb-4 border-t border-[#2b3538]">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
                     {/* Order Details */}
                     <div>
                       <h3 className="text-sm font-semibold text-white mb-3">Customer</h3>
                       <div className="space-y-2 text-sm">
-                        <p className="text-[#ccc]">{order.customerName}</p>
-                        <p className="text-[#888]">{order.customerEmail}</p>
-                        <p className="text-[#888]">Channel: {order.channel || 'Website'}</p>
+                        <p className="text-[#e1e7e5]">{order.customerName}</p>
+                        <p className="text-[#a7b0b2]">{order.customerEmail}</p>
+                        <p className="text-[#a7b0b2]">Channel: {order.channel || 'Website'}</p>
                       </div>
 
                       <h3 className="text-sm font-semibold text-white mt-4 mb-3">Items</h3>
                       <div className="space-y-2">
                         {order.items.map((item, idx) => (
                           <div key={idx} className="flex justify-between text-sm">
-                            <span className="text-[#ccc]">{item.name} × {item.quantity}</span>
-                            <span className="text-[#888]">£{(item.price * item.quantity).toFixed(2)}</span>
+                            <span className="text-[#e1e7e5]">{item.name} × {item.quantity}</span>
+                            <span className="text-[#a7b0b2]">£{(item.price * item.quantity).toFixed(2)}</span>
                           </div>
                         ))}
-                        <div className="flex justify-between text-sm font-bold pt-2 border-t border-[#222]">
+                        <div className="flex justify-between text-sm font-bold pt-2 border-t border-[#2b3538]">
                           <span className="text-white">Total</span>
-                          <span className="text-[#00d4aa]">£{order.total.toFixed(2)}</span>
+                          <span className="text-[#21c7a5]">£{order.total.toFixed(2)}</span>
                         </div>
                       </div>
 
                       {order.notes && (
                         <div className="mt-4">
                           <h3 className="text-sm font-semibold text-white mb-2">Notes</h3>
-                          <p className="text-[#888] text-sm">{order.notes}</p>
+                          <p className="text-[#a7b0b2] text-sm">{order.notes}</p>
                         </div>
                       )}
                     </div>
@@ -200,7 +200,7 @@ export default function AdminOrdersPage() {
                             className={`px-3 py-2 rounded-lg text-xs border transition ${
                               order.status === status
                                 ? statusColors[status]
-                                : 'bg-[#1a1a1a] text-[#888] border-[#222] hover:border-[#00d4aa] hover:text-[#00d4aa]'
+                                : 'bg-[#1a1a1a] text-[#a7b0b2] border-[#2b3538] hover:border-[#21c7a5] hover:text-[#21c7a5]'
                             } disabled:opacity-50`}
                           >
                             {status.charAt(0).toUpperCase() + status.slice(1)}
@@ -215,12 +215,12 @@ export default function AdminOrdersPage() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-16 bg-[#141414] rounded-xl border border-[#222]">
+        <div className="text-center py-16 bg-[#141414] rounded-xl border border-[#2b3538]">
           <svg className="w-12 h-12 text-[#333] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
           </svg>
-          <p className="text-[#888]">No orders found</p>
-          <p className="text-[#666] text-sm mt-1">Orders from customers will appear here</p>
+          <p className="text-[#a7b0b2]">No orders found</p>
+          <p className="text-[#7b898e] text-sm mt-1">Orders from customers will appear here</p>
         </div>
       )}
     </div>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Product } from '@/data/products';
+import { effectivePrice, isOutOfStock } from '@/lib/pricing';
 
 interface ProductActionsProps {
   product: Product;
@@ -12,11 +13,12 @@ export default function ProductActions({ product }: ProductActionsProps) {
   const [added, setAdded] = useState(false);
 
   const addToCart = () => {
+    if (isOutOfStock(product)) return;
     const cartItem = {
       slug: product.slug,
       name: product.name,
-      price: product.price,
-      boxPrice: product.boxPrice,
+      price: effectivePrice(product, selectedType),
+      boxPrice: effectivePrice(product, 'box'),
       image: product.image,
       lot: product.lot,
       qty: 1,
@@ -38,6 +40,7 @@ export default function ProductActions({ product }: ProductActionsProps) {
     }
 
     localStorage.setItem('cart', JSON.stringify(existingCart));
+    window.dispatchEvent(new Event('cart-updated'));
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   };
@@ -45,12 +48,12 @@ export default function ProductActions({ product }: ProductActionsProps) {
   return (
     <>
       {/* Pricing */}
-      <div className="mt-8 bg-[#141414] rounded-xl border border-[#222] p-6">
+      <div className="mt-8 bg-[#141414] rounded-xl border border-[#2b3538] p-6">
         <h3 className="font-semibold mb-4">Select Quantity</h3>
         <div className="space-y-3">
           <label 
             className={`flex items-center justify-between p-4 bg-[#1a1a1a] rounded-lg border cursor-pointer transition ${
-              selectedType === 'vial' ? 'border-[#00d4aa]' : 'border-[#222] hover:border-[#00d4aa]/30'
+              selectedType === 'vial' ? 'border-[#21c7a5]' : 'border-[#2b3538] hover:border-[#21c7a5]/30'
             }`}
             onClick={() => setSelectedType('vial')}
           >
@@ -60,18 +63,18 @@ export default function ProductActions({ product }: ProductActionsProps) {
                 name="quantity" 
                 checked={selectedType === 'vial'}
                 onChange={() => setSelectedType('vial')}
-                className="accent-[#00d4aa]" 
+                className="accent-[#21c7a5]"
               />
               <div>
                 <p className="font-medium text-sm">1 Vial</p>
-                <p className="text-[#888] text-xs">{product.name}</p>
+                <p className="text-[#a7b0b2] text-xs">{product.name}</p>
               </div>
             </div>
-            <span className="font-bold text-lg">£{product.price.toFixed(2)}</span>
+            <span className="font-bold text-lg">£{effectivePrice(product, 'vial').toFixed(2)}</span>
           </label>
           <label 
             className={`flex items-center justify-between p-4 bg-[#1a1a1a] rounded-lg border cursor-pointer transition ${
-              selectedType === 'box' ? 'border-[#00d4aa]' : 'border-[#222] hover:border-[#00d4aa]/30'
+              selectedType === 'box' ? 'border-[#21c7a5]' : 'border-[#2b3538] hover:border-[#21c7a5]/30'
             }`}
             onClick={() => setSelectedType('box')}
           >
@@ -81,16 +84,16 @@ export default function ProductActions({ product }: ProductActionsProps) {
                 name="quantity" 
                 checked={selectedType === 'box'}
                 onChange={() => setSelectedType('box')}
-                className="accent-[#00d4aa]" 
+                className="accent-[#21c7a5]"
               />
               <div>
                 <p className="font-medium text-sm">Box of 10 Vials</p>
-                <p className="text-[#888] text-xs">10 × {product.name} · Save 10%</p>
+                <p className="text-[#a7b0b2] text-xs">10 × {product.name} · Save 10%</p>
               </div>
             </div>
             <div className="text-right">
-              <span className="font-bold text-lg">£{product.boxPrice.toFixed(2)}</span>
-              <p className="text-[#00d4aa] text-xs">£{(product.price * 10 - product.boxPrice).toFixed(2)} saved</p>
+              <span className="font-bold text-lg">£{effectivePrice(product, 'box').toFixed(2)}</span>
+              <p className="text-[#21c7a5] text-xs">£{(product.price * 10 - product.boxPrice).toFixed(2)} saved</p>
             </div>
           </label>
         </div>
@@ -101,18 +104,18 @@ export default function ProductActions({ product }: ProductActionsProps) {
           className={`w-full mt-6 px-8 py-4 font-bold rounded-lg transition text-lg ${
             added 
               ? 'bg-green-600 text-white' 
-              : 'bg-[#00d4aa] text-black hover:bg-[#00b894]'
+              : 'bg-[#21c7a5] text-black hover:bg-[#16a98d]'
           }`}
         >
           {added ? '✓ Added to Cart' : 'Add to Cart'}
         </button>
 
         {/* Payment methods */}
-        <div className="mt-4 flex items-center justify-center gap-3 text-xs text-[#888]">
+        <div className="mt-4 flex items-center justify-center gap-3 text-xs text-[#a7b0b2]">
           <span>Pay with:</span>
-          <span className="px-2 py-1 bg-[#222] rounded">Alipay</span>
-          <span className="px-2 py-1 bg-[#222] rounded">Bank Transfer</span>
-          <span className="px-2 py-1 bg-[#222] rounded">Crypto</span>
+          <span className="px-2 py-1 bg-[#2b3538] rounded">Alipay</span>
+          <span className="px-2 py-1 bg-[#2b3538] rounded">Bank Transfer</span>
+          <span className="px-2 py-1 bg-[#2b3538] rounded">Crypto</span>
         </div>
       </div>
     </>

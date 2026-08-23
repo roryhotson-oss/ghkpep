@@ -15,8 +15,17 @@ interface CartItem {
   type: 'vial' | 'box';
 }
 
+interface PaymentSettings {
+  alipayUrl: string;
+  cryptoUrl: string;
+  bankTransferUrl: string;
+  wiseUrl: string;
+}
+
 export default function CartPage() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartLoaded, setCartLoaded] = useState(false);
+  const [paymentSettings, setPaymentSettings] = useState<PaymentSettings>({ alipayUrl: '/contact', cryptoUrl: '/contact', bankTransferUrl: '/contact', wiseUrl: '/contact' });
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
 
   useEffect(() => {
@@ -24,16 +33,30 @@ export default function CartPage() {
     const loadCart = () => {
       const savedCart = localStorage.getItem('cart');
       if (savedCart) {
-        setCartItems(JSON.parse(savedCart));
+        try {
+          setCartItems(JSON.parse(savedCart));
+        } catch {
+          localStorage.removeItem('cart');
+        }
       }
+      setCartLoaded(true);
     };
     loadCart();
+    window.addEventListener('cart-updated', loadCart);
+    return () => window.removeEventListener('cart-updated', loadCart);
+  }, []);
+
+  useEffect(() => {
+    fetch('/api/payment-settings').then((response) => response.json()).then((data) => {
+      if (data.settings) setPaymentSettings(data.settings);
+    }).catch(() => {});
   }, []);
 
   // Save cart to localStorage whenever it changes
   useEffect(() => {
+    if (!cartLoaded) return;
     localStorage.setItem('cart', JSON.stringify(cartItems));
-  }, [cartItems]);
+  }, [cartItems, cartLoaded]);
 
   const updateQuantity = (index: number, change: number) => {
     setCartItems(prev => {
@@ -52,7 +75,7 @@ export default function CartPage() {
       `${item.name} (${item.type === 'box' ? 'Box of 10' : '1 vial'}) x${item.qty} - £${(item.type === 'box' ? item.boxPrice : item.price).toFixed(2)}`
     ).join('\n');
     
-    return `Hi GHK, I&apos;d like to place an order:\n\n${items}\n\nSubtotal: £${subtotal.toFixed(2)}\nShipping: ${shipping === 0 ? 'FREE' : '£' + shipping.toFixed(2)}\nTotal: £${total.toFixed(2)}\n\nPlease provide payment instructions and shipping details.`;
+    return `Hi GHK, I&apos;d like to place an order:\n\n${items}\n\nSubtotal: £${subtotal.toFixed(2)}\nShipping: FREE\nTotal: £${total.toFixed(2)}\n\nPlease provide payment instructions and shipping details.`;
   };
 
   const handleWhatsApp = () => {
@@ -83,12 +106,13 @@ export default function CartPage() {
   const subtotal = cartItems.reduce((acc, item) => {
     return acc + (item.type === 'box' ? item.boxPrice : item.price) * item.qty;
   }, 0);
-  const shipping = subtotal > 150 ? 0 : 7.99;
+  const hasBoxOrder = cartItems.some((item) => item.type === 'box');
+  const shipping = 0;
   const total = subtotal + shipping;
 
   return (
     <div>
-      <section className="bg-[#0d0d0d] border-b border-[#222]">
+      <section className="bg-[#0d0d0d] border-b border-[#2b3538]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <h1 className="text-3xl font-bold">Your Cart</h1>
         </div>
@@ -99,23 +123,23 @@ export default function CartPage() {
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
             {cartItems.length === 0 ? (
-              <div className="bg-[#141414] rounded-xl p-12 border border-[#222] text-center">
-                <p className="text-[#888] mb-4">Your cart is empty.</p>
-                <Link href="/shop" className="px-6 py-3 bg-[#00d4aa] text-black font-semibold rounded-lg hover:bg-[#00b894] transition">
+              <div className="bg-[#141414] rounded-xl p-12 border border-[#2b3538] text-center">
+                <p className="text-[#a7b0b2] mb-4">Your cart is empty.</p>
+                <Link href="/shop" className="px-6 py-3 bg-[#21c7a5] text-black font-semibold rounded-lg hover:bg-[#16a98d] transition">
                   Browse Catalog
                 </Link>
               </div>
             ) : (
               cartItems.map((item, idx) => (
-                <div key={idx} className="bg-[#141414] rounded-xl p-5 border border-[#222] flex gap-4">
+                <div key={idx} className="bg-[#141414] rounded-xl p-5 border border-[#2b3538] flex gap-4">
                   <div className="w-20 h-20 bg-[#1a1a1a] rounded-lg overflow-hidden shrink-0 relative">
                     <Image src={item.image} alt={item.name} fill className="object-cover" sizes="80px" />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-start justify-between">
                       <div>
-                        <Link href={`/shop/${item.slug}`} className="font-semibold hover:text-[#00d4aa] transition">{item.name}</Link>
-                        <p className="text-[#888] text-xs mt-0.5">
+                        <Link href={`/shop/${item.slug}`} className="font-semibold hover:text-[#21c7a5] transition">{item.name}</Link>
+                        <p className="text-[#a7b0b2] text-xs mt-0.5">
                           {item.type === 'box' ? `Box of 10 vials · Lot ${item.lot}` : `1 vial · Lot ${item.lot}`}
                         </p>
                       </div>
@@ -127,21 +151,21 @@ export default function CartPage() {
                       <div className="flex items-center gap-2">
                         <button 
                           onClick={() => updateQuantity(idx, -1)}
-                          className="w-8 h-8 bg-[#1a1a1a] border border-[#222] rounded-lg flex items-center justify-center text-sm hover:border-[#00d4aa] transition"
+                          className="w-8 h-8 bg-[#1a1a1a] border border-[#2b3538] rounded-lg flex items-center justify-center text-sm hover:border-[#21c7a5] transition"
                         >
                           −
                         </button>
                         <span className="text-sm font-medium w-6 text-center">{item.qty}</span>
                         <button 
                           onClick={() => updateQuantity(idx, 1)}
-                          className="w-8 h-8 bg-[#1a1a1a] border border-[#222] rounded-lg flex items-center justify-center text-sm hover:border-[#00d4aa] transition"
+                          className="w-8 h-8 bg-[#1a1a1a] border border-[#2b3538] rounded-lg flex items-center justify-center text-sm hover:border-[#21c7a5] transition"
                         >
                           +
                         </button>
                       </div>
                       <button 
                         onClick={() => removeItem(idx)}
-                        className="text-[#888] text-xs hover:text-red-400 transition"
+                        className="text-[#a7b0b2] text-xs hover:text-red-400 transition"
                       >
                         Remove
                       </button>
@@ -154,54 +178,58 @@ export default function CartPage() {
 
           {/* Order Summary */}
           <div>
-            <div className="bg-[#141414] rounded-xl p-6 border border-[#222] sticky top-24">
+            <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538] sticky top-24">
               <h2 className="font-bold text-lg mb-4">Order Summary</h2>
 
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-[#888]">Subtotal</span>
+                  <span className="text-[#a7b0b2]">Subtotal</span>
                   <span>£{subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#888]">Shipping (Trusted Labs)</span>
-                  <span>{shipping === 0 ? <span className="text-[#00d4aa]">FREE</span> : `£${shipping.toFixed(2)}`}</span>
+                  <span className="text-[#a7b0b2]">Shipping</span>
+                  <span className="text-[#21c7a5]">FREE</span>
                 </div>
-                <div className="border-t border-[#222] pt-3 flex justify-between font-bold text-base">
+                <div className="border-t border-[#2b3538] pt-3 flex justify-between font-bold text-base">
                   <span>Total (GBP)</span>
                   <span>£{total.toFixed(2)}</span>
                 </div>
               </div>
 
               {/* Payment Methods */}
-              <div className="mt-6 pt-6 border-t border-[#222]">
+              <div className="mt-6 pt-6 border-t border-[#2b3538]">
                 <h3 className="font-semibold text-sm mb-3">Payment Options</h3>
-                <div className="grid grid-cols-3 gap-2">
-                  <div className="flex flex-col items-center p-3 bg-[#1a1a1a] rounded-lg border border-[#222]">
+                <div className="grid grid-cols-4 gap-2">
+                  <a href={paymentSettings.alipayUrl} className="flex flex-col items-center p-3 bg-[#1a1a1a] rounded-lg border border-[#2b3538] hover:border-[#21c7a5] transition">
                     <span className="text-2xl mb-1">💳</span>
-                    <span className="text-xs text-[#888]">Alipay</span>
-                  </div>
-                  <div className="flex flex-col items-center p-3 bg-[#1a1a1a] rounded-lg border border-[#222]">
+                    <span className="text-xs text-[#a7b0b2]">Alipay</span>
+                  </a>
+                  <a href={paymentSettings.cryptoUrl} className="flex flex-col items-center p-3 bg-[#1a1a1a] rounded-lg border border-[#2b3538] hover:border-[#21c7a5] transition">
                     <span className="text-2xl mb-1">₿</span>
-                    <span className="text-xs text-[#888]">Crypto</span>
-                  </div>
-                  <div className="flex flex-col items-center p-3 bg-[#1a1a1a] rounded-lg border border-[#222]">
+                    <span className="text-xs text-[#a7b0b2]">Crypto</span>
+                  </a>
+                  <a href={paymentSettings.bankTransferUrl} className="flex flex-col items-center p-3 bg-[#1a1a1a] rounded-lg border border-[#2b3538] hover:border-[#21c7a5] transition">
                     <span className="text-2xl mb-1">🏦</span>
-                    <span className="text-xs text-[#888]">Bank Transfer</span>
-                  </div>
+                    <span className="text-xs text-[#a7b0b2]">Bank Transfer</span>
+                  </a>
+                  <a href={paymentSettings.wiseUrl} className="flex flex-col items-center p-3 bg-[#1a1a1a] rounded-lg border border-[#2b3538] hover:border-[#21c7a5] transition">
+                    <span className="text-2xl mb-1">W</span>
+                    <span className="text-xs text-[#a7b0b2]">Wise</span>
+                  </a>
                 </div>
-                <p className="text-xs text-[#888] mt-2">Payment details provided after checkout</p>
+                <p className="text-xs text-[#a7b0b2] mt-2">Payment details provided after checkout</p>
               </div>
 
               <button 
                 onClick={() => setShowCheckoutModal(true)}
-                className="w-full mt-6 px-6 py-4 bg-[#00d4aa] text-black font-bold rounded-lg hover:bg-[#00b894] transition text-lg"
+                className="w-full mt-6 px-6 py-4 bg-[#21c7a5] text-black font-bold rounded-lg hover:bg-[#16a98d] transition text-lg"
               >
                 Proceed to Checkout
               </button>
 
-              <div className="mt-4 flex items-center justify-center gap-2 text-xs text-[#888]">
-                <span className="text-[#00d4aa]">🔒</span>
-                <span>Secure checkout · Shipped via Trusted Labs</span>
+              <div className="mt-4 flex items-center justify-center gap-2 text-xs text-[#a7b0b2]">
+                <span className="text-[#21c7a5]">🔒</span>
+                <span>{hasBoxOrder ? 'Free global delivery · 5–10 days · discreet tracking' : 'Free discreet tracked delivery'}</span>
               </div>
             </div>
           </div>
@@ -211,18 +239,18 @@ export default function CartPage() {
       {/* Checkout Modal */}
       {showCheckoutModal && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-          <div className="bg-[#141414] rounded-xl border border-[#222] max-w-md w-full p-6">
+          <div className="bg-[#141414] rounded-xl border border-[#2b3538] max-w-md w-full p-6">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold">Complete Your Order</h2>
               <button 
                 onClick={() => setShowCheckoutModal(false)}
-                className="text-[#888] hover:text-white text-2xl"
+                className="text-[#a7b0b2] hover:text-white text-2xl"
               >
                 ×
               </button>
             </div>
 
-            <p className="text-[#888] text-sm mb-6">
+            <p className="text-[#a7b0b2] text-sm mb-6">
               Contact us via WhatsApp, Telegram, or Email to discuss your order, payment options, and shipping details.
             </p>
 
@@ -249,7 +277,7 @@ export default function CartPage() {
 
               <button
                 onClick={handleEmail}
-                className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-[#141414] text-white font-bold rounded-lg hover:bg-[#1a1a1a] transition border border-[#222] hover:border-[#00d4aa]/30"
+                className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-[#141414] text-white font-bold rounded-lg hover:bg-[#1a1a1a] transition border border-[#2b3538] hover:border-[#21c7a5]/30"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -258,19 +286,19 @@ export default function CartPage() {
               </button>
             </div>
 
-            <div className="mt-6 pt-6 border-t border-[#222]">
-              <p className="text-xs text-[#888] text-center mb-3">
+            <div className="mt-6 pt-6 border-t border-[#2b3538]">
+              <p className="text-xs text-[#a7b0b2] text-center mb-3">
                 Your order details will be sent with the message. We&apos;ll respond within 24 hours with payment instructions.
               </p>
-              <div className="flex items-center justify-center gap-4 text-xs text-[#888]">
+              <div className="flex items-center justify-center gap-4 text-xs text-[#a7b0b2]">
                 <span className="flex items-center gap-1">
-                  <span className="text-[#00d4aa]">💳</span> Alipay
+                  <span className="text-[#21c7a5]">💳</span> Alipay
                 </span>
                 <span className="flex items-center gap-1">
-                  <span className="text-[#00d4aa]">₿</span> Crypto
+                  <span className="text-[#21c7a5]">₿</span> Crypto
                 </span>
                 <span className="flex items-center gap-1">
-                  <span className="text-[#00d4aa]">🏦</span> Bank Transfer
+                  <span className="text-[#21c7a5]">🏦</span> Bank Transfer
                 </span>
               </div>
             </div>

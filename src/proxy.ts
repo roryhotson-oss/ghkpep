@@ -60,9 +60,6 @@ export function proxy(request: NextRequest) {
     if (request.nextUrl.pathname === '/api/contact') {
       limit = 5; // 5 submissions per hour
       windowMs = 60 * 60 * 1000; // 1 hour
-    } else if (request.nextUrl.pathname === '/api/newsletter') {
-      limit = 3; // 3 submissions per hour
-      windowMs = 60 * 60 * 1000; // 1 hour
     } else if (request.nextUrl.pathname === '/api/auth') {
       limit = 3; // 3 attempts per 15 minutes
       windowMs = 15 * 60 * 1000; // 15 minutes

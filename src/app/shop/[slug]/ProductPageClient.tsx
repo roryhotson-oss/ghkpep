@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Product } from '@/data/products';
+import { effectivePrice, isOutOfStock } from '@/lib/pricing';
 
 interface Props {
   product: Product;
@@ -13,7 +14,7 @@ export default function ProductPageClient({ product }: Props) {
   const [quantity, setQuantity] = useState(1);
   const [selectedType, setSelectedType] = useState<'vial' | 'box'>('vial');
 
-  const price = selectedType === 'box' ? product.boxPrice : product.price;
+  const price = effectivePrice(product, selectedType);
   const totalPrice = price * quantity;
 
   return (
@@ -65,6 +66,9 @@ export default function ProductPageClient({ product }: Props) {
 
           <h1 className="text-4xl font-bold mb-4">{product.name}</h1>
           <p className="text-white/60 mb-6">{product.description}</p>
+          <p className="text-amber-300/80 text-sm mb-6 border-l-2 border-amber-300/50 pl-3">
+            Laboratory research use only. Not for human or veterinary use, diagnosis, or treatment. No dosing or medical guidance is provided.
+          </p>
 
           {/* Lot Info */}
           <div className="bg-white/5 rounded-lg p-4 mb-6">
@@ -86,7 +90,7 @@ export default function ProductPageClient({ product }: Props) {
                 }`}
               >
                 1 Vial
-                <div className="text-sm mt-1">£{product.price.toFixed(2)}</div>
+                <div className="text-sm mt-1">£{effectivePrice(product, 'vial').toFixed(2)}</div>
               </button>
               <button
                 onClick={() => setSelectedType('box')}
@@ -97,7 +101,7 @@ export default function ProductPageClient({ product }: Props) {
                 }`}
               >
                 Box of 10
-                <div className="text-sm mt-1">£{product.boxPrice.toFixed(2)}</div>
+                <div className="text-sm mt-1">£{effectivePrice(product, 'box').toFixed(2)}</div>
               </button>
             </div>
 
@@ -126,24 +130,27 @@ export default function ProductPageClient({ product }: Props) {
 
           {/* Add to Cart Button */}
           <button
+            disabled={isOutOfStock(product)}
             onClick={() => {
+              if (isOutOfStock(product)) return;
               const cart = JSON.parse(localStorage.getItem('cart') || '[]');
               cart.push({
                 slug: product.slug,
                 name: product.name,
-                price: selectedType === 'box' ? product.boxPrice : product.price,
-                boxPrice: product.boxPrice,
+                price: effectivePrice(product, selectedType),
+                boxPrice: effectivePrice(product, 'box'),
                 image: product.image,
                 lot: product.lot,
                 qty: quantity,
                 type: selectedType,
               });
               localStorage.setItem('cart', JSON.stringify(cart));
+              window.dispatchEvent(new Event('cart-updated'));
               alert('Added to cart!');
             }}
             className="w-full bg-teal-500 text-black font-bold py-4 rounded-lg hover:bg-teal-600 transition mb-6"
           >
-            Add to Cart
+            {isOutOfStock(product) ? 'Out of stock' : 'Add to Cart'}
           </button>
 
           {/* Features */}
@@ -169,7 +176,9 @@ export default function ProductPageClient({ product }: Props) {
           {/* COA Link */}
           <div className="border-t border-white/10 pt-6">
             <a
-              href={`/api/coa?lot=${product.lot}`}
+              href={`/coas/COA-${product.slug}-${product.lot}.pdf`}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-2 text-teal-400 hover:text-teal-300"
             >
               <span>View Certificate of Analysis</span>

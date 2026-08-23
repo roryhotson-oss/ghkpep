@@ -36,7 +36,7 @@ export default function Skeleton({
 
 export function ProductCardSkeleton() {
   return (
-    <div className="bg-[#141414] rounded-xl p-4 border border-[#222] card-glow">
+    <div className="bg-[#141414] rounded-xl p-4 border border-[#2b3538] card-glow">
       <div className="aspect-square bg-[#1a1a1a] rounded-lg mb-3 overflow-hidden relative">
         <Skeleton variant="rounded" className="w-full h-full" />
       </div>
@@ -57,7 +57,7 @@ export function LoadingSpinner() {
   return (
     <div className="flex items-center justify-center py-8">
       <div className="relative">
-        <div className="w-12 h-12 border-4 border-[#00d4aa]/30 border-t-[#00d4aa] rounded-full animate-spin" />
+        <div className="w-12 h-12 border-4 border-[#21c7a5]/30 border-t-[#21c7a5] rounded-full animate-spin" />
         <span className="sr-only">Loading...</span>
       </div>
     </div>

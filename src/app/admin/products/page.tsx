@@ -15,6 +15,8 @@ interface Product {
   description: string;
   lot: string;
   image: string;
+  stockQuantity?: number;
+  discountPercent?: number;
 }
 
 export default function AdminProductsPage() {
@@ -78,7 +80,7 @@ export default function AdminProductsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-full">
-        <p className="text-[#888]">Loading products...</p>
+        <p className="text-[#a7b0b2]">Loading products...</p>
       </div>
     );
   }
@@ -89,11 +91,11 @@ export default function AdminProductsPage() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold text-white mb-2">Products</h1>
-          <p className="text-[#888]">{products.length} products total</p>
+          <p className="text-[#a7b0b2]">{products.length} products total</p>
         </div>
         <Link
           href="/admin/products/new"
-          className="px-6 py-3 bg-[#00d4aa] text-black font-bold rounded-lg hover:bg-[#00b894] transition flex items-center gap-2"
+          className="px-6 py-3 bg-[#21c7a5] text-black font-bold rounded-lg hover:bg-[#16a98d] transition flex items-center gap-2"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -110,13 +112,13 @@ export default function AdminProductsPage() {
             placeholder="Search products..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-[#141414] border border-[#222] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#00d4aa] transition"
+            className="w-full bg-[#141414] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
           />
         </div>
         <select
           value={categoryFilter}
           onChange={(e) => setCategoryFilter(e.target.value)}
-          className="bg-[#141414] border border-[#222] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#00d4aa] transition"
+          className="bg-[#141414] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
         >
           <option value="all">All Categories</option>
           {categories.map(cat => (
@@ -128,7 +130,7 @@ export default function AdminProductsPage() {
       {/* Products Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {filtered.map((product) => (
-          <div key={product.slug} className="bg-[#141414] rounded-xl border border-[#222] overflow-hidden hover:border-[#333] transition">
+          <div key={product.slug} className="bg-[#141414] rounded-xl border border-[#2b3538] overflow-hidden hover:border-[#333] transition">
             {/* Image */}
             <div className="h-48 bg-[#1a1a1a] flex items-center justify-center p-4 relative">
               <Image
@@ -146,30 +148,31 @@ export default function AdminProductsPage() {
               <div className="flex items-start justify-between mb-2">
                 <div>
                   <h3 className="text-white font-semibold text-sm">{product.name}</h3>
-                  <p className="text-[#888] text-xs">{product.categoryLabel} · {product.purity}</p>
+                  <p className="text-[#a7b0b2] text-xs">{product.categoryLabel} · {product.purity}</p>
                 </div>
-                <span className="text-[#00d4aa] font-bold text-sm">£{product.price.toFixed(2)}</span>
+                <span className="text-[#21c7a5] font-bold text-sm">£{product.price.toFixed(2)}{product.discountPercent ? ` (-${product.discountPercent}%)` : ''}</span>
               </div>
 
               <div className="flex items-center justify-between mt-3">
-                <div className="text-xs text-[#888]">
+                <div className="text-xs text-[#a7b0b2]">
                   <span>Box: £{product.boxPrice.toFixed(2)}</span>
                   <span className="mx-2">·</span>
                   <span>Lot: {product.lot}</span>
+                  <span className={product.stockQuantity === 0 ? 'text-red-400' : product.stockQuantity !== undefined && product.stockQuantity < 10 ? 'text-yellow-400' : ''}>Stock: {product.stockQuantity ?? '—'}</span>
                 </div>
               </div>
 
               {/* Actions */}
-              <div className="flex gap-2 mt-4 pt-4 border-t border-[#222]">
+              <div className="flex gap-2 mt-4 pt-4 border-t border-[#2b3538]">
                 <Link
                   href={`/admin/products/${product.slug}/edit`}
-                  className="flex-1 px-3 py-2 bg-[#1a1a1a] text-[#ccc] rounded-lg text-xs text-center hover:bg-[#222] hover:text-white transition"
+                  className="flex-1 px-3 py-2 bg-[#1a1a1a] text-[#e1e7e5] rounded-lg text-xs text-center hover:bg-[#2b3538] hover:text-white transition"
                 >
                   Edit
                 </Link>
                 <Link
                   href={`/shop/${product.slug}`}
-                  className="flex-1 px-3 py-2 bg-[#1a1a1a] text-[#ccc] rounded-lg text-xs text-center hover:bg-[#222] hover:text-white transition"
+                  className="flex-1 px-3 py-2 bg-[#1a1a1a] text-[#e1e7e5] rounded-lg text-xs text-center hover:bg-[#2b3538] hover:text-white transition"
                 >
                   View
                 </Link>
@@ -183,7 +186,7 @@ export default function AdminProductsPage() {
                     </button>
                     <button
                       onClick={() => setDeleteConfirm(null)}
-                      className="px-3 py-2 bg-[#1a1a1a] text-[#888] rounded-lg text-xs hover:bg-[#222] transition"
+                      className="px-3 py-2 bg-[#1a1a1a] text-[#a7b0b2] rounded-lg text-xs hover:bg-[#2b3538] transition"
                     >
                       Cancel
                     </button>
@@ -204,7 +207,7 @@ export default function AdminProductsPage() {
 
       {filtered.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-[#888]">No products found</p>
+          <p className="text-[#a7b0b2]">No products found</p>
         </div>
       )}
     </div>

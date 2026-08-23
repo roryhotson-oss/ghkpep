@@ -1,33 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
 import fs from 'fs';
 import path from 'path';
-
-const SESSION_SECRET = process.env.SESSION_SECRET || 'ghk-peptides-admin-secret-key-2024';
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@ghkpep.com';
-
-function verifyToken(token: string): boolean {
-  try {
-    const decoded = Buffer.from(token, 'base64').toString('utf-8');
-    const parts = decoded.split(':');
-    if (parts.length < 3) return false;
-    const email = parts[0];
-    const timestamp = parseInt(parts[1]);
-    const secret = parts.slice(2).join(':');
-    if (Date.now() - timestamp > 24 * 60 * 60 * 1000) return false;
-    if (secret !== SESSION_SECRET) return false;
-    if (email !== ADMIN_EMAIL) return false;
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-async function checkAdmin(): Promise<boolean> {
-  const cookieStore = await cookies();
-  const token = cookieStore.get('admin_session');
-  return !!token && verifyToken(token.value);
-}
+import { checkAdmin } from '@/lib/admin-auth';
 
 export async function POST(request: NextRequest) {
   if (!(await checkAdmin())) {
@@ -60,10 +34,22 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Generate filename
-    const ext = file.name.split('.').pop()?.toLowerCase() || 'png';
+    const extensionByType: Record<string, string> = {
+      'image/png': 'png',
+      'image/jpeg': 'jpg',
+      'image/webp': 'webp',
+      'image/svg+xml': 'svg',
+    };
+    if (slug && !/^[a-z0-9]+(?:-[a-z0-9]+)*$/i.test(slug)) {
+      return NextResponse.json({ error: 'Invalid image slug' }, { status: 400 });
+    }
+    const ext = extensionByType[file.type];
     const filename = slug ? `${slug}.${ext}` : `upload-${Date.now()}.${ext}`;
-    const filePath = path.join(process.cwd(), 'public', 'images', filename);
+    const imagesDir = path.join(process.cwd(), 'public', 'images');
+    const filePath = path.join(imagesDir, filename);
+    if (path.dirname(filePath) !== imagesDir) {
+      return NextResponse.json({ error: 'Invalid upload path' }, { status: 400 });
+    }
 
     // Write file
     const buffer = Buffer.from(await file.arrayBuffer());

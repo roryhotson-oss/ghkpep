@@ -43,7 +43,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   if (loading) {
     return (
       <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
-        <div className="text-[#888]">Loading admin panel...</div>
+        <div className="text-[#a7b0b2]">Loading admin panel...</div>
       </div>
     );
   }
@@ -62,6 +62,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { href: '/admin/products', label: 'Products', icon: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4' },
     { href: '/admin/orders', label: 'Orders', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2' },
     { href: '/admin/emails', label: 'Emails', icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
+    { href: '/admin/chat', label: 'Support Inbox', icon: 'M8 10h8m-8 4h5m-9 5l-3 3V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H8z' },
+    { href: '/admin/payment-settings', label: 'Payment Settings', icon: 'M3 10h18M7 15h1m4 0h1m4 0h1M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z' },
   ];
 
   const isActive = (href: string) => {
@@ -72,18 +74,18 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   return (
     <div className="min-h-screen bg-[#0a0a0a] flex">
       {/* Sidebar */}
-      <aside className={`${sidebarOpen ? 'w-64' : 'w-20'} bg-[#0f0f0f] border-r border-[#222] flex flex-col transition-all duration-300`}>
+      <aside className={`${sidebarOpen ? 'w-64' : 'w-20'} bg-[#0f0f0f] border-r border-[#2b3538] flex flex-col transition-all duration-300`}>
         {/* Logo */}
-        <div className="p-4 border-b border-[#222] flex items-center justify-between">
+        <div className="p-4 border-b border-[#2b3538] flex items-center justify-between">
           {sidebarOpen && (
             <Link href="/admin" className="flex items-center gap-2">
               <span className="text-lg font-bold gradient-text">GHK</span>
-              <span className="text-xs text-[#888]">Admin</span>
+              <span className="text-xs text-[#a7b0b2]">Admin</span>
             </Link>
           )}
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-2 text-[#888] hover:text-white rounded-lg hover:bg-[#1a1a1a] transition"
+            className="p-2 text-[#a7b0b2] hover:text-white rounded-lg hover:bg-[#1a1a1a] transition"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={sidebarOpen ? "M11 19l-7-7 7-7m8 14l-7-7 7-7" : "M13 5l7 7-7 7M5 5l7 7-7 7"} />
@@ -99,8 +101,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               href={item.href}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition ${
                 isActive(item.href)
-                  ? 'bg-[#00d4aa]/10 text-[#00d4aa]'
-                  : 'text-[#888] hover:text-white hover:bg-[#1a1a1a]'
+                  ? 'bg-[#21c7a5]/10 text-[#21c7a5]'
+                  : 'text-[#a7b0b2] hover:text-white hover:bg-[#1a1a1a]'
               }`}
             >
               <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -112,10 +114,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </nav>
 
         {/* Bottom section */}
-        <div className="p-3 border-t border-[#222] space-y-1">
+        <div className="p-3 border-t border-[#2b3538] space-y-1">
           <Link
             href="/"
-            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:text-white hover:bg-[#1a1a1a] transition"
+            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#a7b0b2] hover:text-white hover:bg-[#1a1a1a] transition"
           >
             <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

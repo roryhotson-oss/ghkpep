@@ -1,32 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
 import { getOrders, updateOrder } from '@/lib/admin-store';
-
-const SESSION_SECRET = process.env.SESSION_SECRET || 'ghk-peptides-admin-secret-key-2024';
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@ghkpep.com';
-
-function verifyToken(token: string): boolean {
-  try {
-    const decoded = Buffer.from(token, 'base64').toString('utf-8');
-    const parts = decoded.split(':');
-    if (parts.length < 3) return false;
-    const email = parts[0];
-    const timestamp = parseInt(parts[1]);
-    const secret = parts.slice(2).join(':');
-    if (Date.now() - timestamp > 24 * 60 * 60 * 1000) return false;
-    if (secret !== SESSION_SECRET) return false;
-    if (email !== ADMIN_EMAIL) return false;
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-async function checkAdmin(): Promise<boolean> {
-  const cookieStore = await cookies();
-  const token = cookieStore.get('admin_session');
-  return !!token && verifyToken(token.value);
-}
+import { checkAdmin } from '@/lib/admin-auth';
 
 export async function GET() {
   if (!(await checkAdmin())) {
@@ -51,8 +25,19 @@ export async function PUT(request: NextRequest) {
     }
 
     const updates: Record<string, string> = {};
-    if (status) updates.status = status;
-    if (notes !== undefined) updates.notes = notes;
+    const allowedStatuses = ['pending', 'processing', 'shipped', 'delivered', 'cancelled'];
+    if (status !== undefined) {
+      if (typeof status !== 'string' || !allowedStatuses.includes(status)) {
+        return NextResponse.json({ error: 'Invalid order status' }, { status: 400 });
+      }
+      updates.status = status;
+    }
+    if (notes !== undefined) {
+      if (typeof notes !== 'string') {
+        return NextResponse.json({ error: 'Notes must be text' }, { status: 400 });
+      }
+      updates.notes = notes;
+    }
 
     const updated = updateOrder(id, updates);
     if (!updated) {

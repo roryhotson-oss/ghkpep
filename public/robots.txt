@@ -4,7 +4,10 @@ Allow: /
 
 # Disallow access to sensitive areas
 Disallow: /api/
+Disallow: /admin/
 Disallow: /dashboard
+Disallow: /login
+Disallow: /orders
 Disallow: /checkout
 Disallow: /account
 

@@ -24,11 +24,11 @@ export default function LoginPage() {
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-3">Welcome</h1>
-          <p className="text-[#ccc] text-lg mb-2">Sign in or create account</p>
-          <p className="text-[#888] text-sm">One account for shopping and the partner program.</p>
+          <p className="text-[#e1e7e5] text-lg mb-2">Sign in or create account</p>
+          <p className="text-[#a7b0b2] text-sm">One account for shopping and the partner program.</p>
         </div>
 
-        <div className="bg-[#141414] rounded-xl p-8 border border-[#222]">
+        <div className="bg-[#141414] rounded-xl p-8 border border-[#2b3538]">
           {/* Social Login Buttons */}
           <div className="space-y-3 mb-6">
             <button className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-white text-black font-medium rounded-lg hover:bg-gray-100 transition">
@@ -51,22 +51,22 @@ export default function LoginPage() {
 
           <div className="relative mb-6">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-[#222]"></div>
+              <div className="w-full border-t border-[#2b3538]"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-[#141414] text-[#888]">or</span>
+              <span className="px-2 bg-[#141414] text-[#a7b0b2]">or</span>
             </div>
           </div>
 
           {/* Email Login */}
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label className="block text-sm text-[#888] mb-2">Email</label>
+              <label className="block text-sm text-[#a7b0b2] mb-2">Email</label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-[#1a1a1a] border border-[#222] rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#00d4aa]"
+                className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#21c7a5]"
                 placeholder="researcher@lab.com"
                 required
               />
@@ -74,7 +74,7 @@ export default function LoginPage() {
 
             <button
               type="submit"
-              className="w-full px-8 py-4 bg-[#00d4aa] text-black font-bold rounded-lg hover:bg-[#00b894] transition text-lg mb-4"
+              className="w-full px-8 py-4 bg-[#21c7a5] text-black font-bold rounded-lg hover:bg-[#16a98d] transition text-lg mb-4"
             >
               {useEmailCode ? 'Email me a sign-in code' : 'Continue with Email'}
             </button>
@@ -82,19 +82,19 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => setUseEmailCode(!useEmailCode)}
-              className="w-full text-[#00d4aa] text-sm hover:underline"
+              className="w-full text-[#21c7a5] text-sm hover:underline"
             >
               {useEmailCode ? 'Use password instead' : 'Email me a sign-in code'}
             </button>
           </form>
         </div>
 
-        <div className="mt-6 text-center text-xs text-[#666]">
+        <div className="mt-6 text-center text-xs text-[#7b898e]">
           <p>
             By continuing you agree to our{' '}
-            <Link href="/terms" className="text-[#00d4aa] hover:underline">Terms</Link>,{' '}
-            <Link href="/privacy" className="text-[#00d4aa] hover:underline">Privacy</Link> and{' '}
-            <Link href="/about" className="text-[#00d4aa] hover:underline">Research-Use Disclaimer</Link>.
+            <Link href="/terms" className="text-[#21c7a5] hover:underline">Terms</Link>,{' '}
+            <Link href="/privacy" className="text-[#21c7a5] hover:underline">Privacy</Link> and{' '}
+            <Link href="/about" className="text-[#21c7a5] hover:underline">Research-Use Disclaimer</Link>.
           </p>
         </div>
       </div>

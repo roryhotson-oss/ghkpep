@@ -3,12 +3,12 @@
 @theme inline {
   --color-background: #0a0a0a;
   --color-foreground: #ededed;
-  --color-primary: #00d4aa;
-  --color-primary-dark: #00b894;
+  --color-primary: #21c7a5;
+  --color-primary-dark: #16a98d;
   --color-card: #141414;
   --color-card-hover: #1a1a1a;
-  --color-border: #222222;
-  --color-muted: #888888;
+  --color-border: #2b3538222;
+  --color-muted: #a7b0b2;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
 }
 
@@ -34,7 +34,7 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #00d4aa, #00b4d8);
+  background: linear-gradient(135deg, #21c7a5, #00b4d8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

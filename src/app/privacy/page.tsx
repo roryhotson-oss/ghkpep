@@ -1,16 +1,16 @@
 export default function PrivacyPage() {
   return (
     <div>
-      <section className="bg-[#0d0d0d] border-b border-[#222]">
+      <section className="bg-[#0d0d0d] border-b border-[#2b3538]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <p className="text-[#00d4aa] text-sm font-medium mb-2">Privacy</p>
+          <p className="text-[#21c7a5] text-sm font-medium mb-2">Privacy</p>
           <h1 className="text-3xl font-bold">Privacy Policy</h1>
-          <p className="text-[#888] mt-3">Last updated August 2026. How GHK collects, uses, and protects information.</p>
+          <p className="text-[#a7b0b2] mt-3">Last updated August 2026. How GHK collects, uses, and protects information.</p>
         </div>
       </section>
 
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="space-y-8 text-[#ccc] text-sm leading-relaxed">
+        <div className="space-y-8 text-[#e1e7e5] text-sm leading-relaxed">
           <p>This page describes how GHK handles information collected through this website. By using the site you agree to the practices described here.</p>
 
           <div>
@@ -39,7 +39,7 @@ export default function PrivacyPage() {
           </div>
           <div>
             <h2 className="text-lg font-bold text-white mb-2">Contact</h2>
-            <p>Questions about this policy: <a href="mailto:privacy@ghkpep.com" className="text-[#00d4aa] hover:underline">privacy@ghkpep.com</a></p>
+            <p>Questions about this policy: <a href="mailto:privacy@ghkpep.com" className="text-[#21c7a5] hover:underline">privacy@ghkpep.com</a></p>
           </div>
         </div>
       </section>

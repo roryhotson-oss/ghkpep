@@ -43,16 +43,16 @@ export async function POST(request: NextRequest) {
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 30px;">
-              <h1 style="color: #00d4aa; font-size: 32px; margin: 0;">GHK Peptides</h1>
+              <h1 style="color: #21c7a5; font-size: 32px; margin: 0;">GHK Peptides</h1>
             </div>
             <h2 style="color: #333; text-align: center;">Your Sign-In Code</h2>
-            <p style="color: #666; text-align: center;">Use this code to sign in to your GHK Peptides account:</p>
+            <p style="color: #7b898e; text-align: center;">Use this code to sign in to your GHK Peptides account:</p>
             <div style="background: #f5f5f5; padding: 30px; border-radius: 8px; margin: 30px 0; text-align: center;">
-              <div style="font-size: 48px; font-weight: bold; color: #00d4aa; letter-spacing: 8px; font-family: monospace;">
+              <div style="font-size: 48px; font-weight: bold; color: #21c7a5; letter-spacing: 8px; font-family: monospace;">
                 ${code}
               </div>
             </div>
-            <p style="color: #666; text-align: center; font-size: 14px;">
+            <p style="color: #7b898e; text-align: center; font-size: 14px;">
               This code expires in 10 minutes.<br/>
               If you didn't request this code, you can safely ignore this email.
             </p>
