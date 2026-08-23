@@ -32,6 +32,7 @@ export const homeSections: SectionBlock[] = [
     ],
     statLabel: 'Reusable blocks now powering the route',
     statValue: '6+',
+    note: 'Built as local section components, so you can reorder, reuse, and iterate without touching shared layout or chrome.',
     actions: [
       { label: 'Browse catalog', href: '/shop' },
       { label: 'Review testing standards', href: '/testing', variant: 'secondary' },

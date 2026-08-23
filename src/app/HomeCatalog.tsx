@@ -10,7 +10,7 @@ export default function HomeCatalog() {
     <SectionRenderer
       blocks={homeSections}
       customRenderers={{
-        'home-catalog-table': <HomeCatalogTableSection products={products} />,
+        'home-catalog-table': () => <HomeCatalogTableSection products={products} />,
       }}
     />
   );

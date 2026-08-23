@@ -7,7 +7,7 @@ export default function ContactPage() {
     <SectionRenderer
       blocks={contactSections}
       customRenderers={{
-        'contact-support-form': <ContactSupportFormSection />,
+        'contact-support-form': () => <ContactSupportFormSection />,
       }}
     />
   );

@@ -23,5 +23,6 @@ export const contactSections: SectionBlock[] = [
     ],
     statLabel: 'Average first response target',
     statValue: '24h',
+    note: 'Keep this block in contact or reuse it on landing pages when you need a trust-forward support section.',
   },
 ];

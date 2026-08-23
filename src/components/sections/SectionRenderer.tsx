@@ -4,7 +4,7 @@ import type { SectionAction, SectionBlock } from './section-types';
 
 interface SectionRendererProps {
   blocks: SectionBlock[];
-  customRenderers?: Record<string, ReactNode>;
+  customRenderers?: Record<string, () => ReactNode>;
 }
 
 function ActionLink({ action }: { action: SectionAction }) {
@@ -27,7 +27,8 @@ export default function SectionRenderer({ blocks, customRenderers = {} }: Sectio
         const key = `${block.type}-${index}`;
 
         if (block.type === 'custom') {
-          return <div key={key}>{customRenderers[block.key] ?? null}</div>;
+          const renderCustom = customRenderers[block.key];
+          return <div key={key}>{renderCustom ? renderCustom() : null}</div>;
         }
 
         if (block.type === 'hero') {
@@ -94,7 +95,7 @@ export default function SectionRenderer({ blocks, customRenderers = {} }: Sectio
                 <div className="bg-gradient-to-br from-[#0a2a22] to-[#0a1a2a] border border-[#21c7a5]/20 rounded-2xl p-6">
                   {block.statLabel ? <p className="text-[#a7b0b2] text-sm">{block.statLabel}</p> : null}
                   {block.statValue ? <p className="text-4xl font-bold text-[#21c7a5] mt-2">{block.statValue}</p> : null}
-                  <p className="text-[#dce5e3] text-sm mt-4">Built as local section components, so you can freely reorder, reuse, and iterate without touching shared layout or chrome.</p>
+                  {block.note ? <p className="text-[#dce5e3] text-sm mt-4">{block.note}</p> : null}
                 </div>
               </div>
             </section>
@@ -156,19 +157,23 @@ export default function SectionRenderer({ blocks, customRenderers = {} }: Sectio
           );
         }
 
-        return (
-          <section key={key} className="bg-[#0d0d0d] border-y border-[#2b3538]">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-              <h2 className="text-2xl font-bold mb-4">{block.title}</h2>
-              {block.description ? <p className="text-[#a7b0b2] mb-6 max-w-2xl mx-auto">{block.description}</p> : null}
-              <div className="flex gap-4 justify-center flex-wrap text-sm">
-                {block.actions.map((action) => (
-                  <ActionLink key={action.href + action.label} action={action} />
-                ))}
+        if (block.type === 'cta') {
+          return (
+            <section key={key} className="bg-[#0d0d0d] border-y border-[#2b3538]">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+                <h2 className="text-2xl font-bold mb-4">{block.title}</h2>
+                {block.description ? <p className="text-[#a7b0b2] mb-6 max-w-2xl mx-auto">{block.description}</p> : null}
+                <div className="flex gap-4 justify-center flex-wrap text-sm">
+                  {block.actions.map((action) => (
+                    <ActionLink key={action.href + action.label} action={action} />
+                  ))}
+                </div>
               </div>
-            </div>
-          </section>
-        );
+            </section>
+          );
+        }
+
+        return null;
       })}
     </>
   );

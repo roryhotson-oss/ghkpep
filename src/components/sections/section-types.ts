@@ -40,6 +40,7 @@ export type SectionBlock =
       points: string[];
       statLabel?: string;
       statValue?: string;
+      note?: string;
       actions?: SectionAction[];
     }
   | {

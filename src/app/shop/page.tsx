@@ -7,7 +7,7 @@ export default function ShopPage() {
     <SectionRenderer
       blocks={shopSections}
       customRenderers={{
-        'shop-catalog-grid': <ShopCatalogSection />,
+        'shop-catalog-grid': () => <ShopCatalogSection />,
       }}
     />
   );

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Product } from '@/data/products';
+import { effectivePrice } from '@/lib/pricing';
 
 export default function HomeCatalogTableSection({ products }: { products: Product[] }) {
   return (
@@ -27,7 +28,7 @@ export default function HomeCatalogTableSection({ products }: { products: Produc
                 </td>
                 <td className="px-4 py-3 text-[#a7b0b2] whitespace-nowrap">{product.categoryLabel}</td>
                 <td className="px-4 py-3 text-[#21c7a5] whitespace-nowrap">{product.purity}</td>
-                <td className="px-4 py-3 text-white whitespace-nowrap">£{product.price.toFixed(2)}</td>
+                <td className="px-4 py-3 text-white whitespace-nowrap">£{effectivePrice(product, 'vial').toFixed(2)}</td>
                 <td className="px-4 py-3 whitespace-nowrap">
                   <a href={`/coas/COA-${product.slug}-${product.lot}.pdf`} target="_blank" rel="noreferrer" className="text-[#21c7a5] hover:underline">View PDF</a>
                 </td>

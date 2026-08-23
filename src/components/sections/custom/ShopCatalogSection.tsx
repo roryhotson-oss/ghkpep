@@ -2,35 +2,47 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { Product } from '@/data/products';
 import { effectivePrice, isOutOfStock } from '@/lib/pricing';
 
 export default function ShopCatalogSection() {
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [loadError, setLoadError] = useState(false);
+  const [cartNotice, setCartNotice] = useState('');
 
   useEffect(() => {
     fetch('/api/products')
       .then((res) => res.json())
       .then((data) => {
         setProducts(data.products || []);
+        setLoadError(false);
       })
-      .catch(() => {});
+      .catch(() => {
+        setLoadError(true);
+      });
   }, []);
 
   const filteredProducts = selectedCategory === 'all' ? products : products.filter((p) => p.category === selectedCategory);
 
-  const categories = [
-    { id: 'all', label: 'All', count: products.length },
-    { id: 'recovery', label: 'Tissue & Matrix', count: products.filter((p) => p.category === 'recovery').length },
-    { id: 'cognitive', label: 'Neuro Research', count: products.filter((p) => p.category === 'cognitive').length },
-    { id: 'longevity', label: 'Mitochondrial & Cellular', count: products.filter((p) => p.category === 'longevity').length },
-    { id: 'metabolic', label: 'Incretin & Amylin', count: products.filter((p) => p.category === 'metabolic').length },
-    { id: 'blend', label: 'Research Blends', count: products.filter((p) => p.category === 'blend').length },
-    { id: 'accessories', label: 'Accessories', count: products.filter((p) => p.category === 'accessories').length },
-    { id: 'peptide-holders', label: 'Peptide Holders', count: products.filter((p) => p.category === 'peptide-holders').length },
-  ];
+  const categories = useMemo(() => {
+    const counts = products.reduce<Record<string, number>>((acc, product) => {
+      acc[product.category] = (acc[product.category] ?? 0) + 1;
+      return acc;
+    }, {});
+
+    return [
+      { id: 'all', label: 'All', count: products.length },
+      { id: 'recovery', label: 'Tissue & Matrix', count: counts.recovery ?? 0 },
+      { id: 'cognitive', label: 'Neuro Research', count: counts.cognitive ?? 0 },
+      { id: 'longevity', label: 'Mitochondrial & Cellular', count: counts.longevity ?? 0 },
+      { id: 'metabolic', label: 'Incretin & Amylin', count: counts.metabolic ?? 0 },
+      { id: 'blend', label: 'Research Blends', count: counts.blend ?? 0 },
+      { id: 'accessories', label: 'Accessories', count: counts.accessories ?? 0 },
+      { id: 'peptide-holders', label: 'Peptide Holders', count: counts['peptide-holders'] ?? 0 },
+    ];
+  }, [products]);
 
   return (
     <>
@@ -53,6 +65,16 @@ export default function ShopCatalogSection() {
       </section>
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        {loadError ? (
+          <div className="mb-6 rounded-lg border border-red-500/40 bg-red-900/20 p-4 text-sm text-red-300">
+            We could not load products right now. Please refresh the page or try again shortly.
+          </div>
+        ) : null}
+        {cartNotice ? (
+          <div className="mb-6 rounded-lg border border-[#21c7a5]/30 bg-[#0a2a22]/40 p-4 text-sm text-[#b9f6e7]">
+            {cartNotice}
+          </div>
+        ) : null}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {filteredProducts.map((product) => (
             <Link
@@ -95,7 +117,8 @@ export default function ShopCatalogSection() {
                     });
                     localStorage.setItem('cart', JSON.stringify(cart));
                     window.dispatchEvent(new Event('cart-updated'));
-                    alert('Added to cart!');
+                    setCartNotice(`${product.name} added to cart.`);
+                    window.setTimeout(() => setCartNotice(''), 2200);
                   }}
                   className={`text-[#21c7a5] text-xs font-medium ${isOutOfStock(product) ? 'opacity-50 cursor-not-allowed' : 'hover:underline'}`}
                 >
