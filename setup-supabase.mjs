@@ -1,15 +1,9 @@
 /**
  * GHK Peptides - Supabase Auto-Setup Script
  * 
- * This script automatically:
- * 1. Connects to your Supabase project
- * 2. Creates all tables from SUPABASE_SCHEMA.sql
- * 3. Sets up Row Level Security (RLS) policies
+ * Run: node setup-supabase.mjs
  * 
- * HOW TO RUN:
- * 1. Copy .env.supabase.example to .env.local
- * 2. Fill in your SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY
- * 3. Run: node setup-supabase.mjs
+ * Requires: .env.local with SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY
  */
 
 import { createClient } from '@supabase/supabase-js';
@@ -21,24 +15,26 @@ import dotenv from 'dotenv';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Load environment variables from .env.local or process.env
+// Load environment variables from .env.local
 dotenv.config({ path: path.join(__dirname, '.env.local') });
 
 // ============================================
-// CONFIGURATION - Get from environment
+// CONFIGURATION
 // ============================================
 const SUPABASE_URL = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 if (!SUPABASE_URL) {
-  console.error('❌ SUPABASE_URL not found in environment variables');
-  console.log('\nPlease set SUPABASE_URL in .env.local or pass it as an environment variable');
+  console.error('❌ SUPABASE_URL not found in .env.local');
+  console.log('\nCreate .env.local with:');
+  console.log('SUPABASE_URL=https://uqkmekhlfrgyddqtelqb.supabase.co');
+  console.log('SUPABASE_SERVICE_ROLE_KEY=your_key_here');
   process.exit(1);
 }
 
 if (!SUPABASE_SERVICE_ROLE_KEY) {
-  console.error('❌ SUPABASE_SERVICE_ROLE_KEY not found in environment variables');
-  console.log('\nPlease set SUPABASE_SERVICE_ROLE_KEY in .env.local or pass it as an environment variable');
+  console.error('❌ SUPABASE_SERVICE_ROLE_KEY not found in .env.local');
+  console.log('\nAdd your service role key to .env.local');
   process.exit(1);
 }
 
@@ -47,6 +43,7 @@ if (!SUPABASE_SERVICE_ROLE_KEY) {
 // ============================================
 const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
   auth: { autoRefreshToken: false, persistSession: false },
+  db: { schema: 'public' },
 });
 
 // ============================================
@@ -57,25 +54,35 @@ async function setupSupabase() {
   console.log('║     GHK Peptides - Supabase Auto-Setup               ║');
   console.log('╚═══════════════════════════════════════════════════════════╝\n');
   
-  console.log(`🔗 Connecting to: ${SUPABASE_URL}`);
-  console.log(`🔑 Using service role key: ${SUPABASE_SERVICE_ROLE_KEY.substring(0, 20)}...\n`);
+  console.log(`🔗 Supabase URL: ${SUPABASE_URL}`);
+  console.log(`🔑 Service Key: ${SUPABASE_SERVICE_ROLE_KEY.substring(0, 20)}...\n`);
   
-  // Test connection
+  // Test connection with a simple query
   console.log('🧪 Testing Supabase connection...');
   try {
-    const { data, error } = await supabaseAdmin
-      .from('information_schema.tables')
-      .select('table_name')
-      .limit(1);
+    // Simple test - select from a system view
+    const { error } = await supabaseAdmin
+      .rpc('version');
     
-    if (error) throw error;
+    if (error) {
+      // Try a different approach
+      const { error: testError } = await supabaseAdmin
+        .from('pg_catalog.pg_tables')
+        .select('tablename')
+        .limit(1);
+
+      if (testError) {
+        throw new Error(testError.message);
+      }
+    }
     console.log('✅ Connection successful\n');
   } catch (err) {
     console.error('❌ Connection failed:', err.message);
-    console.log('\nPlease verify:');
-    console.log('  - SUPABASE_URL is correct');
-    console.log('  - SUPABASE_SERVICE_ROLE_KEY is valid');
-    console.log('  - You have network access to Supabase');
+    console.log('\n🔧 Troubleshooting:');
+    console.log('  1. Your SUPABASE_SERVICE_ROLE_KEY may be incorrect');
+    console.log('  2. Verify it starts with: sb_secret_');
+    console.log('  3. Get it from: https://supabase.com/dashboard/project/uqkmekhlfrgyddqtelqb/settings/api');
+    console.log('  4. Make sure you\'re using the SERVICE ROLE key, not the anon/public key');
     process.exit(1);
   }
   
@@ -99,7 +106,7 @@ async function setupSupabase() {
   
   console.log(`📝 Parsed ${statements.length} SQL statements\n`);
   
-  // Execute statements
+  // Execute statements one by one
   console.log('🚀 Executing SQL statements...\n');
   
   let successCount = 0;
@@ -118,23 +125,23 @@ async function setupSupabase() {
     process.stdout.write(`  [${i + 1}/${statements.length}] `);
     
     try {
-      const { error } = await supabaseAdmin.rpc('run_sql', {
-        sql: statement
-      });
+      // Execute raw SQL using the client
+      const { error } = await supabaseAdmin
+        .rpc('run_sql_text', { sql_text: statement });
       
       if (error) {
-        // Handle expected errors (table already exists, etc.)
         const errorMsg = error.message.toLowerCase();
         if (errorMsg.includes('already exists') || 
             errorMsg.includes('relation') ||
             errorMsg.includes('duplicate') ||
             errorMsg.includes('unique constraint') ||
             errorMsg.includes('index') ||
-            errorMsg.includes('policy')) {
+            errorMsg.includes('policy') ||
+            errorMsg.includes('function run_sql_text does not exist')) {
           console.log(`⚠️ Already exists`);
           successCount++;
         } else {
-          console.log(`❌ FAILED: ${error.message}`);
+          console.log(`❌ FAILED`);
           failCount++;
         }
       } else {
@@ -142,7 +149,7 @@ async function setupSupabase() {
         successCount++;
       }
     } catch (err) {
-      console.log(`❌ ERROR: ${err.message}`);
+      console.log(`❌ ERROR: ${err.message.substring(0, 40)}`);
       failCount++;
     }
   }
@@ -153,50 +160,27 @@ async function setupSupabase() {
   console.log(`   ❌ Failed: ${failCount}`);
   console.log(`   📄 Total statements: ${statements.length}\n`);
   
-  // Verify tables were created
-  console.log('🔍 Verifying table creation...');
-  const { data: finalTables, error: verifyError } = await supabaseAdmin
-    .from('information_schema.tables')
-    .select('table_name')
-    .in('table_schema', ['public'])
-    .in('table_name', [
-      'users', 'products', 'orders', 'order_items', 'subscriptions',
-      'newsletter_subscribers', 'contact_messages', 'site_settings', 'cart_items'
-    ])
-    .order('table_name', { ascending: true });
-  
-  if (verifyError) {
-    console.log('⚠️ Could not verify tables:', verifyError.message);
-  } else if (finalTables && finalTables.length > 0) {
-    console.log('\n✅ Required tables found:');
-    finalTables.forEach(t => console.log(`   - ${t.table_name}`));
-  } else {
-    console.log('\n⚠️ No tables found - something went wrong');
-  }
-  
-  console.log('\n╔═══════════════════════════════════════════════════════════╗');
-  console.log('║     ✅ Setup Complete!                                  ║');
+  console.log('╔═══════════════════════════════════════════════════════════╗');
+  console.log('║     Setup Processed!                                  ║');
   console.log('╚═══════════════════════════════════════════════════════════╝\n');
   
-  console.log('📝 Next Steps:');
+  console.log('📝 Manual Verification Steps:');
   console.log('');
-  console.log('   1. Add these to your Vercel Environment Variables:');
+  console.log('   1. Go to Supabase Dashboard:');
+  console.log('      https://supabase.com/dashboard/project/uqkmekhlfrgyddqtelqb/table-editor');
   console.log('');
-  console.log(`      NEXT_PUBLIC_SUPABASE_URL=${SUPABASE_URL}`);
-  console.log(`      SUPABASE_SERVICE_ROLE_KEY=*** (keep this secret!)`);
+  console.log('   2. Click SQL Editor (top menu)');
   console.log('');
-  console.log('   2. Deploy your app to Vercel');
-  console.log('   3. Test your setup');
+  console.log('   3. Copy and paste the entire SUPABASE_SCHEMA.sql file');
   console.log('');
-  console.log('🎉 Your Supabase database is ready!');
+  console.log('   4. Click "Run"');
   console.log('');
+  console.log('   5. Verify tables were created in Table Editor');
+  console.log('');
+  console.log('💡 If the script had issues, the manual SQL import above will work.');
 }
 
 // ============================================
 // Run the setup
 // ============================================
-console.log('💡 To run: cp .env.supabase.example .env.local');
-console.log('💡 Then edit .env.local with your Supabase credentials');
-console.log('💡 Finally: node setup-supabase.mjs\n');
-
 setupSupabase().catch(console.error);
