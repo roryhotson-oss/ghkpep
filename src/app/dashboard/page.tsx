@@ -116,7 +116,7 @@ export default function DashboardPage() {
         <p className="text-[#a7b0b2] text-sm mb-6">
           We accept the following payment methods. Your order details and shipping address will be collected at checkout.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {/* Bank Transfer */}
             <a href={paymentSettings.bankTransferUrl} className="block bg-[#1a1a1a] rounded-lg p-4 border border-[#2b3538] hover:border-[#21c7a5] transition">
             <h3 className="font-bold text-white mb-2">Bank Transfer</h3>
@@ -137,15 +137,17 @@ export default function DashboardPage() {
 
           {/* AliExpress / Alipay */}
             <a href={paymentSettings.alipayUrl} className="block bg-[#1a1a1a] rounded-lg p-4 border border-[#2b3538] hover:border-[#21c7a5] transition">
-                        <a href={paymentSettings.wiseUrl} className="block bg-[#1a1a1a] rounded-lg p-4 border border-[#2b3538] hover:border-[#21c7a5] transition">
-                          <h3 className="font-bold text-white mb-2">Wise</h3>
-                          <p className="text-[#a7b0b2] text-xs mb-3">View current Wise payment instructions.</p>
-                          <span className="text-[#21c7a5] text-xs">View payment instructions -&gt;</span>
-                        </a>
             <h3 className="font-bold text-white mb-2">AliExpress / Alipay</h3>
             <p className="text-[#a7b0b2] text-xs mb-3">
               View current Alipay payment instructions and checkout details.
             </p>
+              <span className="text-[#21c7a5] text-xs">View payment instructions -&gt;</span>
+            </a>
+
+          {/* Wise */}
+            <a href={paymentSettings.wiseUrl} className="block bg-[#1a1a1a] rounded-lg p-4 border border-[#2b3538] hover:border-[#21c7a5] transition">
+            <h3 className="font-bold text-white mb-2">Wise</h3>
+            <p className="text-[#a7b0b2] text-xs mb-3">View current Wise payment instructions.</p>
               <span className="text-[#21c7a5] text-xs">View payment instructions -&gt;</span>
             </a>
         </div>
