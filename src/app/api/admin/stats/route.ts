@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import { getStats } from '@/lib/admin-store';
+import { getStats, getProducts } from '@/lib/admin-store';
+import type { Product } from '@/data/products';
 
 const SESSION_SECRET = process.env.SESSION_SECRET || 'ghk-peptides-admin-secret-key-2024';
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@ghkpep.com';
@@ -34,5 +35,6 @@ export async function GET() {
   }
 
   const stats = getStats();
-  return NextResponse.json(stats);
+  const products = getProducts();
+  return NextResponse.json({ ...stats, products });
 }
