@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next';
-import { getProducts } from '@/lib/admin-store';
+import { getCommerceProducts } from '@/lib/commerce-store';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://ghkpep.com';
-  const products = getProducts();
+  const products = await getCommerceProducts();
 
   // Static pages
   const staticPages = [

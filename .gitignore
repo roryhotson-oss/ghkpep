@@ -26,6 +26,10 @@ yarn-error.log*
 # Local env files
 .env*.local
 .env
+.env.local
+
+# Local data files (contains sensitive order data)
+data/*.json
 
 # Vercel
 .vercel
@@ -81,3 +85,4 @@ pids
 # Uploads
 /uploads
 /temp
+.env*

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getProduct } from '@/lib/admin-store';
+import { getCommerceProduct } from '@/lib/commerce-store';
 import ProductPageClient from './ProductPageClient';
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = await getCommerceProduct(slug);
 
   if (!product) {
     return {
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${product.name} | GHKpep UK`,
-    description: `${product.name} for in-vitro laboratory research, independently tested by Glyvantix Labs. Purity ${product.purity}. Free discreet tracked shipping.`,
+    description: `${product.name} for in-vitro laboratory research, with batch documentation from Glyvantix Labs. Free discreet tracked shipping.`,
     keywords: [
       product.name.toLowerCase(),
       `${product.name.toLowerCase()} UK`,
@@ -32,12 +32,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ],
     openGraph: {
       title: `${product.name} | GHKpep UK`,
-      description: `Buy ${product.name} in the UK. Premium research peptide, independently tested. Purity ${product.purity}.`,
+      description: `Buy ${product.name} in the UK. Premium research compound with batch documentation and discreet tracked shipping.`,
       type: 'website',
       url: `${baseUrl}/shop/${product.slug}`,
       images: [
         {
-          url: product.image || '/images/og-image.jpg',
+          url: product.image || '/images/hero-lab.png',
           width: 1200,
           height: 630,
           alt: product.name,
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title: `${product.name} | GHKpep UK`,
       description: `Buy ${product.name} in the UK. Premium research peptide, independently tested.`,
-      images: [product.image || '/images/og-image.jpg'],
+      images: [product.image || '/images/hero-lab.png'],
     },
     alternates: {
       canonical: `${baseUrl}/shop/${product.slug}`,
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = await getCommerceProduct(slug);
 
   if (!product) {
     notFound();

@@ -1,4 +1,5 @@
 export interface Product {
+  id?: string;
   slug: string;
   name: string;
   price: number; // per vial in GBP
@@ -168,7 +169,7 @@ export const products: Product[] = [
     categoryLabel: "Melanocortin",
     description: "Non-selective melanocortin receptor agonist analog. Supplied for in-vitro laboratory research.",
     lot: "GHK-2422-M",
-    image: "/images/mt-2-10mg.png"
+    image: "/images/mt-2-10mg.svg"
   },
   {
     slug: "ss-31",
@@ -180,7 +181,7 @@ export const products: Product[] = [
     categoryLabel: "Mitochondrial",
     description: "Mitochondria-targeted four-residue synthetic sequence. Supplied for in-vitro laboratory research.",
     lot: "GHK-2423-N",
-    image: "/images/ss-31-10mg.png"
+    image: "/images/ss-31-10mg.svg"
   },
   {
     slug: "melanotan-1",
@@ -192,7 +193,7 @@ export const products: Product[] = [
     categoryLabel: "Melanocortin",
     description: "Synthetic alpha-MSH analog. Supplied for in-vitro laboratory research.",
     lot: "GHK-2424-O",
-    image: "/images/mt-1-10mg.png"
+    image: "/images/mt-1-10mg.svg"
   },
   {
     slug: "wolverine",
@@ -204,7 +205,7 @@ export const products: Product[] = [
     categoryLabel: "Copper Composite",
     description: "Copper-bound composite, lyophilized powder. Supplied for in-vitro laboratory research.",
     lot: "GHK-2425-P",
-    image: "/images/wolverine-10mg.png"
+    image: "/images/wolverine-10mg.svg"
   },
   {
     slug: "kiss-peptin",
@@ -216,7 +217,7 @@ export const products: Product[] = [
     categoryLabel: "Peptide",
     description: "Synthetic kisspeptin-10 sequence. Supplied for in-vitro laboratory research.",
     lot: "GHK-2426-Q",
-    image: "/images/kisspeptin-10mg.png"
+    image: "/images/kisspeptin-10mg.svg"
   },
   {
     slug: "cagrilintide",
@@ -228,7 +229,7 @@ export const products: Product[] = [
     categoryLabel: "Amylin Analog",
     description: "Long-acting amylin analog. Supplied for in-vitro laboratory research.",
     lot: "GHK-2427-R",
-    image: "/images/cagrilintide-5mg.png"
+    image: "/images/cagrilintide-5mg.svg"
   },
   {
     slug: "kpv",
@@ -337,6 +338,30 @@ export const products: Product[] = [
     description: "Synthetic ACTH(4-10) analog, seven-residue sequence. Supplied for in-vitro laboratory research.",
     lot: "GHK-2436-AA",
     image: "/images/semax-10mg.png"
+  },
+  {
+    slug: "vial-organizer-3ml",
+    name: "3ml Vial Organizer Case",
+    price: 9.99,
+    boxPrice: 89.91,
+    purity: "N/A",
+    category: "accessories",
+    categoryLabel: "Laboratory Accessories",
+    description: "Compact protective organizer case for 3ml research vials. Supplied as a laboratory accessory.",
+    lot: "ACC-0001-A",
+    image: "/images/research-accessory-1.avif"
+  },
+  {
+    slug: "protective-vial-storage-case",
+    name: "Protective Vial Storage Case",
+    price: 14.99,
+    boxPrice: 134.91,
+    purity: "N/A",
+    category: "accessories",
+    categoryLabel: "Laboratory Accessories",
+    description: "Protective storage case for organizing and transporting research vials. Supplied as a laboratory accessory.",
+    lot: "ACC-0002-B",
+    image: "/images/research-accessory-2.avif"
   }
 ];
 

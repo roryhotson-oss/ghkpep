@@ -89,7 +89,7 @@ export default function Footer() {
           href="/admin/login"
           className="text-[#21c7a5] text-xs hover:underline"
         >
-            Admin Dashboard - Login
+          Admin Dashboard - Login
         </Link>
       </div>
     </footer>

@@ -49,6 +49,11 @@ CREATE TABLE orders (
   payment_reference VARCHAR(255),
   shipping_address JSONB,
   tracking_number VARCHAR(255),
+  customer_name VARCHAR(255),
+  customer_email VARCHAR(255),
+  billing_address JSONB,
+  payment_proof_url TEXT,
+  stock_reduced BOOLEAN NOT NULL DEFAULT FALSE,
   notes TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
@@ -115,13 +120,31 @@ CREATE TABLE contact_messages (
 -- ============================================
 CREATE TABLE site_settings (
 
-  -- Supported payment keys include alipayUrl, cryptoUrl, bankTransferUrl,
-  -- wiseUrl, revolutDetails, coinbaseUrl, bitcoinAddress, ethereumAddress,
-  -- and usdtAddress.
+  -- Supported payment keys include paypalUrl, alipayUrl, alipayQrUrl,
+  -- cryptoUrl, bankTransferUrl, wiseUrl, revolutDetails, coinbaseUrl,
+  -- bitcoinAddress, ethereumAddress, usdtAddress, and adminPasswordHash.
   key VARCHAR(100) PRIMARY KEY,
   value TEXT NOT NULL DEFAULT '',
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+
+CREATE TABLE IF NOT EXISTS marketing_posts (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  product_slug VARCHAR(255),
+  platform VARCHAR(50) NOT NULL,
+  content TEXT NOT NULL,
+  image_url VARCHAR(500),
+  status VARCHAR(30) NOT NULL DEFAULT 'draft',
+  scheduled_for TIMESTAMP WITH TIME ZONE,
+  published_at TIMESTAMP WITH TIME ZONE,
+  external_post_id VARCHAR(255),
+  error TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_marketing_posts_status ON marketing_posts(status);
+CREATE INDEX IF NOT EXISTS idx_marketing_posts_platform ON marketing_posts(platform);
 
 -- ============================================
 -- SUPPORT INBOX ACCESS

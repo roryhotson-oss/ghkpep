@@ -177,6 +177,18 @@ export default function AdminDashboardPage() {
             >
               Manage Products
             </Link>
+            <Link
+              href="/admin/payment-settings"
+              className="px-4 py-2 bg-[#1a1a1a] border border-[#2b3538] text-[#e1e7e5] text-sm font-medium rounded-lg hover:border-[#21c7a5] hover:text-[#21c7a5] transition"
+            >
+              Payment Settings
+            </Link>
+            <Link
+              href="/admin/chat"
+              className="px-4 py-2 bg-[#1a1a1a] border border-[#2b3538] text-[#e1e7e5] text-sm font-medium rounded-lg hover:border-[#21c7a5] hover:text-[#21c7a5] transition"
+            >
+              Support Inbox
+            </Link>
           </div>
         </div>
       </div>

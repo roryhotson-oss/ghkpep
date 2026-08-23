@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getProduct, updateProduct, deleteProduct } from '@/lib/admin-store';
 import { checkAdmin } from '@/lib/admin-auth';
+import { getCommerceProduct, updateCommerceProduct, deleteCommerceProduct } from '@/lib/commerce-store';
 
 export async function GET(
   _request: NextRequest,
@@ -11,7 +11,7 @@ export async function GET(
   }
 
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = await getCommerceProduct(slug);
   if (!product) {
     return NextResponse.json({ error: 'Product not found' }, { status: 404 });
   }
@@ -69,7 +69,7 @@ export async function PUT(
       updates.discountPercent = discountPercent;
     }
 
-    const updated = updateProduct(slug, updates);
+    const updated = await updateCommerceProduct(slug, updates);
     if (!updated) {
       return NextResponse.json({ error: 'Product not found' }, { status: 404 });
     }
@@ -90,7 +90,7 @@ export async function DELETE(
   }
 
   const { slug } = await params;
-  const deleted = deleteProduct(slug);
+  const deleted = await deleteCommerceProduct(slug);
   if (!deleted) {
     return NextResponse.json({ error: 'Product not found' }, { status: 404 });
   }

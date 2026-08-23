@@ -1,7 +1,9 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
 export interface PaymentSettings {
+  paypalUrl: string;
   alipayUrl: string;
+  alipayQrUrl: string;
   cryptoUrl: string;
   bankTransferUrl: string;
   wiseUrl: string;
@@ -13,7 +15,9 @@ export interface PaymentSettings {
 }
 
 const fallbackSettings: PaymentSettings = {
+  paypalUrl: process.env.NEXT_PUBLIC_PAYPAL_URL || '',
   alipayUrl: process.env.NEXT_PUBLIC_ALIPAY_URL || '/contact',
+  alipayQrUrl: process.env.NEXT_PUBLIC_ALIPAY_QR_URL || '',
   cryptoUrl: process.env.NEXT_PUBLIC_CRYPTO_PAYMENT_URL || '/contact',
   bankTransferUrl: process.env.NEXT_PUBLIC_BANK_TRANSFER_URL || '/contact',
   wiseUrl: process.env.NEXT_PUBLIC_WISE_URL || '/contact',

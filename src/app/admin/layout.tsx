@@ -64,6 +64,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { href: '/admin/emails', label: 'Emails', icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
     { href: '/admin/chat', label: 'Support Inbox', icon: 'M8 10h8m-8 4h5m-9 5l-3 3V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H8z' },
     { href: '/admin/payment-settings', label: 'Payment Settings', icon: 'M3 10h18M7 15h1m4 0h1m4 0h1M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z' },
+    { href: '/admin/security', label: 'Security', icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z' },
+    { href: '/admin/marketing', label: 'Marketing', icon: 'M3 11l18-5v12L3 13v-2zm0 0l4 1v7a2 2 0 01-2 2H4a1 1 0 01-1-1v-9z' },
   ];
 
   const isActive = (href: string) => {

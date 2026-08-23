@@ -23,10 +23,12 @@ interface Order {
   payment: {
     method: string;
   };
+  trackingNumber?: string;
 }
 
 export default function OrdersPage() {
   const [user, setUser] = useState<{ email: string; name: string } | null>(null);
+  const [orders, setOrders] = useState<Order[]>([]);
   const router = useRouter();
 
   useEffect(() => {
@@ -35,13 +37,22 @@ export default function OrdersPage() {
       if (!storedUser) {
         router.push('/login');
       } else {
-        setUser(JSON.parse(storedUser));
+        const parsedUser = JSON.parse(storedUser);
+        setUser(parsedUser);
+        fetch('/api/orders').then((response) => response.ok ? response.json() : { orders: [] }).then((data) => setOrders((data.orders || []).map((order: { order_number: string; created_at: string; status: string; total_amount: number | string; payment_method: string; tracking_number?: string; order_items: Array<{ product_slug: string; product_name: string; quantity: number; unit_price: number | string }> }) => ({
+          id: order.order_number,
+          date: order.created_at,
+          status: order.status,
+          total: Number(order.total_amount),
+          items: order.order_items.map((item) => ({ name: item.product_name, quantity: Number(item.quantity), price: Number(item.unit_price), image: `/images/${item.product_slug}.png` })),
+          shipping: { method: 'Tracked delivery' },
+          payment: { method: order.payment_method || 'Contact' },
+          trackingNumber: order.tracking_number,
+        })))).catch(() => setOrders([]));
       }
     };
     checkAuth();
   }, [router]);
-
-  const orders: Order[] = [];
 
   if (!user) {
     return <div className="min-h-[80vh] flex items-center justify-center">Loading...</div>;
@@ -118,6 +129,7 @@ export default function OrdersPage() {
                 <div>
                   <p className="text-[#7b898e] mb-1">Payment Method</p>
                   <p className="font-medium">{order.payment.method}</p>
+                  {order.trackingNumber && <a href={`https://www.17track.net/en?nums=${encodeURIComponent(order.trackingNumber)}`} target="_blank" rel="noreferrer" className="text-[#21c7a5] text-xs mt-1 inline-block hover:underline">Track with 17TRACK</a>}
                 </div>
                 <div className="text-right">
                   <span className="text-[#7b898e] text-sm">Invoice unavailable</span>

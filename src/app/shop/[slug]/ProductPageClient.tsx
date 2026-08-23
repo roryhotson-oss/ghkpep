@@ -1,10 +1,10 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Product } from '@/data/products';
 import { effectivePrice, isOutOfStock } from '@/lib/pricing';
+import ProductImage from '@/components/ProductImage';
 
 interface Props {
   product: Product;
@@ -13,9 +13,12 @@ interface Props {
 export default function ProductPageClient({ product }: Props) {
   const [quantity, setQuantity] = useState(1);
   const [selectedType, setSelectedType] = useState<'vial' | 'box'>('vial');
+  const quantityLimit = product.category === 'accessories' ? 4 : 99;
 
   const price = effectivePrice(product, selectedType);
   const totalPrice = price * quantity;
+  const offerUnitPrice = price * 0.95;
+  const offerTotalPrice = offerUnitPrice * quantity;
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -35,19 +38,7 @@ export default function ProductPageClient({ product }: Props) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Product Image */}
         <div className="relative aspect-square bg-gradient-to-br from-gray-900 to-black rounded-2xl overflow-hidden">
-          {product.image ? (
-            <Image
-              src={product.image}
-              alt={product.name}
-              fill
-              className="object-cover"
-              priority
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center">
-              <span className="text-6xl">🧪</span>
-            </div>
-          )}
+          <ProductImage src={product.image} alt={product.name} className="object-cover" />
           <div className="absolute top-4 right-4 bg-teal-500 text-black px-3 py-1 rounded-full text-sm font-bold">
             Glyvantix Tested
           </div>
@@ -57,7 +48,7 @@ export default function ProductPageClient({ product }: Props) {
         <div>
           <div className="mb-4">
             <span className="inline-block bg-teal-500/20 text-teal-400 px-3 py-1 rounded-full text-sm font-semibold">
-              {product.purity}
+              COA available
             </span>
             <span className="inline-block bg-white/10 text-white/60 px-3 py-1 rounded-full text-sm ml-2">
               {product.categoryLabel}
@@ -65,7 +56,8 @@ export default function ProductPageClient({ product }: Props) {
           </div>
 
           <h1 className="text-4xl font-bold mb-4">{product.name}</h1>
-          <p className="text-white/60 mb-6">{product.description}</p>
+          <p className="text-white/60 mb-3">{product.description}</p>
+          <p className="text-teal-300 text-sm mb-6">Available to purchase as an individual vial or a box of 10.</p>
           <p className="text-amber-300/80 text-sm mb-6 border-l-2 border-amber-300/50 pl-3">
             Laboratory research use only. Not for human or veterinary use, diagnosis, or treatment. No dosing or medical guidance is provided.
           </p>
@@ -115,7 +107,7 @@ export default function ProductPageClient({ product }: Props) {
                 </button>
                 <span className="px-6 py-2 text-white font-semibold">{quantity}</span>
                 <button
-                  onClick={() => setQuantity(quantity + 1)}
+                  onClick={() => setQuantity(Math.min(quantityLimit, quantity + 1))}
                   className="px-4 py-2 text-white hover:bg-white/10 rounded-r-lg"
                 >
                   +
@@ -126,6 +118,19 @@ export default function ProductPageClient({ product }: Props) {
                 <div className="text-sm text-white/60">Total</div>
               </div>
             </div>
+            {product.category === 'accessories' && <div className="mt-4">
+              <p className="text-sm text-white/60 mb-2">Choose quantity</p>
+              <div className="grid grid-cols-4 gap-2">
+                {[1, 2, 3, 4].map((value) => <button
+                  key={value}
+                  type="button"
+                  onClick={() => setQuantity(value)}
+                  className={`py-2 rounded-lg font-semibold transition ${quantity === value ? 'bg-teal-500 text-black' : 'bg-white/10 text-white hover:bg-white/20'}`}
+                >
+                  {value}
+                </button>)}
+              </div>
+            </div>}
           </div>
 
           {/* Add to Cart Button */}
@@ -176,7 +181,7 @@ export default function ProductPageClient({ product }: Props) {
           {/* COA Link */}
           <div className="border-t border-white/10 pt-6">
             <a
-              href={`/coas/COA-${product.slug}-${product.lot}.pdf`}
+              href={`/api/coa?lot=${encodeURIComponent(product.lot)}`}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 text-teal-400 hover:text-teal-300"
@@ -195,7 +200,7 @@ export default function ProductPageClient({ product }: Props) {
           <div>
             <h3 className="font-semibold text-lg mb-2">Specifications</h3>
             <ul className="space-y-2 text-white/80">
-              <li>• Purity: {product.purity}</li>
+              <li>• Batch documentation available</li>
               <li>• Format: Lyophilized powder</li>
               <li>• Storage: -20°C</li>
               <li>• Research use only</li>
@@ -213,11 +218,44 @@ export default function ProductPageClient({ product }: Props) {
         </div>
       </div>
 
-      {/* Related Products */}
+      {/* Product offer */}
       <div className="mt-16">
-        <h2 className="text-2xl font-bold mb-6">Related Products</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {/* This would be populated with related products */}
+        <h2 className="text-2xl font-bold mb-2">Special Offer: 5% Off This Product</h2>
+        <p className="text-white/60 mb-6">Purchase {product.name} today and receive 5% off your selected vial or box quantity.</p>
+        <div className="bg-teal-500/10 border border-teal-500/30 rounded-2xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+          <div>
+            <p className="font-semibold text-white">{selectedType === 'box' ? 'Box of 10 vials' : '1 vial'} offer price</p>
+            <div className="flex items-baseline gap-3 mt-1">
+              <span className="text-3xl font-bold text-teal-400">£{offerUnitPrice.toFixed(2)}</span>
+              <span className="text-sm text-white/50 line-through">£{price.toFixed(2)}</span>
+              <span className="text-sm font-semibold text-teal-400">5% off</span>
+            </div>
+            <p className="text-sm text-white/60 mt-1">{quantity} selected · Offer total £{offerTotalPrice.toFixed(2)}</p>
+          </div>
+          <button
+            type="button"
+            disabled={isOutOfStock(product)}
+            onClick={() => {
+              if (isOutOfStock(product)) return;
+              const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+              cart.push({
+                slug: product.slug,
+                name: product.name,
+                price: effectivePrice(product, 'vial') * 0.95,
+                boxPrice: effectivePrice(product, 'box') * 0.95,
+                image: product.image,
+                lot: product.lot,
+                qty: quantity,
+                type: selectedType,
+              });
+              localStorage.setItem('cart', JSON.stringify(cart));
+              window.dispatchEvent(new Event('cart-updated'));
+              alert('5% off offer added to cart!');
+            }}
+            className="w-full md:w-auto bg-teal-500 text-black font-bold py-3 px-6 rounded-lg hover:bg-teal-600 transition disabled:opacity-50"
+          >
+            Add 5% Off Offer
+          </button>
         </div>
       </div>
     </div>

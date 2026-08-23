@@ -1,8 +1,15 @@
 'use client';
 import Image from 'next/image';
+import Script from 'next/script';
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+
+declare global {
+  interface Window {
+    turnstile?: { render: (element: HTMLElement, options: { sitekey: string; callback: (token: string) => void; 'expired-callback': () => void; 'error-callback': () => void }) => void };
+  }
+}
 
 interface CartItem {
   slug: string;
@@ -16,7 +23,9 @@ interface CartItem {
 }
 
 interface PaymentSettings {
+  paypalUrl: string;
   alipayUrl: string;
+  alipayQrUrl: string;
   cryptoUrl: string;
   bankTransferUrl: string;
   wiseUrl: string;
@@ -25,8 +34,20 @@ interface PaymentSettings {
 export default function CartPage() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [cartLoaded, setCartLoaded] = useState(false);
-  const [paymentSettings, setPaymentSettings] = useState<PaymentSettings>({ alipayUrl: '/contact', cryptoUrl: '/contact', bankTransferUrl: '/contact', wiseUrl: '/contact' });
+  const [paymentSettings, setPaymentSettings] = useState<PaymentSettings>({ paypalUrl: '', alipayUrl: '/contact', alipayQrUrl: '', cryptoUrl: '/contact', bankTransferUrl: '/contact', wiseUrl: '/contact' });
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('paypal');
+  const [paypalAccount, setPaypalAccount] = useState('');
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
+  const [checkoutSubmitted, setCheckoutSubmitted] = useState(false);
+  const [checkoutError, setCheckoutError] = useState('');
+  const [paymentProofUrl, setPaymentProofUrl] = useState('');
+  const [paymentProofName, setPaymentProofName] = useState('');
+  const [billingAddress, setBillingAddress] = useState({ name: '', email: '', line1: '', city: '', postcode: '', country: '' });
+  const [shippingAddress, setShippingAddress] = useState({ name: '', email: '', line1: '', city: '', postcode: '', country: '' });
+  const [sameAsBilling, setSameAsBilling] = useState(true);
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const [turnstileError, setTurnstileError] = useState('');
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '';
 
   useEffect(() => {
     // Load cart from localStorage on mount
@@ -75,7 +96,64 @@ export default function CartPage() {
       `${item.name} (${item.type === 'box' ? 'Box of 10' : '1 vial'}) x${item.qty} - £${(item.type === 'box' ? item.boxPrice : item.price).toFixed(2)}`
     ).join('\n');
     
-    return `Hi GHK, I&apos;d like to place an order:\n\n${items}\n\nSubtotal: £${subtotal.toFixed(2)}\nShipping: FREE\nTotal: £${total.toFixed(2)}\n\nPlease provide payment instructions and shipping details.`;
+    const paymentDetails = selectedPaymentMethod === 'paypal' && paypalAccount
+      ? `\nPayPal account: ${paypalAccount}`
+      : '';
+    const shipping = sameAsBilling ? billingAddress : shippingAddress;
+    const address = (value: typeof billingAddress) => `${value.name}\n${value.line1}\n${value.city}, ${value.postcode}\n${value.country}`;
+    return `Hi GHK, I'd like to place an order:\n\n${items}\n\nSubtotal: £${subtotal.toFixed(2)}\nShipping: FREE\nTotal: £${total.toFixed(2)}\nPayment method: ${selectedPaymentMethod}${paymentDetails}\n\nBilling address:\n${address(billingAddress)}\n\nShipping address:\n${address(shipping)}${paymentProofUrl ? `\n\nPayment proof: ${window.location.origin}${paymentProofUrl}` : ''}\n\nPlease confirm my order and shipping details.`;
+  };
+
+  const handleCheckoutSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setCheckoutError('');
+    setTurnstileError('');
+    const shipping = sameAsBilling ? billingAddress : shippingAddress;
+    const requiredFields = [billingAddress.name, billingAddress.email, billingAddress.line1, billingAddress.city, billingAddress.postcode, billingAddress.country, shipping.name, shipping.line1, shipping.city, shipping.postcode, shipping.country];
+    if (requiredFields.some((value) => !value.trim())) {
+      setCheckoutError('Please complete both billing and shipping addresses.');
+      return;
+    }
+    if (turnstileSiteKey && !turnstileToken) {
+      setTurnstileError('Please complete the Cloudflare security check.');
+      return;
+    }
+    if (turnstileToken) {
+      const verification = await fetch('/api/turnstile', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: turnstileToken }) });
+      if (!verification.ok) {
+        setTurnstileError('Cloudflare security check failed. Please try again.');
+        setTurnstileToken('');
+        return;
+      }
+    }
+
+    const fileInput = event.currentTarget.elements.namedItem('payment-proof');
+    const file = fileInput instanceof HTMLInputElement ? fileInput.files?.[0] : undefined;
+    if (file) {
+      const uploadData = new FormData();
+      uploadData.append('file', file);
+      const response = await fetch('/api/order-proof', { method: 'POST', body: uploadData });
+      const data = await response.json();
+      if (!response.ok) {
+        setCheckoutError(data.error || 'Could not upload payment proof.');
+        return;
+      }
+      setPaymentProofUrl(data.url);
+      setPaymentProofName(file.name);
+    }
+    const orderResponse = await fetch('/api/orders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
+      items: cartItems.map((item) => ({ slug: item.slug, qty: item.qty, type: item.type })),
+      billingAddress,
+      shippingAddress: shipping,
+      paymentMethod: selectedPaymentMethod,
+      paymentReference: selectedPaymentMethod === 'paypal' ? paypalAccount : '',
+      paymentProofUrl,
+    }) });
+    if (orderResponse.ok) {
+      const orderData = await orderResponse.json();
+      setPaymentProofName(orderData.orderNumber ? `order ${orderData.orderNumber}` : paymentProofName);
+    }
+    setCheckoutSubmitted(true);
   };
 
   const handleWhatsApp = () => {
@@ -112,34 +190,37 @@ export default function CartPage() {
 
   return (
     <div>
-      <section className="bg-[#0d0d0d] border-b border-[#2b3538]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h1 className="text-3xl font-bold">Your Cart</h1>
+      <section className="bg-[#10263d] border-b border-[#1d4667]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+          <p className="text-[#63c8f3] text-xs font-bold uppercase tracking-[0.22em] mb-3">Secure checkout</p>
+          <h1 className="text-4xl font-black tracking-tight">Your Cart</h1>
+          <p className="text-[#c8d8e4] mt-3 max-w-xl">Review your order and choose the payment method that works best for you.</p>
         </div>
       </section>
 
+      <div className="bg-[#eef4f8] text-[#10263d] min-h-[calc(100vh-220px)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
             {cartItems.length === 0 ? (
-              <div className="bg-[#141414] rounded-xl p-12 border border-[#2b3538] text-center">
-                <p className="text-[#a7b0b2] mb-4">Your cart is empty.</p>
-                <Link href="/shop" className="px-6 py-3 bg-[#21c7a5] text-black font-semibold rounded-lg hover:bg-[#16a98d] transition">
+              <div className="bg-white rounded-2xl p-12 border border-[#d7e3eb] text-center shadow-sm">
+                <p className="text-[#607789] mb-4">Your cart is empty.</p>
+                <Link href="/shop" className="inline-flex px-6 py-3 bg-[#139fe8] text-white font-semibold rounded-lg hover:bg-[#0b87c9] transition">
                   Browse Catalog
                 </Link>
               </div>
             ) : (
               cartItems.map((item, idx) => (
-                <div key={idx} className="bg-[#141414] rounded-xl p-5 border border-[#2b3538] flex gap-4">
-                  <div className="w-20 h-20 bg-[#1a1a1a] rounded-lg overflow-hidden shrink-0 relative">
+                <div key={idx} className="bg-white rounded-2xl p-5 border border-[#d7e3eb] flex gap-4 shadow-sm">
+                  <div className="w-20 h-20 bg-[#eaf2f7] rounded-lg overflow-hidden shrink-0 relative">
                     <Image src={item.image} alt={item.name} fill className="object-cover" sizes="80px" />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-start justify-between">
                       <div>
-                        <Link href={`/shop/${item.slug}`} className="font-semibold hover:text-[#21c7a5] transition">{item.name}</Link>
-                        <p className="text-[#a7b0b2] text-xs mt-0.5">
+                        <Link href={`/shop/${item.slug}`} className="font-semibold hover:text-[#139fe8] transition">{item.name}</Link>
+                        <p className="text-[#607789] text-xs mt-0.5">
                           {item.type === 'box' ? `Box of 10 vials · Lot ${item.lot}` : `1 vial · Lot ${item.lot}`}
                         </p>
                       </div>
@@ -151,21 +232,21 @@ export default function CartPage() {
                       <div className="flex items-center gap-2">
                         <button 
                           onClick={() => updateQuantity(idx, -1)}
-                          className="w-8 h-8 bg-[#1a1a1a] border border-[#2b3538] rounded-lg flex items-center justify-center text-sm hover:border-[#21c7a5] transition"
+                          className="w-8 h-8 bg-[#f3f7fa] border border-[#d7e3eb] rounded-lg flex items-center justify-center text-sm hover:border-[#139fe8] transition"
                         >
                           −
                         </button>
                         <span className="text-sm font-medium w-6 text-center">{item.qty}</span>
                         <button 
                           onClick={() => updateQuantity(idx, 1)}
-                          className="w-8 h-8 bg-[#1a1a1a] border border-[#2b3538] rounded-lg flex items-center justify-center text-sm hover:border-[#21c7a5] transition"
+                          className="w-8 h-8 bg-[#f3f7fa] border border-[#d7e3eb] rounded-lg flex items-center justify-center text-sm hover:border-[#139fe8] transition"
                         >
                           +
                         </button>
                       </div>
                       <button 
                         onClick={() => removeItem(idx)}
-                        className="text-[#a7b0b2] text-xs hover:text-red-400 transition"
+                        className="text-[#607789] text-xs hover:text-red-500 transition"
                       >
                         Remove
                       </button>
@@ -178,82 +259,114 @@ export default function CartPage() {
 
           {/* Order Summary */}
           <div>
-            <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538] sticky top-24">
+            <div className="bg-white rounded-2xl p-6 border border-[#d7e3eb] sticky top-24 shadow-sm">
               <h2 className="font-bold text-lg mb-4">Order Summary</h2>
 
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-[#a7b0b2]">Subtotal</span>
+                  <span className="text-[#607789]">Subtotal</span>
                   <span>£{subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#a7b0b2]">Shipping</span>
-                  <span className="text-[#21c7a5]">FREE</span>
+                  <span className="text-[#607789]">Shipping</span>
+                  <span className="text-[#139fe8]">FREE</span>
                 </div>
-                <div className="border-t border-[#2b3538] pt-3 flex justify-between font-bold text-base">
+                <div className="border-t border-[#d7e3eb] pt-3 flex justify-between font-bold text-base">
                   <span>Total (GBP)</span>
                   <span>£{total.toFixed(2)}</span>
                 </div>
               </div>
 
               {/* Payment Methods */}
-              <div className="mt-6 pt-6 border-t border-[#2b3538]">
-                <h3 className="font-semibold text-sm mb-3">Payment Options</h3>
-                <div className="grid grid-cols-4 gap-2">
-                  <a href={paymentSettings.alipayUrl} className="flex flex-col items-center p-3 bg-[#1a1a1a] rounded-lg border border-[#2b3538] hover:border-[#21c7a5] transition">
-                    <span className="text-2xl mb-1">💳</span>
-                    <span className="text-xs text-[#a7b0b2]">Alipay</span>
-                  </a>
-                  <a href={paymentSettings.cryptoUrl} className="flex flex-col items-center p-3 bg-[#1a1a1a] rounded-lg border border-[#2b3538] hover:border-[#21c7a5] transition">
-                    <span className="text-2xl mb-1">₿</span>
-                    <span className="text-xs text-[#a7b0b2]">Crypto</span>
-                  </a>
-                  <a href={paymentSettings.bankTransferUrl} className="flex flex-col items-center p-3 bg-[#1a1a1a] rounded-lg border border-[#2b3538] hover:border-[#21c7a5] transition">
-                    <span className="text-2xl mb-1">🏦</span>
-                    <span className="text-xs text-[#a7b0b2]">Bank Transfer</span>
-                  </a>
-                  <a href={paymentSettings.wiseUrl} className="flex flex-col items-center p-3 bg-[#1a1a1a] rounded-lg border border-[#2b3538] hover:border-[#21c7a5] transition">
-                    <span className="text-2xl mb-1">W</span>
-                    <span className="text-xs text-[#a7b0b2]">Wise</span>
-                  </a>
+              <div className="mt-6 pt-6 border-t border-[#d7e3eb]">
+                <div className="space-y-2">
+                  <label className={`block p-3 rounded-lg border cursor-pointer transition ${selectedPaymentMethod === 'paypal' ? 'border-[#139fe8] bg-[#e8f6fd]' : 'border-[#d7e3eb] bg-[#f3f7fa]'}`}>
+                    <span className="flex items-center gap-3">
+                      <input type="radio" name="payment-method" value="paypal" checked={selectedPaymentMethod === 'paypal'} onChange={() => setSelectedPaymentMethod('paypal')} className="accent-[#139fe8]" />
+                      <span className="text-lg font-black text-[#003087]">P</span>
+                      <span className="text-sm font-semibold text-[#38566d]">PayPal</span>
+                      {paymentSettings.paypalUrl && <a href={paymentSettings.paypalUrl} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()} className="ml-auto text-xs text-[#118cca] hover:underline">Open PayPal</a>}
+                    </span>
+                    {selectedPaymentMethod === 'paypal' && <span className="block mt-3 pl-8">
+                      <span className="block text-xs leading-relaxed text-[#607789] mb-3">Use your order number as the payment reference. Do not include product names or research details in the memo.</span>
+                      <span className="block text-xs font-semibold text-[#38566d] mb-1">Your PayPal account</span>
+                      <input type="text" value={paypalAccount} onChange={(event) => setPaypalAccount(event.target.value)} placeholder="PayPal email or account name" className="w-full bg-white border border-[#cbdce6] rounded-lg px-3 py-2 text-sm text-[#10263d] placeholder:text-[#8ba0ad] focus:outline-none focus:border-[#139fe8]" />
+                    </span>}
+                  </label>
+                  <div className={`p-3 rounded-lg border transition ${selectedPaymentMethod === 'alipay' ? 'border-[#139fe8] bg-[#e8f6fd]' : 'border-[#d7e3eb] bg-[#f3f7fa]'}`}>
+                    <button type="button" onClick={() => setSelectedPaymentMethod('alipay')} className="w-full flex items-center gap-3 text-left">
+                      <input type="radio" name="payment-method" value="alipay" checked={selectedPaymentMethod === 'alipay'} onChange={() => setSelectedPaymentMethod('alipay')} className="accent-[#139fe8]" />
+                      <span className="text-lg">💳</span><span className="text-sm font-semibold text-[#38566d]">Alipay</span>
+                    </button>
+                    {selectedPaymentMethod === 'alipay' && <div className="mt-3 pl-8">
+                      <p className="text-xs leading-relaxed text-[#607789]">You can pay with any bank or credit card using the Alipay app. Install Alipay, scan the QR code, and complete your payment securely.</p>
+                      {paymentSettings.alipayQrUrl ? <Image src={paymentSettings.alipayQrUrl} alt="Alipay payment QR code" width={176} height={176} className="mt-4 w-44 h-44 object-contain rounded-lg border border-[#d7e3eb] bg-white p-2" /> : <p className="mt-3 text-xs text-[#b06a00]">Alipay QR code will appear here once it is added in Payment Settings.</p>}
+                      <a href={paymentSettings.alipayUrl} target="_blank" rel="noreferrer" className="inline-block mt-3 text-xs text-[#118cca] hover:underline">Open Alipay payment instructions</a>
+                    </div>}
+                  </div>
+                  <button type="button" onClick={() => setSelectedPaymentMethod('bank transfer')} className={`w-full flex items-center gap-3 p-3 rounded-lg border text-left transition ${selectedPaymentMethod === 'bank transfer' ? 'border-[#139fe8] bg-[#e8f6fd]' : 'border-[#d7e3eb] bg-[#f3f7fa] hover:border-[#139fe8]'}`}>
+                    <span className="text-lg">🏦</span><span className="text-sm font-semibold text-[#38566d]">Bank transfer</span>
+                  </button>
+                  <button type="button" onClick={() => setSelectedPaymentMethod('crypto')} className={`w-full flex items-center gap-3 p-3 rounded-lg border text-left transition ${selectedPaymentMethod === 'crypto' ? 'border-[#139fe8] bg-[#e8f6fd]' : 'border-[#d7e3eb] bg-[#f3f7fa] hover:border-[#139fe8]'}`}>
+                    <span className="text-lg">₿</span><span className="text-sm font-semibold text-[#38566d]">Crypto</span>
+                  </button>
                 </div>
-                <p className="text-xs text-[#a7b0b2] mt-2">Payment details provided after checkout</p>
+                <p className="text-xs text-[#607789] mt-2">Payment details are provided after checkout.</p>
               </div>
 
               <button 
                 onClick={() => setShowCheckoutModal(true)}
-                className="w-full mt-6 px-6 py-4 bg-[#21c7a5] text-black font-bold rounded-lg hover:bg-[#16a98d] transition text-lg"
+                className="w-full mt-6 px-6 py-4 bg-[#139fe8] text-white font-bold rounded-lg hover:bg-[#0b87c9] transition text-lg"
               >
                 Proceed to Checkout
               </button>
 
-              <div className="mt-4 flex items-center justify-center gap-2 text-xs text-[#a7b0b2]">
-                <span className="text-[#21c7a5]">🔒</span>
+              <div className="mt-4 flex items-center justify-center gap-2 text-xs text-[#607789]">
+                <span className="text-[#139fe8]">🔒</span>
                 <span>{hasBoxOrder ? 'Free global delivery · 5–10 days · discreet tracking' : 'Free discreet tracked delivery'}</span>
               </div>
             </div>
           </div>
         </div>
       </div>
+      </div>
 
       {/* Checkout Modal */}
       {showCheckoutModal && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-          <div className="bg-[#141414] rounded-xl border border-[#2b3538] max-w-md w-full p-6">
+        <div className="fixed inset-0 bg-[#071624]/85 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white text-[#10263d] rounded-2xl border border-[#d7e3eb] max-w-2xl w-full p-6 sm:p-8 my-8 shadow-2xl">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold">Complete Your Order</h2>
               <button 
                 onClick={() => setShowCheckoutModal(false)}
-                className="text-[#a7b0b2] hover:text-white text-2xl"
+                className="text-[#607789] hover:text-[#10263d] text-2xl"
               >
                 ×
               </button>
             </div>
 
-            <p className="text-[#a7b0b2] text-sm mb-6">
-              Contact us via WhatsApp, Telegram, or Email to discuss your order, payment options, and shipping details.
-            </p>
-
+            {!checkoutSubmitted ? <form onSubmit={handleCheckoutSubmit} className="space-y-5">
+              <p className="text-[#607789] text-sm">Add your billing and shipping details, then upload your payment screenshot before choosing how to discuss the order with us.</p>
+              <fieldset className="border border-[#d7e3eb] rounded-xl p-4">
+                <legend className="px-2 text-sm font-bold">Billing address</legend>
+                <div className="grid sm:grid-cols-2 gap-3 mt-2">
+                  {(['name', 'email', 'line1', 'city', 'postcode', 'country'] as const).map((field) => <input key={field} required type={field === 'email' ? 'email' : 'text'} value={billingAddress[field]} onChange={(event) => setBillingAddress({ ...billingAddress, [field]: event.target.value })} placeholder={field === 'line1' ? 'Street address' : field === 'postcode' ? 'Postcode / ZIP' : field === 'name' ? 'Full name' : field[0].toUpperCase() + field.slice(1)} className="w-full bg-[#f3f7fa] border border-[#d7e3eb] rounded-lg px-3 py-3 text-sm focus:outline-none focus:border-[#139fe8]" />)}
+                </div>
+              </fieldset>
+              <label className="flex items-center gap-2 text-sm text-[#38566d]"><input type="checkbox" checked={sameAsBilling} onChange={(event) => setSameAsBilling(event.target.checked)} className="accent-[#139fe8]" /> Shipping address is the same as billing</label>
+              {!sameAsBilling && <fieldset className="border border-[#d7e3eb] rounded-xl p-4">
+                <legend className="px-2 text-sm font-bold">Shipping address</legend>
+                <div className="grid sm:grid-cols-2 gap-3 mt-2">
+                  {(['name', 'line1', 'city', 'postcode', 'country'] as const).map((field) => <input key={field} required value={shippingAddress[field]} onChange={(event) => setShippingAddress({ ...shippingAddress, [field]: event.target.value })} placeholder={field === 'line1' ? 'Street address' : field === 'postcode' ? 'Postcode / ZIP' : field === 'name' ? 'Full name' : field[0].toUpperCase() + field.slice(1)} className="w-full bg-[#f3f7fa] border border-[#d7e3eb] rounded-lg px-3 py-3 text-sm focus:outline-none focus:border-[#139fe8]" />)}
+                </div>
+              </fieldset>}
+              <label className="block border border-dashed border-[#9db8c7] rounded-xl p-4 cursor-pointer hover:border-[#139fe8] transition"><span className="block text-sm font-bold">Upload payment screenshot</span><span className="block text-xs text-[#607789] mt-1">PNG, JPEG, or WebP up to 5MB. This is optional if you have not paid yet.</span><input name="payment-proof" type="file" accept="image/png,image/jpeg,image/webp" className="mt-3 block w-full text-sm text-[#607789]" /></label>
+              {turnstileSiteKey && <><div id="turnstile-checkout" className="min-h-[65px]" ref={(element) => { if (element && window.turnstile && !element.childElementCount) window.turnstile.render(element, { sitekey: turnstileSiteKey, callback: setTurnstileToken, 'expired-callback': () => setTurnstileToken(''), 'error-callback': () => setTurnstileError('Cloudflare security check could not load.') }); }} /><Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" /></>}
+              {checkoutError && <p className="text-sm text-red-600" role="alert">{checkoutError}</p>}
+              {turnstileError && <p className="text-sm text-red-600" role="alert">{turnstileError}</p>}
+              <button type="submit" className="w-full px-6 py-4 bg-[#139fe8] text-white font-bold rounded-lg hover:bg-[#0b87c9] transition">Continue to Contact Options</button>
+            </form> : <>
+            <p className="text-[#607789] text-sm mb-6">Your order details{paymentProofName ? ` and ${paymentProofName}` : ''} are ready. Discuss your order through WhatsApp, Telegram, phone, or email.</p>
             <div className="space-y-3">
               <button
                 onClick={handleWhatsApp}
@@ -277,31 +390,33 @@ export default function CartPage() {
 
               <button
                 onClick={handleEmail}
-                className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-[#141414] text-white font-bold rounded-lg hover:bg-[#1a1a1a] transition border border-[#2b3538] hover:border-[#21c7a5]/30"
+                className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-[#10263d] text-white font-bold rounded-lg hover:bg-[#1d4667] transition"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 Order via Email
               </button>
+              <a href={`tel:${process.env.NEXT_PUBLIC_CONTACT_PHONE || ''}`} className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-[#edf5f9] text-[#10263d] font-bold rounded-lg hover:bg-[#dcecf4] transition border border-[#d7e3eb]">☎ Call to discuss your order</a>
             </div>
 
             <div className="mt-6 pt-6 border-t border-[#2b3538]">
-              <p className="text-xs text-[#a7b0b2] text-center mb-3">
+              <p className="text-xs text-[#607789] text-center mb-3">
                 Your order details will be sent with the message. We&apos;ll respond within 24 hours with payment instructions.
               </p>
-              <div className="flex items-center justify-center gap-4 text-xs text-[#a7b0b2]">
+              <div className="flex items-center justify-center gap-4 text-xs text-[#607789]">
                 <span className="flex items-center gap-1">
-                  <span className="text-[#21c7a5]">💳</span> Alipay
+                  <span className="text-[#139fe8]">💳</span> Alipay
                 </span>
                 <span className="flex items-center gap-1">
-                  <span className="text-[#21c7a5]">₿</span> Crypto
+                  <span className="text-[#139fe8]">₿</span> Crypto
                 </span>
                 <span className="flex items-center gap-1">
-                  <span className="text-[#21c7a5]">🏦</span> Bank Transfer
+                  <span className="text-[#139fe8]">🏦</span> Bank Transfer
                 </span>
               </div>
             </div>
+            </>}
           </div>
         </div>
       )}

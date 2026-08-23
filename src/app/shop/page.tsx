@@ -1,10 +1,9 @@
 'use client';
-import Image from 'next/image';
-
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import type { Product } from '@/data/products';
 import { effectivePrice, isOutOfStock } from '@/lib/pricing';
+import ProductImage from '@/components/ProductImage';
 
 export default function ShopPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -42,7 +41,7 @@ export default function ShopPage() {
           <p className="text-[#21c7a5] text-sm font-medium mb-2">Reference-Grade Catalog</p>
           <h1 className="text-3xl font-bold">Research Compounds</h1>
           <p className="text-[#a7b0b2] mt-3 max-w-2xl">
-            Every vial is independently tested and accompanied by a downloadable certificate of analysis. All prices in GBP. Box of 10 vials available.
+            Every product is accompanied by batch documentation and can be purchased as an individual vial or a box of 10 where applicable. All prices in GBP.
           </p>
           <p className="text-[#a7b0b2] text-sm mt-2">{filteredProducts.length} products</p>
         </div>
@@ -77,11 +76,11 @@ export default function ShopPage() {
               className="group bg-[#141414] rounded-xl p-4 border border-[#2b3538] hover:border-[#21c7a5]/30 transition card-glow"
             >
               <div className="aspect-square bg-[#1a1a1a] rounded-lg mb-3 overflow-hidden relative">
-                <Image src={product.image} alt={product.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 25vw" />
+                <ProductImage src={product.image} alt={product.name} className="object-cover" />
               </div>
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-[10px] px-2 py-0.5 bg-[#0a2a22] text-[#21c7a5] rounded-full font-medium">
-                  {product.purity}
+                  COA available
                 </span>
               </div>
               <p className="text-[#a7b0b2] text-xs">{product.categoryLabel}</p>

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { getSupabaseBrowser } from '@/lib/supabase-browser';
 
 interface CartItem {
   qty?: number;
@@ -24,6 +25,17 @@ export default function Header() {
       }
     };
     loadUser();
+    const supabase = getSupabaseBrowser();
+    if (supabase) {
+      supabase.auth.getUser().then((result: { data: { user: { email?: string | null; user_metadata?: { name?: string } } | null } }) => {
+        const userEmail = result.data.user?.email;
+        if (userEmail) {
+          const userData = { email: userEmail, name: result.data.user?.user_metadata?.name || userEmail.split('@')[0] };
+          setUser(userData);
+          localStorage.setItem('user', JSON.stringify(userData));
+        }
+      });
+    }
   }, []);
 
   useEffect(() => {
@@ -51,8 +63,8 @@ export default function Header() {
 
       {/* Main nav */}
       <header className="sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur border-b border-[#2b3538]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-          <Link href="/" className="text-xl font-bold tracking-tight">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-18">
+          <Link href="/" className="text-2xl sm:text-3xl font-bold tracking-tight leading-none">
             <span className="gradient-text">GHKpep</span>
           </Link>
 
@@ -96,6 +108,8 @@ export default function Header() {
                     <div className="border-t border-[#2b3538]">
                       <button
                         onClick={() => {
+                          const supabase = getSupabaseBrowser();
+                          if (supabase) void supabase.auth.signOut();
                           localStorage.removeItem('user');
                           setUser(null);
                           setUserMenuOpen(false);
@@ -146,6 +160,8 @@ export default function Header() {
                   <Link href="/orders" className="block text-[#e1e7e5] hover:text-[#21c7a5]" onClick={() => setMobileOpen(false)}>Orders</Link>
                   <button
                     onClick={() => {
+                      const supabase = getSupabaseBrowser();
+                      if (supabase) void supabase.auth.signOut();
                       localStorage.removeItem('user');
                       setUser(null);
                       setMobileOpen(false);
