@@ -125,7 +125,24 @@ export default function ProductPageClient({ product }: Props) {
           </div>
 
           {/* Add to Cart Button */}
-          <button className="w-full bg-teal-500 text-black font-bold py-4 rounded-lg hover:bg-teal-600 transition mb-6">
+          <button
+            onClick={() => {
+              const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+              cart.push({
+                slug: product.slug,
+                name: product.name,
+                price: selectedType === 'box' ? product.boxPrice : product.price,
+                boxPrice: product.boxPrice,
+                image: product.image,
+                lot: product.lot,
+                qty: quantity,
+                type: selectedType,
+              });
+              localStorage.setItem('cart', JSON.stringify(cart));
+              alert('Added to cart!');
+            }}
+            className="w-full bg-teal-500 text-black font-bold py-4 rounded-lg hover:bg-teal-600 transition mb-6"
+          >
             Add to Cart
           </button>
 

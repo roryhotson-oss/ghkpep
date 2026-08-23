@@ -94,7 +94,29 @@ export default function ShopPage() {
                   <p className="text-[#666] text-xs">Box of 10: £{product.boxPrice.toFixed(2)}</p>
                 </div>
               </div>
-              <div className="mt-2">
+              <div className="mt-2 flex gap-2">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+                    cart.push({
+                      slug: product.slug,
+                      name: product.name,
+                      price: product.price,
+                      boxPrice: product.boxPrice,
+                      image: product.image,
+                      lot: product.lot,
+                      qty: 1,
+                      type: 'vial' as const,
+                    });
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    alert('Added to cart!');
+                  }}
+                  className="text-[#00d4aa] text-xs font-medium hover:underline"
+                >
+                  Add to Cart
+                </button>
                 <span className="text-[#00d4aa] text-xs font-medium group-hover:underline">View →</span>
               </div>
             </Link>
