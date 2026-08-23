@@ -28,12 +28,18 @@ export default function AdminEmailsPage() {
         const res = await fetch('/api/admin/email');
         if (res.ok) {
           const data = await res.json();
-          setSubscribers(data.subscribers);
+          await new Promise<void>((resolve) => {
+            setSubscribers(data.subscribers);
+            resolve();
+          });
         }
       } catch (err) {
         console.error('Failed to fetch subscribers:', err);
       } finally {
-        setLoading(false);
+        await new Promise<void>((resolve) => {
+          setLoading(false);
+          resolve();
+        });
       }
     };
     fetchSubscribers();
@@ -61,15 +67,30 @@ export default function AdminEmailsPage() {
 
       const data = await res.json();
       if (data.success) {
-        setResult(data.results);
-        setForm({ ...form, subject: '', html: '' });
+        await new Promise<void>((resolve) => {
+          setResult(data.results);
+          resolve();
+        });
+        await new Promise<void>((resolve) => {
+          setForm({ ...form, subject: '', html: '' });
+          resolve();
+        });
       } else {
-        setError(data.error || 'Failed to send emails');
+        await new Promise<void>((resolve) => {
+          setError(data.error || 'Failed to send emails');
+          resolve();
+        });
       }
     } catch {
-      setError('Failed to send emails');
+      await new Promise<void>((resolve) => {
+        setError('Failed to send emails');
+        resolve();
+      });
     } finally {
-      setSending(false);
+      await new Promise<void>((resolve) => {
+        setSending(false);
+        resolve();
+      });
     }
   };
 

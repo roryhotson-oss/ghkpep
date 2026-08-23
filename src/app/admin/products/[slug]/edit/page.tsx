@@ -37,15 +37,30 @@ export default function EditProductPage() {
         const res = await fetch(`/api/admin/products/${slug}`);
         if (res.ok) {
           const data = await res.json();
-          setForm(data.product);
-          setImagePreview(data.product.image);
+          await new Promise<void>((resolve) => {
+            setForm(data.product);
+            resolve();
+          });
+          await new Promise<void>((resolve) => {
+            setImagePreview(data.product.image);
+            resolve();
+          });
         } else {
-          setError('Product not found');
+          await new Promise<void>((resolve) => {
+            setError('Product not found');
+            resolve();
+          });
         }
       } catch {
-        setError('Failed to load product');
+        await new Promise<void>((resolve) => {
+          setError('Failed to load product');
+          resolve();
+        });
       } finally {
-        setLoading(false);
+        await new Promise<void>((resolve) => {
+          setLoading(false);
+          resolve();
+        });
       }
     };
     fetchProduct();
@@ -76,7 +91,10 @@ export default function EditProductPage() {
       });
       const data = await res.json();
       if (data.success) {
-        setUploadedImage(data.url);
+        await new Promise<void>((resolve) => {
+          setUploadedImage(data.url);
+          resolve();
+        });
       }
     } catch (err) {
       console.error('Upload failed:', err);

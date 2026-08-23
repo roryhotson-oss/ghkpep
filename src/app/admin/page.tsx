@@ -26,12 +26,18 @@ export default function AdminDashboardPage() {
         const res = await fetch('/api/admin/stats');
         if (res.ok) {
           const data = await res.json();
-          setStats(data);
+          await new Promise<void>((resolve) => {
+            setStats(data);
+            resolve();
+          });
         }
       } catch (error) {
         console.error('Failed to fetch stats:', error);
       } finally {
-        setLoading(false);
+        await new Promise<void>((resolve) => {
+          setLoading(false);
+          resolve();
+        });
       }
     };
     fetchStats();

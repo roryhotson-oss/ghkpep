@@ -7,6 +7,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [user, setUser] = useState<{ name: string; email: string } | null>(null);
+  const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
     const loadUser = () => {
@@ -19,6 +20,16 @@ export default function Header() {
       }
     };
     loadUser();
+  }, []);
+
+  useEffect(() => {
+    const updateCartCount = () => {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      setCartCount(cart.reduce((sum: number, item: any) => sum + (item.qty || 1), 0));
+    };
+    updateCartCount();
+    window.addEventListener('storage', updateCartCount);
+    return () => window.removeEventListener('storage', updateCartCount);
   }, []);
 
   return (
@@ -46,7 +57,7 @@ export default function Header() {
             <Link href="/contact" className="text-[#ccc] hover:text-[#00d4aa] transition">Contact</Link>
             <Link href="/cart" className="relative text-[#ccc] hover:text-[#00d4aa] transition">
               Cart
-              <span className="absolute -top-1 -right-3 bg-[#00d4aa] text-black text-[10px] rounded-full w-4 h-4 flex items-center justify-center">0</span>
+              <span className="absolute -top-1 -right-3 bg-[#00d4aa] text-black text-[10px] rounded-full w-4 h-4 flex items-center justify-center">{cartCount}</span>
             </Link>
 
             {/* User menu */}

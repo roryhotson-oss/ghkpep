@@ -157,6 +157,14 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      <div className="mt-4 text-center border-t border-[#222] pt-4">
+        <Link
+          href="/admin/login"
+          className="text-[#00d4aa] text-xs hover:underline"
+        >
+          Admin Dashboard  Login
+        </Link>
+      </div>
     </footer>
   );
 }

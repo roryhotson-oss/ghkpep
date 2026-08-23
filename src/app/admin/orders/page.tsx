@@ -36,12 +36,21 @@ export default function AdminOrdersPage() {
   };
 
   useEffect(() => {
-    const loadOrders = async () => { await fetchOrders(); };
+    const loadOrders = async () => {
+      try {
+        await fetchOrders();
+      } catch (error) {
+        console.error('Failed to load orders:', error);
+      }
+    };
     loadOrders();
   }, []);
 
   const updateStatus = async (orderId: string, newStatus: string) => {
-    setUpdatingId(orderId);
+    await new Promise<void>((resolve) => {
+      setUpdatingId(orderId);
+      resolve();
+    });
     try {
       const res = await fetch('/api/admin/orders', {
         method: 'PUT',
@@ -49,12 +58,18 @@ export default function AdminOrdersPage() {
         body: JSON.stringify({ id: orderId, status: newStatus }),
       });
       if (res.ok) {
-        setOrders(orders.map(o => o.id === orderId ? { ...o, status: newStatus as Order['status'] } : o));
+        await new Promise<void>((resolve) => {
+          setOrders(orders.map(o => o.id === orderId ? { ...o, status: newStatus as Order['status'] } : o));
+          resolve();
+        });
       }
     } catch (error) {
       console.error('Failed to update order:', error);
     } finally {
-      setUpdatingId(null);
+      await new Promise<void>((resolve) => {
+        setUpdatingId(null);
+        resolve();
+      });
     }
   };
 

@@ -43,13 +43,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     );
   }
 
-  if (!authenticated) {
-    return null;
-  }
-
   // Don't show sidebar on login page
   if (pathname === '/admin/login') {
     return <>{children}</>;
+  }
+
+  if (!authenticated) {
+    return null;
   }
 
   const navItems = [

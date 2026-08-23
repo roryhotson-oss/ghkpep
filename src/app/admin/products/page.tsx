@@ -39,7 +39,13 @@ export default function AdminProductsPage() {
   };
 
   useEffect(() => {
-    const loadProducts = async () => { await fetchProducts(); };
+    const loadProducts = async () => {
+      try {
+        await fetchProducts();
+      } catch (error) {
+        console.error('Failed to load products:', error);
+      }
+    };
     loadProducts();
   }, []);
 
@@ -47,8 +53,14 @@ export default function AdminProductsPage() {
     try {
       const res = await fetch(`/api/admin/products/${slug}`, { method: 'DELETE' });
       if (res.ok) {
-        setProducts(products.filter(p => p.slug !== slug));
-        setDeleteConfirm(null);
+        await new Promise<void>((resolve) => {
+          setProducts(products.filter(p => p.slug !== slug));
+          resolve();
+        });
+        await new Promise<void>((resolve) => {
+          setDeleteConfirm(null);
+          resolve();
+        });
       }
     } catch (error) {
       console.error('Failed to delete product:', error);
