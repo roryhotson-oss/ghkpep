@@ -39,7 +39,7 @@ export default function Home() {
             <div className="hidden lg:flex items-center justify-center">
               <div className="relative">
                 <div className="w-72 h-80 rounded-2xl bg-gradient-to-b from-[#0a2a22] to-[#0a1a2a] border border-[#222] overflow-hidden shadow-2xl shadow-[#00d4aa]/10">
-                  <Image src="/images/hero-scientist-lab.jpg" alt="Scientist in Modern Laboratory" width={288} height={320} className="w-full h-full object-cover" priority />
+                  <Image src="/images/hero-lab.png" alt="GHK Research Vials" width={288} height={320} className="w-full h-full object-cover" priority />
                 </div>
                 <div className="absolute -top-4 -right-4 bg-[#00d4aa] text-black text-xs font-bold px-3 py-1 rounded-full animate-pulse">
                   Premium Research Grade

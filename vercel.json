@@ -4,8 +4,15 @@
     {
       "src": "package.json",
       "use": "@vercel/next",
-      "config": {}
+      "config": {
+        "installCommand": "npm install --ignore-scripts"
+      }
     }
   ],
-  "installCommand": "npm install --ignore-scripts"
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "$"
+    }
+  ]
 }

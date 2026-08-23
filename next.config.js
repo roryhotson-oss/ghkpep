@@ -1,7 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['images.unsplash.com', 'via.placeholder.com'],
+    unoptimized: true,
+    domains: ['images.unsplash.com', 'via.placeholder.com', 'raw.githubusercontent.com'],
+  },
+  // Disable experimental features that might cause issues
+  experimental: {
+    // ppr: false,
+    // serverComponentsExternalPackages: [],
   },
 };
 
