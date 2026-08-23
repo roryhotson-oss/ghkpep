@@ -16,10 +16,18 @@ interface User {
   name: string;
 }
 
+interface DashboardOrder {
+  order_number: string;
+  status: string;
+  total_amount: number | string;
+  tracking_number?: string;
+}
+
 export default function DashboardPage() {
   const [user, setUser] = useState<User | null>(null);
   const [paymentSettings, setPaymentSettings] = useState<PaymentSettings>({ alipayUrl: '/contact', cryptoUrl: '/contact', bankTransferUrl: '/contact', wiseUrl: '/contact' });
   const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
+  const [orders, setOrders] = useState<DashboardOrder[]>([]);
   const router = useRouter();
 
   useEffect(() => {
@@ -29,6 +37,7 @@ export default function DashboardPage() {
         router.push('/login');
       } else {
         setUser(JSON.parse(storedUser));
+        fetch('/api/orders').then((response) => response.ok ? response.json() : { orders: [] }).then((data) => setOrders(data.orders || [])).catch(() => setOrders([]));
       }
     };
     checkAuth();
@@ -40,7 +49,7 @@ export default function DashboardPage() {
     }).catch(() => {});
   }, []);
 
-  const orders: never[] = [];
+  const totalSpent = orders.reduce((sum, order) => sum + Number(order.total_amount), 0);
 
   const handleLogout = () => {
     localStorage.removeItem('user');
@@ -75,7 +84,7 @@ export default function DashboardPage() {
         </div>
         <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
           <p className="text-[#a7b0b2] text-sm mb-2">Total Spent</p>
-          <p className="text-3xl font-bold">£0.00</p>
+          <p className="text-3xl font-bold">£{totalSpent.toFixed(2)}</p>
         </div>
         <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
           <p className="text-[#a7b0b2] text-sm mb-2">Account Status</p>
@@ -165,7 +174,7 @@ export default function DashboardPage() {
           </Link>
         </div>
         <div className="space-y-3">
-          <p className="text-[#a7b0b2] text-sm text-center py-6">No orders yet.</p>
+          {orders.length === 0 ? <p className="text-[#a7b0b2] text-sm text-center py-6">No orders yet.</p> : <div className="space-y-3">{orders.slice(0, 3).map((order) => <div key={order.order_number} className="flex flex-wrap items-center justify-between gap-3 bg-[#1a1a1a] rounded-lg p-3"><div><p className="font-medium">{order.order_number}</p><p className="text-[#a7b0b2] text-xs">{order.status}</p></div><div className="text-right"><p className="font-bold">£{Number(order.total_amount).toFixed(2)}</p>{order.tracking_number && <a href={`https://www.17track.net/en?nums=${encodeURIComponent(order.tracking_number)}`} target="_blank" rel="noreferrer" className="text-[#21c7a5] text-xs hover:underline">Track with 17TRACK</a>}</div></div>)}</div>}
         </div>
       </div>
 

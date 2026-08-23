@@ -80,6 +80,9 @@ export interface Order {
   status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
   channel: string;
   notes: string;
+  paymentProofUrl?: string;
+  trackingNumber?: string;
+  shippingAddress?: Record<string, string> | null;
 }
 
 export function getOrders(): Order[] {

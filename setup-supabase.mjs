@@ -63,7 +63,7 @@ async function setupSupabase() {
   // Test connection
   console.log('🧪 Testing Supabase connection...');
   try {
-    const { data, error } = await supabaseAdmin
+    const { error } = await supabaseAdmin
       .from('information_schema.tables')
       .select('table_name')
       .limit(1);
@@ -93,6 +93,7 @@ async function setupSupabase() {
   
   // Split into individual statements
   const statements = sql
+    .replace(/--[^\r\n]*/g, '')
     .split(';')
     .map(s => s.trim())
     .filter(s => s.length > 0 && !s.startsWith('--'));
@@ -125,6 +126,9 @@ async function setupSupabase() {
       if (error) {
         // Handle expected errors (table already exists, etc.)
         const errorMsg = error.message.toLowerCase();
+        if (errorMsg.includes('function') && errorMsg.includes('run_sql')) {
+          throw new Error('The Supabase project does not expose the run_sql RPC. Run SUPABASE_SCHEMA.sql in the Supabase SQL Editor first, then rerun this script.');
+        }
         if (errorMsg.includes('already exists') || 
             errorMsg.includes('relation') ||
             errorMsg.includes('duplicate') ||

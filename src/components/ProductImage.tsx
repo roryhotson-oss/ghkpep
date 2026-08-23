@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useState } from 'react';
 interface ProductImageProps {
   src: string;
   alt: string;
@@ -6,20 +7,21 @@ interface ProductImageProps {
 }
 
 export default function ProductImage({ src, alt, className = "w-full h-full object-cover" }: ProductImageProps) {
+  const [hasError, setHasError] = useState(false);
+
   return (
     <div className="relative w-full h-full bg-gradient-to-br from-[#1a1a1a] to-[#0d1a17]">
-      <Image
+      {!hasError ? <Image
         src={src}
-        alt={alt} fill
+        alt={alt}
+        fill
         className={className}
-        sizes="100vw" onError={(e) => {
-          e.currentTarget.style.display = 'none';
-        }}
-      />
-      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+        sizes="100vw"
+        onError={() => setHasError(true)}
+      /> : <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
         <div className="text-[#21c7a5] font-bold text-xl sm:text-2xl mb-1">GHK</div>
         <div className="text-[#7b898e] text-[10px] text-center px-2 leading-tight max-w-[80%]">{alt}</div>
-      </div>
+      </div>}
     </div>
   );
 }

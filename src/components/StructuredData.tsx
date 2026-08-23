@@ -1,7 +1,7 @@
-import { getProducts } from '@/lib/admin-store';
+import { getCommerceProducts } from '@/lib/commerce-store';
 
-export default function StructuredData() {
-  const products = getProducts();
+export default async function StructuredData() {
+  const products = await getCommerceProducts();
   const structuredData = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -46,7 +46,7 @@ export default function StructuredData() {
           item: {
             '@type': 'Product',
             name: product.name,
-            description: product.description,
+            description: `${product.name} for in-vitro laboratory research with batch documentation.`,
             image: `https://ghkpep.com${product.image}`,
             sku: product.slug,
             brand: { '@type': 'Brand', name: 'GHKpep' },
@@ -54,8 +54,16 @@ export default function StructuredData() {
               '@type': 'Offer',
               priceCurrency: 'GBP',
               price: product.price.toFixed(2),
-              availability: 'https://schema.org/InStock',
+              availability: product.stockQuantity === 0
+                ? 'https://schema.org/OutOfStock'
+                : 'https://schema.org/InStock',
               url: `https://ghkpep.com/shop/${product.slug}`,
+            },
+            subjectOf: {
+              '@type': 'DigitalDocument',
+              name: `${product.name} Certificate of Analysis`,
+              url: `https://ghkpep.com/api/coa?lot=${encodeURIComponent(product.lot)}`,
+              encodingFormat: 'application/pdf',
             },
           },
         })),

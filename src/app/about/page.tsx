@@ -38,7 +38,7 @@ export default function AboutPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { title: "Transparency by default", desc: "Every batch ships with a published certificate of analysis from a Glyvantix lab — linked from the product page, not buried in an email." },
-            { title: "Reference-grade or nothing", desc: "We hold a 99% purity floor on every lot. Material that doesn&apos;t clear it is destroyed, not downgraded." },
+            { title: "Reference-grade or nothing", desc: "Every lot is supported by batch documentation. Material that does not meet our release requirements is not offered for sale." },
             { title: "Built by lab people", desc: "Our QC team are working chemists. Documentation, packaging, and labeling are designed for how research actually runs." },
             { title: "Researcher-only", desc: "We verify research intent at the gate and refuse any order that suggests human or veterinary use. No exceptions, no quotas." },
             { title: "Long-term partnerships", desc: "We&apos;d rather earn one lab for ten years than chase one-time buyers. Pricing, allocation, and support are built around that." },

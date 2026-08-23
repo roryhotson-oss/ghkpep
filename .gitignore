@@ -81,3 +81,4 @@ pids
 # Uploads
 /uploads
 /temp
+.env*

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getStats, getProducts } from '@/lib/admin-store';
+import { getCommerceProducts, getCommerceStats } from '@/lib/commerce-store';
 import { checkAdmin } from '@/lib/admin-auth';
 
 export async function GET() {
@@ -7,7 +7,7 @@ export async function GET() {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const stats = getStats();
-  const products = getProducts();
+  const stats = await getCommerceStats();
+  const products = await getCommerceProducts();
   return NextResponse.json({ ...stats, products });
 }

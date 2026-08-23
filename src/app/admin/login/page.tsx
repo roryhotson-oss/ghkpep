@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState('');
@@ -86,6 +87,11 @@ export default function AdminLoginPage() {
               {loading ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
+          <div className="mt-6 border-t border-[#2b3538] pt-5 text-center">
+            <Link href="/shop" className="text-sm text-[#21c7a5] hover:text-[#16a98d] transition">
+              ← Return to Shop
+            </Link>
+          </div>
         </div>
 
       </div>

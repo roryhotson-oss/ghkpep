@@ -19,7 +19,7 @@ export default function AdminChatPage() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    fetch('/api/admin/messages')
+    const loadMessages = () => fetch('/api/admin/messages')
       .then(async (response) => ({ response, data: await response.json() }))
       .then(({ response, data }) => {
         if (!response.ok) {
@@ -29,6 +29,9 @@ export default function AdminChatPage() {
         setMessages(data.messages);
       })
       .catch(() => setError('Failed to load messages'));
+    loadMessages();
+    const interval = window.setInterval(loadMessages, 15000);
+    return () => window.clearInterval(interval);
   }, []);
 
   const updateStatus = async (id: string, status: Message['status']) => {

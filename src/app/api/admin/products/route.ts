@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getProducts, addProduct } from '@/lib/admin-store';
 import type { Product } from '@/data/products';
 import { checkAdmin } from '@/lib/admin-auth';
+import { getCommerceProducts, saveCommerceProduct } from '@/lib/commerce-store';
 
 export async function GET() {
   if (!(await checkAdmin())) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const products = getProducts();
+  const products = await getCommerceProducts();
   return NextResponse.json({ products });
 }
 
@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'slug, name, and price are required' }, { status: 400 });
     }
 
-    const products = getProducts();
+    const products = await getCommerceProducts();
     if (products.find(p => p.slug === slug)) {
       return NextResponse.json({ error: 'Product with this slug already exists' }, { status: 409 });
     }
@@ -49,8 +49,8 @@ export async function POST(request: NextRequest) {
       discountPercent: parsedDiscount,
     };
 
-    addProduct(newProduct);
-    return NextResponse.json({ success: true, product: newProduct });
+    const savedProduct = await saveCommerceProduct(newProduct);
+    return NextResponse.json({ success: true, product: savedProduct });
   } catch (error) {
     console.error('Add product error:', error);
     return NextResponse.json({ error: 'Failed to add product' }, { status: 500 });

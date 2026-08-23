@@ -59,6 +59,9 @@ Edit `.env.local` and add your configuration:
 ```env
 NEXT_PUBLIC_CONTACT_EMAIL=your-email@example.com
 NEXT_PUBLIC_WHATSAPP_NUMBER=441234567890
+NEXT_PUBLIC_CONTACT_PHONE=441234567890
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=your-cloudflare-turnstile-site-key
+TURNSTILE_SECRET_KEY=your-cloudflare-turnstile-secret-key
 NEXT_PUBLIC_TELEGRAM_USERNAME=your_username
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 RESEND_API_KEY=your_resend_api_key_here
@@ -69,6 +72,11 @@ NEXT_PUBLIC_ALIPAY_URL=https://your-alipay-instructions-url.example
 NEXT_PUBLIC_CRYPTO_PAYMENT_URL=https://your-crypto-payment-url.example
 NEXT_PUBLIC_BANK_TRANSFER_URL=https://your-bank-transfer-instructions-url.example
 NEXT_PUBLIC_WISE_URL=https://your-wise-payment-url.example
+NEXT_PUBLIC_PAYPAL_URL=https://www.paypal.com/paypalme/your-account
+NEXT_PUBLIC_ALIPAY_QR_URL=/images/alipay-qr.png
+| `NEXT_PUBLIC_WISE_URL` | Wise payment URL | No |
+| `NEXT_PUBLIC_PAYPAL_URL` | PayPal.Me or hosted PayPal payment URL | No |
+| `NEXT_PUBLIC_ALIPAY_QR_URL` | Alipay QR image path or hosted image URL | No |
 ```
 
 ### 4. Run the development server
@@ -167,6 +175,15 @@ ghkpep-site/
 |----------|-------------|----------|
 | `NEXT_PUBLIC_CONTACT_EMAIL` | Contact email address | Yes |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | WhatsApp number (no + or spaces) | Yes |
+| `NEXT_PUBLIC_CONTACT_PHONE` | Phone number for order calls | No |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Public Cloudflare Turnstile site key | No |
+| `TURNSTILE_SECRET_KEY` | Server-only Cloudflare Turnstile secret key | No |
+
+### Social publishing
+
+The admin Marketing page creates product-specific drafts for X, Facebook, Reddit, Instagram, and LinkedIn. Drafts require manual approval. Add each platform's official OAuth credentials only when you are ready to publish through its API; do not use passwords or scrape platforms.
+
+Social credentials must remain server-only. X requires a developer app with write access, Meta requires a Page access token, and Reddit requires an OAuth app plus a subreddit that permits relevant promotional posts. Publishing adapters should only publish posts marked `approved` or `scheduled`.
 | `NEXT_PUBLIC_TELEGRAM_USERNAME` | Telegram username | Yes |
 | `NEXT_PUBLIC_SITE_URL` | Site URL | Yes |
 | `RESEND_API_KEY` | Resend API key for emails | Yes |

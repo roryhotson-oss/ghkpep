@@ -2,15 +2,18 @@
 
 import { useEffect, useState } from 'react';
 
-type Settings = Record<'alipayUrl' | 'cryptoUrl' | 'bankTransferUrl' | 'wiseUrl' | 'revolutDetails' | 'coinbaseUrl' | 'bitcoinAddress' | 'ethereumAddress' | 'usdtAddress', string>;
+type Settings = Record<'paypalUrl' | 'alipayUrl' | 'alipayQrUrl' | 'cryptoUrl' | 'bankTransferUrl' | 'wiseUrl' | 'revolutDetails' | 'coinbaseUrl' | 'bitcoinAddress' | 'ethereumAddress' | 'usdtAddress', string>;
 
 const emptySettings: Settings = {
-  alipayUrl: '', cryptoUrl: '', bankTransferUrl: '', wiseUrl: '', revolutDetails: '',
+  paypalUrl: '',
+  alipayUrl: '', alipayQrUrl: '', cryptoUrl: '', bankTransferUrl: '', wiseUrl: '', revolutDetails: '',
   coinbaseUrl: '', bitcoinAddress: '', ethereumAddress: '', usdtAddress: '',
 };
 
 const fields: { key: keyof Settings; label: string; help: string; multiline?: boolean }[] = [
+  { key: 'paypalUrl', label: 'PayPal payment URL', help: 'Use your PayPal.Me link or a hosted PayPal checkout URL.' },
   { key: 'alipayUrl', label: 'Alipay payment URL', help: 'Use a verified checkout or payment-instructions URL.' },
+  { key: 'alipayQrUrl', label: 'Alipay QR code image path', help: 'Use a public image path such as /images/alipay-qr.png, or a hosted image URL.' },
   { key: 'cryptoUrl', label: 'Crypto payment URL', help: 'Use your hosted crypto checkout or instructions URL.' },
   { key: 'bankTransferUrl', label: 'Bank transfer instructions URL', help: 'Link to the current BACS or bank-transfer instructions.' },
   { key: 'wiseUrl', label: 'Wise payment URL', help: 'Use a Wise payment link or current Wise payment instructions.' },

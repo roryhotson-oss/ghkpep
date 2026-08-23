@@ -12,6 +12,9 @@ interface Order {
   status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
   channel: string;
   notes: string;
+  paymentProofUrl?: string;
+  trackingNumber?: string;
+  shippingAddress?: Record<string, string> | null;
 }
 
 export default function AdminOrdersPage() {
@@ -20,6 +23,7 @@ export default function AdminOrdersPage() {
   const [statusFilter, setStatusFilter] = useState('all');
   const [expandedOrder, setExpandedOrder] = useState<string | null>(null);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
+  const [trackingInputs, setTrackingInputs] = useState<Record<string, string>>({});
 
   const fetchOrders = async () => {
     try {
@@ -164,6 +168,8 @@ export default function AdminOrdersPage() {
                         <p className="text-[#e1e7e5]">{order.customerName}</p>
                         <p className="text-[#a7b0b2]">{order.customerEmail}</p>
                         <p className="text-[#a7b0b2]">Channel: {order.channel || 'Website'}</p>
+                        {order.paymentProofUrl && <a href={order.paymentProofUrl} target="_blank" rel="noreferrer" className="inline-block text-[#21c7a5] hover:underline">View payment proof</a>}
+                        {order.shippingAddress && <div className="mt-3 text-[#a7b0b2]"><p className="text-[#7b898e]">Shipping address</p><p>{order.shippingAddress.name}</p><p>{order.shippingAddress.line1}</p><p>{order.shippingAddress.city}, {order.shippingAddress.postcode}</p><p>{order.shippingAddress.country}</p></div>}
                       </div>
 
                       <h3 className="text-sm font-semibold text-white mt-4 mb-3">Items</h3>
@@ -206,6 +212,11 @@ export default function AdminOrdersPage() {
                             {status.charAt(0).toUpperCase() + status.slice(1)}
                           </button>
                         ))}
+                      </div>
+                      <label className="block text-sm font-semibold text-white mt-5 mb-2">17TRACK tracking number</label>
+                      <div className="flex gap-2">
+                        <input value={trackingInputs[order.id] ?? order.trackingNumber ?? ''} onChange={(event) => setTrackingInputs({ ...trackingInputs, [order.id]: event.target.value })} placeholder="Enter tracking number" className="min-w-0 flex-1 bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-sm text-white" />
+                        <button type="button" onClick={async () => { const trackingNumber = trackingInputs[order.id] ?? order.trackingNumber ?? ''; const response = await fetch('/api/admin/orders', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: order.id, trackingNumber }) }); if (response.ok) setOrders(orders.map((item) => item.id === order.id ? { ...item, trackingNumber } : item)); }} className="px-3 py-2 bg-[#21c7a5] text-black rounded-lg text-xs font-semibold">Save</button>
                       </div>
                     </div>
                   </div>

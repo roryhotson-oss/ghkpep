@@ -7,7 +7,7 @@
   --color-primary-dark: #16a98d;
   --color-card: #141414;
   --color-card-hover: #1a1a1a;
-  --color-border: #2b3538222;
+  --color-border: #2b3538;
   --color-muted: #a7b0b2;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
 }
@@ -16,7 +16,21 @@ body {
   background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 1.0625rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  body {
+    font-size: 1.125rem;
+  }
 }
 
 * {

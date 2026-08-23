@@ -1,13 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getOrders, updateOrder } from '@/lib/admin-store';
+import { updateOrder } from '@/lib/admin-store';
 import { checkAdmin } from '@/lib/admin-auth';
+import { getCommerceOrders } from '@/lib/commerce-store';
+import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
 export async function GET() {
   if (!(await checkAdmin())) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const orders = getOrders();
+  const orders = await getCommerceOrders();
   return NextResponse.json({ orders });
 }
 
@@ -24,7 +26,7 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: 'Order ID is required' }, { status: 400 });
     }
 
-    const updates: Record<string, string> = {};
+    const updates: Record<string, unknown> = {};
     const allowedStatuses = ['pending', 'processing', 'shipped', 'delivered', 'cancelled'];
     if (status !== undefined) {
       if (typeof status !== 'string' || !allowedStatuses.includes(status)) {
@@ -38,8 +40,37 @@ export async function PUT(request: NextRequest) {
       }
       updates.notes = notes;
     }
+    if (body.trackingNumber !== undefined) {
+      if (typeof body.trackingNumber !== 'string' || body.trackingNumber.length > 100) return NextResponse.json({ error: 'Invalid tracking number' }, { status: 400 });
+      updates.trackingNumber = body.trackingNumber.trim();
+    }
 
-    const updated = updateOrder(id, updates);
+    const supabase = getSupabaseAdmin();
+    if (supabase) {
+      if (status === 'processing') {
+        const { data: sourceOrder, error: sourceError } = await supabase.from('orders').select('stock_reduced, order_items(product_slug, quantity)').eq('order_number', id).maybeSingle();
+        if (sourceError) throw sourceError;
+        if (sourceOrder && !sourceOrder.stock_reduced) {
+          for (const item of sourceOrder.order_items || []) {
+            const { data: product, error: productError } = await supabase.from('products').select('stock_quantity').eq('slug', item.product_slug).maybeSingle();
+            if (productError) throw productError;
+            if (product) {
+              const nextStock = Math.max(0, Number(product.stock_quantity) - Number(item.quantity));
+              const { error: stockError } = await supabase.from('products').update({ stock_quantity: nextStock }).eq('slug', item.product_slug);
+              if (stockError) throw stockError;
+            }
+          }
+          updates.stock_reduced = true;
+        }
+      }
+      const databaseUpdates: Record<string, unknown> = { ...updates, tracking_number: updates.trackingNumber, stock_reduced: updates.stock_reduced };
+      delete databaseUpdates.trackingNumber;
+      delete databaseUpdates.stock_reduced;
+      const { data, error } = await supabase.from('orders').update({ ...databaseUpdates, ...(updates.stock_reduced !== undefined ? { stock_reduced: updates.stock_reduced } : {}) }).eq('order_number', id).select('*').maybeSingle();
+      if (error) throw error;
+      if (data) return NextResponse.json({ success: true, order: data });
+    }
+    const updated = updateOrder(id, updates as Partial<import('@/lib/admin-store').Order>);
     if (!updated) {
       return NextResponse.json({ error: 'Order not found' }, { status: 404 });
     }

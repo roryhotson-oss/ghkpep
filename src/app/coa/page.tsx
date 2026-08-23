@@ -7,7 +7,6 @@ interface COAData {
   documentUrl: string;
   productName: string;
   lotNumber: string;
-  purity: string;
   identity: string;
   sterility: string;
   endotoxin: string;
@@ -30,10 +29,9 @@ export default function COAPage() {
         const products = data.products || [];
         const coas: COAData[] = products.map((product: { slug: string; name: string; lot: string; purity: string }) => ({
           productSlug: product.slug,
-          documentUrl: `/coas/COA-${product.slug}-${product.lot}.pdf`,
+          documentUrl: `/api/coa?lot=${encodeURIComponent(product.lot)}`,
           productName: product.name,
           lotNumber: product.lot,
-          purity: product.purity,
           identity: 'Confirmed',
           sterility: 'No Growth',
           endotoxin: 'NMT 0.05 EU/mL',
@@ -97,8 +95,8 @@ export default function COAPage() {
 
                 <div className="space-y-2 text-sm mb-4">
                   <div className="flex justify-between">
-                    <span className="text-[#a7b0b2]">Purity</span>
-                    <span className="text-[#21c7a5] font-medium">{coa.purity}</span>
+                    <span className="text-[#a7b0b2]">Documentation</span>
+                    <span className="text-[#21c7a5] font-medium">Available</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-[#a7b0b2]">Identity</span>
@@ -230,9 +228,9 @@ export default function COAPage() {
                     </thead>
                     <tbody>
                       <tr className="border-b border-[#2b3538]">
-                        <td className="px-4 py-3">Purity (HPLC)</td>
-                        <td className="px-4 py-3">≥99.0%</td>
-                        <td className="px-4 py-3 font-medium text-[#21c7a5]">{selectedCOA.purity}</td>
+                        <td className="px-4 py-3">Laboratory documentation</td>
+                        <td className="px-4 py-3">See official certificate</td>
+                        <td className="px-4 py-3 font-medium text-[#21c7a5]">Available</td>
                         <td className="px-4 py-3 text-center">✓</td>
                       </tr>
                       <tr className="border-b border-[#2b3538]">

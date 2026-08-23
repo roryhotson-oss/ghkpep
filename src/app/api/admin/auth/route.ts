@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import { generateToken, getAdminCredentials, verifyToken } from '@/lib/admin-auth';
+import { generateToken, getAdminCredentials, verifyAdminPassword, verifyToken } from '@/lib/admin-auth';
 
 export async function POST(request: NextRequest) {
   try {
@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
     const { email, password } = body;
 
     const credentials = getAdminCredentials();
-    if (credentials && email === credentials.email && password === credentials.password) {
+    if (credentials && email === credentials.email && await verifyAdminPassword(password)) {
       const token = generateToken(email);
       const cookieStore = await cookies();
       cookieStore.set('admin_session', token, {

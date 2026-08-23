@@ -1,21 +1,86 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { getSupabaseBrowser } from '@/lib/supabase-browser';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [useEmailCode, setUseEmailCode] = useState(false);
+  const [isRegistering, setIsRegistering] = useState(false);
+  const [resetMode, setResetMode] = useState(false);
+  const [password, setPassword] = useState('');
+  const [status, setStatus] = useState('');
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    const loadSession = async () => {
+      const supabase = getSupabaseBrowser();
+      if (!supabase) return;
+      const sessionResult = await supabase.auth.getSession();
+      const userEmail = sessionResult.data.session?.user.email;
+      if (userEmail) {
+        localStorage.setItem('user', JSON.stringify({ email: userEmail, name: userEmail.split('@')[0] }));
+        router.push('/dashboard');
+      }
+    };
+    void loadSession();
+  }, [router]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Mock authentication - in production, this would call an API
-    if (email) {
+    setLoading(true);
+    setStatus('');
+    const supabase = getSupabaseBrowser();
+    if (!supabase) {
       const name = email.split('@')[0];
       localStorage.setItem('user', JSON.stringify({ email, name }));
+      setLoading(false);
       router.push('/dashboard');
+      return;
+    }
+
+    if (resetMode) {
+      const result = await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/login` });
+      setLoading(false);
+      setStatus(result.error ? result.error.message : 'Check your email for a password reset link.');
+      return;
+    }
+    const result = isRegistering
+      ? await supabase.auth.signUp({ email, password, options: { emailRedirectTo: `${window.location.origin}/login` } })
+      : useEmailCode
+      ? await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: `${window.location.origin}/login` } })
+      : await supabase.auth.signInWithPassword({ email, password });
+    setLoading(false);
+    if (result.error) {
+      setStatus(result.error.message);
+      return;
+    }
+    if (useEmailCode) {
+      setStatus('Check your email for a secure sign-in link.');
+      return;
+    }
+    if (isRegistering && !result.data.session) {
+      setStatus('Check your email to confirm your new account.');
+      return;
+    }
+    localStorage.setItem('user', JSON.stringify({ email, name: email.split('@')[0] }));
+    router.push('/dashboard');
+  };
+
+  const handleOAuth = async (provider: 'google' | 'apple') => {
+    const supabase = getSupabaseBrowser();
+    if (!supabase) {
+      setStatus('Social sign-in is unavailable in preview. Use email instead.');
+      return;
+    }
+    setLoading(true);
+    const result = await supabase.auth.signInWithOAuth({ provider, options: { redirectTo: `${window.location.origin}/login` } });
+    if (result.error) {
+      setStatus(result.error.message);
+      setLoading(false);
     }
   };
 
@@ -24,14 +89,14 @@ export default function LoginPage() {
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-3">Welcome</h1>
-          <p className="text-[#e1e7e5] text-lg mb-2">Sign in or create account</p>
+          <p className="text-[#e1e7e5] text-lg mb-2">{resetMode ? 'Reset your password' : isRegistering ? 'Create your account' : 'Sign in or create account'}</p>
           <p className="text-[#a7b0b2] text-sm">One account for shopping and the partner program.</p>
         </div>
 
         <div className="bg-[#141414] rounded-xl p-8 border border-[#2b3538]">
           {/* Social Login Buttons */}
           <div className="space-y-3 mb-6">
-            <button className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-white text-black font-medium rounded-lg hover:bg-gray-100 transition">
+            <button type="button" onClick={() => handleOAuth('google')} disabled={loading} className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-white text-black font-medium rounded-lg hover:bg-gray-100 transition disabled:opacity-50">
               <svg className="w-5 h-5" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                 <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -41,7 +106,7 @@ export default function LoginPage() {
               Continue with Google
             </button>
             
-            <button className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-black text-white font-medium rounded-lg border border-[#333] hover:bg-[#1a1a1a] transition">
+            <button type="button" onClick={() => handleOAuth('apple')} disabled={loading} className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-black text-white font-medium rounded-lg border border-[#333] hover:bg-[#1a1a1a] transition disabled:opacity-50">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
               </svg>
@@ -71,22 +136,39 @@ export default function LoginPage() {
                 required
               />
             </div>
+              {!useEmailCode && !resetMode && <div className="mb-4">
+              <label className="block text-sm text-[#a7b0b2] mb-2">Password</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#21c7a5]"
+                placeholder="Password"
+                minLength={8}
+                required
+              />
+            </div>}
 
             <button
               type="submit"
+              disabled={loading}
               className="w-full px-8 py-4 bg-[#21c7a5] text-black font-bold rounded-lg hover:bg-[#16a98d] transition text-lg mb-4"
             >
-              {useEmailCode ? 'Email me a sign-in code' : 'Continue with Email'}
+              {loading ? 'Please wait...' : resetMode ? 'Email me a reset link' : isRegistering ? 'Create account' : useEmailCode ? 'Email me a sign-in link' : 'Sign in with Email'}
             </button>
 
-            <button
+            {!resetMode && <button
               type="button"
               onClick={() => setUseEmailCode(!useEmailCode)}
               className="w-full text-[#21c7a5] text-sm hover:underline"
             >
               {useEmailCode ? 'Use password instead' : 'Email me a sign-in code'}
-            </button>
+            </button>}
+            {!resetMode && !useEmailCode && <button type="button" onClick={() => setIsRegistering(!isRegistering)} className="w-full mt-3 text-[#21c7a5] text-sm hover:underline">{isRegistering ? 'Already have an account? Sign in' : 'New customer? Create an account'}</button>}
+            {!resetMode && !isRegistering && !useEmailCode && <button type="button" onClick={() => setResetMode(true)} className="w-full mt-3 text-[#a7b0b2] text-xs hover:text-[#21c7a5]">Forgot password?</button>}
+            {resetMode && <button type="button" onClick={() => setResetMode(false)} className="w-full mt-3 text-[#21c7a5] text-sm hover:underline">Back to sign in</button>}
           </form>
+          {status && <p className="mt-4 text-center text-sm text-[#a7b0b2]" role="status">{status}</p>}
         </div>
 
         <div className="mt-6 text-center text-xs text-[#7b898e]">

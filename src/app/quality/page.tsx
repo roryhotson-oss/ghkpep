@@ -15,7 +15,7 @@ export default function QualityPage() {
             { title: "UK Operations", desc: "Sourcing, QC, fulfillment, and support are all run from our UK facility. No drop-shipping, no relabeling, no anonymous middlemen." },
             { title: "Documented Process", desc: "Every compound follows an internal SOP from synthesis through lyophilization. Batches are barcoded and traceable from raw input to vial." },
             { title: "Third-Party Identity & Purity", desc: "Every batch is independently assayed by a Glyvantix-accredited laboratory. HPLC and mass-spec results are published on the product page before the batch ships." },
-            { title: "Hard Purity Floor", desc: "If a batch falls below 99% purity it does not leave the lab. There is no second-tier inventory and no 'close enough' stock." },
+            { title: "Clear Release Standards", desc: "Material that does not meet our documented release requirements does not leave the lab. There is no second-tier inventory and no 'close enough' stock." },
             { title: "Stability-Preserved Shipping", desc: "Temperature-sensitive compounds ship with insulated packaging and gel packs sized to the destination zone, so the vial you receive matches the COA." },
             { title: "Plain, Sealed Packaging", desc: "Outer packaging is unmarked. Documentation, lot numbers, and COA links live inside the box — never on the label." },
           ].map((item) => (
@@ -34,7 +34,7 @@ export default function QualityPage() {
             {[
               { num: "01", title: "Source", desc: "Raw amino acids and reagents sourced from qualified suppliers with certificates on file." },
               { num: "02", title: "Synthesize", desc: "Solid-phase synthesis under documented conditions in our controlled environment." },
-              { num: "03", title: "Purify", desc: "Reverse-phase HPLC purification to a minimum 99% purity floor." },
+              { num: "03", title: "Purify", desc: "Reverse-phase HPLC purification and documented quality review." },
               { num: "04", title: "Lyophilize", desc: "Freeze-dried under vacuum to a stable, transport-ready powder." },
               { num: "05", title: "Verify", desc: "Independent Glyvantix lab confirms identity and content; COA generated." },
               { num: "06", title: "Release", desc: "Lot is barcoded, sealed, and released to fulfillment. COA goes live on the product page." },

@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     description: 'GHKpep supplies documented research compounds for in-vitro laboratory use, with independent testing and free discreet tracked shipping.',
     images: [
       {
-        url: '/images/og-image.jpg',
+        url: '/images/hero-lab.png',
         width: 1200,
         height: 630,
         alt: 'GHK Peptides UK - Premium Research Peptides',
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'GHKpep UK | Research Peptides',
     description: 'Documented research compounds with independent testing and free discreet tracked shipping.',
-    images: ['/images/og-image.jpg'],
+    images: ['/images/hero-lab.png'],
     creator: '@ghkpeptides',
   },
   robots: {
