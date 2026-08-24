@@ -181,7 +181,7 @@ export const products: Product[] = [
     categoryLabel: "Mitochondrial",
     description: "Mitochondria-targeted four-residue synthetic sequence. Supplied for in vitro laboratory research.",
     lot: "GHK-2423-N",
-    image: "/images/ss-31-10mg.png"
+    image: "/images/ss-31-10mg.svg"
   },
   {
     slug: "melanotan-1",
@@ -205,7 +205,7 @@ export const products: Product[] = [
     categoryLabel: "Copper Composite",
     description: "Copper-bound composite, lyophilized powder. Supplied for in vitro laboratory research.",
     lot: "GHK-2425-P",
-    image: "/images/wolverine-10mg.png"
+    image: "/images/wolverine-10mg.svg"
   },
   {
     slug: "kiss-peptin",
@@ -217,7 +217,7 @@ export const products: Product[] = [
     categoryLabel: "Peptide",
     description: "Synthetic kisspeptin-10 sequence. Supplied for in vitro laboratory research.",
     lot: "GHK-2426-Q",
-    image: "/images/kiss-peptin-10mg.png"
+    image: "/images/kisspeptin-10mg.svg"
   },
   {
     slug: "cagrilintide",
@@ -325,7 +325,7 @@ export const products: Product[] = [
     categoryLabel: "Thymosin Fragment",
     description: "Acetylated Thymosin beta-4 fragment. Lyophilized powder, ≥99% purity (HPLC). Supplied for in vitro laboratory research.",
     lot: "GHK-2435-Z",
-    image: "/images/tb-500-10mg.png"
+    image: "/images/tb-500-10mg.svg"
   },
   {
     slug: "semax",

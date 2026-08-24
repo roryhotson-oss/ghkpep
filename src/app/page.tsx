@@ -2,6 +2,11 @@ import { products } from '@/data/products';
 import MaintenanceContactForm from './MaintenanceContactForm';
 
 const RESEARCH_PRODUCTS = products.filter((product) => product.category !== 'accessories');
+const ADDITIONAL_REFERENCE_PRODUCTS = [
+  { slug: 'mt-1-reference', name: 'MT-1 10mg', image: '/images/mt-1-10mg.svg' },
+  { slug: 'mt-2-reference', name: 'MT-2 10mg', image: '/images/mt-2-10mg.svg' },
+];
+const DISPLAY_PRODUCTS = [...RESEARCH_PRODUCTS, ...ADDITIONAL_REFERENCE_PRODUCTS];
 
 export const metadata = {
   title: 'GHKpep | Temporary maintenance',
@@ -33,9 +38,9 @@ export default function Home() {
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#4d7895]">Product images</p>
             <h2 className="mt-2 text-2xl font-bold text-[#10263d]">Selected catalogue references</h2>
             <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-              {RESEARCH_PRODUCTS.map((product) => (
-                <div key={product.slug} className="overflow-hidden border border-[#cbdbe6] bg-white">
-                  <div className="aspect-square bg-[#f7fafc] p-3">
+              {DISPLAY_PRODUCTS.map((product) => (
+                <div key={product.slug} className="overflow-hidden border border-[#9db8c7] bg-white shadow-md shadow-[#2e617e]/10 ring-1 ring-[#eef4f8]">
+                  <div className="aspect-[4/3] bg-[#f7fafc] p-1">
                     <img src={product.image} alt={`${product.name} product reference`} className="h-full w-full object-contain" />
                   </div>
                   <p className="px-3 py-3 text-sm font-semibold text-[#10263d]">{product.name}</p>
@@ -70,6 +75,10 @@ export default function Home() {
             <p className="mt-3 text-sm text-[#425b6d]">Ask and we will assist where we can. We keep product, COA, and quality information factual and clear, without inflated claims.</p>
             <MaintenanceContactForm />
           </div>
+
+          <footer className="mt-8 border-t border-[#cbdbe6] pt-5 text-center text-xs leading-6 text-[#607789]">
+            For laboratory research use only. Not for human or veterinary use, and not for diagnosis, treatment, cure, or prevention of any disease. Product information and documentation should be reviewed before any purchase or use.
+          </footer>
         </div>
       </div>
     </div>
