@@ -48,6 +48,7 @@ export default function AgeGate() {
   const handleConsent = (choice: string) => {
     try {
       localStorage.setItem('ghk-cookie-consent', choice);
+      localStorage.setItem('va-disable', choice === 'denied' ? '1' : '0');
     } catch {
       // Continue even if localStorage is blocked.
     }

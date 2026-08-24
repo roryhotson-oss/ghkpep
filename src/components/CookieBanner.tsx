@@ -18,6 +18,7 @@ export default function CookieBanner() {
   const choose = (choice: string) => {
     try {
       localStorage.setItem(STORAGE_KEY, choice);
+      localStorage.setItem('va-disable', choice === 'denied' ? '1' : '0');
     } catch {
       // Continue even when browser storage is unavailable.
     }

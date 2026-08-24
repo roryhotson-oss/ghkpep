@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import ErrorBoundary from '@/components/ErrorBoundary';
+import AnalyticsPrivacy from '@/components/AnalyticsPrivacy';
 import './globals.css';
 import SiteChrome from '@/components/SiteChrome';
 import FooterConditional from '@/components/FooterConditional';
@@ -99,6 +100,7 @@ export default function RootLayout({
         <SiteChrome />
         <main><ErrorBoundary>{children}</ErrorBoundary></main>
         <FooterConditional />
+        <AnalyticsPrivacy />
       </body>
     </html>
   );
