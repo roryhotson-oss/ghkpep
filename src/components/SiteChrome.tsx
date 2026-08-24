@@ -8,7 +8,7 @@ export default function SiteChrome() {
   const pathname = usePathname();
   const isAdmin = pathname.startsWith('/admin');
 
-  if (isAdmin) return null;
+  if (isAdmin || process.env.NEXT_PUBLIC_MAINTENANCE_MODE !== 'false') return null;
 
   return (
     <>

@@ -28,6 +28,7 @@ function isRateLimited(ip: string, limit: number, windowMs: number): boolean {
 export function proxy(request: NextRequest) {
   const response = NextResponse.next();
   const ip = getIP(request);
+  const pathname = request.nextUrl.pathname;
 
   // Security Headers
   response.headers.set('X-Frame-Options', 'DENY');
@@ -55,16 +56,26 @@ export function proxy(request: NextRequest) {
     );
   }
 
+  // Keep public routes on the maintenance page while leaving admin and API access available.
+  if (
+    process.env.NEXT_PUBLIC_MAINTENANCE_MODE !== 'false' &&
+    pathname !== '/' &&
+    !pathname.startsWith('/admin') &&
+    !pathname.startsWith('/api/')
+  ) {
+    return NextResponse.rewrite(new URL('/', request.url), response);
+  }
+
   // Rate limiting for API routes
-  if (request.nextUrl.pathname.startsWith('/api/')) {
+  if (pathname.startsWith('/api/')) {
     let limit = 60; // Default: 60 requests per minute
     let windowMs = 60 * 1000; // 1 minute
 
     // Stricter limits for sensitive endpoints
-    if (request.nextUrl.pathname === '/api/contact') {
+    if (pathname === '/api/contact') {
       limit = 5; // 5 submissions per hour
       windowMs = 60 * 60 * 1000; // 1 hour
-    } else if (request.nextUrl.pathname === '/api/auth') {
+    } else if (pathname === '/api/auth') {
       limit = 3; // 3 attempts per 15 minutes
       windowMs = 15 * 60 * 1000; // 15 minutes
     }
