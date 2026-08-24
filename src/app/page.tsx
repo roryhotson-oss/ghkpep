@@ -40,9 +40,9 @@ export default function Home() {
 
           <div className="mt-8 border border-[#cbdbe6] bg-white px-5 py-5 sm:px-6">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#4d7895]">Need a human?</p>
-            <h2 className="mt-2 text-xl font-bold text-[#10263d]">Have a question or interested in ordering?</h2>
+            <h2 className="mt-2 text-xl font-bold text-[#10263d]">Orders are being placed now due to high interest</h2>
             <p className="mt-2 text-[#425b6d]">
-              If you would like to place an order for 10 vials, email us and we will send you the price list and arrange your order directly. Questions are welcome too.
+              If you would like to place an order for 10 vials, email us for the price list and include your phone number. A human will call you to answer questions and arrange your order.
             </p>
             <Link
               href="mailto:support@ghkpep.com?subject=Product%20enquiry"
