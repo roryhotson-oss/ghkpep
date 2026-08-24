@@ -17,7 +17,30 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { name, email, institution, subject, message, source } = body;
+    const { name, email, institution, subject, message, source, website } = body;
+
+    if (source === 'maintenance' && typeof website === 'string' && website.trim()) {
+      return NextResponse.json({ error: 'Unable to send message' }, { status: 400 });
+    }
+
+    if (source === 'maintenance') {
+      const secret = process.env.TURNSTILE_SECRET_KEY;
+      const token = body.turnstileToken;
+      if (secret && (typeof token !== 'string' || !token)) {
+        return NextResponse.json({ error: 'Human verification is required' }, { status: 400 });
+      }
+      if (secret && typeof token === 'string') {
+        const verificationResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({ secret, response: token, remoteip: request.headers.get('x-forwarded-for') || '' }),
+        });
+        const verification = await verificationResponse.json();
+        if (verification.success !== true) {
+          return NextResponse.json({ error: 'Human verification failed' }, { status: 400 });
+        }
+      }
+    }
 
     // Validate all inputs
     const nameValidation = validateName(name);
