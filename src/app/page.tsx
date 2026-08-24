@@ -62,9 +62,9 @@ export default function Home() {
 
           <div id="maintenance-enquiry" className="mt-8 border border-[#cbdbe6] bg-white px-5 py-5 sm:px-6">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#4d7895]">Need a human?</p>
-            <h2 className="mt-2 text-xl font-bold text-[#10263d]">Orders are being placed now due to high interest</h2>
+            <h2 className="mt-2 text-xl font-bold text-[#10263d]">1 to 10 vials available</h2>
             <p className="mt-2 text-[#425b6d]">
-              We work with a range of global and local suppliers. If you would like an updated full list and current prices, or want to place an order from 1 to 10 vials, email us and include your phone number. A human will call you to answer questions and arrange your order.
+              Orders for 1 to 10 vials are available. Choose a product above, select Buy 1 or Buy 10, and complete the enquiry form below. We will review your request and contact you to discuss availability, documentation, and next steps.
             </p>
             <p className="mt-3 font-semibold text-[#2e617e]">If you know GHK, you understand. If you do not know GHK, we can help.</p>
             <p className="mt-3 text-sm text-[#425b6d]">Ask and we will assist where we can. We keep product, COA, and quality information factual and clear, without inflated claims.</p>
