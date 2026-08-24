@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
-  const secret = process.env.TURNSTILE_SECRET_KEY;
+  const rawSecret = process.env.TURNSTILE_SECRET_KEY;
+  const secret = rawSecret?.includes('your-cloudflare-turnstile-secret-key')
+    ? (process.env.NODE_ENV !== 'production' ? '1x0000000000000000000000000000000AA' : undefined)
+    : rawSecret;
   if (!secret) return NextResponse.json({ error: 'Cloudflare verification is not configured' }, { status: 503 });
 
   try {

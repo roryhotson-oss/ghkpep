@@ -47,7 +47,22 @@ export default function CartPage() {
   const [sameAsBilling, setSameAsBilling] = useState(true);
   const [turnstileToken, setTurnstileToken] = useState('');
   const [turnstileError, setTurnstileError] = useState('');
-  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '';
+  const rawTurnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '';
+  const turnstileSiteKey = rawTurnstileSiteKey.includes('your-cloudflare-turnstile-site-key')
+    ? (process.env.NODE_ENV !== 'production' ? '1x00000000000000000000AA' : '')
+    : rawTurnstileSiteKey;
+
+  const renderTurnstile = () => {
+    if (typeof window === 'undefined' || !showCheckoutModal || !turnstileSiteKey || !window.turnstile) return;
+    const element = document.getElementById('turnstile-checkout');
+    if (!element || element.childElementCount) return;
+    window.turnstile.render(element, {
+      sitekey: turnstileSiteKey,
+      callback: setTurnstileToken,
+      'expired-callback': () => setTurnstileToken(''),
+      'error-callback': () => setTurnstileError('Cloudflare security check could not load.'),
+    });
+  };
 
   useEffect(() => {
     // Load cart from localStorage on mount
@@ -72,6 +87,13 @@ export default function CartPage() {
       if (data.settings) setPaymentSettings(data.settings);
     }).catch(() => {});
   }, []);
+
+  useEffect(() => {
+    renderTurnstile();
+    if (!showCheckoutModal || !turnstileSiteKey) return;
+    const timer = window.setTimeout(renderTurnstile, 300);
+    return () => window.clearTimeout(timer);
+  }, [showCheckoutModal, turnstileSiteKey]);
 
   // Save cart to localStorage whenever it changes
   useEffect(() => {
@@ -361,7 +383,7 @@ export default function CartPage() {
                 </div>
               </fieldset>}
               <label className="block border border-dashed border-[#9db8c7] rounded-xl p-4 cursor-pointer hover:border-[#8298aa] transition"><span className="block text-sm font-bold">Upload payment screenshot</span><span className="block text-xs text-[#607789] mt-1">PNG, JPEG, or WebP up to 5MB. This is optional if you have not paid yet.</span><input name="payment-proof" type="file" accept="image/png,image/jpeg,image/webp" className="mt-3 block w-full text-sm text-[#607789]" /></label>
-              {turnstileSiteKey && <><div id="turnstile-checkout" className="min-h-[65px]" ref={(element) => { if (element && window.turnstile && !element.childElementCount) window.turnstile.render(element, { sitekey: turnstileSiteKey, callback: setTurnstileToken, 'expired-callback': () => setTurnstileToken(''), 'error-callback': () => setTurnstileError('Cloudflare security check could not load.') }); }} /><Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" /></>}
+              {turnstileSiteKey && <><div id="turnstile-checkout" className="min-h-[65px]" /><Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" onLoad={renderTurnstile} /></>}
               {checkoutError && <p className="text-sm text-red-600" role="alert">{checkoutError}</p>}
               {turnstileError && <p className="text-sm text-red-600" role="alert">{turnstileError}</p>}
               <button type="submit" className="w-full px-6 py-4 bg-[#8298aa] text-white font-bold rounded-lg hover:bg-[#657c8f] transition">Continue to Contact Options</button>
