@@ -13,7 +13,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://ghkpep.com'),
+  metadataBase: new URL('https://www.ghkpep.com'),
   title: {
     default: 'GHKpep UK | Research Peptides & Laboratory Compounds',
     template: '%s | GHKpep UK',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     'peptide suppliers UK',
     'documented research peptides',
   ],
-  authors: [{ name: 'GHKpep', url: 'https://ghkpep.com' }],
+  authors: [{ name: 'GHKpep', url: 'https://www.ghkpep.com' }],
   creator: 'GHKpep',
   publisher: 'GHKpep',
   formatDetection: {
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_GB',
-    url: 'https://ghkpep.com',
+    url: 'https://www.ghkpep.com',
     siteName: 'GHKpep UK',
     title: 'GHKpep UK | Research Peptides & Laboratory Compounds',
     description: 'GHKpep supplies documented research peptides and laboratory compounds for in vitro research use in the UK, with lot references and clear product information.',
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
   },
   category: 'business',
   alternates: {
-    canonical: 'https://ghkpep.com',
+    canonical: 'https://www.ghkpep.com',
   },
 };
 

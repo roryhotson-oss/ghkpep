@@ -12,7 +12,7 @@ Disallow: /checkout
 Disallow: /account
 
 # Sitemap location
-Sitemap: https://ghkpep.com/sitemap.xml
+Sitemap: https://www.ghkpep.com/sitemap.xml
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
