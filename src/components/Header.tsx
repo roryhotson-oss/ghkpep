@@ -76,7 +76,7 @@ export default function Header() {
             <Link href="/shop" className={headerLinkClass}>Shop</Link>
             <Link href="/testing" className={headerLinkClass}>Testing</Link>
             <Link href="/coa" className={headerLinkClass}>Test Reports</Link>
-            <Link href="/contact" className={headerLinkClass}>Contact</Link>
+            <Link href="/contact" className={headerLinkClass}>Support</Link>
             <Link href="/cart" className={`${headerLinkClass} relative`}>
               Cart
               <span className="absolute -top-1 -right-3 bg-[#8298aa] text-black text-[10px] rounded-full w-4 h-4 flex items-center justify-center">{cartCount}</span>
@@ -148,13 +148,12 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile menu */}
         {mobileOpen && (
           <div className="md:hidden border-t border-[#2b3538] bg-[#0a0a0a] px-4 py-4 space-y-3 text-sm">
             <Link href="/shop" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Shop</Link>
             <Link href="/testing" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Testing</Link>
             <Link href="/coa" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Test Reports</Link>
-            <Link href="/contact" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Contact</Link>
+            <Link href="/contact" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Support</Link>
             <Link href="/cart" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Cart</Link>
             <div className="border-t border-[#2b3538] pt-3">
               {user ? (

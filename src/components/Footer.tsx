@@ -25,7 +25,7 @@ export default function Footer() {
 
       {/* Links */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-[#1a1a1a]">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-sm">
           <div>
             <h4 className="font-bold text-[#8298aa] mb-4">GHKpep</h4>
             <p className="text-[#a7b0b2] text-xs leading-relaxed">
@@ -60,6 +60,15 @@ export default function Footer() {
               <li><Link href="/contact" className="hover:text-[#8298aa] transition">Contact</Link></li>
               <li><Link href="/terms" className="hover:text-[#8298aa] transition">Terms of Service</Link></li>
               <li><Link href="/privacy" className="hover:text-[#8298aa] transition">Privacy Policy</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-bold mb-4">Support</h4>
+            <ul className="space-y-2 text-[#a7b0b2] text-xs">
+              <li><a href="mailto:support@ghkpep.com" className="hover:text-[#8298aa] transition">support@ghkpep.com</a></li>
+              <li><a href="mailto:orders@ghkpep.com" className="hover:text-[#8298aa] transition">orders@ghkpep.com</a></li>
+              <li><a href="mailto:privacy@ghkpep.com" className="hover:text-[#8298aa] transition">privacy@ghkpep.com</a></li>
+              <li><Link href="/contact" className="hover:text-[#8298aa] transition">Contact Form</Link></li>
             </ul>
           </div>
         </div>

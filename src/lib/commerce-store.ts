@@ -1,7 +1,14 @@
 import { getProducts as getLocalProducts, getProduct as getLocalProduct } from '@/lib/admin-store';
 import type { Product } from '@/data/products';
+import { products as localProducts } from '@/data/products';
 import type { Order } from '@/lib/admin-store';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+
+// Build a complete image path map from local products
+const productImageMap: Record<string, string> = {};
+localProducts.forEach(p => {
+  productImageMap[p.slug] = p.image;
+});
 
 type ProductRow = {
   id?: string;
@@ -19,16 +26,39 @@ type ProductRow = {
   discount_percent?: number | string | null;
 };
 
-function mapProduct(row: ProductRow): Product {
-  const imageOverrides: Record<string, string> = {
-    'melanotan-2': '/images/melanotan-2-10mg.png',
-    'ss-31': '/images/ss-31-10mg.png',
-    'melanotan-1': '/images/melanotan-1-10mg.png',
-    wolverine: '/images/wolverine-10mg.png',
-    'kiss-peptin': '/images/kiss-peptin-10mg.png',
-    cagrilintide: '/images/cagrilintide-5mg.png',
-    'tb-500': '/images/tb-500-10mg.png',
+function sanitizeCategoryLabel(label: string): string {
+  const trimmed = label.trim();
+  const replacements: Record<string, string> = {
+    'Healing Peptide': 'Sequence Peptide',
+    'Anti-Inflammatory': 'Sequence Fragment',
+    'Growth Hormone': 'Peptide Research',
+    'Growth Factor': 'Peptide Research',
+    'Amylin Analog': 'Amylin Research',
+    'GLP-2 Analog': 'GLP-2 Research',
+    'Incretin Analog': 'Incretin Research',
+    'Tuftsin Analog': 'Tuftsin Research',
+    'ACTH Analog': 'ACTH Research',
   };
+  return replacements[trimmed] || trimmed;
+}
+
+function sanitizeDescription(description: string): string {
+  return description
+    .replace('Triple receptor agonist analog.', 'Triple-sequence research analog.')
+    .replace('Long R3 analog of IGF-1.', 'Long R3 sequence analog of IGF-1.')
+    .replace('Stabilized GHRH analog.', 'Stabilized GHRH sequence analog.')
+    .replace('Long-acting GLP-2 receptor analog.', 'GLP-2 related sequence analog with extended stability profile.')
+    .replace('Melanocortin receptor agonist analog.', 'Melanocortin-related sequence analog.')
+    .replace('Non-selective melanocortin receptor agonist analog.', 'Melanocortin-related sequence analog.')
+    .replace('Synthetic alpha-MSH analog.', 'Synthetic alpha-MSH related sequence.')
+    .replace('Long-acting amylin analog.', 'Amylin-related sequence analog.')
+    .replace('Selective GHS-R1a agonist.', 'GHS-R1a related synthetic sequence.')
+    .replace('Synthetic ACTH(4-10) analog, seven-residue sequence.', 'ACTH(4-10)-related synthetic seven-residue sequence.');
+}
+
+function mapProduct(row: ProductRow): Product {
+  // Priority order: database image_url > local products image > slug-based fallback
+  const image = row.image_url || productImageMap[row.slug] || `/images/${row.slug}.png`;
 
   return {
     id: row.id,
@@ -38,10 +68,10 @@ function mapProduct(row: ProductRow): Product {
     boxPrice: Number(row.box_price),
     purity: row.purity || 'N/A',
     category: row.category || 'recovery',
-    categoryLabel: row.category_label || 'Research Compound',
-    description: row.description || '',
+    categoryLabel: sanitizeCategoryLabel(row.category_label || 'Research Compound'),
+    description: sanitizeDescription(row.description || ''),
     lot: row.lot_number || row.slug.toUpperCase(),
-    image: imageOverrides[row.slug] || row.image_url || `/images/${row.slug}.png`,
+    image,
     stockQuantity: Number(row.stock_quantity ?? 100),
     discountPercent: Number(row.discount_percent ?? 0),
   };

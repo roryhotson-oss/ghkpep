@@ -89,7 +89,6 @@ export default function RootLayout({
   return (
     <html lang="en-GB">
       <head>
-        <link rel="canonical" href="https://ghkpep.com" />
         <meta name="geo.region" content="GB" />
         <meta name="geo.placename" content="United Kingdom" />
         <meta name="geo.position" content="54.702354;-3.276575" />

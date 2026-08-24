@@ -40,6 +40,17 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: messageValidation.error }, { status: 400 });
     }
 
+    // Route to appropriate support email based on subject keywords
+    let contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'support@ghkpep.com';
+    const subjectLower = subjectValidation.sanitized.toLowerCase();
+    const messageLower = messageValidation.sanitized.toLowerCase();
+    
+    if (subjectLower.includes('order') || messageLower.includes('order') || subjectLower.includes('payment') || subjectLower.includes('shipping')) {
+      contactEmail = process.env.NEXT_PUBLIC_ORDERS_EMAIL || 'orders@ghkpep.com';
+    } else if (subjectLower.includes('privacy') || subjectLower.includes('data') || subjectLower.includes('gdpr')) {
+      contactEmail = process.env.NEXT_PUBLIC_PRIVACY_EMAIL || 'privacy@ghkpep.com';
+    }
+
     const supabase = getSupabaseAdmin();
     if (supabase) {
       const { error } = await supabase.from('contact_messages').insert({
@@ -55,9 +66,6 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'Failed to save message' }, { status: 500 });
       }
     }
-
-    // Get contact email from environment or use default
-    const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'orders@ghkpep.com';
 
     // Send email to support
     await resend.emails.send({

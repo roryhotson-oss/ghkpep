@@ -57,8 +57,16 @@ export default function ContactPage() {
               <h3 className="font-bold mb-4">Get in touch</h3>
               <div className="space-y-4 text-sm">
                 <div>
-                  <span className="text-[#a7b0b2] block">Email</span>
-                  <span className="text-[#8298aa]">Contact us via the form or checkout options</span>
+                  <span className="text-[#a7b0b2] block">General Inquiries</span>
+                  <a href="mailto:support@ghkpep.com" className="text-[#8298aa] hover:underline">support@ghkpep.com</a>
+                </div>
+                <div>
+                  <span className="text-[#a7b0b2] block">Orders & Shipping</span>
+                  <a href="mailto:orders@ghkpep.com" className="text-[#8298aa] hover:underline">orders@ghkpep.com</a>
+                </div>
+                <div>
+                  <span className="text-[#a7b0b2] block">Privacy & Data</span>
+                  <a href="mailto:privacy@ghkpep.com" className="text-[#8298aa] hover:underline">privacy@ghkpep.com</a>
                 </div>
                 <div>
                   <span className="text-[#a7b0b2] block">Response Time</span>

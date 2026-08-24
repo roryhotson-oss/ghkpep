@@ -70,8 +70,8 @@ export const products: Product[] = [
     boxPrice: 431.91,
     purity: "99.71%",
     category: "metabolic",
-    categoryLabel: "Incretin Analog",
-    description: "Triple receptor agonist analog. Supplied for in vitro laboratory research.",
+    categoryLabel: "Incretin Research",
+    description: "Triple-sequence research analog. Supplied for in vitro laboratory research.",
     lot: "GHK-2418-B",
     image: "/images/glp3-rt-10mg.png"
   },
@@ -94,8 +94,8 @@ export const products: Product[] = [
     boxPrice: 467.91,
     purity: "99.74%",
     category: "recovery",
-    categoryLabel: "Growth Factor",
-    description: "Long R3 analog of IGF-1. Supplied for in vitro laboratory research.",
+    categoryLabel: "Peptide Research",
+    description: "Long R3 sequence analog of IGF-1. Supplied for in vitro laboratory research.",
     lot: "GHK-2413-G",
     image: "/images/igf-1-lr3-10mg.png"
   },
@@ -106,8 +106,8 @@ export const products: Product[] = [
     boxPrice: 539.91,
     purity: "99.88%",
     category: "recovery",
-    categoryLabel: "Growth Hormone",
-    description: "Stabilized GHRH analog. Supplied for in vitro laboratory research.",
+    categoryLabel: "Peptide Research",
+    description: "Stabilized GHRH sequence analog. Supplied for in vitro laboratory research.",
     lot: "GHK-2412-H",
     image: "/images/tesamorelin-10mg.png"
   },
@@ -118,8 +118,8 @@ export const products: Product[] = [
     boxPrice: 287.91,
     purity: "99.62%",
     category: "metabolic",
-    categoryLabel: "GLP-2 Analog",
-    description: "Long-acting GLP-2 receptor analog. Supplied for in vitro laboratory research.",
+    categoryLabel: "GLP-2 Research",
+    description: "GLP-2 related sequence analog with extended stability profile. Supplied for in vitro laboratory research.",
     lot: "GHK-2416-D",
     image: "/images/glp2-tz-10mg.png"
   },
@@ -155,7 +155,7 @@ export const products: Product[] = [
     purity: "≥99%",
     category: "metabolic",
     categoryLabel: "Melanocortin",
-    description: "Melanocortin receptor agonist analog. Supplied for in vitro laboratory research.",
+    description: "Melanocortin-related sequence analog. Supplied for in vitro laboratory research.",
     lot: "GHK-2421-L",
     image: "/images/pt-141-10mg.png"
   },
@@ -167,7 +167,7 @@ export const products: Product[] = [
     purity: "≥99%",
     category: "metabolic",
     categoryLabel: "Melanocortin",
-    description: "Non-selective melanocortin receptor agonist analog. Supplied for in vitro laboratory research.",
+    description: "Melanocortin-related sequence analog. Supplied for in vitro laboratory research.",
     lot: "GHK-2422-M",
     image: "/images/melanotan-2-10mg.png"
   },
@@ -191,7 +191,7 @@ export const products: Product[] = [
     purity: "≥99%",
     category: "metabolic",
     categoryLabel: "Melanocortin",
-    description: "Synthetic alpha-MSH analog. Supplied for in vitro laboratory research.",
+    description: "Synthetic alpha-MSH related sequence. Supplied for in vitro laboratory research.",
     lot: "GHK-2424-O",
     image: "/images/melanotan-1-10mg.png"
   },
@@ -226,8 +226,8 @@ export const products: Product[] = [
     boxPrice: 431.91,
     purity: "≥99%",
     category: "metabolic",
-    categoryLabel: "Amylin Analog",
-    description: "Long-acting amylin analog. Supplied for in vitro laboratory research.",
+    categoryLabel: "Amylin Research",
+    description: "Amylin-related sequence analog. Supplied for in vitro laboratory research.",
     lot: "GHK-2427-R",
     image: "/images/cagrilintide-5mg.png"
   },
@@ -238,7 +238,7 @@ export const products: Product[] = [
     boxPrice: 287.91,
     purity: "≥99%",
     category: "recovery",
-    categoryLabel: "Anti-Inflammatory",
+    categoryLabel: "Sequence Fragment",
     description: "Lys-Pro-Val sequence, C-terminal fragment of alpha-MSH. Supplied for in vitro laboratory research.",
     lot: "GHK-2428-S",
     image: "/images/kpv-10mg.png"
@@ -250,8 +250,8 @@ export const products: Product[] = [
     boxPrice: 359.91,
     purity: "≥99%",
     category: "recovery",
-    categoryLabel: "Growth Hormone",
-    description: "Selective GHS-R1a agonist. Supplied for in vitro laboratory research.",
+    categoryLabel: "Peptide Research",
+    description: "GHS-R1a related synthetic sequence. Supplied for in vitro laboratory research.",
     lot: "GHK-2429-T",
     image: "/images/ipamorelin-10mg.png"
   },
@@ -298,7 +298,7 @@ export const products: Product[] = [
     boxPrice: 287.91,
     purity: "99.2%",
     category: "recovery",
-    categoryLabel: "Healing Peptide",
+    categoryLabel: "Sequence Peptide",
     description: "Synthetic 15-residue sequence (GEPPPGKPADDAGLV). Supplied for in vitro laboratory research.",
     lot: "GHK-2433-X",
     image: "/images/bpc-157-10mg.png"
@@ -310,7 +310,7 @@ export const products: Product[] = [
     boxPrice: 215.91,
     purity: "99.0%",
     category: "cognitive",
-    categoryLabel: "Tuftsin Analog",
+    categoryLabel: "Tuftsin Research",
     description: "Synthetic tuftsin analog (TP-7 sequence). Supplied for in vitro laboratory research.",
     lot: "GHK-2434-Y",
     image: "/images/selank-10mg.png"
@@ -334,8 +334,8 @@ export const products: Product[] = [
     boxPrice: 215.91,
     purity: "99.0%",
     category: "cognitive",
-    categoryLabel: "ACTH Analog",
-    description: "Synthetic ACTH(4-10) analog, seven-residue sequence. Supplied for in vitro laboratory research.",
+    categoryLabel: "ACTH Research",
+    description: "ACTH(4-10)-related synthetic seven-residue sequence. Supplied for in vitro laboratory research.",
     lot: "GHK-2436-AA",
     image: "/images/semax-10mg.png"
   },
