@@ -18,6 +18,9 @@ export default function Home() {
             <h1 className="mt-4 text-4xl sm:text-5xl font-black tracking-tight text-[#10263d]">
               GHKpep is currently undergoing scheduled maintenance.
             </h1>
+            <p className="mt-4 text-xl font-semibold text-[#2e617e]">
+              Those who buy GHK know GHK. If you&apos;re new to GHK, welcome to our community.
+            </p>
             <p className="mt-5 max-w-xl text-lg text-[#425b6d] leading-8">
               We are making updates to our site and order processing while the service is temporarily paused.
             </p>
@@ -33,6 +36,20 @@ export default function Home() {
                     <img src={product.image} alt={`${product.name} product reference`} className="h-full w-full object-contain" />
                   </div>
                   <p className="px-3 py-3 text-sm font-semibold text-[#10263d]">{product.name}</p>
+                  <div className="flex gap-2 px-3 pb-3">
+                    <a
+                      href={`mailto:science@ghkpep.com?subject=${encodeURIComponent(`Buy 1 enquiry: ${product.name}`)}`}
+                      className="flex-1 rounded-md bg-[#2e617e] px-2 py-2 text-center text-xs font-semibold text-white transition hover:bg-[#214d68]"
+                    >
+                      Buy 1
+                    </a>
+                    <a
+                      href={`mailto:science@ghkpep.com?subject=${encodeURIComponent(`Buy 10 enquiry: ${product.name}`)}`}
+                      className="flex-1 rounded-md border border-[#9db8c7] bg-white px-2 py-2 text-center text-xs font-semibold text-[#2e617e] transition hover:bg-[#eef4f8]"
+                    >
+                      Buy 10
+                    </a>
+                  </div>
                 </div>
               ))}
             </div>
