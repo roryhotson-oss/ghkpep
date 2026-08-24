@@ -41,13 +41,15 @@ export default function Home() {
                   <p className="px-3 py-3 text-sm font-semibold text-[#10263d]">{product.name}</p>
                   <div className="flex gap-2 px-3 pb-3">
                     <a
-                      href={`mailto:science@ghkpep.com?subject=${encodeURIComponent(`Buy 1 enquiry: ${product.name}`)}`}
+                      href="#maintenance-enquiry"
+                      aria-label={`Request one ${product.name}`}
                       className="flex-1 rounded-md bg-[#2e617e] px-2 py-2 text-center text-xs font-semibold text-white transition hover:bg-[#214d68]"
                     >
                       Buy 1
                     </a>
                     <a
-                      href={`mailto:science@ghkpep.com?subject=${encodeURIComponent(`Buy 10 enquiry: ${product.name}`)}`}
+                      href="#maintenance-enquiry"
+                      aria-label={`Request ten ${product.name}`}
                       className="flex-1 rounded-md border border-[#9db8c7] bg-white px-2 py-2 text-center text-xs font-semibold text-[#2e617e] transition hover:bg-[#eef4f8]"
                     >
                       Buy 10
@@ -58,7 +60,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-8 border border-[#cbdbe6] bg-white px-5 py-5 sm:px-6">
+          <div id="maintenance-enquiry" className="mt-8 border border-[#cbdbe6] bg-white px-5 py-5 sm:px-6">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#4d7895]">Need a human?</p>
             <h2 className="mt-2 text-xl font-bold text-[#10263d]">Orders are being placed now due to high interest</h2>
             <p className="mt-2 text-[#425b6d]">
