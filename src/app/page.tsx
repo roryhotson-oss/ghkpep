@@ -19,25 +19,8 @@ export default function Home() {
               GHKpep is currently undergoing scheduled maintenance.
             </h1>
             <p className="mt-5 max-w-xl text-lg text-[#425b6d] leading-8">
-              We are making updates to our site and order processing. The catalogue is listed below for reference while the service is temporarily paused.
+              We are making updates to our site and order processing while the service is temporarily paused.
             </p>
-          </div>
-
-          <div className="mt-10 border-y border-[#cbdbe6] py-7">
-            <div className="flex items-end justify-between gap-4">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#4d7895]">Current catalogue</p>
-                <h2 className="mt-2 text-2xl font-bold text-[#10263d]">Products available when we reopen</h2>
-              </div>
-              <p className="text-sm font-semibold text-[#607789]">{RESEARCH_PRODUCTS.length} listings</p>
-            </div>
-            <ul className="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2">
-              {RESEARCH_PRODUCTS.map((product) => (
-                <li key={product.slug} className="border-b border-[#d8e3ec] pb-2 text-base text-[#425b6d]">
-                  {product.name}
-                </li>
-              ))}
-            </ul>
           </div>
 
           <div className="mt-8 border-y border-[#cbdbe6] py-7">
