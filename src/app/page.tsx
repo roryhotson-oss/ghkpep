@@ -1,6 +1,8 @@
 import { products } from '@/data/products';
 import MaintenanceContactForm from './MaintenanceContactForm';
 
+const RESEARCH_PRODUCTS = products.filter((product) => product.category !== 'accessories');
+
 export const metadata = {
   title: 'GHKpep | Temporary maintenance',
   description: 'GHKpep is temporarily undergoing scheduled maintenance while we finalise site updates and order processes. Product information remains available for reference and the service will reopen soon.',
@@ -27,10 +29,10 @@ export default function Home() {
                 <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#4d7895]">Current catalogue</p>
                 <h2 className="mt-2 text-2xl font-bold text-[#10263d]">Products available when we reopen</h2>
               </div>
-              <p className="text-sm font-semibold text-[#607789]">{products.length} listings</p>
+              <p className="text-sm font-semibold text-[#607789]">{RESEARCH_PRODUCTS.length} listings</p>
             </div>
             <ul className="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2">
-              {products.map((product) => (
+              {RESEARCH_PRODUCTS.map((product) => (
                 <li key={product.slug} className="border-b border-[#d8e3ec] pb-2 text-base text-[#425b6d]">
                   {product.name}
                 </li>
@@ -41,8 +43,8 @@ export default function Home() {
           <div className="mt-8 border-y border-[#cbdbe6] py-7">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#4d7895]">Product images</p>
             <h2 className="mt-2 text-2xl font-bold text-[#10263d]">Selected catalogue references</h2>
-            <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
-              {products.slice(0, 5).map((product) => (
+            <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+              {RESEARCH_PRODUCTS.map((product) => (
                 <div key={product.slug} className="overflow-hidden border border-[#cbdbe6] bg-white">
                   <div className="aspect-square bg-[#f7fafc] p-3">
                     <img src={product.image} alt={`${product.name} product reference`} className="h-full w-full object-contain" />
