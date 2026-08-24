@@ -349,7 +349,7 @@ export const products: Product[] = [
     categoryLabel: "Laboratory Accessories",
     description: "Compact protective organizer case for 3ml research vials. Supplied as a laboratory accessory.",
     lot: "ACC-0001-A",
-    image: "/images/research-accessory-1.avif"
+    image: "/images/research-accessory-1.avif?v=7"
   },
   {
     slug: "protective-vial-storage-case",
@@ -361,7 +361,7 @@ export const products: Product[] = [
     categoryLabel: "Laboratory Accessories",
     description: "Protective storage case for organizing and transporting research vials. Supplied as a laboratory accessory.",
     lot: "ACC-0002-B",
-    image: "/images/research-accessory-2.avif"
+    image: "/images/research-accessory-2.avif?v=7"
   }
 ];
 

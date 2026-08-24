@@ -74,10 +74,10 @@ export default function ProductPageClient({ product }: Props) {
           <ProductImage src={product.image} alt={product.name} className="object-cover" />
           <div className="absolute top-4 right-4 flex max-w-[calc(100%-2rem)] flex-col items-end gap-2">
             <div className="rounded-lg border border-[#8298aa] bg-[#17212a]/95 px-3 py-2 text-center text-xs font-semibold leading-tight text-[#d8e2e8] shadow-lg">
-              Lyophilised raw material in a vial
+              {product.category === 'accessories' ? 'Accessories' : 'Lyophilised powder'}
             </div>
             <div className="rounded-md border border-[#aebfca]/70 bg-[#0d151c]/95 px-3 py-1.5 text-right text-[10px] font-mono font-semibold tracking-wide text-[#c2ced5] shadow-lg">
-              Batch {product.lot}
+              Holder refrigerated
             </div>
           </div>
         </div>
