@@ -4,6 +4,33 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
+function SafeImage({ src, alt, fill, className, sizes }: { src: string; alt: string; fill?: boolean; className?: string; sizes?: string }) {
+  const [error, setError] = useState(false);
+  
+  if (error) {
+    return (
+      <Image
+        src="/images/hero-lab.png"
+        alt={alt}
+        fill={fill}
+        className={className}
+        sizes={sizes}
+      />
+    );
+  }
+  
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill={fill}
+      className={className}
+      sizes={sizes}
+      onError={() => setError(true)}
+    />
+  );
+}
+
 interface Product {
   slug: string;
   name: string;
@@ -133,13 +160,12 @@ export default function AdminProductsPage() {
           <div key={product.slug} className="bg-[#141414] rounded-xl border border-[#2b3538] overflow-hidden hover:border-[#333] transition">
             {/* Image */}
             <div className="h-48 bg-[#1a1a1a] flex items-center justify-center p-4 relative">
-              <Image
+              <SafeImage
                 src={product.image}
-                alt={product.name} fill
+                alt={product.name}
+                fill
                 className="max-h-full max-w-full object-contain"
-                sizes="200px" onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/images/hero-lab.png';
-                }}
+                sizes="200px"
               />
             </div>
 
