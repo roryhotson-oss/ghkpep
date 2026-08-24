@@ -24,6 +24,9 @@ export default function Home() {
             <p className="mt-5 max-w-xl text-lg text-[#425b6d] leading-8">
               We are making updates to our site and order processing while the service is temporarily paused.
             </p>
+            <p className="mt-4 max-w-xl text-base text-[#425b6d] leading-7">
+              Our product range is extensive. If you ask, we will assist with the information we can provide. We keep our approach practical: we do not rely on exaggerated COA or quality claims; we offer materials we know and can discuss clearly.
+            </p>
           </div>
 
           <div className="mt-8 border-y border-[#cbdbe6] py-7">
@@ -62,7 +65,7 @@ export default function Home() {
               We work with a range of global and local suppliers. If you would like an updated full list and current prices, or want to place an order from 1 to 10 vials, email us and include your phone number. A human will call you to answer questions and arrange your order.
             </p>
             <p className="mt-3 font-semibold text-[#2e617e]">If you know GHK, you understand. If you do not know GHK, we can help.</p>
-            <p className="mt-3 text-sm text-[#425b6d]">This is a direct line to our team, not an automated bot. Leave your message in the form below and a human will get back to you.</p>
+            <p className="mt-3 text-sm text-[#425b6d]">Ask and we will assist where we can. We keep product, COA, and quality information factual and clear, without inflated claims.</p>
             <MaintenanceContactForm />
           </div>
         </div>
