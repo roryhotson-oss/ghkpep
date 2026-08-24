@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { products } from '@/data/products';
+import MaintenanceContactForm from './MaintenanceContactForm';
 
 export const metadata = {
   title: 'GHKpep | Temporary maintenance',
@@ -45,12 +45,7 @@ export default function Home() {
               We work with a range of global and local suppliers. If you would like an updated full list and current prices, or want to place an order from 1 to 10 vials, email us and include your phone number. A human will call you to answer questions and arrange your order.
             </p>
             <p className="mt-3 font-semibold text-[#2e617e]">If you know GHK, you understand. If you do not know GHK, we can help.</p>
-            <Link
-              href="mailto:support@ghkpep.com?subject=Product%20enquiry"
-              className="mt-4 inline-flex font-bold text-[#2e617e] underline underline-offset-4 hover:text-[#10263d]"
-            >
-              Email support@ghkpep.com
-            </Link>
+            <MaintenanceContactForm />
           </div>
         </div>
       </div>
