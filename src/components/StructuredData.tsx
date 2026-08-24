@@ -30,10 +30,10 @@ export default async function StructuredData() {
         '@type': 'WebPage',
         '@id': 'https://ghkpep.com/#webpage',
         url: 'https://ghkpep.com',
-        name: 'GHKpep UK | Research Compounds',
+        name: 'GHKpep UK | Research Peptides & Laboratory Compounds',
         isPartOf: { '@id': 'https://ghkpep.com/#website' },
         about: { '@id': 'https://ghkpep.com/#organization' },
-        description: 'Documented research compounds with independent testing and certificates of analysis.',
+        description: 'Documented research peptides and laboratory compounds for in vitro research use in the UK.',
       },
       {
         '@type': 'ItemList',

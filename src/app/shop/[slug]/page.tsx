@@ -22,17 +22,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${product.name} | GHKpep UK`,
-    description: `${product.name} for in vitro laboratory research, with batch documentation and free discreet tracked shipping.`,
+    description: `${product.name} for laboratory research use in the UK, with lot documentation and clear product information.`,
     keywords: [
       product.name.toLowerCase(),
       `${product.name.toLowerCase()} UK`,
       `${product.name.toLowerCase()} research compound`,
       `${product.categoryLabel.toLowerCase()} research UK`,
       'laboratory research compounds UK',
+      'research peptides UK',
     ],
     openGraph: {
       title: `${product.name} | GHKpep UK`,
-      description: `Buy ${product.name} in the UK. Premium research compound with batch documentation and discreet tracked shipping.`,
+      description: `${product.name} for laboratory research use in the UK with lot documentation and clear product information.`,
       type: 'website',
       url: `${baseUrl}/shop/${product.slug}`,
       images: [
@@ -40,14 +41,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: product.image || '/images/hero-lab.png',
           width: 1200,
           height: 630,
-          alt: product.name,
+          alt: `${product.name} research compound`,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${product.name} | GHKpep UK`,
-      description: `Buy ${product.name} in the UK. Premium research peptide, independently tested.`,
+      description: `${product.name} for laboratory research use in the UK with lot documentation and clear product information.`,
       images: [product.image || '/images/hero-lab.png'],
     },
     alternates: {
