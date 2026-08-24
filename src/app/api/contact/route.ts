@@ -66,14 +66,14 @@ export async function POST(request: NextRequest) {
       subject: `Contact Form: ${subjectValidation.sanitized}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #21c7a5;">New Contact Form Submission</h2>
+          <h2 style="color: #8298aa;">New Contact Form Submission</h2>
           <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <p><strong>Name:</strong> ${nameValidation.sanitized}</p>
             <p><strong>Email:</strong> ${emailValidation.sanitized}</p>
             ${institution ? `<p><strong>Institution:</strong> ${institution}</p>` : ''}
             <p><strong>Subject:</strong> ${subjectValidation.sanitized}</p>
           </div>
-          <div style="background: #fff; padding: 20px; border-left: 4px solid #21c7a5;">
+          <div style="background: #fff; padding: 20px; border-left: 4px solid #8298aa;">
             <h3 style="margin-top: 0;">Message:</h3>
             <p style="white-space: pre-wrap;">${messageValidation.sanitized}</p>
           </div>
@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="color: #21c7a5; font-size: 32px; margin: 0;">GHK Peptides</h1>
+            <h1 style="color: #8298aa; font-size: 32px; margin: 0;">GHK Peptides</h1>
           </div>
           <h2 style="color: #333;">Thank you for contacting us!</h2>
           <p style="color: #7b898e; line-height: 1.6;">

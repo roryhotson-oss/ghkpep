@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
     if (!body.productSlug || !body.platform || !platforms.includes(body.platform)) return NextResponse.json({ error: 'Product and platform are required' }, { status: 400 });
     const product = await getCommerceProduct(body.productSlug);
     if (!product) return NextResponse.json({ error: 'Product not found' }, { status: 404 });
-    const copy = `${product.name}: documented research material for in-vitro laboratory research. Batch documentation available. Research use only. ${process.env.NEXT_PUBLIC_SITE_URL || 'https://ghkpep.com'}/shop/${product.slug}`;
+    const copy = `${product.name}: documented research material for in vitro laboratory research. Batch documentation available. Research use only. ${process.env.NEXT_PUBLIC_SITE_URL || 'https://ghkpep.com'}/shop/${product.slug}`;
     const post = await createMarketingPost({ productSlug: product.slug, platform: body.platform, content: copy, imageUrl: product.image, scheduledFor: body.scheduledFor || null });
     return NextResponse.json({ post }, { status: 201 });
   } catch (error) {

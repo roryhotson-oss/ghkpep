@@ -35,7 +35,7 @@ export default function QuickAddToCart({ product }: { product: Product }) {
       type="button"
       onClick={addToCart}
       disabled={isOutOfStock(product)}
-      className="rounded-lg bg-[#21c7a5] px-3 py-2 text-xs font-bold text-black transition hover:bg-[#16a98d] disabled:cursor-not-allowed disabled:opacity-50 md:opacity-0 md:group-hover:opacity-100"
+      className="rounded-lg bg-[#8298aa] px-3 py-2 text-xs font-bold text-black transition hover:bg-[#657c8f] disabled:cursor-not-allowed disabled:opacity-50 md:opacity-0 md:group-hover:opacity-100"
     >
       {isOutOfStock(product) ? 'Out of stock' : 'Add to Cart'}
     </button>

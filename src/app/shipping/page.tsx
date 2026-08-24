@@ -5,7 +5,7 @@ export default function ShippingPage() {
     <div>
       <section className="bg-[#0d0d0d] border-b border-[#2b3538]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <p className="text-[#21c7a5] text-sm font-medium mb-2">Tracked Shipping</p>
+          <p className="text-[#8298aa] text-sm font-medium mb-2">Tracked Shipping</p>
           <h1 className="text-3xl font-bold">Shipping Information</h1>
           <p className="text-[#a7b0b2] mt-3 max-w-2xl">Free, discreet tracked delivery. Box-of-10 purchases are sourced globally and typically arrive within 5–10 days.</p>
         </div>
@@ -67,33 +67,33 @@ export default function ShippingPage() {
         </div>
 
         {/* Delivery Guarantee */}
-        <div className="mt-8 bg-gradient-to-r from-[#0a2a22] to-[#0a1a2a] rounded-xl p-6 border border-[#21c7a5]/20">
+        <div className="mt-8 bg-gradient-to-r from-[#17232d] to-[#1c2733] rounded-xl p-6 border border-[#8298aa]/20">
           <div className="flex items-start gap-4">
             <div className="text-3xl">📦</div>
             <div>
-              <h3 className="font-bold mb-2 text-[#21c7a5]">Delivery Guarantee</h3>
+              <h3 className="font-bold mb-2 text-[#8298aa]">Delivery Guarantee</h3>
               <p className="text-[#e1e7e5] text-sm leading-relaxed">
-                We stand behind every shipment. If your package is marked as delivered but you haven&apos;t received it, or if it&apos;s lost in transit, we&apos;ll <span className="font-semibold text-[#21c7a5]">reship your order completely free of charge</span>. No questions asked, no additional cost to you. Your satisfaction and trust are our priorities.
+                We stand behind every shipment. If your package is marked as delivered but you haven&apos;t received it, or if it&apos;s lost in transit, we&apos;ll <span className="font-semibold text-[#8298aa]">reship your order completely free of charge</span>. No questions asked, no additional cost to you. Your satisfaction and trust are our priorities.
               </p>
             </div>
           </div>
         </div>
 
         {/* Quality Guarantee */}
-        <div className="mt-6 bg-gradient-to-r from-[#0a2a22] to-[#0a1a2a] rounded-xl p-6 border border-[#21c7a5]/20">
+        <div className="mt-6 bg-gradient-to-r from-[#17232d] to-[#1c2733] rounded-xl p-6 border border-[#8298aa]/20">
           <div className="flex items-start gap-4">
             <div className="text-3xl">🔬</div>
             <div>
-              <h3 className="font-bold mb-2 text-[#21c7a5]">Quality Testing Guarantee</h3>
+              <h3 className="font-bold mb-2 text-[#8298aa]">Quality Testing Guarantee</h3>
               <p className="text-[#e1e7e5] text-sm leading-relaxed">
-                We&apos;re confident in our quality standards. If you independently test our products and find they don&apos;t meet the specifications stated on the COA, simply <span className="font-semibold text-[#21c7a5]">send us your test results and we&apos;ll provide free replacements</span>. We work only with internationally recognised manufacturers and independently verify every batch, but we understand the importance of giving you complete peace of mind.
+                We&apos;re confident in our quality standards. If you independently test our products and find they don&apos;t meet the specifications stated on the COA, simply <span className="font-semibold text-[#8298aa]">send us your test results and we&apos;ll provide free replacements</span>. We work only with internationally recognised manufacturers and independently verify every batch, but we understand the importance of giving you complete peace of mind.
               </p>
             </div>
           </div>
         </div>
 
         <div className="mt-8 text-center">
-          <Link href="/returns" className="text-[#21c7a5] text-sm hover:underline">View returns policy →</Link>
+          <Link href="/returns" className="text-[#8298aa] text-sm hover:underline">View returns policy →</Link>
         </div>
       </section>
     </div>

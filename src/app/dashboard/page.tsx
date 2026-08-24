@@ -70,7 +70,7 @@ export default function DashboardPage() {
         </div>
         <button
           onClick={handleLogout}
-          className="px-6 py-2 border border-[#2b3538] text-[#e1e7e5] rounded-lg hover:border-[#21c7a5] hover:text-[#21c7a5] transition"
+          className="px-6 py-2 border border-[#2b3538] text-[#e1e7e5] rounded-lg hover:border-[#8298aa] hover:text-[#8298aa] transition"
         >
           Sign Out
         </button>
@@ -88,12 +88,12 @@ export default function DashboardPage() {
         </div>
         <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
           <p className="text-[#a7b0b2] text-sm mb-2">Account Status</p>
-          <p className="text-3xl font-bold text-[#21c7a5]">Active</p>
+          <p className="text-3xl font-bold text-[#8298aa]">Active</p>
         </div>
       </div>
 
       {/* Recurring Subscription Offer */}
-      <div className="bg-gradient-to-r from-[#0a2a22] to-[#0a1a2a] rounded-xl p-6 border border-[#21c7a5]/20 mb-8">
+      <div className="bg-gradient-to-r from-[#17232d] to-[#1c2733] rounded-xl p-6 border border-[#8298aa]/20 mb-8">
         <div className="flex items-start justify-between">
           <div>
             <h2 className="text-xl font-bold mb-2">Set Up Recurring Orders</h2>
@@ -103,17 +103,17 @@ export default function DashboardPage() {
             <div className="flex gap-3">
               <button
                 onClick={() => setShowSubscriptionModal(true)}
-                className="px-6 py-2 bg-[#21c7a5] text-black font-semibold rounded-lg hover:bg-[#16a98d] transition text-sm"
+                className="px-6 py-2 bg-[#8298aa] text-black font-semibold rounded-lg hover:bg-[#657c8f] transition text-sm"
               >
                 Set Up Subscription
               </button>
-              <Link href="/shop" className="px-6 py-2 border border-[#21c7a5] text-[#21c7a5] rounded-lg hover:bg-[#21c7a5] hover:text-black transition text-sm">
+              <Link href="/shop" className="px-6 py-2 border border-[#8298aa] text-[#8298aa] rounded-lg hover:bg-[#8298aa] hover:text-black transition text-sm">
                 Browse Catalog
               </Link>
             </div>
           </div>
           <div className="text-right">
-            <p className="text-3xl font-bold text-[#21c7a5]">Save 25%</p>
+            <p className="text-3xl font-bold text-[#8298aa]">Save 25%</p>
             <p className="text-[#a7b0b2] text-xs">on recurring orders</p>
           </div>
         </div>
@@ -127,37 +127,37 @@ export default function DashboardPage() {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {/* Bank Transfer */}
-            <a href={paymentSettings.bankTransferUrl} className="block bg-[#1a1a1a] rounded-lg p-4 border border-[#2b3538] hover:border-[#21c7a5] transition">
+            <a href={paymentSettings.bankTransferUrl} className="block bg-[#1a1a1a] rounded-lg p-4 border border-[#2b3538] hover:border-[#8298aa] transition">
             <h3 className="font-bold text-white mb-2">Bank Transfer</h3>
             <p className="text-[#a7b0b2] text-xs mb-3">
               View current bank transfer instructions. Orders ship after payment confirmation.
             </p>
-              <span className="text-[#21c7a5] text-xs">View payment instructions -&gt;</span>
+              <span className="text-[#8298aa] text-xs">View payment instructions -&gt;</span>
             </a>
 
           {/* Crypto */}
-            <a href={paymentSettings.cryptoUrl} className="block bg-[#1a1a1a] rounded-lg p-4 border border-[#2b3538] hover:border-[#21c7a5] transition">
+            <a href={paymentSettings.cryptoUrl} className="block bg-[#1a1a1a] rounded-lg p-4 border border-[#2b3538] hover:border-[#8298aa] transition">
             <h3 className="font-bold text-white mb-2">Cryptocurrency</h3>
             <p className="text-[#a7b0b2] text-xs mb-3">
               View current cryptocurrency payment instructions for BTC, ETH, or USDT.
             </p>
-              <span className="text-[#21c7a5] text-xs">View payment instructions -&gt;</span>
+              <span className="text-[#8298aa] text-xs">View payment instructions -&gt;</span>
             </a>
 
           {/* AliExpress / Alipay */}
-            <a href={paymentSettings.alipayUrl} className="block bg-[#1a1a1a] rounded-lg p-4 border border-[#2b3538] hover:border-[#21c7a5] transition">
+            <a href={paymentSettings.alipayUrl} className="block bg-[#1a1a1a] rounded-lg p-4 border border-[#2b3538] hover:border-[#8298aa] transition">
             <h3 className="font-bold text-white mb-2">AliExpress / Alipay</h3>
             <p className="text-[#a7b0b2] text-xs mb-3">
               View current Alipay payment instructions and checkout details.
             </p>
-              <span className="text-[#21c7a5] text-xs">View payment instructions -&gt;</span>
+              <span className="text-[#8298aa] text-xs">View payment instructions -&gt;</span>
             </a>
 
           {/* Wise */}
-            <a href={paymentSettings.wiseUrl} className="block bg-[#1a1a1a] rounded-lg p-4 border border-[#2b3538] hover:border-[#21c7a5] transition">
+            <a href={paymentSettings.wiseUrl} className="block bg-[#1a1a1a] rounded-lg p-4 border border-[#2b3538] hover:border-[#8298aa] transition">
             <h3 className="font-bold text-white mb-2">Wise</h3>
             <p className="text-[#a7b0b2] text-xs mb-3">View current Wise payment instructions.</p>
-              <span className="text-[#21c7a5] text-xs">View payment instructions -&gt;</span>
+              <span className="text-[#8298aa] text-xs">View payment instructions -&gt;</span>
             </a>
         </div>
         <p className="text-xs text-[#7b898e] mt-4">
@@ -169,26 +169,26 @@ export default function DashboardPage() {
       <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538] mb-8">
         <div className="flex justify-between items-start mb-6">
           <h2 className="text-xl font-bold">Recent Orders</h2>
-          <Link href="/orders" className="text-[#21c7a5] text-sm hover:underline">
+          <Link href="/orders" className="text-[#8298aa] text-sm hover:underline">
             View All Orders →
           </Link>
         </div>
         <div className="space-y-3">
-          {orders.length === 0 ? <p className="text-[#a7b0b2] text-sm text-center py-6">No orders yet.</p> : <div className="space-y-3">{orders.slice(0, 3).map((order) => <div key={order.order_number} className="flex flex-wrap items-center justify-between gap-3 bg-[#1a1a1a] rounded-lg p-3"><div><p className="font-medium">{order.order_number}</p><p className="text-[#a7b0b2] text-xs">{order.status}</p></div><div className="text-right"><p className="font-bold">£{Number(order.total_amount).toFixed(2)}</p>{order.tracking_number && <a href={`https://www.17track.net/en?nums=${encodeURIComponent(order.tracking_number)}`} target="_blank" rel="noreferrer" className="text-[#21c7a5] text-xs hover:underline">Track with 17TRACK</a>}</div></div>)}</div>}
+          {orders.length === 0 ? <p className="text-[#a7b0b2] text-sm text-center py-6">No orders yet.</p> : <div className="space-y-3">{orders.slice(0, 3).map((order) => <div key={order.order_number} className="flex flex-wrap items-center justify-between gap-3 bg-[#1a1a1a] rounded-lg p-3"><div><p className="font-medium">{order.order_number}</p><p className="text-[#a7b0b2] text-xs">{order.status}</p></div><div className="text-right"><p className="font-bold">£{Number(order.total_amount).toFixed(2)}</p>{order.tracking_number && <a href={`https://www.17track.net/en?nums=${encodeURIComponent(order.tracking_number)}`} target="_blank" rel="noreferrer" className="text-[#8298aa] text-xs hover:underline">Track with 17TRACK</a>}</div></div>)}</div>}
         </div>
       </div>
 
       {/* Quick Links */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Link href="/shop" className="bg-[#141414] rounded-xl p-6 border border-[#2b3538] hover:border-[#21c7a5]/30 transition">
+        <Link href="/shop" className="bg-[#141414] rounded-xl p-6 border border-[#2b3538] hover:border-[#8298aa]/30 transition">
           <h3 className="font-bold mb-2">Browse Catalog</h3>
           <p className="text-[#a7b0b2] text-sm">Explore our research compounds</p>
         </Link>
-        <Link href="/coa" className="bg-[#141414] rounded-xl p-6 border border-[#2b3538] hover:border-[#21c7a5]/30 transition">
+        <Link href="/coa" className="bg-[#141414] rounded-xl p-6 border border-[#2b3538] hover:border-[#8298aa]/30 transition">
           <h3 className="font-bold mb-2">View COAs</h3>
           <p className="text-[#a7b0b2] text-sm">Access certificates of analysis</p>
         </Link>
-        <Link href="/contact" className="bg-[#141414] rounded-xl p-6 border border-[#2b3538] hover:border-[#21c7a5]/30 transition">
+        <Link href="/contact" className="bg-[#141414] rounded-xl p-6 border border-[#2b3538] hover:border-[#8298aa]/30 transition">
           <h3 className="font-bold mb-2">Contact Support</h3>
           <p className="text-[#a7b0b2] text-sm">Get help with your orders</p>
         </Link>
@@ -211,20 +211,20 @@ export default function DashboardPage() {
             </div>
             <div className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                <div className="bg-[#1a1a1a] rounded-lg p-6 border border-[#2b3538] hover:border-[#21c7a5]/30 cursor-pointer transition">
+                <div className="bg-[#1a1a1a] rounded-lg p-6 border border-[#2b3538] hover:border-[#8298aa]/30 cursor-pointer transition">
                   <h3 className="font-bold mb-2">Monthly</h3>
                   <p className="text-3xl font-bold mb-1">5% <span className="text-sm text-[#a7b0b2]">off</span></p>
                   <p className="text-[#a7b0b2] text-sm">Delivered every month</p>
                 </div>
-                <div className="bg-[#1a1a1a] rounded-lg p-6 border-2 border-[#21c7a5] cursor-pointer transition relative">
+                <div className="bg-[#1a1a1a] rounded-lg p-6 border-2 border-[#8298aa] cursor-pointer transition relative">
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <span className="px-3 py-1 bg-[#21c7a5] text-black text-xs font-bold rounded-full">POPULAR</span>
+                    <span className="px-3 py-1 bg-[#8298aa] text-black text-xs font-bold rounded-full">POPULAR</span>
                   </div>
                   <h3 className="font-bold mb-2">Quarterly</h3>
                   <p className="text-3xl font-bold mb-1">15% <span className="text-sm text-[#a7b0b2]">off</span></p>
                   <p className="text-[#a7b0b2] text-sm">Delivered every 3 months</p>
                 </div>
-                <div className="bg-[#1a1a1a] rounded-lg p-6 border border-[#2b3538] hover:border-[#21c7a5]/30 cursor-pointer transition">
+                <div className="bg-[#1a1a1a] rounded-lg p-6 border border-[#2b3538] hover:border-[#8298aa]/30 cursor-pointer transition">
                   <h3 className="font-bold mb-2">Bi-Annual</h3>
                   <p className="text-3xl font-bold mb-1">25% <span className="text-sm text-[#a7b0b2]">off</span></p>
                   <p className="text-[#a7b0b2] text-sm">Delivered every 6 months</p>
@@ -235,19 +235,19 @@ export default function DashboardPage() {
                 <h3 className="font-bold mb-3">How it works:</h3>
                 <ul className="space-y-2 text-sm text-[#a7b0b2]">
                   <li className="flex items-start gap-2">
-                    <span className="text-[#21c7a5]">✓</span>
+                    <span className="text-[#8298aa]">✓</span>
                     <span>Choose your delivery frequency</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#21c7a5]">✓</span>
+                    <span className="text-[#8298aa]">✓</span>
                     <span>Select which compounds you want on repeat</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#21c7a5]">✓</span>
+                    <span className="text-[#8298aa]">✓</span>
                     <span>Get automatic discounts on every order</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#21c7a5]">✓</span>
+                    <span className="text-[#8298aa]">✓</span>
                     <span>Pause, skip, or cancel anytime</span>
                   </li>
                 </ul>
@@ -259,13 +259,13 @@ export default function DashboardPage() {
                     setShowSubscriptionModal(false);
                     router.push('/cart');
                   }}
-                  className="flex-1 px-6 py-3 bg-[#21c7a5] text-black font-bold rounded-lg hover:bg-[#16a98d] transition"
+                  className="flex-1 px-6 py-3 bg-[#8298aa] text-black font-bold rounded-lg hover:bg-[#657c8f] transition"
                 >
                   Continue to Cart
                 </button>
                 <button
                   onClick={() => setShowSubscriptionModal(false)}
-                  className="px-6 py-3 border border-[#2b3538] text-[#e1e7e5] rounded-lg hover:border-[#21c7a5] hover:text-[#21c7a5] transition"
+                  className="px-6 py-3 border border-[#2b3538] text-[#e1e7e5] rounded-lg hover:border-[#8298aa] hover:text-[#8298aa] transition"
                 >
                   Cancel
                 </button>

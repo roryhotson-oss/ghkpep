@@ -161,31 +161,31 @@ export default function AdminDashboardPage() {
           <div className="flex flex-wrap gap-2">
             <Link
               href="/admin/products/new"
-              className="px-4 py-2 bg-[#21c7a5] text-black text-sm font-medium rounded-lg hover:bg-[#16a98d] transition"
+              className="px-4 py-2 bg-[#8298aa] text-black text-sm font-medium rounded-lg hover:bg-[#657c8f] transition"
             >
               + Add Product
             </Link>
             <Link
               href="/admin/orders"
-              className="px-4 py-2 bg-[#1a1a1a] border border-[#2b3538] text-[#e1e7e5] text-sm font-medium rounded-lg hover:border-[#21c7a5] hover:text-[#21c7a5] transition"
+              className="px-4 py-2 bg-[#1a1a1a] border border-[#2b3538] text-[#e1e7e5] text-sm font-medium rounded-lg hover:border-[#8298aa] hover:text-[#8298aa] transition"
             >
               View All Orders
             </Link>
             <Link
               href="/admin/products"
-              className="px-4 py-2 bg-[#1a1a1a] border border-[#2b3538] text-[#e1e7e5] text-sm font-medium rounded-lg hover:border-[#21c7a5] hover:text-[#21c7a5] transition"
+              className="px-4 py-2 bg-[#1a1a1a] border border-[#2b3538] text-[#e1e7e5] text-sm font-medium rounded-lg hover:border-[#8298aa] hover:text-[#8298aa] transition"
             >
               Manage Products
             </Link>
             <Link
               href="/admin/payment-settings"
-              className="px-4 py-2 bg-[#1a1a1a] border border-[#2b3538] text-[#e1e7e5] text-sm font-medium rounded-lg hover:border-[#21c7a5] hover:text-[#21c7a5] transition"
+              className="px-4 py-2 bg-[#1a1a1a] border border-[#2b3538] text-[#e1e7e5] text-sm font-medium rounded-lg hover:border-[#8298aa] hover:text-[#8298aa] transition"
             >
               Payment Settings
             </Link>
             <Link
               href="/admin/chat"
-              className="px-4 py-2 bg-[#1a1a1a] border border-[#2b3538] text-[#e1e7e5] text-sm font-medium rounded-lg hover:border-[#21c7a5] hover:text-[#21c7a5] transition"
+              className="px-4 py-2 bg-[#1a1a1a] border border-[#2b3538] text-[#e1e7e5] text-sm font-medium rounded-lg hover:border-[#8298aa] hover:text-[#8298aa] transition"
             >
               Support Inbox
             </Link>
@@ -204,7 +204,7 @@ export default function AdminDashboardPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
         {/* Total Revenue */}
         <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538] relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-24 h-24 bg-[#21c7a5]/5 rounded-full -translate-y-12 translate-x-12 group-hover:scale-110 transition-transform duration-300"></div>
+          <div className="absolute top-0 right-0 w-24 h-24 bg-[#8298aa]/5 rounded-full -translate-y-12 translate-x-12 group-hover:scale-110 transition-transform duration-300"></div>
           <div className="relative">
             <div className="flex items-center justify-between mb-2">
               <span className="text-[#a7b0b2] text-sm font-medium">Total Revenue</span>
@@ -269,7 +269,7 @@ export default function AdminDashboardPage() {
         <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-bold text-white">Revenue Trend (Last 6 Months)</h2>
-            <span className="text-[#21c7a5] text-sm">GBP {stats.totalRevenue.toLocaleString()}</span>
+            <span className="text-[#8298aa] text-sm">GBP {stats.totalRevenue.toLocaleString()}</span>
           </div>
           <div className="space-y-4">
             {(stats.revenueByMonth || []).map((month) => {
@@ -281,8 +281,8 @@ export default function AdminDashboardPage() {
                   <span className="text-sm text-[#a7b0b2] w-20">{month.month}</span>
                   <div className="flex-1 bg-[#1a1a1a] rounded-full h-8 overflow-hidden">
                     <div
-                      className={`h-full bg-gradient-to-r from-[#21c7a5] to-[#21c7a5]/30 rounded-full flex items-center justify-end pr-3 transition-all duration-500 ${
-                        isBest ? "ring-2 ring-[#21c7a5] ring-offset-2 ring-offset-[#141414]" : ""
+                      className={`h-full bg-gradient-to-r from-[#8298aa] to-[#8298aa]/30 rounded-full flex items-center justify-end pr-3 transition-all duration-500 ${
+                        isBest ? "ring-2 ring-[#8298aa] ring-offset-2 ring-offset-[#141414]" : ""
                       }`}
                       style={{ width: `${Math.max(width, 3)}%` }}
                     >
@@ -328,7 +328,7 @@ export default function AdminDashboardPage() {
               );
             })}
           </div>
-          <Link href="/admin/orders" className="mt-4 inline-block text-[#21c7a5] text-sm hover:underline">
+          <Link href="/admin/orders" className="mt-4 inline-block text-[#8298aa] text-sm hover:underline">
             Manage Orders -&gt;
           </Link>
         </div>
@@ -338,7 +338,7 @@ export default function AdminDashboardPage() {
       <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538] mb-8">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-lg font-bold text-white">Products ({stats.totalProducts})</h2>
-          <Link href="/admin/products" className="text-[#21c7a5] text-sm hover:underline">
+          <Link href="/admin/products" className="text-[#8298aa] text-sm hover:underline">
             All Products -&gt;
           </Link>
         </div>
@@ -373,7 +373,7 @@ export default function AdminDashboardPage() {
                     <div className="flex gap-2 mt-3">
                       <button
                         onClick={() => startEditing(product)}
-                        className="text-xs px-3 py-1.5 bg-[#21c7a5]/10 text-[#21c7a5] rounded-lg hover:bg-[#21c7a5]/20 transition"
+                        className="text-xs px-3 py-1.5 bg-[#8298aa]/10 text-[#8298aa] rounded-lg hover:bg-[#8298aa]/20 transition"
                       >
                         Edit
                       </button>
@@ -394,7 +394,7 @@ export default function AdminDashboardPage() {
             <p className="text-[#a7b0b2] mb-4">No products yet</p>
             <Link
               href="/admin/products/new"
-              className="px-4 py-2 bg-[#21c7a5] text-black text-sm font-medium rounded-lg hover:bg-[#16a98d] transition"
+              className="px-4 py-2 bg-[#8298aa] text-black text-sm font-medium rounded-lg hover:bg-[#657c8f] transition"
             >
               + Add Your First Product
             </Link>
@@ -412,14 +412,14 @@ export default function AdminDashboardPage() {
                 return (
                   <div key={product.slug} className="flex items-center justify-between p-3 bg-[#1a1a1a] rounded-lg border border-[#2b3538]">
                     <div className="flex items-center gap-3">
-                      <span className="text-2xl text-[#21c7a5] font-bold">{index + 1}</span>
+                      <span className="text-2xl text-[#8298aa] font-bold">{index + 1}</span>
                       <div>
                         <p className="text-white font-medium">{product.name}</p>
                         <p className="text-xs text-[#a7b0b2]">{product.quantity} sold</p>
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-[#21c7a5] font-bold">GBP {product.revenue.toLocaleString()}</p>
+                      <p className="text-[#8298aa] font-bold">GBP {product.revenue.toLocaleString()}</p>
                       <p className="text-xs text-[#7b898e]">revenue</p>
                     </div>
                   </div>
@@ -435,7 +435,7 @@ export default function AdminDashboardPage() {
         <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-bold text-white">Recent Orders</h2>
-            <Link href="/admin/orders" className="text-[#21c7a5] text-sm hover:underline">
+            <Link href="/admin/orders" className="text-[#8298aa] text-sm hover:underline">
               View All
             </Link>
           </div>
@@ -449,7 +449,7 @@ export default function AdminDashboardPage() {
                       <p className="text-xs text-[#a7b0b2] mt-1">{order.customerName}</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-[#21c7a5] font-bold">GBP {order.total.toFixed(2)}</p>
+                      <p className="text-[#8298aa] font-bold">GBP {order.total.toFixed(2)}</p>
                       <span
                         className={`text-xs px-2 py-0.5 rounded-full mt-1 block ${
                           order.status === "delivered"
@@ -498,7 +498,7 @@ export default function AdminDashboardPage() {
                   name="name"
                   value={editForm.name || ""}
                   onChange={handleEditChange}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-[#21c7a5]"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-[#8298aa]"
                 />
               </div>
               <div>
@@ -509,7 +509,7 @@ export default function AdminDashboardPage() {
                   value={editForm.price || 0}
                   onChange={handleEditChange}
                   step="0.01"
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-[#21c7a5]"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-[#8298aa]"
                 />
               </div>
               <div>
@@ -520,7 +520,7 @@ export default function AdminDashboardPage() {
                   value={editForm.boxPrice || 0}
                   onChange={handleEditChange}
                   step="0.01"
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-[#21c7a5]"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-[#8298aa]"
                 />
               </div>
               <div>
@@ -530,7 +530,7 @@ export default function AdminDashboardPage() {
                   name="purity"
                   value={editForm.purity || ""}
                   onChange={handleEditChange}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-[#21c7a5]"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-[#8298aa]"
                 />
               </div>
               <div>
@@ -539,7 +539,7 @@ export default function AdminDashboardPage() {
                   name="category"
                   value={editForm.category || ""}
                   onChange={handleEditChange}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-[#21c7a5]"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-[#8298aa]"
                 >
                   <option value="peptides">Peptides</option>
                   <option value="sarms">SARMs</option>
@@ -554,7 +554,7 @@ export default function AdminDashboardPage() {
                   value={editForm.description || ""}
                   onChange={handleEditChange}
                   rows={3}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-[#21c7a5] resize-none"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-[#8298aa] resize-none"
                 />
               </div>
             </div>
@@ -562,13 +562,13 @@ export default function AdminDashboardPage() {
               <button
                 onClick={saveProduct}
                 disabled={saving}
-                className="flex-1 px-4 py-2 bg-[#21c7a5] text-black font-medium rounded-lg hover:bg-[#16a98d] transition disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 px-4 py-2 bg-[#8298aa] text-black font-medium rounded-lg hover:bg-[#657c8f] transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {saving ? "Saving..." : "Save Changes"}
               </button>
               <button
                 onClick={cancelEditing}
-                className="flex-1 px-4 py-2 bg-[#1a1a1a] border border-[#2b3538] text-[#e1e7e5] font-medium rounded-lg hover:border-[#21c7a5] hover:text-[#21c7a5] transition"
+                className="flex-1 px-4 py-2 bg-[#1a1a1a] border border-[#2b3538] text-[#e1e7e5] font-medium rounded-lg hover:border-[#8298aa] hover:text-[#8298aa] transition"
               >
                 Cancel
               </button>

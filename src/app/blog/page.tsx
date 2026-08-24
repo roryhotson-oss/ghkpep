@@ -52,9 +52,9 @@ const blogPosts = [
     category: 'Guides',
   },
   {
-    slug: 'glyvantix-testing-quality-promise',
-    title: 'Glyvantix Testing: Our Quality Promise',
-    excerpt: 'Learn about our 8-point testing protocol with Glyvantix Labs and how we ensure every peptide meets the highest quality standards.',
+    slug: 'independent-testing-quality-promise',
+    title: 'Independent Testing: Our Quality Promise',
+    excerpt: 'Learn about our 8-point testing protocol and how batch documentation supports laboratory research.',
     date: '2026-08-01',
     readTime: '7 min read',
     category: 'Quality',

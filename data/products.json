@@ -153,7 +153,7 @@
     "categoryLabel": "Melanocortin",
     "description": "Non-selective melanocortin receptor agonist analog. Supplied for in-vitro laboratory research.",
     "lot": "GHK-2422-M",
-    "image": "/images/mt-2-10mg.svg"
+    "image": "/images/melanotan-2-10mg.png"
   },
   {
     "slug": "ss-31",
@@ -165,7 +165,7 @@
     "categoryLabel": "Mitochondrial",
     "description": "Mitochondria-targeted four-residue synthetic sequence. Supplied for in-vitro laboratory research.",
     "lot": "GHK-2423-N",
-    "image": "/images/ss-31-10mg.svg"
+    "image": "/images/ss-31-10mg.png"
   },
   {
     "slug": "melanotan-1",
@@ -177,7 +177,7 @@
     "categoryLabel": "Melanocortin",
     "description": "Synthetic alpha-MSH analog. Supplied for in-vitro laboratory research.",
     "lot": "GHK-2424-O",
-    "image": "/images/mt-1-10mg.svg"
+    "image": "/images/melanotan-1-10mg.png"
   },
   {
     "slug": "wolverine",
@@ -189,7 +189,7 @@
     "categoryLabel": "Copper Composite",
     "description": "Copper-bound composite, lyophilized powder. Supplied for in-vitro laboratory research.",
     "lot": "GHK-2425-P",
-    "image": "/images/wolverine-10mg.svg"
+    "image": "/images/wolverine-10mg.png"
   },
   {
     "slug": "kiss-peptin",
@@ -201,7 +201,7 @@
     "categoryLabel": "Peptide",
     "description": "Synthetic kisspeptin-10 sequence. Supplied for in-vitro laboratory research.",
     "lot": "GHK-2426-Q",
-    "image": "/images/kisspeptin-10mg.svg"
+    "image": "/images/kiss-peptin-10mg.png"
   },
   {
     "slug": "cagrilintide",
@@ -213,7 +213,7 @@
     "categoryLabel": "Amylin Analog",
     "description": "Long-acting amylin analog. Supplied for in-vitro laboratory research.",
     "lot": "GHK-2427-R",
-    "image": "/images/cagrilintide-5mg.svg"
+    "image": "/images/cagrilintide-5mg.png"
   },
   {
     "slug": "kpv",

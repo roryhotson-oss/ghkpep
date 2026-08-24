@@ -58,7 +58,7 @@ export default function ContactPage() {
               <div className="space-y-4 text-sm">
                 <div>
                   <span className="text-[#a7b0b2] block">Email</span>
-                  <span className="text-[#21c7a5]">Contact us via the form or checkout options</span>
+                  <span className="text-[#8298aa]">Contact us via the form or checkout options</span>
                 </div>
                 <div>
                   <span className="text-[#a7b0b2] block">Response Time</span>
@@ -82,7 +82,7 @@ export default function ContactPage() {
 
             <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
               <h3 className="font-bold mb-3">Shipping</h3>
-              <p className="text-sm text-[#a7b0b2]">All orders shipped via <span className="text-[#21c7a5] font-medium">Trusted Labs</span> — tracked, discreet, and insured.</p>
+              <p className="text-sm text-[#a7b0b2]">All orders shipped via <span className="text-[#8298aa] font-medium">Trusted Labs</span> — tracked, discreet, and insured.</p>
             </div>
           </div>
 
@@ -90,12 +90,12 @@ export default function ContactPage() {
           <div className="lg:col-span-2">
             {status === 'success' ? (
               <div className="bg-[#141414] rounded-xl p-8 border border-[#2b3538] text-center">
-                <div className="text-[#21c7a5] text-6xl mb-4">✓</div>
+                <div className="text-[#8298aa] text-6xl mb-4">✓</div>
                 <h2 className="text-2xl font-bold mb-2">Message Sent!</h2>
                 <p className="text-[#a7b0b2] mb-6">Thank you for contacting us. We&apos;ll get back to you within 24 hours.</p>
                 <button
                   onClick={() => setStatus('idle')}
-                  className="px-6 py-3 bg-[#21c7a5] text-black font-semibold rounded-lg hover:bg-[#16a98d] transition"
+                  className="px-6 py-3 bg-[#8298aa] text-black font-semibold rounded-lg hover:bg-[#657c8f] transition"
                 >
                   Send Another Message
                 </button>
@@ -110,7 +110,7 @@ export default function ContactPage() {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#21c7a5]"
+                      className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
                       placeholder="Your name"
                     />
                   </div>
@@ -121,7 +121,7 @@ export default function ContactPage() {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#21c7a5]"
+                      className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -132,7 +132,7 @@ export default function ContactPage() {
                     type="text"
                     value={formData.institution}
                     onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
-                    className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#21c7a5]"
+                    className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
                     placeholder="Your institution (optional)"
                   />
                 </div>
@@ -143,7 +143,7 @@ export default function ContactPage() {
                     required
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#21c7a5]"
+                    className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
                     placeholder="How can we help?"
                   />
                 </div>
@@ -154,7 +154,7 @@ export default function ContactPage() {
                     rows={6}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#21c7a5] resize-none"
+                    className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa] resize-none"
                     placeholder="Tell us about your inquiry..."
                   ></textarea>
                 </div>
@@ -166,7 +166,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="w-full px-8 py-3 bg-[#21c7a5] text-black font-semibold rounded-lg hover:bg-[#16a98d] transition disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-8 py-3 bg-[#8298aa] text-black font-semibold rounded-lg hover:bg-[#657c8f] transition disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {status === 'loading' ? 'Sending...' : 'Send message'}
                 </button>

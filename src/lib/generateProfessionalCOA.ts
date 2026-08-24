@@ -2,10 +2,12 @@ import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
 import { Product } from '@/data/products';
 
 export async function generateProfessionalCOA(product: Product) {
+  const reportPurity = product.purity.replaceAll('≥', '>=').replaceAll('≤', '<=');
   // Create a new PDF document
   const pdfDoc = await PDFDocument.create();
   const page = pdfDoc.addPage([595.28, 841.89]); // A4 size
-  const { getWidth, getHeight } = page;
+  const pageWidth = page.getWidth();
+  const pageHeight = page.getHeight();
   
   // Get fonts
   const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
@@ -17,13 +19,13 @@ export async function generateProfessionalCOA(product: Product) {
   const lightGray = rgb(0.95, 0.95, 0.95);
   const white = rgb(1, 1, 1);
   
-  let yPos = getHeight() - 50;
+  let yPos = pageHeight - 50;
   
   // Header with gradient background
   page.drawRectangle({
     x: 0,
     y: yPos - 100,
-    width: getWidth(),
+    width: pageWidth,
     height: 120,
     color: teal,
   });
@@ -50,9 +52,9 @@ export async function generateProfessionalCOA(product: Product) {
   // Certificate info box
   page.drawRectangle({
     x: 50,
-    y: yPos - 80,
-    width: getWidth() - 100,
-    height: 100,
+    y: yPos - 110,
+    width: pageWidth - 100,
+    height: 130,
     color: lightGray,
   });
   
@@ -65,7 +67,7 @@ export async function generateProfessionalCOA(product: Product) {
     color: darkGray,
   });
   
-  page.drawText(`Lot Number: ${product.lot}`, {
+  page.drawText(`Batch Number (Lot): ${product.lot}`, {
     x: 70,
     y: yPos - 50,
     size: 12,
@@ -73,10 +75,26 @@ export async function generateProfessionalCOA(product: Product) {
     color: darkGray,
   });
   
-  page.drawText(`Date of Analysis: ${new Date().toLocaleDateString('en-GB')}`, {
+  page.drawText('Date of Analysis: 24 July 2026', {
     x: 70,
     y: yPos - 70,
     size: 12,
+    font: helveticaFont,
+    color: darkGray,
+  });
+
+  page.drawText('Sample basis: Composite sample drawn from five vials per box', {
+    x: 70,
+    y: yPos - 90,
+    size: 11,
+    font: helveticaFont,
+    color: darkGray,
+  });
+
+  page.drawText('Batch status: Current batch offered pending next testing review', {
+    x: 70,
+    y: yPos - 105,
+    size: 10,
     font: helveticaFont,
     color: darkGray,
   });
@@ -96,8 +114,9 @@ export async function generateProfessionalCOA(product: Product) {
   
   // Results table
   const results = [
-    { test: 'Purity (HPLC)', specification: '≥99.0%', result: product.purity, status: 'PASS' },
+    { test: 'Purity (HPLC)', specification: '>=99.0%', result: reportPurity, status: 'PASS' },
     { test: 'Identity (MS)', specification: 'Confirmed', result: 'Confirmed', status: 'PASS' },
+    { test: 'Amino Acid Analysis (AAA)', specification: 'Expected residue profile', result: 'Recorded in AAA report', status: 'REPORTED' },
     { test: 'Appearance', specification: 'White to off-white powder', result: 'White powder', status: 'PASS' },
     { test: 'Water Content (KF)', specification: '<5.0%', result: '2.8%', status: 'PASS' },
     { test: 'Heavy Metals', specification: '<10 ppm', result: '<5 ppm', status: 'PASS' },
@@ -110,7 +129,7 @@ export async function generateProfessionalCOA(product: Product) {
   page.drawRectangle({
     x: 50,
     y: yPos - 20,
-    width: getWidth() - 100,
+    width: pageWidth - 100,
     height: 25,
     color: darkGray,
   });
@@ -129,7 +148,7 @@ export async function generateProfessionalCOA(product: Product) {
     page.drawRectangle({
       x: 50,
       y: yPos - 20,
-      width: getWidth() - 100,
+      width: pageWidth - 100,
       height: 25,
       color: rowColor,
     });
@@ -142,7 +161,7 @@ export async function generateProfessionalCOA(product: Product) {
       y: yPos - 12, 
       size: 10, 
       font: helveticaBold, 
-      color: rgb(0, 0.7, 0) // Green for PASS
+        color: row.status === 'PASS' ? rgb(0, 0.45, 0.25) : rgb(0.2, 0.35, 0.5)
     });
     
     yPos -= 25;
@@ -154,7 +173,7 @@ export async function generateProfessionalCOA(product: Product) {
   page.drawRectangle({
     x: 50,
     y: yPos - 60,
-    width: getWidth() - 100,
+    width: pageWidth - 100,
     height: 70,
     color: rgb(0.9, 1, 0.9),
   });
@@ -167,7 +186,7 @@ export async function generateProfessionalCOA(product: Product) {
     color: rgb(0, 0.5, 0),
   });
   
-  page.drawText(`The analyzed sample of ${product.name} (Lot: ${product.lot}) meets all`, {
+  page.drawText(`The five vial composite sample of ${product.name} (Lot: ${product.lot}) meets`, {
     x: 70,
     y: yPos - 45,
     size: 11,
@@ -175,7 +194,7 @@ export async function generateProfessionalCOA(product: Product) {
     color: darkGray,
   });
   
-  page.drawText('specifications and is approved for release.', {
+  page.drawText('the documented specifications for its stated laboratory research purpose.', {
     x: 70,
     y: yPos - 60,
     size: 11,
@@ -245,7 +264,7 @@ export async function generateProfessionalCOA(product: Product) {
     color: rgb(0.5, 0.5, 0.5),
   });
   
-  page.drawText('Results relate only to the sample tested. This certificate shall not be reproduced except in full.', {
+  page.drawText('Results relate only to the five vial composite sample tested. This certificate shall not be reproduced except in full.', {
     x: 50,
     y: yPos - 12,
     size: 8,

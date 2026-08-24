@@ -206,7 +206,7 @@ export default function CartPage() {
             {cartItems.length === 0 ? (
               <div className="bg-white rounded-2xl p-12 border border-[#d7e3eb] text-center shadow-sm">
                 <p className="text-[#607789] mb-4">Your cart is empty.</p>
-                <Link href="/shop" className="inline-flex px-6 py-3 bg-[#139fe8] text-white font-semibold rounded-lg hover:bg-[#0b87c9] transition">
+                <Link href="/shop" className="inline-flex px-6 py-3 bg-[#8298aa] text-white font-semibold rounded-lg hover:bg-[#657c8f] transition">
                   Browse Catalog
                 </Link>
               </div>
@@ -219,7 +219,7 @@ export default function CartPage() {
                   <div className="flex-1">
                     <div className="flex items-start justify-between">
                       <div>
-                        <Link href={`/shop/${item.slug}`} className="font-semibold hover:text-[#139fe8] transition">{item.name}</Link>
+                        <Link href={`/shop/${item.slug}`} className="font-semibold hover:text-[#8298aa] transition">{item.name}</Link>
                         <p className="text-[#607789] text-xs mt-0.5">
                           {item.type === 'box' ? `Box of 10 vials · Lot ${item.lot}` : `1 vial · Lot ${item.lot}`}
                         </p>
@@ -232,14 +232,14 @@ export default function CartPage() {
                       <div className="flex items-center gap-2">
                         <button 
                           onClick={() => updateQuantity(idx, -1)}
-                          className="w-8 h-8 bg-[#f3f7fa] border border-[#d7e3eb] rounded-lg flex items-center justify-center text-sm hover:border-[#139fe8] transition"
+                          className="w-8 h-8 bg-[#f3f7fa] border border-[#d7e3eb] rounded-lg flex items-center justify-center text-sm hover:border-[#8298aa] transition"
                         >
                           −
                         </button>
                         <span className="text-sm font-medium w-6 text-center">{item.qty}</span>
                         <button 
                           onClick={() => updateQuantity(idx, 1)}
-                          className="w-8 h-8 bg-[#f3f7fa] border border-[#d7e3eb] rounded-lg flex items-center justify-center text-sm hover:border-[#139fe8] transition"
+                          className="w-8 h-8 bg-[#f3f7fa] border border-[#d7e3eb] rounded-lg flex items-center justify-center text-sm hover:border-[#8298aa] transition"
                         >
                           +
                         </button>
@@ -269,7 +269,7 @@ export default function CartPage() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-[#607789]">Shipping</span>
-                  <span className="text-[#139fe8]">FREE</span>
+                  <span className="text-[#8298aa]">FREE</span>
                 </div>
                 <div className="border-t border-[#d7e3eb] pt-3 flex justify-between font-bold text-base">
                   <span>Total (GBP)</span>
@@ -280,9 +280,9 @@ export default function CartPage() {
               {/* Payment Methods */}
               <div className="mt-6 pt-6 border-t border-[#d7e3eb]">
                 <div className="space-y-2">
-                  <label className={`block p-3 rounded-lg border cursor-pointer transition ${selectedPaymentMethod === 'paypal' ? 'border-[#139fe8] bg-[#e8f6fd]' : 'border-[#d7e3eb] bg-[#f3f7fa]'}`}>
+                  <label className={`block p-3 rounded-lg border cursor-pointer transition ${selectedPaymentMethod === 'paypal' ? 'border-[#8298aa] bg-[#e8f6fd]' : 'border-[#d7e3eb] bg-[#f3f7fa]'}`}>
                     <span className="flex items-center gap-3">
-                      <input type="radio" name="payment-method" value="paypal" checked={selectedPaymentMethod === 'paypal'} onChange={() => setSelectedPaymentMethod('paypal')} className="accent-[#139fe8]" />
+                      <input type="radio" name="payment-method" value="paypal" checked={selectedPaymentMethod === 'paypal'} onChange={() => setSelectedPaymentMethod('paypal')} className="accent-[#8298aa]" />
                       <span className="text-lg font-black text-[#003087]">P</span>
                       <span className="text-sm font-semibold text-[#38566d]">PayPal</span>
                       {paymentSettings.paypalUrl && <a href={paymentSettings.paypalUrl} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()} className="ml-auto text-xs text-[#118cca] hover:underline">Open PayPal</a>}
@@ -290,12 +290,12 @@ export default function CartPage() {
                     {selectedPaymentMethod === 'paypal' && <span className="block mt-3 pl-8">
                       <span className="block text-xs leading-relaxed text-[#607789] mb-3">Use your order number as the payment reference. Do not include product names or research details in the memo.</span>
                       <span className="block text-xs font-semibold text-[#38566d] mb-1">Your PayPal account</span>
-                      <input type="text" value={paypalAccount} onChange={(event) => setPaypalAccount(event.target.value)} placeholder="PayPal email or account name" className="w-full bg-white border border-[#cbdce6] rounded-lg px-3 py-2 text-sm text-[#10263d] placeholder:text-[#8ba0ad] focus:outline-none focus:border-[#139fe8]" />
+                      <input type="text" value={paypalAccount} onChange={(event) => setPaypalAccount(event.target.value)} placeholder="PayPal email or account name" className="w-full bg-white border border-[#cbdce6] rounded-lg px-3 py-2 text-sm text-[#10263d] placeholder:text-[#8ba0ad] focus:outline-none focus:border-[#8298aa]" />
                     </span>}
                   </label>
-                  <div className={`p-3 rounded-lg border transition ${selectedPaymentMethod === 'alipay' ? 'border-[#139fe8] bg-[#e8f6fd]' : 'border-[#d7e3eb] bg-[#f3f7fa]'}`}>
+                  <div className={`p-3 rounded-lg border transition ${selectedPaymentMethod === 'alipay' ? 'border-[#8298aa] bg-[#e8f6fd]' : 'border-[#d7e3eb] bg-[#f3f7fa]'}`}>
                     <button type="button" onClick={() => setSelectedPaymentMethod('alipay')} className="w-full flex items-center gap-3 text-left">
-                      <input type="radio" name="payment-method" value="alipay" checked={selectedPaymentMethod === 'alipay'} onChange={() => setSelectedPaymentMethod('alipay')} className="accent-[#139fe8]" />
+                      <input type="radio" name="payment-method" value="alipay" checked={selectedPaymentMethod === 'alipay'} onChange={() => setSelectedPaymentMethod('alipay')} className="accent-[#8298aa]" />
                       <span className="text-lg">💳</span><span className="text-sm font-semibold text-[#38566d]">Alipay</span>
                     </button>
                     {selectedPaymentMethod === 'alipay' && <div className="mt-3 pl-8">
@@ -304,10 +304,10 @@ export default function CartPage() {
                       <a href={paymentSettings.alipayUrl} target="_blank" rel="noreferrer" className="inline-block mt-3 text-xs text-[#118cca] hover:underline">Open Alipay payment instructions</a>
                     </div>}
                   </div>
-                  <button type="button" onClick={() => setSelectedPaymentMethod('bank transfer')} className={`w-full flex items-center gap-3 p-3 rounded-lg border text-left transition ${selectedPaymentMethod === 'bank transfer' ? 'border-[#139fe8] bg-[#e8f6fd]' : 'border-[#d7e3eb] bg-[#f3f7fa] hover:border-[#139fe8]'}`}>
+                  <button type="button" onClick={() => setSelectedPaymentMethod('bank transfer')} className={`w-full flex items-center gap-3 p-3 rounded-lg border text-left transition ${selectedPaymentMethod === 'bank transfer' ? 'border-[#8298aa] bg-[#e8f6fd]' : 'border-[#d7e3eb] bg-[#f3f7fa] hover:border-[#8298aa]'}`}>
                     <span className="text-lg">🏦</span><span className="text-sm font-semibold text-[#38566d]">Bank transfer</span>
                   </button>
-                  <button type="button" onClick={() => setSelectedPaymentMethod('crypto')} className={`w-full flex items-center gap-3 p-3 rounded-lg border text-left transition ${selectedPaymentMethod === 'crypto' ? 'border-[#139fe8] bg-[#e8f6fd]' : 'border-[#d7e3eb] bg-[#f3f7fa] hover:border-[#139fe8]'}`}>
+                  <button type="button" onClick={() => setSelectedPaymentMethod('crypto')} className={`w-full flex items-center gap-3 p-3 rounded-lg border text-left transition ${selectedPaymentMethod === 'crypto' ? 'border-[#8298aa] bg-[#e8f6fd]' : 'border-[#d7e3eb] bg-[#f3f7fa] hover:border-[#8298aa]'}`}>
                     <span className="text-lg">₿</span><span className="text-sm font-semibold text-[#38566d]">Crypto</span>
                   </button>
                 </div>
@@ -316,13 +316,13 @@ export default function CartPage() {
 
               <button 
                 onClick={() => setShowCheckoutModal(true)}
-                className="w-full mt-6 px-6 py-4 bg-[#139fe8] text-white font-bold rounded-lg hover:bg-[#0b87c9] transition text-lg"
+                className="w-full mt-6 px-6 py-4 bg-[#8298aa] text-white font-bold rounded-lg hover:bg-[#657c8f] transition text-lg"
               >
                 Proceed to Checkout
               </button>
 
               <div className="mt-4 flex items-center justify-center gap-2 text-xs text-[#607789]">
-                <span className="text-[#139fe8]">🔒</span>
+                <span className="text-[#8298aa]">🔒</span>
                 <span>{hasBoxOrder ? 'Free global delivery · 5–10 days · discreet tracking' : 'Free discreet tracked delivery'}</span>
               </div>
             </div>
@@ -350,21 +350,21 @@ export default function CartPage() {
               <fieldset className="border border-[#d7e3eb] rounded-xl p-4">
                 <legend className="px-2 text-sm font-bold">Billing address</legend>
                 <div className="grid sm:grid-cols-2 gap-3 mt-2">
-                  {(['name', 'email', 'line1', 'city', 'postcode', 'country'] as const).map((field) => <input key={field} required type={field === 'email' ? 'email' : 'text'} value={billingAddress[field]} onChange={(event) => setBillingAddress({ ...billingAddress, [field]: event.target.value })} placeholder={field === 'line1' ? 'Street address' : field === 'postcode' ? 'Postcode / ZIP' : field === 'name' ? 'Full name' : field[0].toUpperCase() + field.slice(1)} className="w-full bg-[#f3f7fa] border border-[#d7e3eb] rounded-lg px-3 py-3 text-sm focus:outline-none focus:border-[#139fe8]" />)}
+                  {(['name', 'email', 'line1', 'city', 'postcode', 'country'] as const).map((field) => <input key={field} required type={field === 'email' ? 'email' : 'text'} value={billingAddress[field]} onChange={(event) => setBillingAddress({ ...billingAddress, [field]: event.target.value })} placeholder={field === 'line1' ? 'Street address' : field === 'postcode' ? 'Postcode / ZIP' : field === 'name' ? 'Full name' : field[0].toUpperCase() + field.slice(1)} className="w-full bg-[#f3f7fa] border border-[#d7e3eb] rounded-lg px-3 py-3 text-sm focus:outline-none focus:border-[#8298aa]" />)}
                 </div>
               </fieldset>
-              <label className="flex items-center gap-2 text-sm text-[#38566d]"><input type="checkbox" checked={sameAsBilling} onChange={(event) => setSameAsBilling(event.target.checked)} className="accent-[#139fe8]" /> Shipping address is the same as billing</label>
+              <label className="flex items-center gap-2 text-sm text-[#38566d]"><input type="checkbox" checked={sameAsBilling} onChange={(event) => setSameAsBilling(event.target.checked)} className="accent-[#8298aa]" /> Shipping address is the same as billing</label>
               {!sameAsBilling && <fieldset className="border border-[#d7e3eb] rounded-xl p-4">
                 <legend className="px-2 text-sm font-bold">Shipping address</legend>
                 <div className="grid sm:grid-cols-2 gap-3 mt-2">
-                  {(['name', 'line1', 'city', 'postcode', 'country'] as const).map((field) => <input key={field} required value={shippingAddress[field]} onChange={(event) => setShippingAddress({ ...shippingAddress, [field]: event.target.value })} placeholder={field === 'line1' ? 'Street address' : field === 'postcode' ? 'Postcode / ZIP' : field === 'name' ? 'Full name' : field[0].toUpperCase() + field.slice(1)} className="w-full bg-[#f3f7fa] border border-[#d7e3eb] rounded-lg px-3 py-3 text-sm focus:outline-none focus:border-[#139fe8]" />)}
+                  {(['name', 'line1', 'city', 'postcode', 'country'] as const).map((field) => <input key={field} required value={shippingAddress[field]} onChange={(event) => setShippingAddress({ ...shippingAddress, [field]: event.target.value })} placeholder={field === 'line1' ? 'Street address' : field === 'postcode' ? 'Postcode / ZIP' : field === 'name' ? 'Full name' : field[0].toUpperCase() + field.slice(1)} className="w-full bg-[#f3f7fa] border border-[#d7e3eb] rounded-lg px-3 py-3 text-sm focus:outline-none focus:border-[#8298aa]" />)}
                 </div>
               </fieldset>}
-              <label className="block border border-dashed border-[#9db8c7] rounded-xl p-4 cursor-pointer hover:border-[#139fe8] transition"><span className="block text-sm font-bold">Upload payment screenshot</span><span className="block text-xs text-[#607789] mt-1">PNG, JPEG, or WebP up to 5MB. This is optional if you have not paid yet.</span><input name="payment-proof" type="file" accept="image/png,image/jpeg,image/webp" className="mt-3 block w-full text-sm text-[#607789]" /></label>
+              <label className="block border border-dashed border-[#9db8c7] rounded-xl p-4 cursor-pointer hover:border-[#8298aa] transition"><span className="block text-sm font-bold">Upload payment screenshot</span><span className="block text-xs text-[#607789] mt-1">PNG, JPEG, or WebP up to 5MB. This is optional if you have not paid yet.</span><input name="payment-proof" type="file" accept="image/png,image/jpeg,image/webp" className="mt-3 block w-full text-sm text-[#607789]" /></label>
               {turnstileSiteKey && <><div id="turnstile-checkout" className="min-h-[65px]" ref={(element) => { if (element && window.turnstile && !element.childElementCount) window.turnstile.render(element, { sitekey: turnstileSiteKey, callback: setTurnstileToken, 'expired-callback': () => setTurnstileToken(''), 'error-callback': () => setTurnstileError('Cloudflare security check could not load.') }); }} /><Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" /></>}
               {checkoutError && <p className="text-sm text-red-600" role="alert">{checkoutError}</p>}
               {turnstileError && <p className="text-sm text-red-600" role="alert">{turnstileError}</p>}
-              <button type="submit" className="w-full px-6 py-4 bg-[#139fe8] text-white font-bold rounded-lg hover:bg-[#0b87c9] transition">Continue to Contact Options</button>
+              <button type="submit" className="w-full px-6 py-4 bg-[#8298aa] text-white font-bold rounded-lg hover:bg-[#657c8f] transition">Continue to Contact Options</button>
             </form> : <>
             <p className="text-[#607789] text-sm mb-6">Your order details{paymentProofName ? ` and ${paymentProofName}` : ''} are ready. Discuss your order through WhatsApp, Telegram, phone, or email.</p>
             <div className="space-y-3">
@@ -406,13 +406,13 @@ export default function CartPage() {
               </p>
               <div className="flex items-center justify-center gap-4 text-xs text-[#607789]">
                 <span className="flex items-center gap-1">
-                  <span className="text-[#139fe8]">💳</span> Alipay
+                  <span className="text-[#8298aa]">💳</span> Alipay
                 </span>
                 <span className="flex items-center gap-1">
-                  <span className="text-[#139fe8]">₿</span> Crypto
+                  <span className="text-[#8298aa]">₿</span> Crypto
                 </span>
                 <span className="flex items-center gap-1">
-                  <span className="text-[#139fe8]">🏦</span> Bank Transfer
+                  <span className="text-[#8298aa]">🏦</span> Bank Transfer
                 </span>
               </div>
             </div>

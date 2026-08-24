@@ -53,7 +53,7 @@ export default function PaymentSettingsPage() {
         {multiline ? <textarea value={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: event.target.value })} rows={3} className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm" /> : <input type={key.endsWith('Url') ? 'url' : 'text'} value={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: event.target.value })} className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm" />}
         <p className="text-[#7b898e] text-xs mt-2">{help}</p>
       </div>)}
-      <div className="flex items-center gap-4"><button type="submit" className="px-6 py-3 bg-[#21c7a5] text-black font-bold rounded-lg">Save Payment Settings</button>{status && <span className="text-sm text-[#a7b0b2]">{status}</span>}</div>
+      <div className="flex items-center gap-4"><button type="submit" className="px-6 py-3 bg-[#8298aa] text-black font-bold rounded-lg">Save Payment Settings</button>{status && <span className="text-sm text-[#a7b0b2]">{status}</span>}</div>
     </form>
   </div>;
 }

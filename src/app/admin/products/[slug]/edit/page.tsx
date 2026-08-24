@@ -200,7 +200,7 @@ export default function EditProductPage() {
                   name="name"
                   value={form.name}
                   onChange={handleChange}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                   required
                 />
               </div>
@@ -220,7 +220,7 @@ export default function EditProductPage() {
                   name="lot"
                   value={form.lot}
                   onChange={handleChange}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                 />
               </div>
             </div>
@@ -239,7 +239,7 @@ export default function EditProductPage() {
                   onChange={handleChange}
                   step="0.01"
                   min="0"
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                   required
                 />
               </div>
@@ -252,7 +252,7 @@ export default function EditProductPage() {
                   onChange={handleChange}
                   step="0.01"
                   min="0"
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                 />
               </div>
             </div>
@@ -268,7 +268,7 @@ export default function EditProductPage() {
                   name="category"
                   value={form.category}
                   onChange={handleChange}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                 >
                   <option value="recovery">Recovery</option>
                   <option value="longevity">Longevity</option>
@@ -286,7 +286,7 @@ export default function EditProductPage() {
                   name="categoryLabel"
                   value={form.categoryLabel}
                   onChange={handleChange}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                 />
               </div>
               <div>
@@ -296,7 +296,7 @@ export default function EditProductPage() {
                   name="purity"
                   value={form.purity}
                   onChange={handleChange}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                 />
               </div>
             </div>
@@ -310,7 +310,7 @@ export default function EditProductPage() {
               value={form.description}
               onChange={handleChange}
               rows={4}
-              className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition resize-none"
+              className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition resize-none"
             />
           </div>
 
@@ -333,11 +333,11 @@ export default function EditProductPage() {
                   type="file"
                   accept="image/*"
                   onChange={handleImageUpload}
-                  className="block w-full text-sm text-[#a7b0b2] file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#21c7a5] file:text-black hover:file:bg-[#16a98d] file:cursor-pointer"
+                  className="block w-full text-sm text-[#a7b0b2] file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#8298aa] file:text-black hover:file:bg-[#657c8f] file:cursor-pointer"
                 />
                 <p className="text-[#7b898e] text-xs mt-2">Upload a new image to replace the current one.</p>
                 {uploadedImage && (
-                  <p className="text-[#21c7a5] text-xs mt-1">✓ New image uploaded: {uploadedImage}</p>
+                  <p className="text-[#8298aa] text-xs mt-1">✓ New image uploaded: {uploadedImage}</p>
                 )}
               </div>
             </div>
@@ -348,14 +348,14 @@ export default function EditProductPage() {
             <button
               type="submit"
               disabled={saving}
-              className="px-8 py-3 bg-[#21c7a5] text-black font-bold rounded-lg hover:bg-[#16a98d] transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-8 py-3 bg-[#8298aa] text-black font-bold rounded-lg hover:bg-[#657c8f] transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {saving ? 'Saving...' : 'Save Changes'}
             </button>
             <button
               type="button"
               onClick={() => router.push('/admin/products')}
-              className="px-8 py-3 border border-[#2b3538] text-[#e1e7e5] rounded-lg hover:border-[#21c7a5] hover:text-[#21c7a5] transition"
+              className="px-8 py-3 border border-[#2b3538] text-[#e1e7e5] rounded-lg hover:border-[#8298aa] hover:text-[#8298aa] transition"
             >
               Back to Products
             </button>

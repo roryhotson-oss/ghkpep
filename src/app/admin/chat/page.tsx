@@ -56,7 +56,7 @@ export default function AdminChatPage() {
         <div className="bg-[#141414] border border-[#2b3538] rounded-xl divide-y divide-[#2b3538]">
           {messages.length === 0 ? <p className="p-6 text-[#a7b0b2] text-sm">No support messages yet.</p> : messages.map((message) => (
             <button key={message.id} onClick={() => { setSelected(message); if (message.status === 'new') updateStatus(message.id, 'read'); }} className={`w-full text-left p-4 hover:bg-[#1a1a1a] transition ${selected?.id === message.id ? 'bg-[#1a1a1a]' : ''}`}>
-              <div className="flex justify-between gap-3"><span className="text-white text-sm font-medium truncate">{message.name}</span><span className="text-[#21c7a5] text-xs">{message.status}</span></div>
+              <div className="flex justify-between gap-3"><span className="text-white text-sm font-medium truncate">{message.name}</span><span className="text-[#8298aa] text-xs">{message.status}</span></div>
               <p className="text-[#e1e7e5] text-sm truncate mt-1">{message.subject}</p>
               <p className="text-[#7b898e] text-xs mt-1">{new Date(message.created_at).toLocaleString('en-GB')}</p>
             </button>
@@ -69,7 +69,7 @@ export default function AdminChatPage() {
               <select value={selected.status} onChange={(event) => updateStatus(selected.id, event.target.value as Message['status'])} className="bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-sm text-white"><option value="new">New</option><option value="read">Read</option><option value="responded">Responded</option></select>
             </div>
             <p className="text-[#e1e7e5] text-sm whitespace-pre-wrap leading-relaxed">{selected.message}</p>
-            <a href={`mailto:${selected.email}?subject=${encodeURIComponent(`Re: ${selected.subject}`)}`} className="inline-block mt-8 px-4 py-2 bg-[#21c7a5] text-black font-semibold rounded-lg text-sm">Reply by email</a>
+            <a href={`mailto:${selected.email}?subject=${encodeURIComponent(`Re: ${selected.subject}`)}`} className="inline-block mt-8 px-4 py-2 bg-[#8298aa] text-black font-semibold rounded-lg text-sm">Reply by email</a>
           </> : <p className="text-[#a7b0b2] text-sm">Select a message to view the conversation.</p>}
         </div>
       </div>

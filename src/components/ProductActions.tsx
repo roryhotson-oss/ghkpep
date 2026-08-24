@@ -53,7 +53,7 @@ export default function ProductActions({ product }: ProductActionsProps) {
         <div className="space-y-3">
           <label 
             className={`flex items-center justify-between p-4 bg-[#1a1a1a] rounded-lg border cursor-pointer transition ${
-              selectedType === 'vial' ? 'border-[#21c7a5]' : 'border-[#2b3538] hover:border-[#21c7a5]/30'
+              selectedType === 'vial' ? 'border-[#8298aa]' : 'border-[#2b3538] hover:border-[#8298aa]/30'
             }`}
             onClick={() => setSelectedType('vial')}
           >
@@ -63,7 +63,7 @@ export default function ProductActions({ product }: ProductActionsProps) {
                 name="quantity" 
                 checked={selectedType === 'vial'}
                 onChange={() => setSelectedType('vial')}
-                className="accent-[#21c7a5]"
+                className="accent-[#8298aa]"
               />
               <div>
                 <p className="font-medium text-sm">1 Vial</p>
@@ -74,7 +74,7 @@ export default function ProductActions({ product }: ProductActionsProps) {
           </label>
           <label 
             className={`flex items-center justify-between p-4 bg-[#1a1a1a] rounded-lg border cursor-pointer transition ${
-              selectedType === 'box' ? 'border-[#21c7a5]' : 'border-[#2b3538] hover:border-[#21c7a5]/30'
+              selectedType === 'box' ? 'border-[#8298aa]' : 'border-[#2b3538] hover:border-[#8298aa]/30'
             }`}
             onClick={() => setSelectedType('box')}
           >
@@ -84,7 +84,7 @@ export default function ProductActions({ product }: ProductActionsProps) {
                 name="quantity" 
                 checked={selectedType === 'box'}
                 onChange={() => setSelectedType('box')}
-                className="accent-[#21c7a5]"
+                className="accent-[#8298aa]"
               />
               <div>
                 <p className="font-medium text-sm">Box of 10 Vials</p>
@@ -93,7 +93,7 @@ export default function ProductActions({ product }: ProductActionsProps) {
             </div>
             <div className="text-right">
               <span className="font-bold text-lg">£{effectivePrice(product, 'box').toFixed(2)}</span>
-              <p className="text-[#21c7a5] text-xs">£{(product.price * 10 - product.boxPrice).toFixed(2)} saved</p>
+              <p className="text-[#8298aa] text-xs">£{(product.price * 10 - product.boxPrice).toFixed(2)} saved</p>
             </div>
           </label>
         </div>
@@ -104,7 +104,7 @@ export default function ProductActions({ product }: ProductActionsProps) {
           className={`w-full mt-6 px-8 py-4 font-bold rounded-lg transition text-lg ${
             added 
               ? 'bg-green-600 text-white' 
-              : 'bg-[#21c7a5] text-black hover:bg-[#16a98d]'
+              : 'bg-[#8298aa] text-black hover:bg-[#657c8f]'
           }`}
         >
           {added ? '✓ Added to Cart' : 'Add to Cart'}

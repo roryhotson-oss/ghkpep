@@ -26,7 +26,7 @@ Research peptides are short chains of amino acids (typically 2-50 amino acids) t
 
 - **Synthetic Origin**: Most research peptides are created through solid-phase peptide synthesis (SPPS)
 - **High Purity**: Quality research peptides typically have purity levels of 95% or higher
-- **Research-Only**: Strictly for in-vitro and laboratory research applications
+- **Research Only**: Strictly for in vitro and laboratory research applications
 - **Various Lengths**: Range from dipeptides (2 amino acids) to larger polypeptides
 
 ## Types of Research Peptides
@@ -138,13 +138,13 @@ Look for suppliers who provide:
 - Clear information about testing methods
 - Open communication about sourcing
 - Transparent pricing
-- Third-party testing verification
+- Third party testing verification
 
 ### 2. Testing Standards
 
 Reliable suppliers use:
 
-- **Independent Testing**: Third-party laboratory verification
+- **Independent Testing**: Third party laboratory verification
 - **Multiple Tests**: Purity, identity, and contaminant testing
 - **Modern Equipment**: HPLC, mass spectrometry, amino acid analyzers
 - **Accredited Labs**: ISO 17025 or equivalent accreditation
@@ -541,7 +541,7 @@ Common endpoints in BPC-157 research:
 
 ### Supplier Credentials
 
-- **Testing**: Independent third-party testing
+- **Testing**: Independent third party testing
 - **Documentation**: Complete COA for each batch
 - **Reputation**: Established supplier with good track record
 - **Support**: Technical support available
@@ -853,7 +853,7 @@ Tests for bacterial endotoxins that could affect research results.
 ## Questions to Ask Your Supplier
 
 ### About Testing
-1. "Are your peptides tested by an independent third-party laboratory?"
+1. "Are your peptides tested by an independent third party laboratory?"
 2. "What testing methods do you use?"
 3. "Can you provide a COA for each batch?"
 4. "Do you test for heavy metals and endotoxins?"
@@ -1306,31 +1306,31 @@ Remember that prevention is better than troubleshooting—invest time in proper 
 *Disclaimer: This guide is for educational purposes only. Always follow your institution's guidelines and regulatory requirements when conducting research.*
     `,
   },
-  'glyvantix-testing': {
-    title: 'Glyvantix Testing: Our Quality Promise',
+   'independent-testing': {
+      title: 'Independent Testing: Our Quality Promise',
     date: '2026-08-01',
     readTime: '7 min read',
     category: 'Quality',
-    excerpt: 'Learn about our 8-point testing protocol with Glyvantix Labs and how we ensure every peptide meets the highest quality standards.',
+   excerpt: 'Learn about our 8-point testing protocol and how batch documentation supports laboratory research.',
     content: `
-# Glyvantix Testing: Our Quality Promise
+# Independent Testing: Our Quality Promise
 
-At GHK Peptides, we believe that quality is not just a standard—it's a promise. That's why we've partnered with Glyvantix Laboratories, one of the leading independent testing facilities, to ensure every peptide we supply meets the highest quality standards.
+At GHK Peptides, quality means clear specifications, documented batch controls, and independent analytical review appropriate to laboratory research materials.
 
-## Our Partnership with Glyvantix Laboratories
+## Our Independent Testing Process
 
-### Who is Glyvantix?
+### How independent review works
 
-Glyvantix Laboratories is an ISO 17025 accredited testing facility specializing in peptide analysis and quality control. With state-of-the-art equipment and experienced scientists, Glyvantix provides comprehensive testing services that ensure the identity, purity, and safety of research peptides.
+Independent analytical laboratories may assess research materials using methods such as HPLC, mass spectrometry, and contamination screening. These records address specified quality attributes and do not establish human safety or clinical use.
 
-### Why We Chose Glyvantix
+### Why documented testing matters
 
-We selected Glyvantix for several key reasons:
+We use documented testing and batch records for several reasons:
 
 1. **Accreditation**: ISO 17025 accreditation ensures the highest standards
 2. **Expertise**: Specialized in peptide analysis
 3. **Equipment**: State-of-the-art analytical instruments
-4. **Independence**: Third-party testing ensures objectivity
+4. **Independence**: Third party testing ensures objectivity
 5. **Transparency**: Detailed reporting and documentation
 
 ## Our 8-Point Testing Protocol
@@ -1581,7 +1581,7 @@ Our testing methods continuously evolve:
 
 - Adoption of new analytical techniques
 - Validation of improved methods
-- Collaboration with Glyvantix on method development
+- Documented methods appropriate to the material
 - Implementation of industry best practices
 
 ### Training and Development
@@ -1663,7 +1663,7 @@ Our quality team includes:
 We maintain quality through:
 
 - Regular internal audits
-- External audits by Glyvantix
+- Independent review of relevant analytical records
 - Customer feedback integration
 - Continuous improvement initiatives
 
@@ -1689,7 +1689,7 @@ We aim to lead the industry in quality:
 
 ## Conclusion
 
-Our partnership with Glyvantix Laboratories and our comprehensive 8-point testing protocol ensure that every peptide we supply meets the highest quality standards. We believe that quality is not just about meeting specifications—it's about exceeding expectations and providing researchers with the confidence they need to conduct their work.
+Our documented testing process helps qualified researchers assess materials against stated laboratory specifications. It does not establish clinical efficacy, human safety, or regulatory approval.
 
 When you choose GHK Peptides, you're choosing quality you can trust. Every batch is thoroughly tested, fully documented, and backed by our commitment to excellence.
 

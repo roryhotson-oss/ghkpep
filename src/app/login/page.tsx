@@ -131,7 +131,7 @@ export default function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#21c7a5]"
+                className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#8298aa]"
                 placeholder="researcher@lab.com"
                 required
               />
@@ -142,7 +142,7 @@ export default function LoginPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#21c7a5]"
+                className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#8298aa]"
                 placeholder="Password"
                 minLength={8}
                 required
@@ -152,7 +152,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full px-8 py-4 bg-[#21c7a5] text-black font-bold rounded-lg hover:bg-[#16a98d] transition text-lg mb-4"
+              className="w-full px-8 py-4 bg-[#8298aa] text-black font-bold rounded-lg hover:bg-[#657c8f] transition text-lg mb-4"
             >
               {loading ? 'Please wait...' : resetMode ? 'Email me a reset link' : isRegistering ? 'Create account' : useEmailCode ? 'Email me a sign-in link' : 'Sign in with Email'}
             </button>
@@ -160,13 +160,13 @@ export default function LoginPage() {
             {!resetMode && <button
               type="button"
               onClick={() => setUseEmailCode(!useEmailCode)}
-              className="w-full text-[#21c7a5] text-sm hover:underline"
+              className="w-full text-[#8298aa] text-sm hover:underline"
             >
               {useEmailCode ? 'Use password instead' : 'Email me a sign-in code'}
             </button>}
-            {!resetMode && !useEmailCode && <button type="button" onClick={() => setIsRegistering(!isRegistering)} className="w-full mt-3 text-[#21c7a5] text-sm hover:underline">{isRegistering ? 'Already have an account? Sign in' : 'New customer? Create an account'}</button>}
-            {!resetMode && !isRegistering && !useEmailCode && <button type="button" onClick={() => setResetMode(true)} className="w-full mt-3 text-[#a7b0b2] text-xs hover:text-[#21c7a5]">Forgot password?</button>}
-            {resetMode && <button type="button" onClick={() => setResetMode(false)} className="w-full mt-3 text-[#21c7a5] text-sm hover:underline">Back to sign in</button>}
+            {!resetMode && !useEmailCode && <button type="button" onClick={() => setIsRegistering(!isRegistering)} className="w-full mt-3 text-[#8298aa] text-sm hover:underline">{isRegistering ? 'Already have an account? Sign in' : 'New customer? Create an account'}</button>}
+            {!resetMode && !isRegistering && !useEmailCode && <button type="button" onClick={() => setResetMode(true)} className="w-full mt-3 text-[#a7b0b2] text-xs hover:text-[#8298aa]">Forgot password?</button>}
+            {resetMode && <button type="button" onClick={() => setResetMode(false)} className="w-full mt-3 text-[#8298aa] text-sm hover:underline">Back to sign in</button>}
           </form>
           {status && <p className="mt-4 text-center text-sm text-[#a7b0b2]" role="status">{status}</p>}
         </div>
@@ -174,9 +174,9 @@ export default function LoginPage() {
         <div className="mt-6 text-center text-xs text-[#7b898e]">
           <p>
             By continuing you agree to our{' '}
-            <Link href="/terms" className="text-[#21c7a5] hover:underline">Terms</Link>,{' '}
-            <Link href="/privacy" className="text-[#21c7a5] hover:underline">Privacy</Link> and{' '}
-            <Link href="/about" className="text-[#21c7a5] hover:underline">Research-Use Disclaimer</Link>.
+            <Link href="/terms" className="text-[#8298aa] hover:underline">Terms</Link>,{' '}
+            <Link href="/privacy" className="text-[#8298aa] hover:underline">Privacy</Link> and{' '}
+            <Link href="/about" className="text-[#8298aa] hover:underline">Research Use Disclaimer</Link>.
           </p>
         </div>
       </div>

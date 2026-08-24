@@ -65,7 +65,7 @@ export default function OrdersPage() {
           <h1 className="text-3xl font-bold mb-2">Order History</h1>
           <p className="text-[#a7b0b2]">View and track all your orders</p>
         </div>
-        <Link href="/shop" className="px-6 py-2 bg-[#21c7a5] text-black font-semibold rounded-lg hover:bg-[#16a98d] transition">
+        <Link href="/shop" className="px-6 py-2 bg-[#8298aa] text-black font-semibold rounded-lg hover:bg-[#657c8f] transition">
           Shop Now
         </Link>
       </div>
@@ -79,7 +79,7 @@ export default function OrdersPage() {
                 <div>
                   <div className="flex items-center gap-3 mb-2">
                     <h2 className="text-xl font-bold">Order {order.id}</h2>
-                    <span className="px-3 py-1 bg-[#0a2a22] text-[#21c7a5] rounded-full text-xs font-medium">
+                    <span className="px-3 py-1 bg-[#17232d] text-[#8298aa] rounded-full text-xs font-medium">
                       {order.status}
                     </span>
                   </div>
@@ -121,7 +121,7 @@ export default function OrdersPage() {
                   <p className="text-[#7b898e] mb-1">Shipping Method</p>
                   <p className="font-medium">{order.shipping.method}</p>
                   {order.shipping.tracking && (
-                    <p className="text-[#21c7a5] text-xs mt-1">
+                    <p className="text-[#8298aa] text-xs mt-1">
                       Tracking: {order.shipping.tracking}
                     </p>
                   )}
@@ -129,7 +129,7 @@ export default function OrdersPage() {
                 <div>
                   <p className="text-[#7b898e] mb-1">Payment Method</p>
                   <p className="font-medium">{order.payment.method}</p>
-                  {order.trackingNumber && <a href={`https://www.17track.net/en?nums=${encodeURIComponent(order.trackingNumber)}`} target="_blank" rel="noreferrer" className="text-[#21c7a5] text-xs mt-1 inline-block hover:underline">Track with 17TRACK</a>}
+                  {order.trackingNumber && <a href={`https://www.17track.net/en?nums=${encodeURIComponent(order.trackingNumber)}`} target="_blank" rel="noreferrer" className="text-[#8298aa] text-xs mt-1 inline-block hover:underline">Track with 17TRACK</a>}
                 </div>
                 <div className="text-right">
                   <span className="text-[#7b898e] text-sm">Invoice unavailable</span>

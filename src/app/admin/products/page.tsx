@@ -95,7 +95,7 @@ export default function AdminProductsPage() {
         </div>
         <Link
           href="/admin/products/new"
-          className="px-6 py-3 bg-[#21c7a5] text-black font-bold rounded-lg hover:bg-[#16a98d] transition flex items-center gap-2"
+          className="px-6 py-3 bg-[#8298aa] text-black font-bold rounded-lg hover:bg-[#657c8f] transition flex items-center gap-2"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -112,13 +112,13 @@ export default function AdminProductsPage() {
             placeholder="Search products..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-[#141414] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
+            className="w-full bg-[#141414] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
           />
         </div>
         <select
           value={categoryFilter}
           onChange={(e) => setCategoryFilter(e.target.value)}
-          className="bg-[#141414] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
+          className="bg-[#141414] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
         >
           <option value="all">All Categories</option>
           {categories.map(cat => (
@@ -150,7 +150,7 @@ export default function AdminProductsPage() {
                   <h3 className="text-white font-semibold text-sm">{product.name}</h3>
                   <p className="text-[#a7b0b2] text-xs">{product.categoryLabel} · {product.purity}</p>
                 </div>
-                <span className="text-[#21c7a5] font-bold text-sm">£{product.price.toFixed(2)}{product.discountPercent ? ` (-${product.discountPercent}%)` : ''}</span>
+                <span className="text-[#8298aa] font-bold text-sm">£{product.price.toFixed(2)}{product.discountPercent ? ` (-${product.discountPercent}%)` : ''}</span>
               </div>
 
               <div className="flex items-center justify-between mt-3">

@@ -20,6 +20,16 @@ type ProductRow = {
 };
 
 function mapProduct(row: ProductRow): Product {
+  const imageOverrides: Record<string, string> = {
+    'melanotan-2': '/images/melanotan-2-10mg.png',
+    'ss-31': '/images/ss-31-10mg.png',
+    'melanotan-1': '/images/melanotan-1-10mg.png',
+    wolverine: '/images/wolverine-10mg.png',
+    'kiss-peptin': '/images/kiss-peptin-10mg.png',
+    cagrilintide: '/images/cagrilintide-5mg.png',
+    'tb-500': '/images/tb-500-10mg.png',
+  };
+
   return {
     id: row.id,
     slug: row.slug,
@@ -31,7 +41,7 @@ function mapProduct(row: ProductRow): Product {
     categoryLabel: row.category_label || 'Research Compound',
     description: row.description || '',
     lot: row.lot_number || row.slug.toUpperCase(),
-    image: row.image_url || `/images/${row.slug}.png`,
+    image: imageOverrides[row.slug] || row.image_url || `/images/${row.slug}.png`,
     stockQuantity: Number(row.stock_quantity ?? 100),
     discountPercent: Number(row.discount_percent ?? 0),
   };

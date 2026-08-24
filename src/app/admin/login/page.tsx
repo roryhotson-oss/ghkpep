@@ -40,8 +40,8 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center px-4">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-[#21c7a5]/10 rounded-2xl mb-4">
-            <svg className="w-8 h-8 text-[#21c7a5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-[#8298aa]/10 rounded-2xl mb-4">
+            <svg className="w-8 h-8 text-[#8298aa]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
           </div>
@@ -63,7 +63,7 @@ export default function AdminLoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
+                className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                 placeholder="admin@ghkpep.com"
                 required
               />
@@ -74,7 +74,7 @@ export default function AdminLoginPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
+                className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                 placeholder="Enter password"
                 required
               />
@@ -82,13 +82,13 @@ export default function AdminLoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full px-8 py-4 bg-[#21c7a5] text-black font-bold rounded-lg hover:bg-[#16a98d] transition text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full px-8 py-4 bg-[#8298aa] text-black font-bold rounded-lg hover:bg-[#657c8f] transition text-lg disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
           <div className="mt-6 border-t border-[#2b3538] pt-5 text-center">
-            <Link href="/shop" className="text-sm text-[#21c7a5] hover:text-[#16a98d] transition">
+            <Link href="/shop" className="text-sm text-[#8298aa] hover:text-[#657c8f] transition">
               ← Return to Shop
             </Link>
           </div>

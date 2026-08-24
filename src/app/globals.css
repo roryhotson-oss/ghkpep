@@ -3,8 +3,8 @@
 @theme inline {
   --color-background: #0a0a0a;
   --color-foreground: #ededed;
-  --color-primary: #21c7a5;
-  --color-primary-dark: #16a98d;
+  --color-primary: #8298aa;
+  --color-primary-dark: #657c8f;
   --color-card: #141414;
   --color-card-hover: #1a1a1a;
   --color-border: #2b3538;
@@ -48,12 +48,12 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #21c7a5, #00b4d8);
+  background: linear-gradient(135deg, #bfd0d9, #829fb2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .card-glow:hover {
-  box-shadow: 0 0 30px rgba(0, 212, 170, 0.1);
+  box-shadow: 0 0 30px rgba(125, 151, 170, 0.1);
 }

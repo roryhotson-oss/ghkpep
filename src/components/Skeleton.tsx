@@ -57,7 +57,7 @@ export function LoadingSpinner() {
   return (
     <div className="flex items-center justify-center py-8">
       <div className="relative">
-        <div className="w-12 h-12 border-4 border-[#21c7a5]/30 border-t-[#21c7a5] rounded-full animate-spin" />
+        <div className="w-12 h-12 border-4 border-[#8298aa]/30 border-t-[#8298aa] rounded-full animate-spin" />
         <span className="sr-only">Loading...</span>
       </div>
     </div>

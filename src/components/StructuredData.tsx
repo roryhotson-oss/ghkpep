@@ -10,7 +10,7 @@ export default async function StructuredData() {
         '@id': 'https://ghkpep.com/#organization',
         name: 'GHKpep',
         url: 'https://ghkpep.com',
-        description: 'Documented research compounds for in-vitro laboratory use.',
+        description: 'Documented research compounds for in vitro laboratory use.',
         sameAs: ['https://uk-rscs.org'],
         contactPoint: {
           '@type': 'ContactPoint',
@@ -46,7 +46,7 @@ export default async function StructuredData() {
           item: {
             '@type': 'Product',
             name: product.name,
-            description: `${product.name} for in-vitro laboratory research with batch documentation.`,
+            description: `${product.name} for in vitro laboratory research with batch documentation.`,
             image: `https://ghkpep.com${product.image}`,
             sku: product.slug,
             brand: { '@type': 'Brand', name: 'GHKpep' },

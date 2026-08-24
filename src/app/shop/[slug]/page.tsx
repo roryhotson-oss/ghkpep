@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${product.name} | GHKpep UK`,
-    description: `${product.name} for in-vitro laboratory research, with batch documentation from Glyvantix Labs. Free discreet tracked shipping.`,
+    description: `${product.name} for in vitro laboratory research, with batch documentation and free discreet tracked shipping.`,
     keywords: [
       product.name.toLowerCase(),
       `${product.name.toLowerCase()} UK`,

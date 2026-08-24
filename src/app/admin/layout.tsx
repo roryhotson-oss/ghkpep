@@ -103,7 +103,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               href={item.href}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition ${
                 isActive(item.href)
-                  ? 'bg-[#21c7a5]/10 text-[#21c7a5]'
+                  ? 'bg-[#8298aa]/10 text-[#8298aa]'
                   : 'text-[#a7b0b2] hover:text-white hover:bg-[#1a1a1a]'
               }`}
             >

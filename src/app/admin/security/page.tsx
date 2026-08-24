@@ -31,7 +31,7 @@ export default function AdminSecurityPage() {
       <div><label className="block text-sm text-white font-medium mb-2">Current password</label><input required type="password" value={currentPassword} onChange={(event) => setCurrentPassword(event.target.value)} className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm" /></div>
       <div><label className="block text-sm text-white font-medium mb-2">New password</label><input required minLength={12} type="password" value={newPassword} onChange={(event) => setNewPassword(event.target.value)} className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm" /><p className="text-[#7b898e] text-xs mt-2">Use at least 12 characters.</p></div>
       <div><label className="block text-sm text-white font-medium mb-2">Confirm new password</label><input required minLength={12} type="password" value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm" /></div>
-      <div className="flex items-center gap-4"><button type="submit" className="px-6 py-3 bg-[#21c7a5] text-black font-bold rounded-lg">Change Password</button>{status && <span className="text-sm text-[#a7b0b2]">{status}</span>}</div>
+      <div className="flex items-center gap-4"><button type="submit" className="px-6 py-3 bg-[#8298aa] text-black font-bold rounded-lg">Change Password</button>{status && <span className="text-sm text-[#a7b0b2]">{status}</span>}</div>
     </form>
   </div>;
 }

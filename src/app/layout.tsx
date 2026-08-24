@@ -9,7 +9,7 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  themeColor: '#21c7a5',
+  themeColor: '#8298aa',
 };
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     default: 'GHKpep UK | Research Peptides, BPC-157, GHK-Cu',
     template: '%s | GHKpep UK',
   },
-  description: 'GHKpep supplies documented research compounds for in-vitro laboratory use, with independent testing and free discreet tracked shipping.',
+  description: 'GHKpep supplies documented research compounds for in vitro laboratory use, with independent testing and free discreet tracked shipping.',
   keywords: [
     'research peptides UK',
     'BPC-157 UK',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     'TB-500 UK',
     'peptide suppliers UK',
     'independently tested peptides',
-    'Glyvantix tested peptides',
+    'documented research peptides',
   ],
   authors: [{ name: 'GHKpep', url: 'https://ghkpep.com' }],
   creator: 'GHKpep',
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     url: 'https://ghkpep.com',
     siteName: 'GHKpep UK',
     title: 'GHKpep UK | Research Peptides',
-    description: 'GHKpep supplies documented research compounds for in-vitro laboratory use, with independent testing and free discreet tracked shipping.',
+    description: 'GHKpep supplies documented research compounds for in vitro laboratory use, with independent testing and free discreet tracked shipping.',
     images: [
       {
         url: '/images/hero-lab.png',

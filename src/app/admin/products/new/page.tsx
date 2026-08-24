@@ -191,7 +191,7 @@ export default function NewProductPage() {
                 type="file"
                 accept="image/*"
                 onChange={handleImageUpload}
-                className="block w-full text-sm text-[#e1e7e5] file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#21c7a5] file:text-black hover:file:bg-[#16a98d] cursor-pointer"
+                className="block w-full text-sm text-[#e1e7e5] file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#8298aa] file:text-black hover:file:bg-[#657c8f] cursor-pointer"
               />
               <p className="text-xs text-[#7b898e] mt-2">
                 Recommended: Square images (500x500px or larger). JPG, PNG, or WebP format. Max 5MB.
@@ -227,7 +227,7 @@ export default function NewProductPage() {
                   value={form.name}
                   onChange={handleChange}
                   required
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                   placeholder="e.g., GHK-Cu Copper Peptide"
                 />
               </div>
@@ -239,7 +239,7 @@ export default function NewProductPage() {
                   value={form.slug}
                   onChange={handleChange}
                   required
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                   placeholder="ghk-cu-copper-peptide"
                 />
               </div>
@@ -253,7 +253,7 @@ export default function NewProductPage() {
                 onChange={handleChange}
                 rows={5}
                 required
-                className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition resize-none"
+                className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#8298aa] transition resize-none"
                 placeholder="Provide a factual description of this research compound, its properties, and relevant scientific context..."
               />
             </div>
@@ -266,7 +266,7 @@ export default function NewProductPage() {
                   value={form.category}
                   onChange={handleCategoryChange}
                   required
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                 >
                   {categoryOptions.map((cat) => (
                     <option key={cat.value} value={cat.value}>
@@ -283,7 +283,7 @@ export default function NewProductPage() {
                   value={form.purity}
                   onChange={handleChange}
                   required
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                   placeholder="e.g., 99.5%+"
                 />
               </div>
@@ -294,7 +294,7 @@ export default function NewProductPage() {
                   name="lot"
                   value={form.lot}
                   onChange={handleChange}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                   placeholder="e.g., GHK-2024-BATCH-001"
                 />
               </div>
@@ -318,7 +318,7 @@ export default function NewProductPage() {
                   step="0.01"
                   min="0"
                   required
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-10 py-3 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-10 py-3 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                   placeholder="0.00"
                 />
               </div>
@@ -334,7 +334,7 @@ export default function NewProductPage() {
                   onChange={handleChange}
                   step="0.01"
                   min="0"
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-10 py-3 text-white text-sm focus:outline-none focus:border-[#21c7a5] transition"
+                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-10 py-3 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                   placeholder="0.00"
                 />
               </div>
@@ -348,14 +348,14 @@ export default function NewProductPage() {
           <button
             type="submit"
             disabled={loading}
-            className="flex-1 px-6 py-4 bg-[#21c7a5] text-black font-bold rounded-lg hover:bg-[#16a98d] transition disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 px-6 py-4 bg-[#8298aa] text-black font-bold rounded-lg hover:bg-[#657c8f] transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Creating Product..." : "Create Product"}
           </button>
           <button
             type="button"
             onClick={() => router.push("/admin/products")}
-            className="flex-1 px-6 py-4 bg-[#1a1a1a] border border-[#2b3538] text-[#e1e7e5] font-bold rounded-lg hover:border-[#21c7a5] hover:text-[#21c7a5] transition"
+            className="flex-1 px-6 py-4 bg-[#1a1a1a] border border-[#2b3538] text-[#e1e7e5] font-bold rounded-lg hover:border-[#8298aa] hover:text-[#8298aa] transition"
           >
             Cancel
           </button>

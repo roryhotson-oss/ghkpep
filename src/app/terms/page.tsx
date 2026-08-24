@@ -3,7 +3,7 @@ export default function TermsPage() {
     <div>
       <section className="bg-[#0d0d0d] border-b border-[#2b3538]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <p className="text-[#21c7a5] text-sm font-medium mb-2">Terms</p>
+          <p className="text-[#8298aa] text-sm font-medium mb-2">Terms</p>
           <h1 className="text-3xl font-bold">Terms of Service</h1>
           <p className="text-[#a7b0b2] mt-3">Last updated August 2026. The terms that govern use of ghkpep.com and purchases from GHK.</p>
         </div>
@@ -13,7 +13,7 @@ export default function TermsPage() {
         <div className="space-y-8 text-[#e1e7e5] text-sm leading-relaxed">
           <div>
             <h2 className="text-lg font-bold text-white mb-2">Eligibility</h2>
-            <p>You must be at least 21 years of age and a qualified researcher purchasing for in-vitro or laboratory use to access this site or place an order.</p>
+            <p>You must be at least 21 years of age and a qualified researcher purchasing for in vitro or laboratory use to access this site or place an order.</p>
           </div>
           <div>
             <h2 className="text-lg font-bold text-white mb-2">Research use only</h2>
@@ -29,7 +29,7 @@ export default function TermsPage() {
           </div>
           <div>
             <h2 className="text-lg font-bold text-white mb-2">Shipping & risk of loss</h2>
-            <p>All orders are shipped via Trusted Labs. Title and risk of loss pass to the buyer once the carrier accepts the package. Refer to our <a href="/shipping" className="text-[#21c7a5] hover:underline">shipping</a> and <a href="/returns" className="text-[#21c7a5] hover:underline">returns</a> policies for damage and lost-package handling.</p>
+            <p>All orders are shipped via Trusted Labs. Title and risk of loss pass to the buyer once the carrier accepts the package. Refer to our <a href="/shipping" className="text-[#8298aa] hover:underline">shipping</a> and <a href="/returns" className="text-[#8298aa] hover:underline">returns</a> policies for damage and lost-package handling.</p>
           </div>
           <div>
             <h2 className="text-lg font-bold text-white mb-2">Intellectual property</h2>
