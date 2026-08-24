@@ -128,6 +128,7 @@ export default function CartPage() {
 
   const handleCheckoutSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const form = event.currentTarget;
     setCheckoutError('');
     setTurnstileError('');
     const shipping = sameAsBilling ? billingAddress : shippingAddress;
@@ -149,8 +150,10 @@ export default function CartPage() {
       }
     }
 
-    const fileInput = event.currentTarget.elements.namedItem('payment-proof');
+    const fileInput = form.elements.namedItem('payment-proof');
     const file = fileInput instanceof HTMLInputElement ? fileInput.files?.[0] : undefined;
+    let uploadedProofUrl = paymentProofUrl;
+
     if (file) {
       const uploadData = new FormData();
       uploadData.append('file', file);
@@ -160,7 +163,8 @@ export default function CartPage() {
         setCheckoutError(data.error || 'Could not upload payment proof.');
         return;
       }
-      setPaymentProofUrl(data.url);
+      uploadedProofUrl = data.url;
+      setPaymentProofUrl(uploadedProofUrl);
       setPaymentProofName(file.name);
     }
     const orderResponse = await fetch('/api/orders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
@@ -169,7 +173,7 @@ export default function CartPage() {
       shippingAddress: shipping,
       paymentMethod: selectedPaymentMethod,
       paymentReference: selectedPaymentMethod === 'paypal' ? paypalAccount : '',
-      paymentProofUrl,
+      paymentProofUrl: uploadedProofUrl,
     }) });
     if (orderResponse.ok) {
       const orderData = await orderResponse.json();

@@ -31,13 +31,18 @@ export async function POST(request: NextRequest) {
     const supabase = getSupabaseAdmin();
     const filename = `${crypto.randomUUID()}.${extension}`;
     const buffer = Buffer.from(await file.arrayBuffer());
+
     if (supabase) {
-      await supabase.storage.createBucket('payment-proofs', { public: false }).catch(() => undefined);
-      const { error } = await supabase.storage.from('payment-proofs').upload(filename, buffer, { contentType: file.type, upsert: false });
-      if (error) throw error;
-      const { data: signedFile, error: signedUrlError } = await supabase.storage.from('payment-proofs').createSignedUrl(filename, 60 * 60 * 24 * 7);
-      if (signedUrlError || !signedFile?.signedUrl) throw signedUrlError || new Error('Could not create proof URL');
-      return NextResponse.json({ url: signedFile.signedUrl, storagePath: filename });
+      try {
+        await supabase.storage.createBucket('payment-proofs', { public: false }).catch(() => undefined);
+        const { error } = await supabase.storage.from('payment-proofs').upload(filename, buffer, { contentType: file.type, upsert: false });
+        if (error) throw error;
+        const { data: signedFile, error: signedUrlError } = await supabase.storage.from('payment-proofs').createSignedUrl(filename, 60 * 60 * 24 * 7);
+        if (signedUrlError || !signedFile?.signedUrl) throw signedUrlError || new Error('Could not create proof URL');
+        return NextResponse.json({ url: signedFile.signedUrl, storagePath: filename });
+      } catch (storageError) {
+        console.warn('Supabase payment proof upload failed, falling back to local storage:', storageError);
+      }
     }
 
     const directory = path.join(process.cwd(), 'public', 'payment-proofs');
