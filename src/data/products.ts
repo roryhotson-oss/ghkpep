@@ -229,7 +229,7 @@ export const products: Product[] = [
     categoryLabel: "Amylin Research",
     description: "Amylin-related sequence analog. Supplied for in vitro laboratory research.",
     lot: "GHK-2427-R",
-    image: "/images/cagrilintide-5mg.png"
+    image: "/images/cagrilintide-5mg.svg"
   },
   {
     slug: "kpv",
