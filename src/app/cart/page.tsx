@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Script from 'next/script';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 declare global {
   interface Window {
@@ -52,7 +52,7 @@ export default function CartPage() {
     ? (process.env.NODE_ENV !== 'production' ? '1x00000000000000000000AA' : '')
     : rawTurnstileSiteKey;
 
-  const renderTurnstile = () => {
+  const renderTurnstile = useCallback(() => {
     if (typeof window === 'undefined' || !showCheckoutModal || !turnstileSiteKey || !window.turnstile) return;
     const element = document.getElementById('turnstile-checkout');
     if (!element || element.childElementCount) return;
@@ -62,7 +62,7 @@ export default function CartPage() {
       'expired-callback': () => setTurnstileToken(''),
       'error-callback': () => setTurnstileError('Cloudflare security check could not load.'),
     });
-  };
+  }, [showCheckoutModal, turnstileSiteKey]);
 
   useEffect(() => {
     // Load cart from localStorage on mount
@@ -93,7 +93,7 @@ export default function CartPage() {
     if (!showCheckoutModal || !turnstileSiteKey) return;
     const timer = window.setTimeout(renderTurnstile, 300);
     return () => window.clearTimeout(timer);
-  }, [showCheckoutModal, turnstileSiteKey]);
+  }, [showCheckoutModal, turnstileSiteKey, renderTurnstile]);
 
   // Save cart to localStorage whenever it changes
   useEffect(() => {
