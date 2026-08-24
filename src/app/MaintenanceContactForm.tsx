@@ -99,8 +99,8 @@ export default function MaintenanceContactForm() {
         </label>
       </div>
       <label className="block text-sm font-semibold text-[#425b6d]">
-        Phone number for callback
-        <input required type="tel" value={formData.phone} onChange={(event) => updateField('phone', event.target.value)} className="mt-1 w-full border border-[#cbdbe6] px-3 py-2 font-normal text-[#10263d]" />
+        Your phone number for callback (UK +44)
+        <input required type="tel" value={formData.phone} onChange={(event) => updateField('phone', event.target.value)} className="mt-1 w-full border border-[#cbdbe6] px-3 py-2 font-normal text-[#10263d]" placeholder="+44 7xxx xxxxxx" />
       </label>
       <label className="block text-sm font-semibold text-[#425b6d]">
         Your question or order request
