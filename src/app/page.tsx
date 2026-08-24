@@ -38,6 +38,21 @@ export default function Home() {
             </ul>
           </div>
 
+          <div className="mt-8 border-y border-[#cbdbe6] py-7">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#4d7895]">Product images</p>
+            <h2 className="mt-2 text-2xl font-bold text-[#10263d]">Selected catalogue references</h2>
+            <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+              {products.slice(0, 5).map((product) => (
+                <div key={product.slug} className="overflow-hidden border border-[#cbdbe6] bg-white">
+                  <div className="aspect-square bg-[#f7fafc] p-3">
+                    <img src={product.image} alt={`${product.name} product reference`} className="h-full w-full object-contain" />
+                  </div>
+                  <p className="px-3 py-3 text-sm font-semibold text-[#10263d]">{product.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="mt-8 border border-[#cbdbe6] bg-white px-5 py-5 sm:px-6">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#4d7895]">Need a human?</p>
             <h2 className="mt-2 text-xl font-bold text-[#10263d]">Orders are being placed now due to high interest</h2>
