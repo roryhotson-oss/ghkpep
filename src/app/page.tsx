@@ -40,8 +40,8 @@ export default function Home() {
             <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
               {DISPLAY_PRODUCTS.map((product) => (
                 <div key={product.slug} className="overflow-hidden border border-[#9db8c7] bg-white shadow-md shadow-[#2e617e]/10 ring-1 ring-[#eef4f8]">
-                  <div className="aspect-[4/3] bg-[#f7fafc] p-1">
-                    <img src={product.image} alt={`${product.name} product reference`} className="h-full w-full object-contain" />
+                  <div className="aspect-[16/10] overflow-hidden bg-[#f7fafc] p-0">
+                    <img src={product.image} alt={`${product.name} product reference`} className="h-full w-full scale-110 object-contain" />
                   </div>
                   <p className="px-3 py-3 text-sm font-semibold text-[#10263d]">{product.name}</p>
                   <div className="flex gap-2 px-3 pb-3">
