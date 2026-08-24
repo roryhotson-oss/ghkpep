@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { name, email, institution, subject, message } = body;
+    const { name, email, institution, subject, message, source } = body;
 
     // Validate all inputs
     const nameValidation = validateName(name);
@@ -45,7 +45,9 @@ export async function POST(request: NextRequest) {
     const subjectLower = subjectValidation.sanitized.toLowerCase();
     const messageLower = messageValidation.sanitized.toLowerCase();
     
-    if (subjectLower.includes('order') || messageLower.includes('order') || subjectLower.includes('payment') || subjectLower.includes('shipping')) {
+    if (source === 'maintenance') {
+      contactEmail = process.env.NEXT_PUBLIC_SOCIAL_EMAIL || 'social@ghkpep.com';
+    } else if (subjectLower.includes('order') || messageLower.includes('order') || subjectLower.includes('payment') || subjectLower.includes('shipping')) {
       contactEmail = process.env.NEXT_PUBLIC_ORDERS_EMAIL || 'orders@ghkpep.com';
     } else if (subjectLower.includes('privacy') || subjectLower.includes('data') || subjectLower.includes('gdpr')) {
       contactEmail = process.env.NEXT_PUBLIC_PRIVACY_EMAIL || 'privacy@ghkpep.com';

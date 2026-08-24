@@ -21,6 +21,7 @@ export default function MaintenanceContactForm() {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
+          source: 'maintenance',
           subject: 'Order or product enquiry',
           message: `Phone number: ${formData.phone}\n\n${formData.message}`,
         }),
