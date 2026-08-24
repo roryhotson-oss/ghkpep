@@ -61,7 +61,11 @@ export function proxy(request: NextRequest) {
     process.env.NEXT_PUBLIC_MAINTENANCE_MODE !== 'false' &&
     pathname !== '/' &&
     !pathname.startsWith('/admin') &&
-    !pathname.startsWith('/api/')
+    !pathname.startsWith('/api/') &&
+    !pathname.startsWith('/images/') &&
+    !pathname.startsWith('/coas/') &&
+    pathname !== '/robots.txt' &&
+    pathname !== '/sitemap.xml'
   ) {
     return NextResponse.rewrite(new URL('/', request.url), response);
   }

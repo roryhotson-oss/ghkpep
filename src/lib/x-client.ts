@@ -25,18 +25,23 @@ function buildOAuthHeader(method: string, url: string, credentials: { apiKey: st
 }
 
 export function getMissingXCredentials(): string[] {
-  const required = ['X_API_KEY', 'X_API_SECRET', 'X_ACCESS_TOKEN', 'X_ACCESS_SECRET'];
-  return required.filter((name) => !process.env[name]);
+  const credentials = [
+    ['X_API_KEY', 'X_CLIENT_ID'],
+    ['X_API_SECRET', 'X_CLIENT_SECRET'],
+    ['X_ACCESS_TOKEN'],
+    ['X_ACCESS_SECRET', 'X_ACCESS_TOKEN_SECRET'],
+  ];
+  return credentials.filter((names) => !names.some((name) => process.env[name])).map(([name]) => name);
 }
 
 export async function publishTweet(content: string): Promise<string> {
   const missing = getMissingXCredentials();
   if (missing.length > 0) throw new Error(`Missing X credentials: ${missing.join(', ')}. Posting to X requires a user-context OAuth 1.0a token, not an app-only bearer token.`);
   const credentials = {
-    apiKey: process.env.X_API_KEY as string,
-    apiSecret: process.env.X_API_SECRET as string,
+    apiKey: (process.env.X_API_KEY || process.env.X_CLIENT_ID) as string,
+    apiSecret: (process.env.X_API_SECRET || process.env.X_CLIENT_SECRET) as string,
     accessToken: process.env.X_ACCESS_TOKEN as string,
-    accessSecret: process.env.X_ACCESS_SECRET as string,
+    accessSecret: (process.env.X_ACCESS_SECRET || process.env.X_ACCESS_TOKEN_SECRET) as string,
   };
   const response = await fetch(TWEET_URL, {
     method: 'POST',
