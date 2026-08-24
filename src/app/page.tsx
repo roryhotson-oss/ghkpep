@@ -45,7 +45,7 @@ export default function Home() {
               We work with a range of global and local suppliers. If you would like an updated full list and current prices, or want to place an order from 1 to 10 vials, email us and include your phone number. A human will call you to answer questions and arrange your order.
             </p>
             <p className="mt-3 font-semibold text-[#2e617e]">If you know GHK, you understand. If you do not know GHK, we can help.</p>
-            <p className="mt-3 text-sm text-[#425b6d]">This is a direct line to our team, not an automated bot. Email <a href="mailto:social@ghkpep.com" className="font-bold text-[#2e617e] underline underline-offset-4">social@ghkpep.com</a> if you prefer to write directly.</p>
+            <p className="mt-3 text-sm text-[#425b6d]">This is a direct line to our team, not an automated bot. Leave your message in the form below and a human will get back to you.</p>
             <MaintenanceContactForm />
           </div>
         </div>
