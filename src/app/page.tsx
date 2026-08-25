@@ -3,10 +3,25 @@ import MaintenanceContactForm from './MaintenanceContactForm';
 
 const RESEARCH_PRODUCTS = products.filter((product) => product.category !== 'accessories');
 const ADDITIONAL_REFERENCE_PRODUCTS = [
-  { slug: 'mt-1-reference', name: 'MT-1 10mg', image: '/images/mt-1-10mg.svg' },
-  { slug: 'mt-2-reference', name: 'MT-2 10mg', image: '/images/mt-2-10mg.svg' },
+  { slug: 'mt-1-reference', name: 'MT-1 10mg', image: '/images/melanotan-1-10mg.png' },
+  { slug: 'mt-2-reference', name: 'MT-2 10mg', image: '/images/melanotan-2-10mg.png' },
 ];
 const DISPLAY_PRODUCTS = [...RESEARCH_PRODUCTS, ...ADDITIONAL_REFERENCE_PRODUCTS];
+const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '';
+const TELEGRAM_USERNAME = process.env.NEXT_PUBLIC_TELEGRAM_USERNAME || '';
+const QUICK_MESSAGE_TEXT = 'Hello, I would like to leave a message about product availability.';
+
+const getWhatsAppLink = (number: string, message: string) => {
+  const sanitized = number.replace(/\D/g, '');
+  if (!sanitized) return '';
+  return `https://wa.me/${sanitized}?text=${encodeURIComponent(message)}`;
+};
+
+const getTelegramLink = (username: string, message: string) => {
+  const sanitized = username.trim().replace(/^@+/, '').replace(/[^a-zA-Z0-9_]/g, '');
+  if (!sanitized) return '';
+  return `https://t.me/${sanitized}?text=${encodeURIComponent(message)}`;
+};
 
 export const metadata = {
   title: 'GHKpep | Temporary maintenance',
@@ -14,6 +29,15 @@ export const metadata = {
 };
 
 export default function Home() {
+  const whatsappHref = getWhatsAppLink(WHATSAPP_NUMBER, QUICK_MESSAGE_TEXT);
+  const telegramHref = getTelegramLink(TELEGRAM_USERNAME, QUICK_MESSAGE_TEXT);
+  const primaryMessageHref = whatsappHref || telegramHref || '#maintenance-enquiry';
+  const primaryMessageLabel = whatsappHref
+    ? 'Leave a message on WhatsApp'
+    : telegramHref
+      ? 'Leave a message on Telegram'
+      : 'Leave a message by enquiry form';
+
   return (
     <div className="min-h-[70vh] bg-[#eef4f8] text-[#10263d]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
@@ -73,6 +97,41 @@ export default function Home() {
             </p>
             <p className="mt-3 font-semibold text-[#2e617e]">If you know GHK, you understand. If you do not know GHK, we can help.</p>
             <p className="mt-3 text-sm text-[#425b6d]">Ask and we will assist where we can. We keep product, COA, and quality information factual and clear, without inflated claims.</p>
+            <a
+              href={primaryMessageHref}
+              target={primaryMessageHref.startsWith('http') ? '_blank' : undefined}
+              rel={primaryMessageHref.startsWith('http') ? 'noopener noreferrer' : undefined}
+              className="mt-4 inline-flex items-center rounded-md bg-[#2e617e] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#214d68]"
+            >
+              {primaryMessageLabel}
+            </a>
+            {(whatsappHref || telegramHref) && (
+              <div className="mt-4 rounded-md border border-[#cbdbe6] bg-[#f7fbfe] p-4">
+                <p className="text-sm font-semibold text-[#2e617e]">Leave a quick message</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {whatsappHref && (
+                    <a
+                      href={whatsappHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center rounded-md bg-[#2e617e] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#214d68]"
+                    >
+                      Message on WhatsApp
+                    </a>
+                  )}
+                  {telegramHref && (
+                    <a
+                      href={telegramHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center rounded-md border border-[#9db8c7] bg-white px-4 py-2 text-sm font-semibold text-[#2e617e] transition hover:bg-[#eef4f8]"
+                    >
+                      Message on Telegram
+                    </a>
+                  )}
+                </div>
+              </div>
+            )}
             <MaintenanceContactForm />
           </div>
 
