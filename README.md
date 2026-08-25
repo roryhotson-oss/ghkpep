@@ -65,6 +65,8 @@ TURNSTILE_SECRET_KEY=your-cloudflare-turnstile-secret-key
 NEXT_PUBLIC_TELEGRAM_USERNAME=your_username
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 RESEND_API_KEY=your_resend_api_key_here
+RESEND_FROM_EMAIL=sales@ghkpep.com
+RESEND_FROM_NAME=GHK Peptides
 ADMIN_EMAIL=your-admin-email@example.com
 ADMIN_PASSWORD=use-a-strong-admin-password
 SESSION_SECRET=use-a-long-random-session-secret
@@ -108,6 +110,8 @@ npm start
    - `NEXT_PUBLIC_TELEGRAM_USERNAME`
    - `NEXT_PUBLIC_SITE_URL`
    - `RESEND_API_KEY`
+   - `RESEND_FROM_EMAIL`
+   - `RESEND_FROM_NAME`
 6. Click "Deploy"
 
 ### Option 2: Deploy via CLI
@@ -187,6 +191,8 @@ Social credentials must remain server-only. X requires a developer app with writ
 | `NEXT_PUBLIC_TELEGRAM_USERNAME` | Telegram username | Yes |
 | `NEXT_PUBLIC_SITE_URL` | Site URL | Yes |
 | `RESEND_API_KEY` | Resend API key for emails | Yes |
+| `RESEND_FROM_EMAIL` | Verified Resend sender address, for example `sales@ghkpep.com` | Yes |
+| `RESEND_FROM_NAME` | Display name for outbound emails | No |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Google Analytics ID | No |
 | `ADMIN_EMAIL` | Admin login email | Yes |
 | `ADMIN_PASSWORD` | Admin login password | Yes |

@@ -21,7 +21,7 @@ export default function TermsPage() {
           </div>
           <div>
             <h2 className="text-lg font-bold text-white mb-2">Orders & pricing</h2>
-            <p>All prices are displayed in GBP (£). We reserve the right to refuse, cancel, or limit any order. Prices may change without notice. Confirmed orders ship at the price displayed at the time of checkout. Boxes of 10 vials are priced at a 10% discount to individual vial pricing.</p>
+            <p>All prices are displayed in GBP (£). We reserve the right to refuse, cancel, or limit any order. Prices may change without notice. Confirmed orders ship at the price displayed at the time of checkout. Boxes of 10 vials are priced at a 10% discount to individual vial pricing. Email <a href="mailto:sales@ghkpep.com" className="text-[#8298aa] hover:underline">sales@ghkpep.com</a> for full pricing.</p>
           </div>
           <div>
             <h2 className="text-lg font-bold text-white mb-2">Payment methods</h2>

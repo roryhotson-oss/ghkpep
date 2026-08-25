@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
 import { getOrders, getSubscribers } from '@/lib/admin-store';
 import { validateEmail } from '@/lib/validation';
 import { checkAdmin } from '@/lib/admin-auth';
-
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+import { getEmailClient, getFromAddress, sendEmail } from '@/lib/email';
 
 export async function POST(request: NextRequest) {
   if (!(await checkAdmin())) {
@@ -12,6 +10,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    const resend = getEmailClient();
     const body = await request.json();
     const { to, subject, html, recipients } = body;
 
@@ -60,8 +59,8 @@ export async function POST(request: NextRequest) {
       const batch = recipientList.slice(i, i + batchSize);
       const promises = batch.map(async (email) => {
         try {
-          await resend.emails.send({
-            from: 'GHK Peptides <onboarding@resend.dev>',
+          await sendEmail(resend, {
+            from: getFromAddress(),
             to: [email],
             subject,
             html,

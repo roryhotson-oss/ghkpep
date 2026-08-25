@@ -2,6 +2,14 @@
 
 
 import { useState } from 'react';
+import Script from 'next/script';
+import { products } from '@/data/products';
+
+declare global {
+  interface Window {
+    turnstile?: { render: (element: HTMLElement, options: { sitekey: string; callback: (token: string) => void; 'expired-callback': () => void; 'error-callback': () => void }) => void };
+  }
+}
 
 
 
@@ -12,25 +20,51 @@ export default function ContactPage() {
     name: '',
     email: '',
     institution: '',
+    product: '',
+    quantity: '1',
     subject: '',
     message: ''
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const [turnstileError, setTurnstileError] = useState('');
+  const rawSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '';
+  const siteKey = rawSiteKey.includes('your-cloudflare-turnstile-site-key')
+    ? (process.env.NODE_ENV !== 'production' ? '1x00000000000000000000AA' : '')
+    : rawSiteKey;
+  const renderTurnstile = () => {
+    if (!siteKey || !window.turnstile) return;
+    const element = document.getElementById('turnstile-contact');
+    if (!element || element.childElementCount) return;
+    window.turnstile.render(element, {
+      sitekey: siteKey,
+      callback: setTurnstileToken,
+      'expired-callback': () => setTurnstileToken(''),
+      'error-callback': () => setTurnstileError('Cloudflare security check could not load.'),
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
+    setTurnstileError('');
 
     try {
+      if (siteKey && !turnstileToken) {
+        setTurnstileError('Please complete the Cloudflare security check.');
+        setStatus('idle');
+        return;
+      }
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, turnstileToken }),
       });
 
       if (response.ok) {
         setStatus('success');
-        setFormData({ name: '', email: '', institution: '', subject: '', message: '' });
+        setTurnstileToken('');
+        setFormData({ name: '', email: '', institution: '', product: '', quantity: '1', subject: '', message: '' });
       } else {
         setStatus('error');
       }
@@ -63,6 +97,10 @@ export default function ContactPage() {
                 <div>
                   <span className="text-[#a7b0b2] block">Orders & Shipping</span>
                   <a href="mailto:orders@ghkpep.com" className="text-[#8298aa] hover:underline">orders@ghkpep.com</a>
+                </div>
+                <div>
+                  <span className="text-[#a7b0b2] block">Full pricing</span>
+                  <span className="text-[#e1e7e5]">Email <a href="mailto:sales@ghkpep.com" className="text-[#8298aa] hover:underline">sales@ghkpep.com</a> for full pricing.</span>
                 </div>
                 <div>
                   <span className="text-[#a7b0b2] block">Privacy & Data</span>
@@ -155,6 +193,35 @@ export default function ContactPage() {
                     placeholder="How can we help?"
                   />
                 </div>
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-sm text-[#a7b0b2] mb-1">Product</label>
+                    <select
+                      required
+                      value={formData.product}
+                      onChange={(e) => setFormData({ ...formData, product: e.target.value })}
+                      className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
+                    >
+                      <option value="" disabled>Select a product</option>
+                      {products.map((product) => (
+                        <option key={product.slug} value={product.name}>{product.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm text-[#a7b0b2] mb-1">Quantity</label>
+                    <select
+                      required
+                      value={formData.quantity}
+                      onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
+                      className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
+                    >
+                      {Array.from({ length: 10 }, (_, index) => index + 1).map((quantity) => (
+                        <option key={quantity} value={quantity}>{quantity}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
                 <div>
                   <label className="block text-sm text-[#a7b0b2] mb-1">Message</label>
                   <textarea
@@ -171,9 +238,11 @@ export default function ContactPage() {
                     Failed to send message. Please try again or contact us via WhatsApp or Telegram from the checkout page.
                   </div>
                 )}
+                {siteKey ? <><div id="turnstile-contact" className="min-h-[65px]" /><Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" onLoad={renderTurnstile} /></> : <p className="text-sm text-red-400">Cloudflare security is not configured.</p>}
+                {turnstileError && <div className="bg-red-900/20 border border-red-500/50 rounded-lg p-3 text-sm text-red-400">{turnstileError}</div>}
                 <button
                   type="submit"
-                  disabled={status === 'loading'}
+                  disabled={status === 'loading' || !siteKey || !turnstileToken}
                   className="w-full px-8 py-3 bg-[#8298aa] text-black font-semibold rounded-lg hover:bg-[#657c8f] transition disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {status === 'loading' ? 'Sending...' : 'Send message'}

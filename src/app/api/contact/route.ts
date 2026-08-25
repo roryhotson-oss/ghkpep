@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
 import { validateEmail, validateName, validateMessage, validateSubject } from '@/lib/validation';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+import { getEmailClient, getFromAddress, sendEmail } from '@/lib/email';
 
 export async function POST(request: NextRequest) {
   try {
+    const resend = getEmailClient();
+
     // Check if Resend is configured
     if (!resend) {
       console.error('Resend API key not configured');
@@ -17,28 +17,31 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { name, email, institution, subject, message, source, website } = body;
+    const { name, email, institution, product, quantity, subject, message, source, website } = body;
 
     if (source === 'maintenance' && typeof website === 'string' && website.trim()) {
       return NextResponse.json({ error: 'Unable to send message' }, { status: 400 });
     }
 
-    if (source === 'maintenance') {
-      const secret = process.env.TURNSTILE_SECRET_KEY;
-      const token = body.turnstileToken;
-      if (secret && (typeof token !== 'string' || !token)) {
-        return NextResponse.json({ error: 'Human verification is required' }, { status: 400 });
-      }
-      if (secret && typeof token === 'string') {
-        const verificationResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams({ secret, response: token, remoteip: request.headers.get('x-forwarded-for') || '' }),
-        });
-        const verification = await verificationResponse.json();
-        if (verification.success !== true) {
-          return NextResponse.json({ error: 'Human verification failed' }, { status: 400 });
-        }
+    const secret = process.env.TURNSTILE_SECRET_KEY?.includes('your-cloudflare-turnstile-secret-key')
+      ? undefined
+      : process.env.TURNSTILE_SECRET_KEY;
+    const token = body.turnstileToken;
+    if (!secret) {
+      return NextResponse.json({ error: 'Cloudflare verification is not configured' }, { status: 503 });
+    }
+    if (secret && (typeof token !== 'string' || !token)) {
+      return NextResponse.json({ error: 'Human verification is required' }, { status: 400 });
+    }
+    if (secret && typeof token === 'string') {
+      const verificationResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ secret, response: token, remoteip: request.headers.get('x-forwarded-for') || '' }),
+      });
+      const verification = await verificationResponse.json();
+      if (verification.success !== true) {
+        return NextResponse.json({ error: 'Human verification failed' }, { status: 400 });
       }
     }
 
@@ -63,6 +66,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: messageValidation.error }, { status: 400 });
     }
 
+    const enquiryMessage = typeof product === 'string' && product
+      ? `Product: ${product}\nQuantity: ${typeof quantity === 'string' && quantity ? quantity : '1'}\n\n${messageValidation.sanitized}`
+      : messageValidation.sanitized;
+
     // Route to appropriate support email based on subject keywords
     let contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'support@ghkpep.com';
     const subjectLower = subjectValidation.sanitized.toLowerCase();
@@ -83,7 +90,7 @@ export async function POST(request: NextRequest) {
         email: emailValidation.sanitized,
         institution: typeof institution === 'string' ? institution.slice(0, 255) : null,
         subject: subjectValidation.sanitized,
-        message: messageValidation.sanitized,
+        message: enquiryMessage,
         status: 'new',
       });
       if (error) {
@@ -93,8 +100,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Send email to support
-    await resend.emails.send({
-      from: 'GHK Contact Form <onboarding@resend.dev>',
+    await sendEmail(resend, {
+      from: getFromAddress('GHK Contact Form'),
       to: [contactEmail],
       subject: `Contact Form: ${subjectValidation.sanitized}`,
       html: `
@@ -105,6 +112,8 @@ export async function POST(request: NextRequest) {
             <p><strong>Email:</strong> ${emailValidation.sanitized}</p>
             ${institution ? `<p><strong>Institution:</strong> ${institution}</p>` : ''}
             <p><strong>Subject:</strong> ${subjectValidation.sanitized}</p>
+            ${product ? `<p><strong>Product:</strong> ${product}</p>` : ''}
+            ${quantity ? `<p><strong>Quantity:</strong> ${quantity}</p>` : ''}
           </div>
           <div style="background: #fff; padding: 20px; border-left: 4px solid #8298aa;">
             <h3 style="margin-top: 0;">Message:</h3>
@@ -119,8 +128,8 @@ export async function POST(request: NextRequest) {
     });
 
     // Send confirmation email to the user
-    await resend.emails.send({
-      from: 'GHK Peptides <onboarding@resend.dev>',
+    await sendEmail(resend, {
+      from: getFromAddress(),
       to: [emailValidation.sanitized],
       subject: 'We received your message - GHK Peptides',
       html: `

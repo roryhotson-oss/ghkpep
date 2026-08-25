@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
 import { validateEmail } from '@/lib/validation';
-
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+import { getEmailClient, getFromAddress, sendEmail } from '@/lib/email';
 
 // Simple in-memory storage for demo (use database in production)
 const loginCodes = new Map<string, { code: string; expires: number }>();
 
 export async function POST(request: NextRequest) {
   try {
+    const resend = getEmailClient();
+
     // Check if Resend is configured
     if (!resend) {
       console.error('Resend API key not configured');
@@ -36,8 +36,8 @@ export async function POST(request: NextRequest) {
       loginCodes.set(emailValidation.sanitized, { code, expires });
 
       // Send email with code
-      await resend.emails.send({
-        from: 'GHK Peptides <onboarding@resend.dev>',
+      await sendEmail(resend, {
+        from: getFromAddress(),
         to: [emailValidation.sanitized],
         subject: 'Your GHK Peptides Sign-In Code',
         html: `

@@ -201,10 +201,8 @@ export default function CartPage() {
   const handleEmail = () => {
     const subject = encodeURIComponent('New Order from GHKpep.com');
     const body = encodeURIComponent(generateOrderMessage());
-    const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || '';
-    if (contactEmail) {
-      window.open(`mailto:${contactEmail}?subject=${subject}&body=${body}`, '_blank');
-    }
+    const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'sales@ghkpep.com';
+    window.open(`mailto:${contactEmail}?subject=${subject}&body=${body}`, '_blank');
   };
 
   const subtotal = cartItems.reduce((acc, item) => {
