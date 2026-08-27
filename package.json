@@ -18,7 +18,8 @@
     "pdfkit": "^0.19.1",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "resend": "^6.22.0"
+    "resend": "^6.22.0",
+    "sharp": "^0.35.3"
   },
   "setupDependencies": {
     "dotenv": "^16.4.5"

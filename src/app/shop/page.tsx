@@ -46,7 +46,7 @@ export default function ShopPage() {
               <p className="text-[#afc0ca] text-sm font-medium mb-2">Reference Grade Catalog</p>
               <h1 className="text-3xl sm:text-4xl font-bold text-white">Research Compounds</h1>
               <p className="text-[#d8e2e8] mt-3 max-w-2xl">
-                Every product is accompanied by batch documentation and can be purchased as an individual vial or a box of 10 where applicable. All prices in GBP.
+                Every product is accompanied by batch documentation and sold as a one-off vial by default. Ordering more than 5? We source a fresh box of 10 specifically for that quantity. All prices in GBP.
               </p>
               <p className="text-[#b8c5c5] text-sm mt-2">{filteredProducts.length} products</p>
             </div>
@@ -75,14 +75,14 @@ export default function ShopPage() {
 
       {/* Products Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProducts.map((product) => (
             <Link
               key={product.slug}
               href={`/shop/${product.slug}`}
-              className="group bg-[#141414] rounded-xl p-4 border border-[#2b3538] hover:border-[#8298aa]/30 transition card-glow"
+              className="group bg-[#141414] rounded-xl p-6 border border-[#2b3538] hover:border-[#8298aa]/30 transition card-glow"
             >
-              <div className="aspect-square bg-[#1a1a1a] rounded-lg mb-3 overflow-hidden relative">
+              <div className="aspect-square bg-[#1a1a1a] rounded-lg mb-4 overflow-hidden relative">
                 <ProductImage src={product.image} alt={product.name} className="object-cover" />
               </div>
               <div className="flex items-center gap-2 mb-1">

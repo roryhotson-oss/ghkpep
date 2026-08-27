@@ -114,6 +114,14 @@ export default function SubscriptionsPage() {
         ))}
       </div>
 
+      {/* Growth commitment */}
+      <div className="bg-[#141414] rounded-xl p-8 border border-[#2b3538] mb-8">
+        <h2 className="text-2xl font-bold mb-3">Built to Scale With You</h2>
+        <p className="text-[#a7b0b2] text-sm max-w-3xl">
+          Subscriptions are a two-way commitment: consistent order volume from you, consistent stock and priority fulfillment from us. As our subscriber base grows, we dedicate more resources to reliable, on-schedule delivery instead of one-off guesswork &mdash; so your research schedule isn&apos;t left waiting on general inventory.
+        </p>
+      </div>
+
       {/* Features Comparison */}
       <div className="bg-[#141414] rounded-xl p-8 border border-[#2b3538] mb-8">
         <h2 className="text-2xl font-bold mb-6">Why Subscribe?</h2>

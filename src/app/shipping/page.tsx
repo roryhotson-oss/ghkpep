@@ -7,7 +7,7 @@ export default function ShippingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <p className="text-[#8298aa] text-sm font-medium mb-2">Tracked Shipping</p>
           <h1 className="text-3xl font-bold">Shipping Information</h1>
-          <p className="text-[#a7b0b2] mt-3 max-w-2xl">Free, discreet tracked delivery. Box-of-10 purchases are sourced globally and typically arrive within 5–10 days.</p>
+          <p className="text-[#a7b0b2] mt-3 max-w-2xl">Free, discreet tracked delivery. Single vials ship promptly; orders over 5 vials are sourced as a box of 10 and typically arrive within 5–10 days.</p>
         </div>
       </section>
 
@@ -15,7 +15,7 @@ export default function ShippingPage() {
         <div className="grid sm:grid-cols-2 gap-4 mb-12">
           <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
             <h3 className="font-bold mb-2">Discreet tracked dispatch</h3>
-            <p className="text-[#a7b0b2] text-sm">Single-vial orders are dispatched promptly. Box-of-10 purchases are sourced globally and delivery is factored into a typical 5–10 day wait.</p>
+            <p className="text-[#a7b0b2] text-sm">Single-vial orders are dispatched promptly. Anything over 5 vials is sourced as a box of 10, with delivery factored into a typical 5–10 day wait.</p>
           </div>
           <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
             <h3 className="font-bold mb-2">Plain packaging</h3>
@@ -48,7 +48,7 @@ export default function ShippingPage() {
                 <td className="px-6 py-4">Free</td>
               </tr>
               <tr className="border-b border-[#2b3538]">
-                <td className="px-6 py-4 font-medium">Box of 10 global sourcing</td>
+                <td className="px-6 py-4 font-medium">Over 5 vials (box of 10 sourcing)</td>
                 <td className="px-6 py-4 text-[#a7b0b2]">5–10 days</td>
                 <td className="px-6 py-4">Free</td>
               </tr>

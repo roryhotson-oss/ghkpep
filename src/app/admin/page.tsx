@@ -50,10 +50,6 @@ interface Stats {
 export default function AdminDashboardPage() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
-  const [editingProduct, setEditingProduct] = useState<string | null>(null);
-  const [editForm, setEditForm] = useState<Partial<Product> & { slug: string } | null>(null);
-  const [saving, setSaving] = useState(false);
-  const [successMsg, setSuccessMsg] = useState("");
 
   const fetchStats = async () => {
     try {
@@ -86,51 +82,6 @@ export default function AdminDashboardPage() {
     loadData();
   }, []);
 
-  const startEditing = (product: Product) => {
-    setEditingProduct(product.slug);
-    setEditForm({ ...product });
-  };
-
-  const handleEditChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    if (!editForm) return;
-    const { name, value, type } = e.target;
-    setEditForm({
-      ...editForm,
-      [name]: type === "number" ? parseFloat(value) || 0 : value,
-    });
-  };
-
-  const saveProduct = async () => {
-    if (!editForm) return;
-    setSaving(true);
-    try {
-      const res = await fetch(`/api/admin/products/${editForm.slug}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(editForm),
-      });
-      if (res.ok) {
-        setSuccessMsg("Product updated successfully!");
-        setEditingProduct(null);
-        setEditForm(null);
-        const data = await fetchStats();
-        if (data) {
-          setStats(data);
-        }
-        setTimeout(() => setSuccessMsg(""), 3000);
-      }
-    } catch (error) {
-      console.error("Failed to save product:", error);
-    } finally {
-      setSaving(false);
-    }
-  };
-
-  const cancelEditing = () => {
-    setEditingProduct(null);
-    setEditForm(null);
-  };
-
   if (loading) {
     return (
       <div className="flex items-center justify-center h-full">
@@ -151,54 +102,38 @@ export default function AdminDashboardPage() {
 
   return (
     <div className="p-6 lg:p-8 max-w-7xl mx-auto">
-      {/* Header with Quick Actions */}
+      {/* Header */}
       <div className="mb-8">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-bold text-white mb-2">E-Commerce Dashboard</h1>
-            <p className="text-[#a7b0b2]">Manage your GHK Peptides store</p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            <Link
-              href="/admin/products/new"
-              className="px-4 py-2 bg-[#8298aa] text-black text-sm font-medium rounded-lg hover:bg-[#657c8f] transition"
-            >
-              + Add Product
-            </Link>
-            <Link
-              href="/admin/orders"
-              className="px-4 py-2 bg-[#1a1a1a] border border-[#2b3538] text-[#e1e7e5] text-sm font-medium rounded-lg hover:border-[#8298aa] hover:text-[#8298aa] transition"
-            >
-              View All Orders
-            </Link>
-            <Link
-              href="/admin/products"
-              className="px-4 py-2 bg-[#1a1a1a] border border-[#2b3538] text-[#e1e7e5] text-sm font-medium rounded-lg hover:border-[#8298aa] hover:text-[#8298aa] transition"
-            >
-              Manage Products
-            </Link>
-            <Link
-              href="/admin/payment-settings"
-              className="px-4 py-2 bg-[#1a1a1a] border border-[#2b3538] text-[#e1e7e5] text-sm font-medium rounded-lg hover:border-[#8298aa] hover:text-[#8298aa] transition"
-            >
-              Payment Settings
-            </Link>
-            <Link
-              href="/admin/chat"
-              className="px-4 py-2 bg-[#1a1a1a] border border-[#2b3538] text-[#e1e7e5] text-sm font-medium rounded-lg hover:border-[#8298aa] hover:text-[#8298aa] transition"
-            >
-              Support Inbox
-            </Link>
-          </div>
-        </div>
+        <h1 className="text-3xl font-bold text-white mb-2">E-Commerce Dashboard</h1>
+        <p className="text-[#a7b0b2]">Manage your GHK Peptides store</p>
       </div>
 
-      {/* Success Message */}
-      {successMsg && (
-        <div className="mb-6 p-4 bg-green-500/10 border border-green-500/20 rounded-lg text-green-400 text-sm">
-          {successMsg}
-        </div>
-      )}
+      {/* Quick Actions */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
+        {[
+          { href: '/admin/products/new', label: 'Add Product', icon: 'M12 4v16m8-8H4', primary: true },
+          { href: '/admin/products', label: 'Products & Images', icon: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4' },
+          { href: '/admin/emails', label: 'Send Emails', icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
+          { href: '/admin/orders', label: 'Orders', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2' },
+          { href: '/admin/marketing', label: 'Marketing', icon: 'M3 11l18-5v12L3 13v-2zm0 0l4 1v7a2 2 0 01-2 2H4a1 1 0 01-1-1v-9z' },
+          { href: '/admin/chat', label: 'Support Inbox', icon: 'M8 10h8m-8 4h5m-9 5l-3 3V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H8z' },
+        ].map((action) => (
+          <Link
+            key={action.href}
+            href={action.href}
+            className={`flex flex-col items-center gap-2 rounded-xl p-4 border text-center transition ${
+              action.primary
+                ? 'bg-[#8298aa] border-[#8298aa] text-black hover:bg-[#657c8f]'
+                : 'bg-[#141414] border-[#2b3538] text-[#e1e7e5] hover:border-[#8298aa] hover:text-[#8298aa]'
+            }`}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={action.icon} />
+            </svg>
+            <span className="text-xs font-medium">{action.label}</span>
+          </Link>
+        ))}
+      </div>
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
@@ -371,12 +306,12 @@ export default function AdminDashboardPage() {
                     <p className="text-sm text-[#a7b0b2] mt-1">GBP {product.price.toFixed(2)}</p>
                     <p className="text-xs text-[#7b898e] mt-1 line-clamp-2">{product.description}</p>
                     <div className="flex gap-2 mt-3">
-                      <button
-                        onClick={() => startEditing(product)}
+                      <Link
+                        href={`/admin/products/${product.slug}/edit`}
                         className="text-xs px-3 py-1.5 bg-[#8298aa]/10 text-[#8298aa] rounded-lg hover:bg-[#8298aa]/20 transition"
                       >
-                        Edit
-                      </button>
+                        Edit / Upload Image
+                      </Link>
                       <Link
                         href={`/shop/${product.slug}`}
                         className="text-xs px-3 py-1.5 bg-[#2b3538] text-[#e1e7e5] rounded-lg hover:bg-[#333] transition"
@@ -477,105 +412,6 @@ export default function AdminDashboardPage() {
         </div>
       </div>
 
-      {/* Quick Edit Modal */}
-      {editingProduct && editForm && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538] max-w-md w-full">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold text-white">Edit Product</h2>
-              <button
-                onClick={cancelEditing}
-                className="text-[#a7b0b2] hover:text-white transition"
-              >
-                X
-              </button>
-            </div>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm text-[#a7b0b2] mb-2">Product Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={editForm.name || ""}
-                  onChange={handleEditChange}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-[#8298aa]"
-                />
-              </div>
-              <div>
-                <label className="block text-sm text-[#a7b0b2] mb-2">Price (GBP)</label>
-                <input
-                  type="number"
-                  name="price"
-                  value={editForm.price || 0}
-                  onChange={handleEditChange}
-                  step="0.01"
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-[#8298aa]"
-                />
-              </div>
-              <div>
-                <label className="block text-sm text-[#a7b0b2] mb-2">Box Price (GBP)</label>
-                <input
-                  type="number"
-                  name="boxPrice"
-                  value={editForm.boxPrice || 0}
-                  onChange={handleEditChange}
-                  step="0.01"
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-[#8298aa]"
-                />
-              </div>
-              <div>
-                <label className="block text-sm text-[#a7b0b2] mb-2">Purity</label>
-                <input
-                  type="text"
-                  name="purity"
-                  value={editForm.purity || ""}
-                  onChange={handleEditChange}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-[#8298aa]"
-                />
-              </div>
-              <div>
-                <label className="block text-sm text-[#a7b0b2] mb-2">Category</label>
-                <select
-                  name="category"
-                  value={editForm.category || ""}
-                  onChange={handleEditChange}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-[#8298aa]"
-                >
-                  <option value="peptides">Peptides</option>
-                  <option value="sarms">SARMs</option>
-                  <option value="nootropics">Nootropics</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm text-[#a7b0b2] mb-2">Description</label>
-                <textarea
-                  name="description"
-                  value={editForm.description || ""}
-                  onChange={handleEditChange}
-                  rows={3}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-[#8298aa] resize-none"
-                />
-              </div>
-            </div>
-            <div className="flex gap-3 mt-6">
-              <button
-                onClick={saveProduct}
-                disabled={saving}
-                className="flex-1 px-4 py-2 bg-[#8298aa] text-black font-medium rounded-lg hover:bg-[#657c8f] transition disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {saving ? "Saving..." : "Save Changes"}
-              </button>
-              <button
-                onClick={cancelEditing}
-                className="flex-1 px-4 py-2 bg-[#1a1a1a] border border-[#2b3538] text-[#e1e7e5] font-medium rounded-lg hover:border-[#8298aa] hover:text-[#8298aa] transition"
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
