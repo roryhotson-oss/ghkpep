@@ -12,19 +12,19 @@ if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
 }
 
-// Initialize products.json from products.ts if it doesn't exist
-if (!fs.existsSync(PRODUCTS_FILE)) {
-  fs.writeFileSync(PRODUCTS_FILE, JSON.stringify(initialProducts, null, 2));
-}
+if (process.env.NODE_ENV !== 'production') {
+  // Keep local development data self-initializing without writing during Vercel builds.
+  if (!fs.existsSync(PRODUCTS_FILE)) {
+    fs.writeFileSync(PRODUCTS_FILE, JSON.stringify(initialProducts, null, 2));
+  }
 
-// Initialize orders.json if it doesn't exist
-if (!fs.existsSync(ORDERS_FILE)) {
-  fs.writeFileSync(ORDERS_FILE, JSON.stringify([], null, 2));
-}
+  if (!fs.existsSync(ORDERS_FILE)) {
+    fs.writeFileSync(ORDERS_FILE, JSON.stringify([], null, 2));
+  }
 
-// Initialize subscribers.json if it doesn't exist
-if (!fs.existsSync(SUBSCRIBERS_FILE)) {
-  fs.writeFileSync(SUBSCRIBERS_FILE, JSON.stringify([], null, 2));
+  if (!fs.existsSync(SUBSCRIBERS_FILE)) {
+    fs.writeFileSync(SUBSCRIBERS_FILE, JSON.stringify([], null, 2));
+  }
 }
 
 // --- Products ---
