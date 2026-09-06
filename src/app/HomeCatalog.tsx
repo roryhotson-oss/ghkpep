@@ -26,15 +26,17 @@ export default async function HomeCatalog() {
           for Laboratory Research
         </h1>
         <div className="hero-photo-board relative min-h-[360px] overflow-hidden rounded-[2rem] sm:min-h-[560px]">
-          <Image
-            src="/images/shop-hero.jpeg"
-            alt="Box of 10 GHK Peptides research vials"
-            fill
-            priority
-            quality={95}
-            className="object-cover object-center"
-            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1400px"
-          />
+          <div className="hero-photo-window absolute inset-3 overflow-hidden rounded-[1.5rem] sm:inset-5 sm:rounded-[1.75rem]">
+            <Image
+              src="/images/shop-hero.jpeg"
+              alt="Box of 10 GHK Peptides research vials"
+              fill
+              priority
+              quality={95}
+              className="object-cover object-center"
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1400px"
+            />
+          </div>
         </div>
       </section>
 

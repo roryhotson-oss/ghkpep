@@ -83,7 +83,14 @@ body {
 }
 
 .hero-photo-board {
-  background: #aebfca;
+  background-color: #d7dadd;
+  background-image: repeating-conic-gradient(#eef0f1 0 25%, #c4c9cd 0 50%);
+  background-size: 34px 34px;
   border: 3px solid #111827;
   box-shadow: inset 0 0 0 8px #ffffff, 0 10px 22px rgba(52, 65, 74, 0.08);
+}
+
+.hero-photo-window {
+  border: 4px solid #ffffff;
+  box-shadow: 0 0 0 2px #111827;
 }
