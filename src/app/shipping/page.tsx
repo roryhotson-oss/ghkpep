@@ -3,7 +3,7 @@ import Link from 'next/link';
 export default function ShippingPage() {
   return (
     <div>
-      <section className="text-[#e6edf3] bg-[#0a1420] rounded-3xl border-4 border-[#FBFAF7] shadow-md max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
+      <section className="text-[#34414a] bg-[#dceff7] rounded-3xl border border-[#c8dfe7] shadow-[0_10px_24px_rgba(52,65,74,0.08)] max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <p className="text-[#8298aa] text-sm font-medium mb-2">Tracked Shipping</p>
           <h1 className="text-3xl font-bold">Shipping Information</h1>
@@ -13,19 +13,19 @@ export default function ShippingPage() {
 
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid sm:grid-cols-2 gap-4 mb-12">
-          <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
+          <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
             <h3 className="font-bold mb-2">Discreet tracked dispatch</h3>
             <p className="text-[#a7b0b2] text-sm">Single-vial orders are dispatched promptly. Anything over 5 vials is sourced as a box of 10, with delivery factored into a typical 5–10 day wait.</p>
           </div>
-          <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
+          <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
             <h3 className="font-bold mb-2">Plain packaging</h3>
             <p className="text-[#a7b0b2] text-sm">Outer packaging is unmarked. Inner documentation includes lot, COA link, and handling notes.</p>
           </div>
-          <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
+          <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
             <h3 className="font-bold mb-2">Cold chain</h3>
             <p className="text-[#a7b0b2] text-sm">Temperature-sensitive compounds ship insulated with gel packs sized to your destination zone.</p>
           </div>
-          <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
+          <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
             <h3 className="font-bold mb-2">Trusted Labs</h3>
             <p className="text-[#a7b0b2] text-sm">Shipments are discreet and tracked. Tracking details are provided when the parcel enters transit.</p>
           </div>
@@ -61,7 +61,7 @@ export default function ShippingPage() {
           </table>
         </div>
 
-        <div className="mt-8 text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
+        <div className="mt-8 text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
           <h3 className="font-bold mb-3">Shipping protection</h3>
           <p className="text-[#a7b0b2] text-sm leading-relaxed">At checkout you can add shipping protection. The premium is priced against your order total and shown before you pay — it is optional and can be removed. When a protected parcel is lost, stolen, or damaged in transit, the claim is filed directly with Trusted Labs and resolved by them.</p>
         </div>

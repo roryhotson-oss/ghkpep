@@ -132,7 +132,7 @@ export const products: Product[] = [
     categoryLabel: "Peptide Research",
     description: "Stabilized GHRH sequence analog. Supplied for in vitro laboratory research.",
     lot: "GHK-2412-H",
-    image: "/images/tesamorelin.jpg",
+    image: "/images/tesamorelin.jpeg",
     marketTier: "mid-market",
     dosageOptions: [2, 5, 10, 20],
     dosageBoxPrices: { 2: 85, 5: 145, 10: 270, 20: 310 }
@@ -147,7 +147,7 @@ export const products: Product[] = [
     categoryLabel: "GLP-2 Research",
     description: "GLP-2 related sequence analog with extended stability profile. Supplied for in vitro laboratory research.",
     lot: "GHK-2416-D",
-    image: "/images/glp2-tz.jpg",
+    image: "/images/glp2-tz.jpeg",
     dosageOptions: [5, 10, 15, 20, 30, 40, 50, 60, 100, 120],
     dosageBoxPrices: { 5: 62.5, 10: 50, 15: 85, 20: 105, 30: 125, 40: 165, 50: 210, 60: 270, 100: 313, 120: 510 }
   },
@@ -161,7 +161,7 @@ export const products: Product[] = [
     categoryLabel: "Research Blend",
     description: "Co-lyophilized blend of Mod GRF(1-29) and Ipamorelin. Supplied for in vitro laboratory research.",
     lot: "GHK-2410-J",
-    image: "/images/cjc-1295-ipamorelin.jpg",
+    image: "/images/cjc-1295-ipamorelin.jpeg",
     dosageOptions: [10, 20],
     dosageBoxPrices: { 10: 145, 20: 275 }
   },
@@ -189,7 +189,7 @@ export const products: Product[] = [
     categoryLabel: "Melanocortin",
     description: "Melanocortin-related sequence analog. Supplied for in vitro laboratory research.",
     lot: "GHK-2421-L",
-    image: "/images/pt-141.jpg",
+    image: "/images/pt-141.jpeg",
     marketTier: "premium",
     dosageOptions: [10],
     dosageBoxPrices: { 10: 125 }
@@ -204,7 +204,7 @@ export const products: Product[] = [
     categoryLabel: "Melanocortin",
     description: "Melanocortin-related sequence analog. Supplied for in vitro laboratory research.",
     lot: "GHK-2422-M",
-    image: "/images/melanotan-2.jpg",
+    image: "/images/melanotan-2.jpeg",
     marketTier: "mid-market",
     dosageOptions: [10],
     dosageBoxPrices: { 10: 75 }
@@ -219,7 +219,7 @@ export const products: Product[] = [
     categoryLabel: "Mitochondrial",
     description: "Mitochondria-targeted four-residue synthetic sequence. Supplied for in vitro laboratory research.",
     lot: "GHK-2423-N",
-    image: "/images/ss-31.jpg",
+    image: "/images/ss-31.jpeg",
     dosageOptions: [10, 50],
     dosageBoxPrices: { 10: 130, 50: 310 }
   },
@@ -248,7 +248,7 @@ export const products: Product[] = [
     categoryLabel: "Copper Composite",
     description: "Copper-bound composite, lyophilized powder. Supplied for in vitro laboratory research.",
     lot: "GHK-2425-P",
-    image: "/images/wolverine.jpg",
+    image: "/images/wolverine.jpeg",
     dosageOptions: [10, 20],
     dosageBoxPrices: { 10: 150, 20: 265 }
   },
@@ -262,7 +262,7 @@ export const products: Product[] = [
     categoryLabel: "Peptide",
     description: "Synthetic kisspeptin-10 sequence. Supplied for in vitro laboratory research.",
     lot: "GHK-2426-Q",
-    image: "/images/kiss-peptin.jpg",
+    image: "/images/kiss-peptin.jpeg",
     marketTier: "mid-market",
     dosageOptions: [5, 10],
     dosageBoxPrices: { 5: 90, 10: 110 }

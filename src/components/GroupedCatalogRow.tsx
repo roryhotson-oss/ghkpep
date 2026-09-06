@@ -41,17 +41,17 @@ export default function GroupedCatalogRow({ group }: { group: ProductGroup }) {
   };
 
   return (
-    <tr className="group relative border-b border-[#bccfe2] last:border-0 hover:bg-[#d9e6f2] hover:shadow-lg hover:scale-[1.01] hover:z-10 transition text-[#243a50]">
+    <tr className="group relative border-b border-[#e6e2da] last:border-0 hover:bg-[#eef8fb] transition text-[#34414a]">
       <td className="px-4 py-3 min-w-[280px]">
         <div className="flex items-center gap-3">
-          <Image src={group.image} alt={group.name} width={96} height={96} className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-[#FBFAF7]/70 object-cover bg-[#dce7f2] shrink-0" />
+          <Image src={group.image} alt={group.name} width={96} height={96} className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl border border-[#d8d4c9] object-cover bg-[#eef8fb] shrink-0" />
           <div className="min-w-0">
-            <Link href={`/shop/${selectedProduct.slug}`} className="font-medium text-[#1c2c3e] hover:text-[#3E6B93] transition">{group.name}</Link>
+            <Link href={`/shop/${selectedProduct.slug}`} className="font-semibold text-[#34414a] hover:text-[#5b8ca0] transition">{group.name}</Link>
             <p className="mt-1 max-w-[280px] text-xs leading-relaxed text-[#6e8299] md:opacity-0 md:translate-y-1 md:transition-all md:duration-200 md:group-hover:translate-y-0 md:group-hover:opacity-100">{group.description}</p>
             <select
               value={selectedDosage}
               onChange={(e) => setSelectedDosage(Number(e.target.value))}
-              className="mt-1.5 rounded-md border border-[#FBFAF7] bg-[#0c1622] px-2 py-1 text-xs text-[#e6edf3] outline-none focus:border-[#8298aa]"
+              className="mt-1.5 rounded-md border border-[#c8dfe7] bg-white px-2 py-1 text-xs text-[#34414a] outline-none focus:border-[#5b8ca0]"
             >
               {dosageOptions.map((dosage) => (
                 <option key={dosage} value={dosage}>{dosage}mg</option>
@@ -60,12 +60,11 @@ export default function GroupedCatalogRow({ group }: { group: ProductGroup }) {
           </div>
         </div>
       </td>
-      <td className="px-4 py-3 text-[#243a50] whitespace-nowrap">{group.categoryLabel}</td>
-      <td className="px-4 py-3 text-[#243a50] whitespace-nowrap">Lot reference held</td>
-      <td className="px-4 py-3 text-[#243a50] whitespace-nowrap">£{effectivePrice(selectedProduct, 'box', selectedDosage).toFixed(2)} <span className="text-xs font-medium">(10 vials)</span></td>
+      <td className="px-4 py-3 text-[#53636b] whitespace-nowrap">{group.categoryLabel}</td>
+      <td className="px-4 py-3 text-[#53636b] whitespace-nowrap">Batch reference</td>
+      <td className="px-4 py-3 font-semibold text-[#34414a] whitespace-nowrap">£{effectivePrice(selectedProduct, 'box', selectedDosage).toFixed(2)} <span className="text-xs font-medium">(10 vials)</span></td>
       <td className="px-4 py-3 whitespace-nowrap">
         <div className="flex items-center gap-3">
-          <a href={`/api/coa?lot=${encodeURIComponent(selectedProduct.lot)}`} target="_blank" rel="noreferrer" className="text-[#8298aa] hover:underline">Summary PDF</a>
           <button
             onClick={addToCart}
             disabled={isOutOfStock(selectedProduct)}

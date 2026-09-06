@@ -3,7 +3,7 @@ import Link from 'next/link';
 export default function AboutPage() {
   return (
     <div>
-      <section className="text-[#e6edf3] bg-[#0a1420] rounded-3xl border-4 border-[#FBFAF7] shadow-md max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
+      <section className="text-[#34414a] bg-[#dceff7] rounded-3xl border border-[#c8dfe7] shadow-[0_10px_24px_rgba(52,65,74,0.08)] max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <p className="text-[#8298aa] text-sm font-medium mb-2">Our story</p>
           <h1 className="text-3xl font-bold">A new standard for the lab.</h1>
@@ -28,7 +28,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="text-[#e6edf3] bg-[#0a1420] rounded-3xl border-4 border-[#FBFAF7] shadow-md max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
+      <section className="text-[#34414a] bg-[#dceff7] rounded-3xl border border-[#c8dfe7] shadow-[0_10px_24px_rgba(52,65,74,0.08)] max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <h2 className="text-2xl font-bold mb-10 text-center">Six principles, written down.</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -40,7 +40,7 @@ export default function AboutPage() {
             { title: "Long-term partnerships", desc: "We'd rather earn one lab for ten years than chase one-time buyers. Pricing, allocation, and support are built around that." },
             { title: "Quietly premium", desc: "Discreet packaging, fast support, and an honest catalogue. Nothing flashy, nothing hidden." },
             ].map((item) => (
-              <div key={item.title} className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
+              <div key={item.title} className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
                 <h3 className="font-bold mb-2">{item.title}</h3>
                 <p className="text-[#a7b0b2] text-sm leading-relaxed">{item.desc}</p>
               </div>
@@ -49,7 +49,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="text-[#e6edf3] bg-[#0a1420] rounded-3xl border-4 border-[#FBFAF7] shadow-md max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
+      <section className="text-[#34414a] bg-[#dceff7] rounded-3xl border border-[#c8dfe7] shadow-[0_10px_24px_rgba(52,65,74,0.08)] max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h2 className="text-2xl font-bold mb-4">Built for the bench. Verified for your peace of mind.</h2>
           <p className="text-[#a7b0b2] mb-6">Browse the catalog, read a COA, or talk to our team. We respond to researcher questions within one business day.</p>

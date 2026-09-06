@@ -1,7 +1,7 @@
 export default function QualityPage() {
   return (
     <div>
-      <section className="text-[#e6edf3] bg-[#0a1420] rounded-3xl border-4 border-[#FBFAF7] shadow-md max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
+      <section className="text-[#34414a] bg-[#dceff7] rounded-3xl border border-[#c8dfe7] shadow-[0_10px_24px_rgba(52,65,74,0.08)] max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <p className="text-[#8298aa] text-sm font-medium mb-2">Sourcing &amp; Review</p>
           <h1 className="text-3xl font-bold">How we select and check what we list.</h1>
@@ -19,7 +19,7 @@ export default function QualityPage() {
             { title: "Listing Standards", desc: "Lots without adequate supplier documentation are not listed. We do not substitute our own figures where a supplier document is absent." },
             { title: "Plain, Sealed Packaging", desc: "Outer packaging is unmarked. Lot references and documentation links are inside the box — never on the outer label." },
           ].map((item) => (
-            <div key={item.title} className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
+            <div key={item.title} className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
               <h3 className="font-bold text-lg mb-2">{item.title}</h3>
               <p className="text-[#a7b0b2] text-sm leading-relaxed">{item.desc}</p>
             </div>
@@ -27,7 +27,7 @@ export default function QualityPage() {
         </div>
       </section>
 
-      <section className="text-[#e6edf3] bg-[#0a1420] rounded-3xl border-4 border-[#FBFAF7] shadow-md max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
+      <section className="text-[#34414a] bg-[#dceff7] rounded-3xl border border-[#c8dfe7] shadow-[0_10px_24px_rgba(52,65,74,0.08)] max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <h2 className="text-2xl font-bold mb-10 text-center">Six steps, every listing.</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -39,7 +39,7 @@ export default function QualityPage() {
               { num: "05", title: "Publish", desc: "Publish any supplier-provided third-party report unaltered, and state plainly where none is held." },
               { num: "06", title: "List", desc: "List the lot for laboratory research use, with its reference searchable on the batch references page." },
             ].map((step) => (
-              <div key={step.num} className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
+              <div key={step.num} className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
                 <span className="text-[#8298aa] font-bold text-lg">{step.num}</span>
                 <h4 className="font-semibold text-lg mt-2 mb-1">— {step.title}</h4>
                 <p className="text-[#a7b0b2] text-sm">{step.desc}</p>

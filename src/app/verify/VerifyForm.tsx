@@ -59,9 +59,6 @@ export default function VerifyForm() {
           <p className="text-[#a6b8c4] text-sm font-semibold">Lot found</p>
           <h2 className="text-lg font-bold mt-1">{result.name}</h2>
           <p className="text-[#a7b0b2] text-sm mt-1">Lot {result.lot} appears in our catalogue records. This confirms the lot reference only — it is not confirmation of any test result.</p>
-          <a href={`/api/coa?lot=${encodeURIComponent(result.lot)}`} target="_blank" rel="noreferrer" className="inline-flex mt-4 rounded-md border border-[#FBFAF7] bg-[#111d2c] px-4 py-2 text-sm font-semibold text-[#d8e2e8] hover:bg-[#16283c] transition">
-            View batch reference summary
-          </a>
         </div>
       )}
       {status === 'not-found' && <p className="mt-4 text-sm text-amber-200">No matching lot was found. Check the characters on the vial label and try again.</p>}

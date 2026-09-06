@@ -73,10 +73,10 @@ const finnrickListings: { label: string; href: string }[] = [
 
 export default function Footer() {
   return (
-    <footer className="text-[#e6edf3] bg-[#0a1420] border-t border-[#FBFAF7]/70 mt-20">
+    <footer className="text-[#e6edf3] bg-[#34414a] border-t border-[#c8dfe7] mt-20">
       {/* CTA Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="bg-gradient-to-r from-[#17232d] to-[#1c2733] rounded-2xl p-8 sm:p-12 text-center">
+        <div className="bg-[#3d515a] rounded-2xl p-8 sm:p-12 text-center shadow-[0_10px_24px_rgba(20,28,40,0.14)]">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">
             All the research compounds you need, with the peace of mind and research community at your fingertips.
           </h2>
@@ -85,7 +85,7 @@ export default function Footer() {
           </p>
           <Link
             href="/shop"
-            className="inline-block mt-6 px-8 py-3 bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-semibold rounded-xl hover:bg-[#16283c] transition"
+            className="inline-block mt-6 px-8 py-3 bg-[#dceff7] border border-[#c8dfe7] text-[#34414a] font-semibold rounded-xl hover:bg-[#eef8fb] transition"
           >
             Shop Now
           </Link>
@@ -93,15 +93,15 @@ export default function Footer() {
       </div>
 
       {/* Links */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-[#111d2c]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-[#5a6b72]">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 text-sm items-start">
           {footerMenus.map((menu) => (
             <details key={menu.title} className="group w-full">
-              <summary className="flex cursor-pointer list-none [&::-webkit-details-marker]:hidden items-center justify-between gap-3 rounded-lg border-2 border-[#FBFAF7] bg-[#0c1622] px-4 py-2.5 font-semibold text-[#e6edf3] shadow-sm transition hover:bg-[#16283c]">
+              <summary className="flex cursor-pointer list-none [&::-webkit-details-marker]:hidden items-center justify-between gap-3 rounded-lg border border-[#6d8792] bg-[#3d515a] px-4 py-2.5 font-semibold text-[#f4f8f9] shadow-sm transition hover:bg-[#46606a]">
                 {menu.title}
                 <span className="text-[#8298aa] text-lg leading-none transition-transform group-open:rotate-45">+</span>
               </summary>
-              <div className="mt-2 rounded-lg border border-[#FBFAF7]/70 bg-[#0c1622] p-4">
+              <div className="mt-2 rounded-lg border border-[#6d8792] bg-[#3d515a] p-4">
                 {menu.blurb ? (
                   <p className="text-[#a7b0b2] text-xs leading-relaxed">{menu.blurb}</p>
                 ) : (
@@ -128,7 +128,7 @@ export default function Footer() {
       </div>
 
       {/* Partners */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 border-t border-[#111d2c]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 border-t border-[#5a6b72]">
         <div>
           <h4 className="font-bold text-[#8298aa] mb-2">Trade &amp; partners</h4>
           <div className="flex flex-wrap items-center gap-2">
@@ -169,7 +169,7 @@ export default function Footer() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer nofollow"
-                  className="inline-flex items-center px-3 py-2 bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg text-[11px] font-medium text-[#a7b0b2] hover:text-[#e6edf3] hover:bg-[#16283c] transition"
+                  className="inline-flex items-center px-3 py-2 bg-[#3d515a] border border-[#6d8792] rounded-lg text-[11px] font-medium text-[#d7e3e7] hover:text-white hover:bg-[#46606a] transition"
                 >
                   {item.label}
                 </a>
@@ -185,7 +185,7 @@ export default function Footer() {
       </div>
 
       {/* Payment methods & bottom bar */}
-      <div className="border-t border-[#111d2c] py-6">
+      <div className="border-t border-[#5a6b72] py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-[#7b898e] text-xs">

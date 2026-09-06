@@ -57,24 +57,29 @@ export default function Header() {
 
   return (
     <>
-      {/* Top banner */}
-      <div className="py-2.5 px-4 text-center">
-        <p className="text-[#6b7280] text-xs tracking-wide leading-relaxed">
-          Research materials sourced from selected laboratories, with third-party testing information where available. Shipped from China · Typical arrival 5–9 days · All prices in GBP · Full tracking on every shipment.
-        </p>
-      </div>
-
       {/* Main nav — floating pill */}
-      <header className="sticky top-3 z-50 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto flex items-center justify-between rounded-full bg-[#FBFAF7]/95 backdrop-blur shadow-[0_8px_24px_rgba(20,28,40,0.12)] px-5 sm:px-8 h-16">
+      <header className="sticky top-4 z-50 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto flex items-center justify-between rounded-full bg-[#dceff7]/75 backdrop-blur shadow-[0_12px_28px_rgba(20,28,40,0.14)] px-5 sm:px-8 h-20">
           <Link href="/" className="text-lg sm:text-xl font-black uppercase tracking-tight leading-none text-[#111827]">
             GHK PEPTIDES
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-7">
-            <Link href="/" className={headerLinkClass}>Full Catalog</Link>
+          <nav className="hidden md:flex items-center gap-5">
+            <form action="/shop" method="get" className="relative">
+              <label htmlFor="site-search" className="sr-only">Search products</label>
+              <input
+                id="site-search"
+                name="search"
+                type="search"
+                placeholder="Search products"
+                className="w-36 rounded-full border border-[#c8dfe7] bg-white/65 px-3 py-2 text-xs text-[#34414a] placeholder:text-[#6d8792] outline-none transition focus:border-[#5b8ca0] focus:bg-white lg:w-44"
+              />
+            </form>
             <Link href="/shop" className={headerLinkClass}>Shop</Link>
+            <Link href="/about" className={headerLinkClass}>About</Link>
+            <Link href="/testing" className={headerLinkClass}>Research</Link>
+            <Link href="/quality" className={headerLinkClass}>Certifications</Link>
             <Link href="/contact" className={headerLinkClass}>Support</Link>
             <Link href="/cart" className={`${headerLinkClass} relative pr-4`}>
               Cart
@@ -149,8 +154,10 @@ export default function Header() {
 
         {mobileOpen && (
           <div className="md:hidden max-w-6xl mx-auto mt-2 rounded-2xl bg-[#FBFAF7]/95 backdrop-blur shadow-[0_8px_24px_rgba(20,28,40,0.16)] px-4 py-4 space-y-1 text-sm">
-            <Link href="/" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Full Catalog</Link>
             <Link href="/shop" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Shop</Link>
+            <Link href="/about" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>About</Link>
+            <Link href="/testing" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Research</Link>
+            <Link href="/quality" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Certifications</Link>
             <Link href="/contact" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Support</Link>
             <Link href="/cart" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Cart</Link>
             <div className="border-t border-[#e5e1d8] pt-2 mt-2">

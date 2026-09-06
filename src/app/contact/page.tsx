@@ -75,19 +75,19 @@ export default function ContactPage() {
 
   return (
     <div>
-      <section className="text-[#e6edf3] bg-[#0a1420] rounded-3xl border-4 border-[#FBFAF7] shadow-md max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
+      <section className="text-[#34414a] bg-[#dceff7] rounded-3xl border border-[#c8dfe7] shadow-[0_10px_24px_rgba(52,65,74,0.08)] max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <p className="text-[#a7b0b2] text-sm">Typically respond within 24 hours</p>
+          <p className="text-[#5b8ca0] text-sm">Typically respond within 24 hours</p>
           <h1 className="text-3xl font-bold mt-2">How can we help?</h1>
-          <p className="text-[#a7b0b2] mt-3 max-w-2xl">Our research support team is here to assist with orders, product questions, and lab-to-lab inquiries.</p>
+          <p className="text-[#53636b] mt-3 max-w-2xl">Our research support team is here to assist with orders, product questions, and lab-to-lab inquiries.</p>
         </div>
       </section>
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 items-start gap-8">
           {/* Contact Info */}
           <div className="space-y-6">
-            <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
+            <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
               <h3 className="font-bold mb-4">Get in touch</h3>
               <div className="space-y-4 text-sm">
                 <div>
@@ -117,7 +117,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
+            <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
               <h3 className="font-bold mb-3">Payment Methods</h3>
               <div className="space-y-2 text-sm text-[#a7b0b2]">
                 <p>✓ Alipay</p>
@@ -126,16 +126,16 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
+            <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
               <h3 className="font-bold mb-3">Shipping</h3>
               <p className="text-sm text-[#a7b0b2]">All orders shipped via <span className="text-[#8298aa] font-medium">Trusted Labs</span> — tracked, discreet, and insured.</p>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="lg:col-span-2">
+          <div className="md:col-span-2 min-w-0">
             {status === 'success' ? (
-              <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-8 border-4 border-[#FBFAF7] shadow-md text-center">
+              <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-8 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)] text-center">
                 <div className="text-[#8298aa] text-6xl mb-4">✓</div>
                 <h2 className="text-2xl font-bold mb-2">Message Sent!</h2>
                 <p className="text-[#a7b0b2] mb-6">Thank you for contacting us. We&apos;ll get back to you within 24 hours.</p>
@@ -147,60 +147,60 @@ export default function ContactPage() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="text-[#e6edf3] bg-[#0c1622] rounded-xl p-6 sm:p-8 border border-[#FBFAF7]/70 space-y-5">
+              <form onSubmit={handleSubmit} className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 sm:p-8 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)] space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-sm text-[#a7b0b2] mb-1">Name</label>
+                    <label className="block text-sm text-[#53636b] mb-1">Name</label>
                     <input
                       type="text"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
+                      className="w-full bg-white border border-[#c8dfe7] rounded-lg px-4 py-2.5 text-sm text-[#34414a] focus:outline-none focus:border-[#5b8ca0]"
                       placeholder="Your name"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm text-[#a7b0b2] mb-1">Email</label>
+                    <label className="block text-sm text-[#53636b] mb-1">Email</label>
                     <input
                       type="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
+                      className="w-full bg-white border border-[#c8dfe7] rounded-lg px-4 py-2.5 text-sm text-[#34414a] focus:outline-none focus:border-[#5b8ca0]"
                       placeholder="your@email.com"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm text-[#a7b0b2] mb-1">Institution / Lab</label>
+                  <label className="block text-sm text-[#53636b] mb-1">Institution / Lab</label>
                   <input
                     type="text"
                     value={formData.institution}
                     onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
-                    className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
+                    className="w-full bg-white border border-[#c8dfe7] rounded-lg px-4 py-2.5 text-sm text-[#34414a] focus:outline-none focus:border-[#5b8ca0]"
                     placeholder="Your institution (optional)"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-[#a7b0b2] mb-1">Subject</label>
+                  <label className="block text-sm text-[#53636b] mb-1">Subject</label>
                   <input
                     type="text"
                     required
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
+                    className="w-full bg-white border border-[#c8dfe7] rounded-lg px-4 py-2.5 text-sm text-[#34414a] focus:outline-none focus:border-[#5b8ca0]"
                     placeholder="How can we help?"
                   />
                 </div>
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-sm text-[#a7b0b2] mb-1">Product</label>
+                    <label className="block text-sm text-[#53636b] mb-1">Product</label>
                     <select
                       required
                       value={formData.product}
                       onChange={(e) => setFormData({ ...formData, product: e.target.value })}
-                      className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
+                      className="w-full bg-white border border-[#c8dfe7] rounded-lg px-4 py-2.5 text-sm text-[#34414a] focus:outline-none focus:border-[#5b8ca0]"
                     >
                       <option value="" disabled>Select a product</option>
                       {products.map((product) => (
@@ -209,12 +209,12 @@ export default function ContactPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm text-[#a7b0b2] mb-1">Quantity</label>
+                    <label className="block text-sm text-[#53636b] mb-1">Quantity</label>
                     <select
                       required
                       value={formData.quantity}
                       onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                      className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
+                      className="w-full bg-white border border-[#c8dfe7] rounded-lg px-4 py-2.5 text-sm text-[#34414a] focus:outline-none focus:border-[#5b8ca0]"
                     >
                       {Array.from({ length: 10 }, (_, index) => index + 1).map((quantity) => (
                         <option key={quantity} value={quantity}>{quantity}</option>
@@ -223,13 +223,13 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm text-[#a7b0b2] mb-1">Message</label>
+                  <label className="block text-sm text-[#53636b] mb-1">Message</label>
                   <textarea
                     required
                     rows={6}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa] resize-none"
+                    className="w-full bg-white border border-[#c8dfe7] rounded-lg px-4 py-2.5 text-sm text-[#34414a] focus:outline-none focus:border-[#5b8ca0] resize-none"
                     placeholder="Tell us about your inquiry..."
                   ></textarea>
                 </div>
@@ -243,7 +243,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={status === 'loading' || !siteKey || !turnstileToken}
-                  className="w-full px-8 py-3 bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-semibold rounded-xl hover:bg-[#16283c] transition disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-8 py-3 bg-[#5b8ca0] border border-[#5b8ca0] text-white font-semibold rounded-xl hover:bg-[#466f7f] transition disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {status === 'loading' ? 'Sending...' : 'Send message'}
                 </button>

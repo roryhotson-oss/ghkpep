@@ -54,7 +54,7 @@ export default function COAPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="text-[#e6edf3] bg-[#0a1420] rounded-3xl border-4 border-[#FBFAF7] shadow-md max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
+      <section className="text-[#34414a] bg-[#dceff7] rounded-3xl border border-[#c8dfe7] shadow-[0_10px_24px_rgba(52,65,74,0.08)] max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <p className="text-[#8298aa] text-sm font-medium mb-2">Batch References</p>
           <h1 className="text-3xl font-bold">Batch references &amp; independent reports</h1>
@@ -119,14 +119,6 @@ export default function COAPage() {
                   >
                     Report
                   </button>
-                  <a
-                    href={coa.documentUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="px-3 py-1.5 border border-[#8298aa] text-[#8298aa] font-semibold rounded-md hover:bg-[#8298aa] hover:text-black transition text-xs text-center"
-                  >
-                    Download summary
-                  </a>
                 </div>
               </div>
             </div>
@@ -226,23 +218,6 @@ export default function COAPage() {
                     .
                   </p>
                 </div>
-              </div>
-
-              {/* Download Section */}
-              <div className="text-[#e6edf3] bg-[#0a1420] border border-[#FBFAF7]/70 rounded-lg p-6">
-                <h4 className="font-bold text-lg mb-2">Download batch reference summary</h4>
-                <p className="text-sm text-[#a7b0b2] mb-4">
-                  A record of the catalogue and lot reference information we hold. This is not a
-                  certificate of analysis and reports no testing by or for GHK Peptides.
-                </p>
-                <a 
-                  href={selectedCOA.documentUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="block w-full px-6 py-3 bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-bold rounded-lg hover:bg-[#16283c] transition text-center"
-                >
-                  Download PDF summary
-                </a>
               </div>
 
               {/* Close Button */}
