@@ -7,7 +7,7 @@ export default function FooterConditional() {
   const pathname = usePathname();
   const isAdmin = pathname.startsWith('/admin');
 
-  if (isAdmin || process.env.NEXT_PUBLIC_MAINTENANCE_MODE !== 'false') return null;
+  if (isAdmin || process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true') return null;
 
   return <Footer />;
 }

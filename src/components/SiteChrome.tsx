@@ -11,7 +11,7 @@ export default function SiteChrome() {
 
   if (isAdmin) return null;
 
-  if (process.env.NEXT_PUBLIC_MAINTENANCE_MODE !== 'false') {
+  if (process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true') {
     return <CookieBanner />;
   }
 
