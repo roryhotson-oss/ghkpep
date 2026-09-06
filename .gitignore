@@ -28,8 +28,9 @@ yarn-error.log*
 .env
 .env.local
 
-# Local data files (contains sensitive order data)
-data/*.json
+# Local data files (contains sensitive order/subscriber data) - never track these
+data/orders.json
+data/subscribers.json
 
 # Vercel
 .vercel

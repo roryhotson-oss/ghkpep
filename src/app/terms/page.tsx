@@ -1,7 +1,7 @@
 export default function TermsPage() {
   return (
     <div>
-      <section className="bg-[#0d0d0d] border-b border-[#2b3538]">
+      <section className="text-[#e6edf3] bg-[#0a1420] rounded-3xl border-4 border-[#FBFAF7] shadow-md max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <p className="text-[#8298aa] text-sm font-medium mb-2">Terms</p>
           <h1 className="text-3xl font-bold">Terms of Service</h1>
@@ -33,11 +33,11 @@ export default function TermsPage() {
           </div>
           <div>
             <h2 className="text-lg font-bold text-white mb-2">Intellectual property</h2>
-            <p>All site content — including text, images, logos, certificates of analysis, and product descriptions — is the property of GHK and may not be reproduced without permission.</p>
+            <p>All site content — including text, images, batch reference documents, and product descriptions — is the property of GHK and may not be reproduced without permission.</p>
           </div>
           <div>
             <h2 className="text-lg font-bold text-white mb-2">Warranties</h2>
-            <p>Products are sold AS-IS for research use. We warrant only that the material matches its published certificate of analysis at the time of release. No other warranty, express or implied, applies.</p>
+            <p>Products are sold AS-IS for laboratory research use. Any analytical documentation supplied with a lot is produced by the source laboratory or a third-party laboratory it engages, and is passed on unaltered. GHK does not carry out analytical testing, holds no laboratory accreditation, and gives no warranty as to the accuracy of documentation produced by others. No warranty, express or implied, applies beyond this.</p>
           </div>
           <div>
             <h2 className="text-lg font-bold text-white mb-2">Limitation of liability</h2>

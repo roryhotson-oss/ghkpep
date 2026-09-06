@@ -93,7 +93,7 @@ export default function LoginPage() {
           <p className="text-[#a7b0b2] text-sm">One account for shopping and the partner program.</p>
         </div>
 
-        <div className="bg-[#141414] rounded-xl p-8 border border-[#2b3538]">
+        <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-8 border-4 border-[#FBFAF7] shadow-md">
           {/* Social Login Buttons */}
           <div className="space-y-3 mb-6">
             <button type="button" onClick={() => handleOAuth('google')} disabled={loading} className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-white text-black font-medium rounded-lg hover:bg-gray-100 transition disabled:opacity-50">
@@ -106,7 +106,7 @@ export default function LoginPage() {
               Continue with Google
             </button>
             
-            <button type="button" onClick={() => handleOAuth('apple')} disabled={loading} className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-black text-white font-medium rounded-lg border border-[#333] hover:bg-[#1a1a1a] transition disabled:opacity-50">
+            <button type="button" onClick={() => handleOAuth('apple')} disabled={loading} className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-black text-white font-medium rounded-lg border border-[#FBFAF7]/70 hover:bg-[#111d2c] transition disabled:opacity-50">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
               </svg>
@@ -116,10 +116,10 @@ export default function LoginPage() {
 
           <div className="relative mb-6">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-[#2b3538]"></div>
+              <div className="w-full border-t border-[#FBFAF7]/70"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-[#141414] text-[#a7b0b2]">or</span>
+              <span className="px-2 text-[#e6edf3] bg-[#0c1622] text-[#a7b0b2]">or</span>
             </div>
           </div>
 
@@ -131,7 +131,7 @@ export default function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#8298aa]"
+                className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#8298aa]"
                 placeholder="researcher@lab.com"
                 required
               />
@@ -142,7 +142,7 @@ export default function LoginPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#8298aa]"
+                className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#8298aa]"
                 placeholder="Password"
                 minLength={8}
                 required
@@ -152,7 +152,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full px-8 py-4 bg-[#8298aa] text-black font-bold rounded-lg hover:bg-[#657c8f] transition text-lg mb-4"
+              className="w-full px-8 py-4 bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-bold rounded-lg hover:bg-[#16283c] transition text-lg mb-4"
             >
               {loading ? 'Please wait...' : resetMode ? 'Email me a reset link' : isRegistering ? 'Create account' : useEmailCode ? 'Email me a sign-in link' : 'Sign in with Email'}
             </button>

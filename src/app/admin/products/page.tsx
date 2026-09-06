@@ -95,7 +95,7 @@ export default function AdminProductsPage() {
         </div>
         <Link
           href="/admin/products/new"
-          className="px-6 py-3 bg-[#8298aa] text-black font-bold rounded-lg hover:bg-[#657c8f] transition flex items-center gap-2"
+          className="px-6 py-3 bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-bold rounded-lg hover:bg-[#16283c] transition flex items-center gap-2"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -112,13 +112,13 @@ export default function AdminProductsPage() {
             placeholder="Search products..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-[#141414] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
+            className="w-full text-[#e6edf3] bg-[#0c1622] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
           />
         </div>
         <select
           value={categoryFilter}
           onChange={(e) => setCategoryFilter(e.target.value)}
-          className="bg-[#141414] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
+          className="text-[#e6edf3] bg-[#0c1622] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
         >
           <option value="all">All Categories</option>
           {categories.map(cat => (
@@ -130,15 +130,15 @@ export default function AdminProductsPage() {
       {/* Products Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {filtered.map((product) => (
-          <div key={product.slug} className="bg-[#141414] rounded-xl border border-[#2b3538] overflow-hidden hover:border-[#333] transition">
+          <div key={product.slug} className="text-[#e6edf3] bg-[#0c1622] rounded-xl border border-[#FBFAF7]/70 overflow-hidden hover:border-[#FBFAF7]/70 transition">
             {/* Image */}
-            <div className="h-48 bg-[#1a1a1a] flex items-center justify-center p-4 relative">
+            <div className="h-48 bg-[#111d2c] flex items-center justify-center p-4 relative">
               <Image
                 src={product.image}
                 alt={product.name} fill
                 className="max-h-full max-w-full object-contain"
                 sizes="200px" onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/images/hero-lab.png';
+                  (e.target as HTMLImageElement).src = '/images/box10.jpeg';
                 }}
               />
             </div>
@@ -163,16 +163,16 @@ export default function AdminProductsPage() {
               </div>
 
               {/* Actions */}
-              <div className="flex gap-2 mt-4 pt-4 border-t border-[#2b3538]">
+              <div className="flex gap-2 mt-4 pt-4 border-t border-[#FBFAF7]/70">
                 <Link
                   href={`/admin/products/${product.slug}/edit`}
-                  className="flex-1 px-3 py-2 bg-[#1a1a1a] text-[#e1e7e5] rounded-lg text-xs text-center hover:bg-[#2b3538] hover:text-white transition"
+                  className="flex-1 px-3 py-2 bg-[#111d2c] text-[#e1e7e5] rounded-lg text-xs text-center hover:bg-[#16283c] hover:text-white transition"
                 >
                   Edit
                 </Link>
                 <Link
                   href={`/shop/${product.slug}`}
-                  className="flex-1 px-3 py-2 bg-[#1a1a1a] text-[#e1e7e5] rounded-lg text-xs text-center hover:bg-[#2b3538] hover:text-white transition"
+                  className="flex-1 px-3 py-2 bg-[#111d2c] text-[#e1e7e5] rounded-lg text-xs text-center hover:bg-[#16283c] hover:text-white transition"
                 >
                   View
                 </Link>
@@ -186,7 +186,7 @@ export default function AdminProductsPage() {
                     </button>
                     <button
                       onClick={() => setDeleteConfirm(null)}
-                      className="px-3 py-2 bg-[#1a1a1a] text-[#a7b0b2] rounded-lg text-xs hover:bg-[#2b3538] transition"
+                      className="px-3 py-2 bg-[#111d2c] text-[#a7b0b2] rounded-lg text-xs hover:bg-[#16283c] transition"
                     >
                       Cancel
                     </button>

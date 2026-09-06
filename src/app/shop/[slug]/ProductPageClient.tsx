@@ -8,6 +8,7 @@ import ProductImage from '@/components/ProductImage';
 
 interface Props {
   product: Product;
+  related?: Product[];
 }
 
 const researchContexts: Record<string, string> = {
@@ -42,14 +43,16 @@ const researchContexts: Record<string, string> = {
   'protective-vial-storage-case': 'This accessory supports controlled laboratory workflows involving the protected storage and transport of research vials.',
 };
 
-export default function ProductPageClient({ product }: Props) {
+export default function ProductPageClient({ product, related = [] }: Props) {
+  const dosageOptions = product.dosageOptions && product.dosageOptions.length > 0 ? product.dosageOptions : [5, 10, 15];
   const [quantity, setQuantity] = useState(1);
-  const [selectedType, setSelectedType] = useState<'vial' | 'box'>('vial');
+  const [selectedDosage, setSelectedDosage] = useState<number>(dosageOptions.includes(10) ? 10 : dosageOptions[0]);
   const quantityLimit = product.category === 'accessories' ? 4 : 99;
+  const dosageUnit = product.slug === 'refined-h2o' ? 'ml' : 'mg';
 
-  const price = effectivePrice(product, selectedType);
+  const price = effectivePrice(product, 'box', selectedDosage);
   const totalPrice = price * quantity;
-  const offerUnitPrice = price * 0.95;
+  const offerUnitPrice = effectivePrice(product, 'box', selectedDosage) * 0.95;
   const offerTotalPrice = offerUnitPrice * quantity;
   const researchContext = researchContexts[product.slug] || 'This material is studied in controlled laboratory work involving peptide structure, analytical chemistry, and cellular signalling.';
 
@@ -65,44 +68,111 @@ export default function ProductPageClient({ product }: Props) {
           Shop
         </Link>
         <span className="mx-2 text-[#7b898e]">/</span>
-        <span className="text-white">{product.name}</span>
+        <span className="text-[#1F2933] font-medium">{product.name}</span>
       </nav>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        {/* Product Image */}
-        <div className="relative aspect-square bg-gradient-to-br from-[#141414] to-black rounded-2xl overflow-hidden border border-[#2b3538] shadow-sm">
-          <ProductImage src={product.image} alt={product.name} className="object-cover" />
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:items-start">
+        {/* Product Image + related carousel */}
+        <div className="flex flex-col gap-8">
+        <div className="relative aspect-square bg-gradient-to-br from-[#0c1622] to-black rounded-3xl overflow-hidden border-4 border-[#FBFAF7] shadow-md">
+          <ProductImage
+            src={product.image}
+            alt={product.name}
+            className="object-contain"
+            showBoxLabel
+            showPackagingNotice={product.category !== 'accessories' && product.category !== 'peptide-holders'}
+          />
           <div className="absolute top-4 right-4 flex max-w-[calc(100%-2rem)] flex-col items-end gap-2">
-            <div className="rounded-lg border border-[#8298aa] bg-[#17212a]/95 px-3 py-2 text-center text-xs font-semibold leading-tight text-[#d8e2e8] shadow-lg">
+            <div className="rounded-xl border-2 border-[#FBFAF7] bg-[#0c1622]/95 px-3 py-2 text-center text-xs font-semibold leading-tight text-[#d8e2e8] shadow-lg">
               {product.category === 'accessories' ? 'Accessories' : 'Lyophilised powder'}
             </div>
-            <div className="rounded-md border border-[#aebfca]/70 bg-[#0d151c]/95 px-3 py-1.5 text-right text-[10px] font-mono font-semibold tracking-wide text-[#c2ced5] shadow-lg">
+            <div className="rounded-xl border-2 border-[#FBFAF7] bg-[#0c1622]/95 px-3 py-1.5 text-right text-[10px] font-mono font-semibold tracking-wide text-[#c2ced5] shadow-lg">
               Holder refrigerated
             </div>
           </div>
         </div>
 
+        {/* You may also like */}
+        {related.length > 0 && (
+          <div className="bg-[#FBFAF7] rounded-3xl shadow-md p-6">
+            <div className="flex items-baseline justify-between mb-1">
+              <h2 className="text-xl font-bold text-[#111827]">You may also like</h2>
+              <span className="text-xs font-bold uppercase tracking-wide text-[#0f6b4f] bg-[#e2f3ea] px-2.5 py-1 rounded-full">10% off</span>
+            </div>
+            <p className="text-sm text-[#5a6673] mb-4">Add any of these alongside your order and save 10% on the box.</p>
+            <div className="flex gap-4 overflow-x-auto pb-2 snap-x">
+              {related.map((rel) => {
+                const relDosage = rel.dosageOptions?.includes(10) ? 10 : rel.dosageOptions?.[0];
+                const relPrice = effectivePrice(rel, 'box', relDosage);
+                const relOffer = relPrice * 0.9;
+                const relSoldOut = isOutOfStock(rel);
+                return (
+                  <div key={rel.slug} className="snap-start shrink-0 w-[190px] text-[#e6edf3] bg-[#0c1622] rounded-2xl border-4 border-[#ECE9E2] shadow-sm p-3 flex flex-col">
+                    <Link href={`/shop/${rel.slug}`} className="block">
+                      <div className="relative aspect-square bg-[#111d2c] rounded-xl overflow-hidden mb-2">
+                        <ProductImage src={rel.image} alt={rel.name} className="object-contain" />
+                      </div>
+                      <p className="text-sm font-semibold leading-snug line-clamp-2 hover:text-[#8298aa] transition">{rel.name}</p>
+                    </Link>
+                    <div className="mt-1.5 flex items-baseline gap-2">
+                      <span className="font-bold text-white">£{relOffer.toFixed(2)}</span>
+                      <span className="text-xs text-white/50 line-through">£{relPrice.toFixed(2)}</span>
+                    </div>
+                    <p className="text-[10px] text-[#93a7b0] uppercase tracking-wide">Box of 10 · 10% off</p>
+                    <button
+                      type="button"
+                      disabled={relSoldOut}
+                      onClick={() => {
+                        if (relSoldOut) return;
+                        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+                        cart.push({
+                          slug: rel.slug,
+                          name: `${rel.name}${relDosage ? ` ${relDosage}mg` : ''}`,
+                          price: relOffer,
+                          boxPrice: relOffer,
+                          image: rel.image,
+                          lot: rel.lot,
+                          qty: 1,
+                          type: 'box',
+                          strength: relDosage,
+                        });
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        window.dispatchEvent(new Event('cart-updated'));
+                        alert('10% off offer added to cart!');
+                      }}
+                      className="mt-2 w-full bg-[#0c1622] border-2 border-[#FBFAF7] text-white text-xs font-bold py-2 rounded-xl hover:bg-[#16283c] transition disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {relSoldOut ? 'Out of stock' : 'Add 10% Off'}
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+        </div>
+
         {/* Product Info */}
-        <div>
+        <div className="text-[#e6edf3] bg-[#0c1622] rounded-3xl p-6 lg:p-8 border-4 border-[#FBFAF7] shadow-md">
           <div className="mb-4">
-            <span className="inline-block bg-[#8298aa]/20 text-[#c2ced5] border border-[#657c8f] px-3 py-1 rounded-full text-sm font-semibold">
-              Test report available
+            <span className="inline-block bg-[#0c1622] text-[#e6edf3] border-2 border-[#FBFAF7] px-3 py-1 rounded-xl text-sm font-semibold">
+              Lot reference held
             </span>
-            <span className="inline-block bg-white/10 text-white/60 px-3 py-1 rounded-full text-sm ml-2">
+            <span className="inline-block bg-[#0c1622] text-[#e6edf3] border-2 border-[#FBFAF7] px-3 py-1 rounded-xl text-sm ml-2">
               {product.categoryLabel}
             </span>
           </div>
 
           <h1 className="text-4xl font-bold mb-4">{product.name}</h1>
           <p className="text-white/60 mb-3">{product.description}</p>
-          <p className="text-[#a6b8c4] text-sm mb-3">For research and chemistry use only. Each box is checked using a five vial composite sample to assess identity, purity, and other documented quality specifications.</p>
-          <p className="text-[#a6b8c4] text-sm mb-6">Sold as a one-off vial by default. Ordering more than 5? We source a box of 10 specifically for that quantity.</p>
+          <p className="text-[#a6b8c4] text-sm mb-3">For laboratory research and chemistry use only. Any analytical documentation is produced by the source laboratory or a third-party laboratory it engages; availability and scope vary by lot.</p>
+          <p className="text-[#a6b8c4] text-sm mb-6">We source directly from laboratories. Our prices reflect sourcing, packaging, and delivery costs, while keeping research materials reasonably priced.</p>
           <p className="text-amber-300/80 text-sm mb-6 border-l-2 border-amber-300/50 pl-3">
             Laboratory research use only. Not for human or veterinary use, diagnosis, or treatment. No dosing or medical guidance is provided.
           </p>
 
           {/* Lot Info */}
-          <div className="bg-white/5 border border-[#2b3538] rounded-lg p-4 mb-6">
+          <div className="bg-white/5 border border-[#FBFAF7]/70 rounded-lg p-4 mb-6">
             <div className="flex justify-between items-center">
               <span className="text-white/60 text-sm">Lot Number</span>
               <span className="font-mono text-white">{product.lot}</span>
@@ -110,31 +180,25 @@ export default function ProductPageClient({ product }: Props) {
           </div>
 
           {/* Pricing */}
-          <div className="bg-[#22313d]/80 border border-[#617789] rounded-lg p-6 mb-6 shadow-sm">
-            <div className="flex gap-4 mb-4">
-              <button
-                onClick={() => setSelectedType('vial')}
-                className={`flex-1 py-3 rounded-lg font-semibold transition ${
-                  selectedType === 'vial'
-                    ? 'bg-[#9aafbd]/40 border border-[#aebfca] text-[#eef4f7]'
-                    : 'bg-[#2b3b48] border border-[#617789] text-[#d5e0e6] hover:bg-[#354957]'
-                }`}
-              >
-                1 Vial
-                <div className="text-sm mt-1">£{effectivePrice(product, 'vial').toFixed(2)}</div>
-              </button>
-              <button
-                onClick={() => setSelectedType('box')}
-                className={`flex-1 py-3 rounded-lg font-semibold transition ${
-                  selectedType === 'box'
-                    ? 'bg-[#9aafbd]/40 border border-[#aebfca] text-[#eef4f7]'
-                    : 'bg-[#2b3b48] border border-[#617789] text-[#d5e0e6] hover:bg-[#354957]'
-                }`}
-              >
-                Box of 10
-                <div className="text-sm mt-1">£{effectivePrice(product, 'box').toFixed(2)}</div>
-              </button>
+          <div className="bg-[#0c1622]/80 border border-[#FBFAF7] rounded-lg p-6 mb-6 shadow-sm">
+            <div className="mb-4 rounded-lg border border-[#FBFAF7] bg-[#111d2c] p-4 text-center text-[#eef4f7]">
+              <div className="text-xs uppercase tracking-[0.18em] text-[#d8e2e8]">Standard pack</div>
+              <div className="mt-2 text-2xl font-bold">Box of 10</div>
+              <div className="text-sm mt-1">£{effectivePrice(product, 'box', selectedDosage).toFixed(2)}</div>
             </div>
+
+            <label className="mb-4 block text-sm font-semibold text-[#d5e0e6]">
+              Dosage
+              <select
+                value={selectedDosage}
+                onChange={(event) => setSelectedDosage(Number(event.target.value))}
+                className="mt-2 w-full rounded-lg border border-[#FBFAF7] bg-[#0c1622] px-3 py-3 font-normal text-[#eef4f7]"
+              >
+                {dosageOptions.map((dosage) => (
+                  <option key={dosage} value={dosage}>{dosage}{dosageUnit}</option>
+                ))}
+              </select>
+            </label>
 
             <div className="flex items-center gap-4">
               <div className="flex items-center bg-white/10 rounded-lg">
@@ -164,7 +228,7 @@ export default function ProductPageClient({ product }: Props) {
                   key={value}
                   type="button"
                   onClick={() => setQuantity(value)}
-                  className={`py-2 rounded-lg border font-semibold transition ${quantity === value ? 'bg-[#9aafbd]/40 border-[#aebfca] text-[#eef4f7]' : 'bg-[#2b3b48] border-[#617789] text-[#d5e0e6] hover:bg-[#354957]'}`}
+                  className={`py-2 rounded-lg border font-semibold transition ${quantity === value ? 'bg-[#0c1622] border-[#FBFAF7] text-white' : 'bg-[#0c1622] border-[#FBFAF7] text-[#d5e0e6] hover:bg-[#16283c]'}`}
                 >
                   {value}
                 </button>)}
@@ -178,21 +242,23 @@ export default function ProductPageClient({ product }: Props) {
             onClick={() => {
               if (isOutOfStock(product)) return;
               const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+              const cartName = `${product.name} ${selectedDosage}${dosageUnit}`;
               cart.push({
                 slug: product.slug,
-                name: product.name,
-                price: effectivePrice(product, selectedType),
-                boxPrice: effectivePrice(product, 'box'),
+                name: cartName,
+                price: effectivePrice(product, 'box', selectedDosage),
+                boxPrice: effectivePrice(product, 'box', selectedDosage),
                 image: product.image,
                 lot: product.lot,
                 qty: quantity,
-                type: selectedType,
+                type: 'box',
+                strength: selectedDosage,
               });
               localStorage.setItem('cart', JSON.stringify(cart));
               window.dispatchEvent(new Event('cart-updated'));
               alert('Added to cart!');
             }}
-            className="w-full bg-[#9aafbd]/40 border border-[#aebfca] text-[#eef4f7] font-bold py-4 rounded-lg hover:bg-[#9aafbd]/55 transition mb-6"
+            className="w-full bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-bold py-4 rounded-xl hover:bg-[#16283c] shadow-md transition mb-6"
           >
             {isOutOfStock(product) ? 'Out of stock' : 'Add to Cart'}
           </button>
@@ -202,7 +268,7 @@ export default function ProductPageClient({ product }: Props) {
             <p className="text-white/70 text-sm leading-relaxed">{researchContext} These are non clinical research areas only; no therapeutic, diagnostic, dosing, or administration use is implied.</p>
           </div>
 
-          {/* Batch analytical test report link */}
+          {/* Batch reference summary link */}
           <div className="border-t border-white/10 pt-6">
             <a
               href={`/api/coa?lot=${encodeURIComponent(product.lot)}`}
@@ -210,50 +276,27 @@ export default function ProductPageClient({ product }: Props) {
               rel="noreferrer"
               className="inline-flex items-center gap-2 text-[#a6b8c4] hover:text-[#d8e2e8]"
             >
-              <span>View Batch Analytical Test Report</span>
+              <span>View batch reference summary</span>
               <span>→</span>
             </a>
+            <p className="mt-2 text-xs text-white/50">Catalogue and lot reference information only. Not a test report.</p>
           </div>
         </div>
       </div>
 
-      {/* Product Details */}
-      <div className="mt-16 bg-white/5 border border-[#2b3538] rounded-2xl p-8">
-        <h2 className="text-2xl font-bold mb-6">Product Details</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <h3 className="font-semibold text-lg mb-2">Specifications</h3>
-            <ul className="space-y-2 text-white/80">
-              <li>• Five vial composite sample per box</li>
-              <li>• Format: Lyophilized powder</li>
-              <li>• Storage: -20°C</li>
-              <li>• Research use only</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-semibold text-lg mb-2">Quality Assurance</h3>
-            <ul className="space-y-2 text-white/80">
-              <li>• Batch analytical test report available</li>
-              <li>• Full report available for each lot</li>
-              <li>• 8-point testing protocol</li>
-              <li>• UK based quality control</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Product offer */}
-        <div className="mt-16">
+      {/* Product offer */}
+      <div className="mt-16">
           <h2 className="text-2xl font-bold mb-2">Special Offer: 5% Off This Product</h2>
-          <p className="text-white/60 mb-6">Purchase {product.name} today and receive 5% off your selected vial or box quantity.</p>
-          <div className="bg-[#22313d] border border-[#718898] rounded-2xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+          <p className="text-[#4a5561] mb-6">Purchase a box of 10 {product.name} today and receive 5% off.</p>
+          <div className="bg-[#0c1622] border border-[#FBFAF7] rounded-2xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div>
-              <p className="font-semibold text-white">{selectedType === 'box' ? 'Box of 10 vials' : '1 vial'} offer price</p>
+              <p className="font-semibold text-white">Box of 10 vials offer price</p>
               <div className="flex items-baseline gap-3 mt-1">
                 <span className="text-3xl font-bold text-[#a6b8c4]">£{offerUnitPrice.toFixed(2)}</span>
-                <span className="text-sm text-white/50 line-through">£{price.toFixed(2)}</span>
+                <span className="text-sm text-white/50 line-through">£{effectivePrice(product, 'box', selectedDosage).toFixed(2)}</span>
                 <span className="text-sm font-semibold text-[#a6b8c4]">5% off</span>
               </div>
-              <p className="text-sm text-white/60 mt-1">{quantity} selected · Offer total £{offerTotalPrice.toFixed(2)}</p>
+                <p className="text-sm text-white/60 mt-1">{quantity} box{quantity === 1 ? '' : 'es'} selected · Offer total £{offerTotalPrice.toFixed(2)}</p>
             </div>
             <button
               type="button"
@@ -263,24 +306,23 @@ export default function ProductPageClient({ product }: Props) {
                 const cart = JSON.parse(localStorage.getItem('cart') || '[]');
                 cart.push({
                   slug: product.slug,
-                  name: product.name,
-                  price: effectivePrice(product, 'vial') * 0.95,
-                  boxPrice: effectivePrice(product, 'box') * 0.95,
+                  name: `${product.name} ${selectedDosage}${dosageUnit}`,
+                  price: effectivePrice(product, 'box', selectedDosage) * 0.95,
+                  boxPrice: effectivePrice(product, 'box', selectedDosage) * 0.95,
                   image: product.image,
                   lot: product.lot,
                   qty: quantity,
-                  type: selectedType,
+                  type: 'box',
                 });
                 localStorage.setItem('cart', JSON.stringify(cart));
                 window.dispatchEvent(new Event('cart-updated'));
                 alert('5% off offer added to cart!');
               }}
-              className="w-full md:w-auto bg-[#9aafbd]/40 border border-[#aebfca] text-[#eef4f7] font-bold py-3 px-6 rounded-lg hover:bg-[#9aafbd]/55 transition disabled:opacity-50"
+              className="w-full md:w-auto bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-bold py-3 px-6 rounded-xl hover:bg-[#16283c] shadow-md transition disabled:opacity-50"
             >
               Add 5% Off Offer
             </button>
           </div>
-        </div>
       </div>
 
     </div>

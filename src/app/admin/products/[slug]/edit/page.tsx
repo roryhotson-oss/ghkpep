@@ -157,7 +157,7 @@ export default function EditProductPage() {
         <div className="flex items-center gap-4 mb-8">
           <button
             onClick={() => router.push('/admin/products')}
-            className="p-2 text-[#a7b0b2] hover:text-white rounded-lg hover:bg-[#1a1a1a] transition"
+            className="p-2 text-[#a7b0b2] hover:text-white rounded-lg hover:bg-[#111d2c] transition"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -168,11 +168,11 @@ export default function EditProductPage() {
             <p className="text-[#a7b0b2]">{form.name} · {form.slug}</p>
           </div>
 
-          <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+          <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
             <h2 className="text-lg font-bold text-white mb-4">Stock & Discount</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div><label className="block text-sm text-[#a7b0b2] mb-2">Stock Quantity</label><input type="number" name="stockQuantity" value={form.stockQuantity ?? 0} onChange={handleChange} min="0" step="1" className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm" /></div>
-              <div><label className="block text-sm text-[#a7b0b2] mb-2">Product Discount (%)</label><input type="number" name="discountPercent" value={form.discountPercent ?? 0} onChange={handleChange} min="0" max="100" step="0.01" className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm" /></div>
+              <div><label className="block text-sm text-[#a7b0b2] mb-2">Stock Quantity</label><input type="number" name="stockQuantity" value={form.stockQuantity ?? 0} onChange={handleChange} min="0" step="1" className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-white text-sm" /></div>
+              <div><label className="block text-sm text-[#a7b0b2] mb-2">Product Discount (%)</label><input type="number" name="discountPercent" value={form.discountPercent ?? 0} onChange={handleChange} min="0" max="100" step="0.01" className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-white text-sm" /></div>
             </div>
           </div>
         </div>
@@ -190,7 +190,7 @@ export default function EditProductPage() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Basic Info */}
-          <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+          <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
             <h2 className="text-lg font-bold text-white mb-4">Basic Information</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="md:col-span-2">
@@ -200,7 +200,7 @@ export default function EditProductPage() {
                   name="name"
                   value={form.name}
                   onChange={handleChange}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
+                  className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                   required
                 />
               </div>
@@ -210,7 +210,7 @@ export default function EditProductPage() {
                   type="text"
                   value={form.slug}
                   disabled
-                  className="w-full bg-[#111] border border-[#1a1a1a] rounded-lg px-4 py-2.5 text-[#7b898e] text-sm cursor-not-allowed"
+                  className="w-full bg-[#111] border border-[#111d2c] rounded-lg px-4 py-2.5 text-[#7b898e] text-sm cursor-not-allowed"
                 />
               </div>
               <div>
@@ -220,14 +220,14 @@ export default function EditProductPage() {
                   name="lot"
                   value={form.lot}
                   onChange={handleChange}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
+                  className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                 />
               </div>
             </div>
           </div>
 
           {/* Pricing */}
-          <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+          <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
             <h2 className="text-lg font-bold text-white mb-4">Pricing</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -239,7 +239,7 @@ export default function EditProductPage() {
                   onChange={handleChange}
                   step="0.01"
                   min="0"
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
+                  className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                   required
                 />
               </div>
@@ -252,14 +252,14 @@ export default function EditProductPage() {
                   onChange={handleChange}
                   step="0.01"
                   min="0"
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
+                  className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                 />
               </div>
             </div>
           </div>
 
           {/* Category */}
-          <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+          <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
             <h2 className="text-lg font-bold text-white mb-4">Category & Classification</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -268,7 +268,7 @@ export default function EditProductPage() {
                   name="category"
                   value={form.category}
                   onChange={handleChange}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
+                  className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                 >
                   <option value="recovery">Recovery</option>
                   <option value="longevity">Longevity</option>
@@ -286,7 +286,7 @@ export default function EditProductPage() {
                   name="categoryLabel"
                   value={form.categoryLabel}
                   onChange={handleChange}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
+                  className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                 />
               </div>
               <div>
@@ -296,31 +296,31 @@ export default function EditProductPage() {
                   name="purity"
                   value={form.purity}
                   onChange={handleChange}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
+                  className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                 />
               </div>
             </div>
           </div>
 
           {/* Description */}
-          <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+          <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
             <h2 className="text-lg font-bold text-white mb-4">Description</h2>
             <textarea
               name="description"
               value={form.description}
               onChange={handleChange}
               rows={4}
-              className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition resize-none"
+              className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition resize-none"
             />
           </div>
 
           {/* Image */}
-          <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+          <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
             <h2 className="text-lg font-bold text-white mb-4">Product Image</h2>
             <div className="flex items-start gap-6">
-              <div className="w-32 h-32 bg-[#1a1a1a] rounded-lg border-2 border-dashed border-[#333] flex items-center justify-center overflow-hidden relative">
+              <div className="w-32 h-32 bg-[#111d2c] rounded-lg border-2 border-dashed border-[#FBFAF7]/70 flex items-center justify-center overflow-hidden relative">
                 {imagePreview ? (
-                  <Image src={imagePreview || "/images/placeholder.svg"} alt="Preview" fill className="object-contain" sizes="400px" />
+                  <Image src={imagePreview || "/images/ghk-cu.jpg"} alt="Preview" fill className="object-contain" sizes="400px" />
                 ) : (
                   <svg className="w-8 h-8 text-[#444]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -333,7 +333,7 @@ export default function EditProductPage() {
                   type="file"
                   accept="image/*"
                   onChange={handleImageUpload}
-                  className="block w-full text-sm text-[#a7b0b2] file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#8298aa] file:text-black hover:file:bg-[#657c8f] file:cursor-pointer"
+                  className="block w-full text-sm text-[#a7b0b2] file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#8298aa] file:text-black hover:file:bg-[#0c1622] file:cursor-pointer"
                 />
                 <p className="text-[#7b898e] text-xs mt-2">Upload a new image to replace the current one.</p>
                 {uploadedImage && (
@@ -348,14 +348,14 @@ export default function EditProductPage() {
             <button
               type="submit"
               disabled={saving}
-              className="px-8 py-3 bg-[#8298aa] text-black font-bold rounded-lg hover:bg-[#657c8f] transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-8 py-3 bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-bold rounded-lg hover:bg-[#16283c] transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {saving ? 'Saving...' : 'Save Changes'}
             </button>
             <button
               type="button"
               onClick={() => router.push('/admin/products')}
-              className="px-8 py-3 border border-[#2b3538] text-[#e1e7e5] rounded-lg hover:border-[#8298aa] hover:text-[#8298aa] transition"
+              className="px-8 py-3 border border-[#FBFAF7]/70 text-[#e1e7e5] rounded-lg hover:border-[#8298aa] hover:text-[#8298aa] transition"
             >
               Back to Products
             </button>

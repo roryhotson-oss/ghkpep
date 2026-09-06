@@ -4,16 +4,16 @@ export default function TestingPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-[#0d0d0d] border-b border-[#2b3538]">
+      <section className="text-[#e6edf3] bg-[#0a1420] rounded-3xl border-4 border-[#FBFAF7] shadow-md max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <p className="text-[#8298aa] text-sm font-medium mb-2">Independent Testing</p>
-          <h1 className="text-3xl font-bold">Eight assays. Every batch. Published.</h1>
+          <p className="text-[#8298aa] text-sm font-medium mb-2">Supplier documentation</p>
+          <h1 className="text-3xl font-bold">Third-party testing documentation, where suppliers provide it.</h1>
           <p className="text-[#a7b0b2] mt-3 max-w-2xl">
-            Identity, purity, water content, fentanyl screen, endotoxin, and sterility — verified by an ISO/IEC 17025-accredited lab before any vial leaves the facility.
+            GHK Peptides does not carry out analytical testing and does not hold laboratory accreditation. Where the laboratories we source from provide third-party analytical documentation for a lot, we make it available unaltered. Scope and methods vary by supplier and by batch.
           </p>
           <div className="flex gap-4 mt-6">
-            <Link href="/coa" className="px-6 py-2 bg-[#8298aa]/20 border border-[#8298aa] text-[#d8e2e8] font-semibold rounded-lg text-sm shadow-sm hover:bg-[#8298aa]/35 transition">See batch test reports</Link>
-            <Link href="/verify" className="px-6 py-2 bg-[#1b2731] border border-[#657c8f] text-[#d8e2e8] rounded-lg text-sm shadow-sm hover:bg-[#263744] hover:border-[#a6b8c4] transition">Verify a batch</Link>
+            <Link href="/coa" className="px-6 py-2 bg-[#8298aa]/20 border border-[#8298aa] text-[#d8e2e8] font-semibold rounded-lg text-sm shadow-sm hover:bg-[#8298aa]/35 transition">See batch references</Link>
+            <Link href="/coa#janoshik" className="px-6 py-2 bg-[#0c1622] border border-[#FBFAF7] text-[#e6edf3] rounded-lg text-sm shadow-sm hover:bg-[#16283c] transition">Search Janoshik reports</Link>
           </div>
         </div>
       </section>
@@ -22,64 +22,53 @@ export default function TestingPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="mb-10">
           <p className="text-[#8298aa] text-sm font-medium mb-2">The Panel</p>
-          <h2 className="text-2xl font-bold">What we test for, and how.</h2>
-          <p className="text-[#a7b0b2] mt-2">Each method below is run per-lot. Limits reflect our internal release specification — typically tighter than pharmacopeial minimums.</p>
+          <h2 className="text-2xl font-bold">Methods you may see on a supplier&apos;s report.</h2>
+          <p className="text-[#a7b0b2] mt-2 max-w-3xl">These are the analytical methods commonly used for research peptides. Which of them appear for any given lot is determined by the source laboratory, and the supplier&apos;s own document states what was actually tested. The descriptions below are general explanations of each method, not a claim that every method is run on every batch.</p>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-4">
           {[
-            { method: "RP-HPLC", title: "Purity", desc: "Reverse-phase HPLC with UV/DAD detection quantifies the target compound against impurities and process residuals.", limit: "≥ 99.0%", instrument: "Agilent 1260 Infinity II" },
-            { method: "Amino Acid Analysis", title: "Content Verification", desc: "Acid hydrolysis followed by amino acid quantification verifies mass and concentration match the labeled potency.", limit: "Labeled potency confirmed", instrument: "Hitachi L-8900" },
-            { method: "ESI / MALDI-MS", title: "Identity Confirmation", desc: "Mass spectrometry confirms exact molecular weight and detects any truncated or modified sequences.", limit: "± 0.1 Da of theoretical", instrument: "Thermo Q Exactive" },
-            { method: "ICP-MS", title: "Heavy Metals Screening", desc: "Inductively coupled plasma mass spectrometry screens for lead, arsenic, cadmium, and mercury below USP <232> thresholds.", limit: "USP <232> limits", instrument: "Agilent 7900 ICP-MS" },
-            { method: "USP <71>", title: "Sterility Testing", desc: "Membrane filtration into fluid thioglycollate and tryptic soy broth, incubated and inspected per USP <71>.", limit: "No growth at 14 days", instrument: "Membrane filtration" },
-            { method: "LAL Kinetic Chromogenic", title: "Endotoxin Testing", desc: "Limulus amebocyte lysate assay quantifies bacterial endotoxin levels for cell-culture compatibility.", limit: "< 0.5 EU/mg", instrument: "Charles River Endosafe" },
-            { method: "Independent Release Review", title: "Batch Conformity Verification", desc: "Final third party review confirms every assay result matches the lot's release specification and that the published COA is true to the vial.", limit: "Matches release spec & COA", instrument: "ISO/IEC 17025 lab review" },
-            { method: "LC-MS/MS", title: "Fentanyl Screen", desc: "Targeted LC-MS/MS screen confirms absence of fentanyl and fentanyl analog contamination in every lot.", limit: "Not detected", instrument: "Sciex Triple Quad 6500+" },
+            { method: "RP-HPLC", title: "Purity", desc: "Reverse-phase HPLC separates the target compound from impurities and process residuals to give a purity figure." },
+            { method: "Amino Acid Analysis", title: "Content Verification", desc: "Acid hydrolysis followed by amino acid quantification is used to check mass and concentration against the stated content." },
+            { method: "ESI / MALDI-MS", title: "Identity Confirmation", desc: "Mass spectrometry compares measured molecular weight against the theoretical value for the sequence." },
+            { method: "ICP-MS", title: "Heavy Metals Screening", desc: "Inductively coupled plasma mass spectrometry screens for elemental contaminants such as lead, arsenic, cadmium and mercury." },
+            { method: "USP <71>", title: "Sterility Testing", desc: "Membrane filtration into growth media, incubated and inspected. Applied to some presentations only." },
+            { method: "LAL", title: "Endotoxin Testing", desc: "Limulus amebocyte lysate assay quantifies bacterial endotoxin, relevant to cell-culture compatibility." },
+            { method: "LC-MS/MS", title: "Fentanyl Screen", desc: "Targeted screen for fentanyl and fentanyl analogues. Carried out by some laboratories as a contamination check." },
+            { method: "Documentation review", title: "What we do", desc: "We review the documentation a supplier provides before listing a lot, record the lot reference, and publish the supplier's document unaltered where we hold one." },
           ].map((test) => (
-            <div key={test.title} className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+            <div key={test.title} className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
               <div className="flex items-center gap-2 mb-3">
-                <span className="text-[10px] px-2 py-1 bg-[#2b3538] text-[#a7b0b2] rounded font-mono">{test.method}</span>
+                <span className="text-[10px] px-2 py-1 bg-[#111d2c] text-[#a7b0b2] rounded font-mono">{test.method}</span>
               </div>
               <h3 className="font-bold text-lg mb-2">{test.title}</h3>
-              <p className="text-[#a7b0b2] text-sm leading-relaxed mb-4">{test.desc}</p>
-              <div className="grid grid-cols-2 gap-3 text-xs">
-                <div>
-                  <span className="text-[#7b898e]">Release limit</span>
-                  <p className="text-[#8298aa] font-medium mt-0.5">{test.limit}</p>
-                </div>
-                <div>
-                  <span className="text-[#7b898e]">Instrument</span>
-                  <p className="text-[#e1e7e5] font-medium mt-0.5">{test.instrument}</p>
-                </div>
-              </div>
+              <p className="text-[#a7b0b2] text-sm leading-relaxed">{test.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Chain of Custody */}
-      <section className="bg-[#0d0d0d] border-y border-[#2b3538]">
+      {/* Traceability */}
+      <section className="text-[#e6edf3] bg-[#0a1420] rounded-3xl border-4 border-[#FBFAF7] shadow-md max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="mb-10">
-            <p className="text-[#8298aa] text-sm font-medium mb-2">Chain of Custody</p>
-            <h2 className="text-2xl font-bold">From synthesis to shelf, every sample is tracked.</h2>
-            <p className="text-[#a7b0b2] mt-2 max-w-2xl">Each lot is assigned a unique identifier at the point of synthesis. That ID follows the material through purification, lyophilization, fill, and every test point — and is printed on the vial label and the COA.</p>
+            <p className="text-[#8298aa] text-sm font-medium mb-2">Traceability</p>
+            <h2 className="text-2xl font-bold">How a lot reaches you.</h2>
+            <p className="text-[#a7b0b2] mt-2 max-w-2xl">We source finished, filled material from established laboratories rather than manufacturing it ourselves. Each lot reference we receive is recorded so material can be traced back to the supplier batch it came from.</p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { step: 1, title: "Synthesis complete", desc: "SPPS, 32 coupling steps" },
-              { step: 2, title: "RP-HPLC purification", desc: "Pooled fractions ≥ 99.4%" },
-              { step: 3, title: "Lyophilization", desc: "Residual H₂O 3.1%" },
-              { step: 4, title: "Independent release panel", desc: "Documented assay review" },
-              { step: 5, title: "Fill & seal", desc: "Argon-purged headspace" },
-              { step: 6, title: "COA published", desc: "Available on product page" },
+              { step: 1, title: "Supplier selection", desc: "Sourced from a small group of established laboratories" },
+              { step: 2, title: "Documentation review", desc: "Supplier paperwork reviewed before a lot is listed" },
+              { step: 3, title: "Lot reference recorded", desc: "Batch reference retained against the listing" },
+              { step: 4, title: "Third-party report", desc: "Published unaltered where the supplier provides one" },
+              { step: 5, title: "Storage & dispatch", desc: "Packed for transport appropriate to the material" },
+              { step: 6, title: "Reference available", desc: "Lot reference searchable on the batch references page" },
             ].map((item) => (
-              <div key={item.step} className="bg-[#141414] rounded-xl p-5 border border-[#2b3538]">
+              <div key={item.step} className="text-[#e6edf3] bg-[#0c1622] rounded-xl p-5 border border-[#FBFAF7]/70">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-[#8298aa] font-bold text-lg">{item.step}.</span>
-                  <span className="text-xs text-[#7b898e] font-mono">LOT-2487</span>
                 </div>
                 <h4 className="font-semibold text-sm">{item.title}</h4>
                 <p className="text-[#a7b0b2] text-xs mt-1">{item.desc}</p>
@@ -88,22 +77,22 @@ export default function TestingPage() {
           </div>
 
           <div className="text-center mt-8">
-            <Link href="/verify" className="text-[#8298aa] text-sm hover:underline">Verify a lot →</Link>
+            <Link href="/coa" className="text-[#8298aa] text-sm hover:underline">Look up a lot reference →</Link>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h2 className="text-2xl font-bold mb-8">Common questions about our testing</h2>
+        <h2 className="text-2xl font-bold mb-8">Common questions about testing</h2>
         <div className="space-y-4 max-w-3xl">
           {[
-            { q: "Who performs the testing?", a: "Independent laboratories accredited to ISO/IEC 17025 perform identity, purity, and contamination assays. Our internal QC repeats HPLC on every lot as a release gate." },
-            { q: "When is the COA published?", a: "Before the lot is released to fulfillment. If a lot has no COA on its product page, it cannot ship." },
-            { q: "What happens if a batch fails?", a: "It is quarantined and destroyed. We do not downgrade, re-sell, or sub-brand failed material." },
-            { q: "Can I see raw chromatograms?", a: "Yes — every published COA links to the full HPLC trace and mass spectrum as PDFs." },
+            { q: "Who performs the testing?", a: "Any analytical testing is carried out by the source laboratory or by a third-party laboratory it engages — for example Janoshik Analytical. GHK Peptides does not perform analytical testing and does not hold laboratory accreditation." },
+            { q: "Does every lot come with a third-party report?", a: "No. Availability depends on the source laboratory and the individual batch. Where we hold a supplier's analytical document for a lot, we make it available unaltered; where we do not, we say so rather than substituting our own." },
+            { q: "Can I check a report independently?", a: "Yes. If your documentation carries a Janoshik report number, you can look it up directly with Janoshik from our batch references page. The result comes from the laboratory, not from us." },
+            { q: "What does the downloadable summary contain?", a: "Catalogue and lot reference information only. It is not a certificate of analysis and reports no testing by or for GHK Peptides." },
           ].map((faq) => (
-            <details key={faq.q} className="group bg-[#141414] rounded-xl border border-[#2b3538] overflow-hidden">
+            <details key={faq.q} className="group text-[#e6edf3] bg-[#0c1622] rounded-xl border border-[#FBFAF7]/70 overflow-hidden">
               <summary className="cursor-pointer px-6 py-4 font-semibold text-sm flex items-center justify-between hover:text-[#8298aa] transition">
                 {faq.q}
                 <span className="text-[#8298aa] group-open:rotate-45 transition-transform text-lg ml-4">+</span>

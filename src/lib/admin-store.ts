@@ -30,11 +30,13 @@ if (!fs.existsSync(SUBSCRIBERS_FILE)) {
 // --- Products ---
 export function getProducts(): Product[] {
   const data = fs.readFileSync(PRODUCTS_FILE, 'utf-8');
-  return JSON.parse(data).map((product: Product) => ({
-    ...product,
-    stockQuantity: product.stockQuantity ?? 100,
-    discountPercent: product.discountPercent ?? 0,
-  }));
+  return JSON.parse(data)
+    .map((product: Product) => ({
+      ...product,
+      stockQuantity: product.stockQuantity ?? 100,
+      discountPercent: product.discountPercent ?? 0,
+    }))
+    .sort((a: Product, b: Product) => a.name.localeCompare(b.name));
 }
 
 export function getProduct(slug: string): Product | undefined {

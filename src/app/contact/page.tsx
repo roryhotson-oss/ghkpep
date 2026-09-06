@@ -75,7 +75,7 @@ export default function ContactPage() {
 
   return (
     <div>
-      <section className="bg-[#0d0d0d] border-b border-[#2b3538]">
+      <section className="text-[#e6edf3] bg-[#0a1420] rounded-3xl border-4 border-[#FBFAF7] shadow-md max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <p className="text-[#a7b0b2] text-sm">Typically respond within 24 hours</p>
           <h1 className="text-3xl font-bold mt-2">How can we help?</h1>
@@ -87,7 +87,7 @@ export default function ContactPage() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Contact Info */}
           <div className="space-y-6">
-            <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+            <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
               <h3 className="font-bold mb-4">Get in touch</h3>
               <div className="space-y-4 text-sm">
                 <div>
@@ -117,7 +117,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+            <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
               <h3 className="font-bold mb-3">Payment Methods</h3>
               <div className="space-y-2 text-sm text-[#a7b0b2]">
                 <p>✓ Alipay</p>
@@ -126,7 +126,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+            <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
               <h3 className="font-bold mb-3">Shipping</h3>
               <p className="text-sm text-[#a7b0b2]">All orders shipped via <span className="text-[#8298aa] font-medium">Trusted Labs</span> — tracked, discreet, and insured.</p>
             </div>
@@ -135,19 +135,19 @@ export default function ContactPage() {
           {/* Contact Form */}
           <div className="lg:col-span-2">
             {status === 'success' ? (
-              <div className="bg-[#141414] rounded-xl p-8 border border-[#2b3538] text-center">
+              <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-8 border-4 border-[#FBFAF7] shadow-md text-center">
                 <div className="text-[#8298aa] text-6xl mb-4">✓</div>
                 <h2 className="text-2xl font-bold mb-2">Message Sent!</h2>
                 <p className="text-[#a7b0b2] mb-6">Thank you for contacting us. We&apos;ll get back to you within 24 hours.</p>
                 <button
                   onClick={() => setStatus('idle')}
-                  className="px-6 py-3 bg-[#8298aa] text-black font-semibold rounded-lg hover:bg-[#657c8f] transition"
+                  className="px-6 py-3 bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-semibold rounded-xl hover:bg-[#16283c] transition"
                 >
                   Send Another Message
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-[#141414] rounded-xl p-6 sm:p-8 border border-[#2b3538] space-y-5">
+              <form onSubmit={handleSubmit} className="text-[#e6edf3] bg-[#0c1622] rounded-xl p-6 sm:p-8 border border-[#FBFAF7]/70 space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-sm text-[#a7b0b2] mb-1">Name</label>
@@ -156,7 +156,7 @@ export default function ContactPage() {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
+                      className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
                       placeholder="Your name"
                     />
                   </div>
@@ -167,7 +167,7 @@ export default function ContactPage() {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
+                      className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -178,7 +178,7 @@ export default function ContactPage() {
                     type="text"
                     value={formData.institution}
                     onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
-                    className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
+                    className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
                     placeholder="Your institution (optional)"
                   />
                 </div>
@@ -189,7 +189,7 @@ export default function ContactPage() {
                     required
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
+                    className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
                     placeholder="How can we help?"
                   />
                 </div>
@@ -200,7 +200,7 @@ export default function ContactPage() {
                       required
                       value={formData.product}
                       onChange={(e) => setFormData({ ...formData, product: e.target.value })}
-                      className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
+                      className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
                     >
                       <option value="" disabled>Select a product</option>
                       {products.map((product) => (
@@ -214,7 +214,7 @@ export default function ContactPage() {
                       required
                       value={formData.quantity}
                       onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                      className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
+                      className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa]"
                     >
                       {Array.from({ length: 10 }, (_, index) => index + 1).map((quantity) => (
                         <option key={quantity} value={quantity}>{quantity}</option>
@@ -229,7 +229,7 @@ export default function ContactPage() {
                     rows={6}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa] resize-none"
+                    className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8298aa] resize-none"
                     placeholder="Tell us about your inquiry..."
                   ></textarea>
                 </div>
@@ -243,7 +243,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={status === 'loading' || !siteKey || !turnstileToken}
-                  className="w-full px-8 py-3 bg-[#8298aa] text-black font-semibold rounded-lg hover:bg-[#657c8f] transition disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-8 py-3 bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-semibold rounded-xl hover:bg-[#16283c] transition disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {status === 'loading' ? 'Sending...' : 'Send message'}
                 </button>

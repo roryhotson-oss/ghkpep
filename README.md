@@ -2,11 +2,9 @@
 
 Premium research peptides supplier in the UK. Independently tested by Glyvantix Labs.
 
-![GHK Peptides](https://ghkpep.com/images/og-image.jpg)
-
 ## 🚀 Features
 
-- **27 Research Products** - BPC-157, GHK-Cu, MOTS-c, NAD+, and more
+- **Extensive Research Catalog** - BPC-157, GHK-Cu, MOTS-c, NAD+, and 100+ other research compounds
 - **Independent Testing** - All peptides tested by Glyvantix Labs with full COA
 - **Secure Checkout** - WhatsApp, Telegram, and Email ordering
 - **Payment Options** - Alipay, Cryptocurrency, Bank Transfer
@@ -17,7 +15,7 @@ Premium research peptides supplier in the UK. Independently tested by Glyvantix 
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 15 (App Router)
+- **Framework**: Next.js 16 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **Email**: Resend API

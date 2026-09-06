@@ -12,16 +12,16 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: 'Shop Research Compounds | GHKpep UK',
+    title: 'Shop Research Compounds | GHK Peptides',
     description:
       'Browse documented research compounds and laboratory accessories with lot references and batch documentation.',
     url: 'https://ghkpep.com/shop',
     images: [
       {
-        url: '/images/hero-lab.png',
+            url: '/images/box10.jpeg',
         width: 1200,
         height: 630,
-        alt: 'GHKpep research compounds catalog',
+        alt: 'GHK Peptides research compounds catalog',
       },
     ],
   },

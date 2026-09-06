@@ -178,7 +178,7 @@ export default function AdminEmailsPage() {
         <div className="lg:col-span-2">
           <form onSubmit={handleSend} className="space-y-4">
             {/* Recipients */}
-            <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+            <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
               <h2 className="text-lg font-bold text-white mb-4">Recipients</h2>
               <div className="flex gap-3 mb-4">
                 <button
@@ -187,7 +187,7 @@ export default function AdminEmailsPage() {
                   className={`flex-1 px-4 py-3 rounded-lg text-sm border transition ${
                     form.recipients === 'all-subscribers'
                       ? 'bg-[#8298aa]/10 border-[#8298aa] text-[#8298aa]'
-                      : 'bg-[#1a1a1a] border-[#2b3538] text-[#a7b0b2] hover:border-[#333]'
+                      : 'bg-[#111d2c] border-[#FBFAF7]/70 text-[#a7b0b2] hover:border-[#FBFAF7]/70'
                   }`}
                 >
                   All Subscribers ({subscribers.length})
@@ -198,7 +198,7 @@ export default function AdminEmailsPage() {
                   className={`flex-1 px-4 py-3 rounded-lg text-sm border transition ${
                     form.recipients === 'all-customers'
                       ? 'bg-[#8298aa]/10 border-[#8298aa] text-[#8298aa]'
-                      : 'bg-[#1a1a1a] border-[#2b3538] text-[#a7b0b2] hover:border-[#333]'
+                      : 'bg-[#111d2c] border-[#FBFAF7]/70 text-[#a7b0b2] hover:border-[#FBFAF7]/70'
                   }`}
                 >
                   All Customers ({customers.length})
@@ -209,7 +209,7 @@ export default function AdminEmailsPage() {
                   className={`flex-1 px-4 py-3 rounded-lg text-sm border transition ${
                     form.recipients === 'custom'
                       ? 'bg-[#8298aa]/10 border-[#8298aa] text-[#8298aa]'
-                      : 'bg-[#1a1a1a] border-[#2b3538] text-[#a7b0b2] hover:border-[#333]'
+                      : 'bg-[#111d2c] border-[#FBFAF7]/70 text-[#a7b0b2] hover:border-[#FBFAF7]/70'
                   }`}
                 >
                   Custom List
@@ -221,32 +221,32 @@ export default function AdminEmailsPage() {
                   onChange={(e) => setForm({ ...form, to: e.target.value })}
                   placeholder="Enter email addresses, separated by commas"
                   rows={3}
-                  className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition resize-none"
+                  className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition resize-none"
                 />
               )}
             </div>
 
             {/* Subject */}
-            <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+            <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
               <label className="block text-sm text-[#a7b0b2] mb-2">Subject</label>
               <input
                 type="text"
                 value={form.subject}
                 onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
+                className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                 placeholder="Email subject line"
                 required
               />
             </div>
 
             {/* Body */}
-            <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+            <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
               <label className="block text-sm text-[#a7b0b2] mb-2">Email Body (HTML)</label>
               <textarea
                 value={form.html}
                 onChange={(e) => setForm({ ...form, html: e.target.value })}
                 rows={15}
-                className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-2.5 text-white text-sm font-mono focus:outline-none focus:border-[#8298aa] transition resize-none"
+                className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-2.5 text-white text-sm font-mono focus:outline-none focus:border-[#8298aa] transition resize-none"
                 placeholder="<div>Your HTML email content here...</div>"
                 required
               />
@@ -266,7 +266,7 @@ export default function AdminEmailsPage() {
             <button
               type="submit"
               disabled={sending}
-              className="px-8 py-3 bg-[#8298aa] text-black font-bold rounded-lg hover:bg-[#657c8f] transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-8 py-3 bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-bold rounded-lg hover:bg-[#16283c] transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {sending ? 'Sending...' : 'Send Emails'}
             </button>
@@ -276,14 +276,14 @@ export default function AdminEmailsPage() {
         {/* Sidebar */}
         <div className="space-y-6">
           {/* Templates */}
-          <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+          <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
             <h2 className="text-lg font-bold text-white mb-4">Quick Templates</h2>
             <div className="space-y-2">
               {templates.map((template) => (
                 <button
                   key={template.name}
                   onClick={() => setForm({ ...form, subject: template.subject, html: template.html })}
-                  className="w-full text-left px-4 py-3 bg-[#1a1a1a] rounded-lg border border-[#2b3538] hover:border-[#8298aa]/30 transition"
+                  className="w-full text-left px-4 py-3 bg-[#111d2c] rounded-lg border border-[#FBFAF7]/70 hover:border-[#8298aa]/30 transition"
                 >
                   <p className="text-white text-sm font-medium">{template.name}</p>
                   <p className="text-[#a7b0b2] text-xs mt-1">{template.subject}</p>
@@ -293,7 +293,7 @@ export default function AdminEmailsPage() {
           </div>
 
           {/* Subscribers List */}
-          <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+          <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
             <h2 className="text-lg font-bold text-white mb-4">Subscribers ({subscribers.length})</h2>
             {subscribers.length > 0 ? (
               <div className="space-y-2 max-h-64 overflow-y-auto">
@@ -310,7 +310,7 @@ export default function AdminEmailsPage() {
           </div>
 
           {/* Config Notice */}
-          <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+          <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
             <h2 className="text-lg font-bold text-white mb-2">Email Configuration</h2>
             <p className="text-[#a7b0b2] text-sm">
               Email sending requires a Resend API key. Add <code className="text-[#8298aa]">RESEND_API_KEY</code> to your environment variables.

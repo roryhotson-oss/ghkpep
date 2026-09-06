@@ -1,25 +1,25 @@
 export default function QualityPage() {
   return (
     <div>
-      <section className="bg-[#0d0d0d] border-b border-[#2b3538]">
+      <section className="text-[#e6edf3] bg-[#0a1420] rounded-3xl border-4 border-[#FBFAF7] shadow-md max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <p className="text-[#8298aa] text-sm font-medium mb-2">Quality Commitment</p>
-          <h1 className="text-3xl font-bold">Our Quality Commitment</h1>
-          <p className="text-[#a7b0b2] mt-3 max-w-2xl">From synthesis to shipment, every step is designed to deliver the purest research compounds for your laboratory.</p>
+          <p className="text-[#8298aa] text-sm font-medium mb-2">Sourcing &amp; Review</p>
+          <h1 className="text-3xl font-bold">How we select and check what we list.</h1>
+          <p className="text-[#a7b0b2] mt-3 max-w-2xl">We source finished research material from a small group of established laboratories and review the documentation they provide before listing a lot. We do not manufacture, synthesise, or test material ourselves.</p>
         </div>
       </section>
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            { title: "UK Operations", desc: "Sourcing, QC, fulfillment, and support are all run from our UK facility. No drop-shipping, no relabeling, no anonymous middlemen." },
-            { title: "Documented Process", desc: "Every compound follows an internal SOP from synthesis through lyophilization. Batches are barcoded and traceable from raw input to vial." },
-            { title: "Third Party Identity & Purity", desc: "Every batch is accompanied by identity and purity documentation, with applicable analytical results published on the product page." },
-            { title: "Clear Release Standards", desc: "Material that does not meet our documented release requirements does not leave the lab. There is no second-tier inventory and no 'close enough' stock." },
-            { title: "Stability-Preserved Shipping", desc: "Temperature-sensitive compounds ship with insulated packaging and gel packs sized to the destination zone, so the vial you receive matches the COA." },
-            { title: "Plain, Sealed Packaging", desc: "Outer packaging is unmarked. Documentation, lot numbers, and COA links live inside the box — never on the label." },
+            { title: "UK Based", desc: "Ordering, customer support, and record keeping are run from the UK. Material is sourced from third-party laboratories and shipped from China." },
+            { title: "Supplier Selection", desc: "We work with a small number of established laboratories with active research communities, rather than buying from open marketplaces." },
+            { title: "Documentation Review", desc: "Supplier paperwork is reviewed before a lot is listed. Lot references are recorded so material can be traced back to the supplier batch." },
+            { title: "Third-Party Reports", desc: "Where a source laboratory provides third-party analytical documentation, we make it available unaltered. Availability varies by lot and by supplier." },
+            { title: "Listing Standards", desc: "Lots without adequate supplier documentation are not listed. We do not substitute our own figures where a supplier document is absent." },
+            { title: "Plain, Sealed Packaging", desc: "Outer packaging is unmarked. Lot references and documentation links are inside the box — never on the outer label." },
           ].map((item) => (
-            <div key={item.title} className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+            <div key={item.title} className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
               <h3 className="font-bold text-lg mb-2">{item.title}</h3>
               <p className="text-[#a7b0b2] text-sm leading-relaxed">{item.desc}</p>
             </div>
@@ -27,19 +27,19 @@ export default function QualityPage() {
         </div>
       </section>
 
-      <section className="bg-[#0d0d0d] border-y border-[#2b3538]">
+      <section className="text-[#e6edf3] bg-[#0a1420] rounded-3xl border-4 border-[#FBFAF7] shadow-md max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="text-2xl font-bold mb-10 text-center">Six steps, every batch.</h2>
+          <h2 className="text-2xl font-bold mb-10 text-center">Six steps, every listing.</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { num: "01", title: "Source", desc: "Raw amino acids and reagents sourced from qualified suppliers with certificates on file." },
-              { num: "02", title: "Synthesize", desc: "Solid-phase synthesis under documented conditions in our controlled environment." },
-              { num: "03", title: "Purify", desc: "Reverse-phase HPLC purification and documented quality review." },
-              { num: "04", title: "Lyophilize", desc: "Freeze-dried under vacuum to a stable, transport-ready powder." },
-              { num: "05", title: "Verify", desc: "Independent quality review confirms identity and content; COA generated." },
-              { num: "06", title: "Release", desc: "Lot is barcoded, sealed, and released to fulfillment. COA goes live on the product page." },
+              { num: "01", title: "Select", desc: "Identify an established source laboratory with an active research community and a track record." },
+              { num: "02", title: "Request", desc: "Request the batch documentation the laboratory holds for the specific lot on offer." },
+              { num: "03", title: "Review", desc: "Review that documentation for completeness and consistency before deciding whether to list." },
+              { num: "04", title: "Record", desc: "Record the lot reference against the listing so material can be traced to its source batch." },
+              { num: "05", title: "Publish", desc: "Publish any supplier-provided third-party report unaltered, and state plainly where none is held." },
+              { num: "06", title: "List", desc: "List the lot for laboratory research use, with its reference searchable on the batch references page." },
             ].map((step) => (
-              <div key={step.num} className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+              <div key={step.num} className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
                 <span className="text-[#8298aa] font-bold text-lg">{step.num}</span>
                 <h4 className="font-semibold text-lg mt-2 mb-1">— {step.title}</h4>
                 <p className="text-[#a7b0b2] text-sm">{step.desc}</p>

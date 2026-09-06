@@ -71,15 +71,15 @@ export default function SubscriptionsPage() {
         {plans.map((plan) => (
           <div
             key={plan.id}
-            className={`bg-[#141414] rounded-xl p-8 border-2 transition ${
+            className={`text-[#e6edf3] bg-[#0c1622] rounded-xl p-8 border-2 transition ${
               plan.popular
                 ? 'border-[#8298aa] relative'
-                : 'border-[#2b3538] hover:border-[#8298aa]/30'
+                : 'border-[#FBFAF7]/70 hover:border-[#8298aa]/30'
             }`}
           >
             {plan.popular && (
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                <span className="px-4 py-1 bg-[#8298aa] text-black text-xs font-bold rounded-full">
+                <span className="px-4 py-1 bg-[#0c1622] border-2 border-[#FBFAF7] text-white text-xs font-bold rounded-full">
                   MOST POPULAR
                 </span>
               </div>
@@ -104,8 +104,8 @@ export default function SubscriptionsPage() {
               onClick={() => handleSubscribe(plan.id)}
               className={`w-full py-3 rounded-lg font-semibold transition ${
                 plan.popular
-                  ? 'bg-[#8298aa] text-black hover:bg-[#657c8f]'
-                  : 'border border-[#2b3538] text-[#e1e7e5] hover:border-[#8298aa] hover:text-[#8298aa]'
+                  ? 'bg-[#0c1622] border-2 border-[#FBFAF7] text-white hover:bg-[#16283c]'
+                  : 'border border-[#FBFAF7]/70 text-[#e1e7e5] hover:border-[#8298aa] hover:text-[#8298aa]'
               }`}
             >
               {selectedPlan === plan.id ? 'Current Plan' : 'Subscribe Now'}
@@ -115,7 +115,7 @@ export default function SubscriptionsPage() {
       </div>
 
       {/* Growth commitment */}
-      <div className="bg-[#141414] rounded-xl p-8 border border-[#2b3538] mb-8">
+      <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-8 border-4 border-[#FBFAF7] shadow-md mb-8">
         <h2 className="text-2xl font-bold mb-3">Built to Scale With You</h2>
         <p className="text-[#a7b0b2] text-sm max-w-3xl">
           Subscriptions are a two-way commitment: consistent order volume from you, consistent stock and priority fulfillment from us. As our subscriber base grows, we dedicate more resources to reliable, on-schedule delivery instead of one-off guesswork &mdash; so your research schedule isn&apos;t left waiting on general inventory.
@@ -123,7 +123,7 @@ export default function SubscriptionsPage() {
       </div>
 
       {/* Features Comparison */}
-      <div className="bg-[#141414] rounded-xl p-8 border border-[#2b3538] mb-8">
+      <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-8 border-4 border-[#FBFAF7] shadow-md mb-8">
         <h2 className="text-2xl font-bold mb-6">Why Subscribe?</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -154,7 +154,7 @@ export default function SubscriptionsPage() {
       </div>
 
       {/* FAQ */}
-      <div className="bg-[#141414] rounded-xl p-8 border border-[#2b3538]">
+      <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-8 border-4 border-[#FBFAF7] shadow-md">
         <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group">

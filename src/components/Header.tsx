@@ -8,8 +8,8 @@ interface CartItem {
   qty?: number;
 }
 
-const headerLinkClass = 'inline-flex items-center rounded-md border border-[#3b4b57] bg-[#17212a] px-3 py-1.5 text-[#c2ced5] shadow-sm transition hover:bg-[#263744] hover:border-[#a6b8c4]';
-const mobileHeaderLinkClass = 'block rounded-md border border-[#3b4b57] bg-[#17212a] px-3 py-2 text-[#c2ced5] shadow-sm transition hover:bg-[#263744] hover:border-[#a6b8c4]';
+const headerLinkClass = 'text-sm font-medium text-[#1F2933] transition hover:opacity-60';
+const mobileHeaderLinkClass = 'block rounded-lg px-3 py-2 text-[#1F2933] font-medium transition hover:bg-[#ECE9E2]';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -58,28 +58,27 @@ export default function Header() {
   return (
     <>
       {/* Top banner */}
-      <div className="bg-gradient-to-r from-[#1b2527] to-[#20292d] border-b border-[#39484a] py-3 px-4 text-center">
-        <p className="text-[#b8c5c5] text-xs tracking-wide leading-relaxed">
-          ✨ Premium peptides from internationally recognised manufacturers, independently verified for purity. UK stock for rapid dispatch · Bulk orders fulfilled via our global partner network · Full tracking on every shipment · <span className="font-semibold">Undelivered? We reship free.</span> · <span className="font-semibold">Test shows a fault? Submit your results and receive free replacements.</span>
+      <div className="py-2.5 px-4 text-center">
+        <p className="text-[#6b7280] text-xs tracking-wide leading-relaxed">
+          Research materials sourced from selected laboratories, with third-party testing information where available. Shipped from China · Typical arrival 5–9 days · All prices in GBP · Full tracking on every shipment.
         </p>
       </div>
 
-      {/* Main nav */}
-      <header className="sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur border-b border-[#2b3538]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-18">
-          <Link href="/" className="text-3xl sm:text-4xl font-bold tracking-normal leading-none">
-            <span className="gradient-text drop-shadow-[0_0_10px_rgba(142,174,192,0.28)]">GHKpep</span>
+      {/* Main nav — floating pill */}
+      <header className="sticky top-3 z-50 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto flex items-center justify-between rounded-full bg-[#FBFAF7]/95 backdrop-blur shadow-[0_8px_24px_rgba(20,28,40,0.12)] px-5 sm:px-8 h-16">
+          <Link href="/" className="text-lg sm:text-xl font-black uppercase tracking-tight leading-none text-[#111827]">
+            GHK PEPTIDES
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8 text-sm">
+          <nav className="hidden md:flex items-center gap-7">
+            <Link href="/" className={headerLinkClass}>Full Catalog</Link>
             <Link href="/shop" className={headerLinkClass}>Shop</Link>
-            <Link href="/testing" className={headerLinkClass}>Testing</Link>
-            <Link href="/coa" className={headerLinkClass}>Test Reports</Link>
             <Link href="/contact" className={headerLinkClass}>Support</Link>
-            <Link href="/cart" className={`${headerLinkClass} relative`}>
+            <Link href="/cart" className={`${headerLinkClass} relative pr-4`}>
               Cart
-              <span className="absolute -top-1 -right-3 bg-[#8298aa] text-black text-[10px] rounded-full w-4 h-4 flex items-center justify-center">{cartCount}</span>
+              <span className="absolute -top-2 -right-1 bg-[#111827] text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">{cartCount}</span>
             </Link>
 
             {/* User menu */}
@@ -87,28 +86,28 @@ export default function Header() {
               <div className="relative">
                 <button
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
-                  className="flex items-center gap-2 rounded-md border border-[#3b4b57] bg-[#17212a] px-2 py-1 text-[#c2ced5] shadow-sm transition hover:bg-[#263744] hover:border-[#a6b8c4]"
+                  className="flex items-center gap-2 text-sm font-medium text-[#1F2933] transition hover:opacity-60"
                 >
-                  <div className="w-8 h-8 bg-[#8298aa] rounded-full flex items-center justify-center text-black font-bold text-sm">
+                  <div className="w-7 h-7 bg-[#111827] rounded-full flex items-center justify-center text-white font-bold text-xs">
                     {user.name.charAt(0).toUpperCase()}
                   </div>
                   <span className="text-sm">{user.name}</span>
                 </button>
                 {userMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-[#141414] border border-[#2b3538] rounded-lg shadow-lg">
-                    <Link href="/dashboard" className="block px-4 py-3 text-sm text-[#e1e7e5] hover:bg-[#1a1a1a] hover:text-[#8298aa] transition" onClick={() => setUserMenuOpen(false)}>
+                  <div className="absolute right-0 mt-3 w-48 bg-[#FBFAF7] rounded-2xl shadow-[0_8px_24px_rgba(20,28,40,0.16)] overflow-hidden">
+                    <Link href="/dashboard" className="block px-4 py-3 text-sm text-[#1F2933] hover:bg-[#ECE9E2] transition" onClick={() => setUserMenuOpen(false)}>
                       Dashboard
                     </Link>
-                    <Link href="/orders" className="block px-4 py-3 text-sm text-[#e1e7e5] hover:bg-[#1a1a1a] hover:text-[#8298aa] transition" onClick={() => setUserMenuOpen(false)}>
+                    <Link href="/orders" className="block px-4 py-3 text-sm text-[#1F2933] hover:bg-[#ECE9E2] transition" onClick={() => setUserMenuOpen(false)}>
                       Orders
                     </Link>
-                    <Link href="/subscriptions" className="block px-4 py-3 text-sm text-[#e1e7e5] hover:bg-[#1a1a1a] hover:text-[#8298aa] transition" onClick={() => setUserMenuOpen(false)}>
+                    <Link href="/subscriptions" className="block px-4 py-3 text-sm text-[#1F2933] hover:bg-[#ECE9E2] transition" onClick={() => setUserMenuOpen(false)}>
                       Subscription
                     </Link>
-                    <Link href="/admin" className="block px-4 py-3 text-sm text-[#e1e7e5] hover:bg-[#1a1a1a] hover:text-[#8298aa] transition" onClick={() => setUserMenuOpen(false)}>
+                    <Link href="/admin" className="block px-4 py-3 text-sm text-[#1F2933] hover:bg-[#ECE9E2] transition" onClick={() => setUserMenuOpen(false)}>
                       Admin Panel
                     </Link>
-                    <div className="border-t border-[#2b3538]">
+                    <div className="border-t border-[#e5e1d8]">
                       <button
                         onClick={() => {
                           const supabase = getSupabaseBrowser();
@@ -117,7 +116,7 @@ export default function Header() {
                           setUser(null);
                           setUserMenuOpen(false);
                         }}
-                        className="w-full text-left px-4 py-3 text-sm text-[#e1e7e5] hover:bg-[#1a1a1a] hover:text-[#8298aa] transition"
+                        className="w-full text-left px-4 py-3 text-sm text-[#1F2933] hover:bg-[#ECE9E2] transition"
                       >
                         Sign Out
                       </button>
@@ -126,7 +125,7 @@ export default function Header() {
                 )}
               </div>
             ) : (
-              <Link href="/login" className="px-4 py-2 bg-[#8298aa]/25 border border-[#8298aa] text-[#d8e2e8] font-semibold rounded-lg shadow-sm hover:bg-[#8298aa]/40 transition text-sm">
+              <Link href="/login" className={headerLinkClass}>
                 Sign In
               </Link>
             )}
@@ -134,7 +133,7 @@ export default function Header() {
 
           {/* Mobile toggle */}
           <button
-            className="md:hidden text-[#e1e7e5]"
+            className="md:hidden text-[#1F2933]"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Menu"
           >
@@ -149,13 +148,12 @@ export default function Header() {
         </div>
 
         {mobileOpen && (
-          <div className="md:hidden border-t border-[#2b3538] bg-[#0a0a0a] px-4 py-4 space-y-3 text-sm">
+          <div className="md:hidden max-w-6xl mx-auto mt-2 rounded-2xl bg-[#FBFAF7]/95 backdrop-blur shadow-[0_8px_24px_rgba(20,28,40,0.16)] px-4 py-4 space-y-1 text-sm">
+            <Link href="/" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Full Catalog</Link>
             <Link href="/shop" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Shop</Link>
-            <Link href="/testing" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Testing</Link>
-            <Link href="/coa" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Test Reports</Link>
             <Link href="/contact" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Support</Link>
             <Link href="/cart" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Cart</Link>
-            <div className="border-t border-[#2b3538] pt-3">
+            <div className="border-t border-[#e5e1d8] pt-2 mt-2">
               {user ? (
                 <>
                   <Link href="/dashboard" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Dashboard</Link>

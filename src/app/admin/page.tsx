@@ -123,8 +123,8 @@ export default function AdminDashboardPage() {
             href={action.href}
             className={`flex flex-col items-center gap-2 rounded-xl p-4 border text-center transition ${
               action.primary
-                ? 'bg-[#8298aa] border-[#8298aa] text-black hover:bg-[#657c8f]'
-                : 'bg-[#141414] border-[#2b3538] text-[#e1e7e5] hover:border-[#8298aa] hover:text-[#8298aa]'
+                ? 'bg-[#8298aa] border-[#8298aa] text-black hover:bg-[#16283c]'
+                : 'text-[#e6edf3] bg-[#0c1622] border-[#FBFAF7]/70 text-[#e1e7e5] hover:border-[#8298aa] hover:text-[#8298aa]'
             }`}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -138,7 +138,7 @@ export default function AdminDashboardPage() {
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
         {/* Total Revenue */}
-        <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538] relative overflow-hidden group">
+        <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-24 h-24 bg-[#8298aa]/5 rounded-full -translate-y-12 translate-x-12 group-hover:scale-110 transition-transform duration-300"></div>
           <div className="relative">
             <div className="flex items-center justify-between mb-2">
@@ -150,7 +150,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* Total Orders */}
-        <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538] relative overflow-hidden group">
+        <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full -translate-y-12 translate-x-12 group-hover:scale-110 transition-transform duration-300"></div>
           <div className="relative">
             <div className="flex items-center justify-between mb-2">
@@ -162,7 +162,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* Pending Orders */}
-        <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538] relative overflow-hidden group">
+        <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-24 h-24 bg-yellow-500/5 rounded-full -translate-y-12 translate-x-12 group-hover:scale-110 transition-transform duration-300"></div>
           <div className="relative">
             <div className="flex items-center justify-between mb-2">
@@ -174,7 +174,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* Avg Order Value */}
-        <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538] relative overflow-hidden group">
+        <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full -translate-y-12 translate-x-12 group-hover:scale-110 transition-transform duration-300"></div>
           <div className="relative">
             <div className="flex items-center justify-between mb-2">
@@ -186,7 +186,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* Low Stock */}
-        <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538] relative overflow-hidden group">
+        <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-24 h-24 bg-pink-500/5 rounded-full -translate-y-12 translate-x-12 group-hover:scale-110 transition-transform duration-300"></div>
           <div className="relative">
             <div className="flex items-center justify-between mb-2">
@@ -201,7 +201,7 @@ export default function AdminDashboardPage() {
       {/* Revenue & Orders Chart */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         {/* Revenue by Month */}
-        <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+        <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-bold text-white">Revenue Trend (Last 6 Months)</h2>
             <span className="text-[#8298aa] text-sm">GBP {stats.totalRevenue.toLocaleString()}</span>
@@ -214,10 +214,10 @@ export default function AdminDashboardPage() {
               return (
                 <div key={month.month} className="flex items-center gap-4">
                   <span className="text-sm text-[#a7b0b2] w-20">{month.month}</span>
-                  <div className="flex-1 bg-[#1a1a1a] rounded-full h-8 overflow-hidden">
+                  <div className="flex-1 bg-[#111d2c] rounded-full h-8 overflow-hidden">
                     <div
                       className={`h-full bg-gradient-to-r from-[#8298aa] to-[#8298aa]/30 rounded-full flex items-center justify-end pr-3 transition-all duration-500 ${
-                        isBest ? "ring-2 ring-[#8298aa] ring-offset-2 ring-offset-[#141414]" : ""
+                        isBest ? "ring-2 ring-[#8298aa] ring-offset-2 ring-offset-[#0c1622]" : ""
                       }`}
                       style={{ width: `${Math.max(width, 3)}%` }}
                     >
@@ -237,7 +237,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* Order Status Distribution */}
-        <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+        <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
           <h2 className="text-lg font-bold text-white mb-4">Order Status Distribution</h2>
           <div className="space-y-3">
             {[
@@ -252,7 +252,7 @@ export default function AdminDashboardPage() {
               return (
                 <div key={status.label} className="flex items-center gap-3">
                   <span className={`text-xs text-${status.color}-400 font-medium w-20`}>{status.label}</span>
-                  <div className="flex-1 bg-[#1a1a1a] rounded-full h-6 overflow-hidden">
+                  <div className="flex-1 bg-[#111d2c] rounded-full h-6 overflow-hidden">
                     <div
                       className={`h-full ${status.bg} rounded-full transition-all duration-500`}
                       style={{ width: `${percentage}%` }}
@@ -270,7 +270,7 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* Products Section with Quick Edit */}
-      <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538] mb-8">
+      <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md mb-8">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-lg font-bold text-white">Products ({stats.totalProducts})</h2>
           <Link href="/admin/products" className="text-[#8298aa] text-sm hover:underline">
@@ -281,9 +281,9 @@ export default function AdminDashboardPage() {
         {stats.products && stats.products.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {stats.products.slice(0, 6).map((product) => (
-              <div key={product.slug} className="bg-[#1a1a1a] rounded-lg p-4 border border-[#2b3538] group">
+              <div key={product.slug} className="bg-[#111d2c] rounded-lg p-4 border border-[#FBFAF7]/70 group">
                 <div className="flex gap-4">
-                  <div className="w-20 h-20 bg-[#0f0f0f] rounded-lg flex-shrink-0 overflow-hidden border border-[#2b3538]">
+                  <div className="w-20 h-20 bg-[#0f0f0f] rounded-lg flex-shrink-0 overflow-hidden border border-[#FBFAF7]/70">
                     {product.image ? (
                       <Image
                         src={product.image}
@@ -314,7 +314,7 @@ export default function AdminDashboardPage() {
                       </Link>
                       <Link
                         href={`/shop/${product.slug}`}
-                        className="text-xs px-3 py-1.5 bg-[#2b3538] text-[#e1e7e5] rounded-lg hover:bg-[#333] transition"
+                        className="text-xs px-3 py-1.5 bg-[#111d2c] text-[#e1e7e5] rounded-lg hover:bg-[#16283c] transition"
                       >
                         View
                       </Link>
@@ -329,7 +329,7 @@ export default function AdminDashboardPage() {
             <p className="text-[#a7b0b2] mb-4">No products yet</p>
             <Link
               href="/admin/products/new"
-              className="px-4 py-2 bg-[#8298aa] text-black text-sm font-medium rounded-lg hover:bg-[#657c8f] transition"
+              className="px-4 py-2 bg-[#0c1622] border-2 border-[#FBFAF7] text-white text-sm font-medium rounded-lg hover:bg-[#16283c] transition"
             >
               + Add Your First Product
             </Link>
@@ -339,13 +339,13 @@ export default function AdminDashboardPage() {
 
       {/* Top Products by Revenue */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+        <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
           <h2 className="text-lg font-bold text-white mb-4">Top Selling Products</h2>
           {stats.topProducts && stats.topProducts.length > 0 ? (
             <div className="space-y-3">
               {stats.topProducts.slice(0, 5).map((product, index) => {
                 return (
-                  <div key={product.slug} className="flex items-center justify-between p-3 bg-[#1a1a1a] rounded-lg border border-[#2b3538]">
+                  <div key={product.slug} className="flex items-center justify-between p-3 bg-[#111d2c] rounded-lg border border-[#FBFAF7]/70">
                     <div className="flex items-center gap-3">
                       <span className="text-2xl text-[#8298aa] font-bold">{index + 1}</span>
                       <div>
@@ -367,7 +367,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* Recent Orders */}
-        <div className="bg-[#141414] rounded-xl p-6 border border-[#2b3538]">
+        <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-bold text-white">Recent Orders</h2>
             <Link href="/admin/orders" className="text-[#8298aa] text-sm hover:underline">
@@ -377,7 +377,7 @@ export default function AdminDashboardPage() {
           {stats.recentOrders && stats.recentOrders.length > 0 ? (
             <div className="space-y-3">
               {stats.recentOrders.slice(0, 5).map((order) => (
-                <div key={order.id} className="p-3 bg-[#1a1a1a] rounded-lg border border-[#2b3538]">
+                <div key={order.id} className="p-3 bg-[#111d2c] rounded-lg border border-[#FBFAF7]/70">
                   <div className="flex justify-between items-start">
                     <div>
                       <p className="text-white font-medium">Order #{order.id.slice(0, 8)}...</p>

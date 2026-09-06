@@ -20,6 +20,7 @@ interface CartItem {
   lot: string;
   qty: number;
   type: 'vial' | 'box';
+  strength?: number;
 }
 
 interface PaymentSettings {
@@ -168,7 +169,7 @@ export default function CartPage() {
       setPaymentProofName(file.name);
     }
     const orderResponse = await fetch('/api/orders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
-      items: cartItems.map((item) => ({ slug: item.slug, qty: item.qty, type: item.type })),
+      items: cartItems.map((item) => ({ slug: item.slug, qty: item.qty, type: item.type, strength: item.strength })),
       billingAddress,
       shippingAddress: shipping,
       paymentMethod: selectedPaymentMethod,
@@ -230,7 +231,7 @@ export default function CartPage() {
             {cartItems.length === 0 ? (
               <div className="bg-white rounded-2xl p-12 border border-[#d7e3eb] text-center shadow-sm">
                 <p className="text-[#607789] mb-4">Your cart is empty.</p>
-                <Link href="/shop" className="inline-flex px-6 py-3 bg-[#8298aa] text-white font-semibold rounded-lg hover:bg-[#657c8f] transition">
+                <Link href="/shop" className="inline-flex px-6 py-3 bg-[#8298aa] text-white font-semibold rounded-lg hover:bg-[#16283c] transition">
                   Browse Catalog
                 </Link>
               </div>
@@ -340,7 +341,7 @@ export default function CartPage() {
 
               <button 
                 onClick={() => setShowCheckoutModal(true)}
-                className="w-full mt-6 px-6 py-4 bg-[#8298aa] text-white font-bold rounded-lg hover:bg-[#657c8f] transition text-lg"
+                className="w-full mt-6 px-6 py-4 bg-[#8298aa] text-white font-bold rounded-lg hover:bg-[#16283c] transition text-lg"
               >
                 Proceed to Checkout
               </button>
@@ -388,7 +389,7 @@ export default function CartPage() {
               {turnstileSiteKey && <><div id="turnstile-checkout" className="min-h-[65px]" /><Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" onLoad={renderTurnstile} /></>}
               {checkoutError && <p className="text-sm text-red-600" role="alert">{checkoutError}</p>}
               {turnstileError && <p className="text-sm text-red-600" role="alert">{turnstileError}</p>}
-              <button type="submit" className="w-full px-6 py-4 bg-[#8298aa] text-white font-bold rounded-lg hover:bg-[#657c8f] transition">Continue to Contact Options</button>
+              <button type="submit" className="w-full px-6 py-4 bg-[#8298aa] text-white font-bold rounded-lg hover:bg-[#16283c] transition">Continue to Contact Options</button>
             </form> : <>
             <p className="text-[#607789] text-sm mb-6">Your order details{paymentProofName ? ` and ${paymentProofName}` : ''} are ready. Discuss your order through WhatsApp, Telegram, phone, or email.</p>
             <div className="space-y-3">
@@ -424,7 +425,7 @@ export default function CartPage() {
               <a href={`tel:${process.env.NEXT_PUBLIC_CONTACT_PHONE || ''}`} className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-[#edf5f9] text-[#10263d] font-bold rounded-lg hover:bg-[#dcecf4] transition border border-[#d7e3eb]">☎ Call to discuss your order</a>
             </div>
 
-            <div className="mt-6 pt-6 border-t border-[#2b3538]">
+            <div className="mt-6 pt-6 border-t border-[#FBFAF7]/70">
               <p className="text-xs text-[#607789] text-center mb-3">
                 Your order details will be sent with the message. We&apos;ll respond within 24 hours with payment instructions.
               </p>

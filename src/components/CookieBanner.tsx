@@ -8,11 +8,15 @@ export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    try {
-      setVisible(!localStorage.getItem(STORAGE_KEY));
-    } catch {
-      setVisible(true);
-    }
+    const timer = window.setTimeout(() => {
+      try {
+        setVisible(!localStorage.getItem(STORAGE_KEY));
+      } catch {
+        setVisible(true);
+      }
+    }, 0);
+
+    return () => window.clearTimeout(timer);
   }, []);
 
   const choose = (choice: string) => {

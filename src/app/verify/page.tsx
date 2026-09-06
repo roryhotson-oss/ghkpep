@@ -4,7 +4,7 @@ import VerifyForm from './VerifyForm';
 export default function VerifyPage() {
   return (
     <div>
-      <section className="bg-[#0d0d0d] border-b border-[#2b3538]">
+      <section className="text-[#e6edf3] bg-[#0a1420] rounded-3xl border-4 border-[#FBFAF7] shadow-md max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <p className="text-[#8298aa] text-sm font-medium mb-2">Authenticity Check</p>
           <h1 className="text-3xl font-bold">Verify your lot.</h1>
@@ -24,7 +24,7 @@ export default function VerifyPage() {
               { title: "Contaminants", desc: "LAL endotoxin, sterility, fentanyl screen, and water content." },
               { title: "Provenance", desc: "Lot number, synthesis date, test date, signing analyst, and the accredited lab's certificate number." },
             ].map((item) => (
-              <div key={item.title} className="bg-[#141414] rounded-xl p-5 border border-[#2b3538]">
+              <div key={item.title} className="text-[#e6edf3] bg-[#0c1622] rounded-xl p-5 border border-[#FBFAF7]/70">
                 <h3 className="font-bold text-sm mb-1">{item.title}</h3>
                 <p className="text-[#a7b0b2] text-xs">{item.desc}</p>
               </div>

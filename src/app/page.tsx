@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation';
+import HomeCatalog from './HomeCatalog';
 
 export default function Home() {
-  redirect('/shop');
+  return <HomeCatalog />;
 }

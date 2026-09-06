@@ -12,132 +12,162 @@ export interface Product {
   image: string;
   stockQuantity?: number;
   discountPercent?: number;
+  marketTier?: 'premium' | 'mid-market' | 'value';
+  dosageOptions?: number[];
+  dosageBoxPrices?: Record<number, number>;
+  dosageVialPrices?: Record<number, number>;
 }
 
 export const products: Product[] = [
   {
     slug: "ghk-cu",
-    name: "GHK-Cu 100mg",
-    price: 35.99,
-    boxPrice: 323.91,
+    name: "GHK-Cu Research Peptide",
+    price: 27.95,
+    boxPrice: 279,
     purity: "99.84%",
     category: "recovery",
     categoryLabel: "Copper Complex",
     description: "Copper complex of the Gly-His-Lys sequence. Supplied for in vitro laboratory research.",
     lot: "GHK-2419-A",
-    image: "/images/ghk-cu.jpg"
+    image: "/images/ghk-cu.jpg",
+    marketTier: "premium",
+    dosageOptions: [50, 100],
+    dosageBoxPrices: { 50: 55, 100: 75 }
   },
   {
     slug: "mots-c",
-    name: "MOTS-C 10mg",
-    price: 29.99,
-    boxPrice: 269.91,
+    name: "MOTS-C Research Peptide",
+    price: 27.5,
+    boxPrice: 275,
     purity: "99.79%",
     category: "longevity",
     categoryLabel: "Mitochondrial",
     description: "Mitochondrial-derived 16-residue sequence. Supplied for in vitro laboratory research.",
     lot: "GHK-2411-I",
-    image: "/images/mots-c.jpg"
+    image: "/images/mots-c.jpg",
+    marketTier: "premium",
+    dosageOptions: [10, 40],
+    dosageBoxPrices: { 10: 95, 40: 170 }
   },
   {
     slug: "nad-plus",
     name: "NAD+ 500mg",
-    price: 47.99,
-    boxPrice: 431.91,
+    price: 54.99,
+    boxPrice: 549,
     purity: "99.78%",
     category: "longevity",
     categoryLabel: "Cellular Cofactor",
     description: "Nicotinamide adenine dinucleotide, oxidized form. Supplied for in vitro laboratory research.",
     lot: "GHK-2417-C",
-    image: "/images/nad-plus.jpg"
+    image: "/images/nad-plus.jpg",
+    marketTier: "premium",
+    dosageOptions: [100, 250, 500, 1000],
+    dosageBoxPrices: { 100: 75, 250: 95, 500: 120, 1000: 195 }
   },
   {
     slug: "klow",
     name: "KLOW 80mg",
-    price: 67.99,
-    boxPrice: 611.91,
+    price: 35,
+    boxPrice: 350,
     purity: "99.69%",
     category: "blend",
     categoryLabel: "Research Blend",
     description: "Co-lyophilized composite of GHK-Cu, KPV, BPC-157, and TB-500. Supplied for in vitro laboratory research.",
     lot: "GHK-2415-E",
-    image: "/images/klow.jpg"
+    image: "/images/klow.jpg",
+    dosageOptions: [80],
+    dosageBoxPrices: { 80: 255 }
   },
   {
     slug: "glp3-rt",
     name: "GLP3-RT 10mg",
-    price: 47.99,
-    boxPrice: 431.91,
+    price: 32.5,
+    boxPrice: 325,
     purity: "99.71%",
     category: "metabolic",
     categoryLabel: "Incretin Research",
     description: "Triple-sequence research analog. Supplied for in vitro laboratory research.",
     lot: "GHK-2418-B",
-    image: "/images/glp3-rt.jpg"
+    image: "/images/glp3-rt.jpg",
+    marketTier: "premium",
+    dosageOptions: [5, 10, 15, 20, 39, 40, 50, 60],
+    dosageBoxPrices: { 5: 80, 10: 112, 15: 165, 20: 225, 39: 275, 40: 340, 50: 395, 60: 475 }
   },
   {
     slug: "glutathione",
     name: "Glutathione 1500mg",
-    price: 39.99,
-    boxPrice: 359.91,
+    price: 18.99,
+    boxPrice: 189,
     purity: "99.81%",
     category: "longevity",
     categoryLabel: "Antioxidant",
     description: "Reduced glutathione (GSH), gamma-Glu-Cys-Gly. Supplied for in vitro laboratory research.",
     lot: "GHK-2414-F",
-    image: "/images/glutathione.jpg"
+    image: "/images/glutathione.jpg",
+    dosageOptions: [1200, 1500],
+    dosageBoxPrices: { 1200: 115, 1500: 150 }
   },
   {
     slug: "igf-1-lr3",
-    name: "IGF-1 LR3 10mg",
-    price: 51.99,
-    boxPrice: 467.91,
+    name: "IGF-1 LR3",
+    price: 12.5,
+    boxPrice: 225,
     purity: "99.74%",
     category: "recovery",
     categoryLabel: "Peptide Research",
     description: "Long R3 sequence analog of IGF-1. Supplied for in vitro laboratory research.",
     lot: "GHK-2413-G",
-    image: "/images/igf-1-lr3.jpg"
+    image: "/images/igf-1-lr3.jpg",
+    marketTier: "mid-market",
+    dosageOptions: [0.1, 1],
+    dosageBoxPrices: { 0.1: 75, 1: 325 }
   },
   {
     slug: "tesamorelin",
     name: "Tesamorelin 10mg",
-    price: 59.99,
-    boxPrice: 539.91,
+    price: 11.5,
+    boxPrice: 310,
     purity: "99.88%",
     category: "recovery",
     categoryLabel: "Peptide Research",
     description: "Stabilized GHRH sequence analog. Supplied for in vitro laboratory research.",
     lot: "GHK-2412-H",
-    image: "/images/tesamorelin.jpg"
+    image: "/images/tesamorelin.jpg",
+    marketTier: "mid-market",
+    dosageOptions: [2, 5, 10, 20],
+    dosageBoxPrices: { 2: 85, 5: 145, 10: 270, 20: 310 }
   },
   {
     slug: "glp2-tz",
     name: "GLP2-TZ 10mg",
-    price: 31.99,
-    boxPrice: 287.91,
+    price: 10,
+    boxPrice: 95,
     purity: "99.62%",
     category: "metabolic",
     categoryLabel: "GLP-2 Research",
     description: "GLP-2 related sequence analog with extended stability profile. Supplied for in vitro laboratory research.",
     lot: "GHK-2416-D",
-    image: "/images/glp2-tz.jpg"
+    image: "/images/glp2-tz.jpg",
+    dosageOptions: [5, 10, 15, 20, 30, 40, 50, 60, 100, 120],
+    dosageBoxPrices: { 5: 62.5, 10: 50, 15: 85, 20: 105, 30: 125, 40: 165, 50: 210, 60: 270, 100: 313, 120: 510 }
   },
   {
     slug: "cjc-1295-ipamorelin",
     name: "CJC-1295 (No DAC) + Ipamorelin 10mg",
-    price: 43.99,
-    boxPrice: 395.91,
+    price: 14,
+    boxPrice: 275,
     purity: "99.83%",
     category: "blend",
     categoryLabel: "Research Blend",
     description: "Co-lyophilized blend of Mod GRF(1-29) and Ipamorelin. Supplied for in vitro laboratory research.",
     lot: "GHK-2410-J",
-    image: "/images/cjc-1295-ipamorelin.jpg"
+    image: "/images/cjc-1295-ipamorelin.jpg",
+    dosageOptions: [10, 20],
+    dosageBoxPrices: { 10: 145, 20: 275 }
   },
   {
     slug: "refined-h2o",
-    name: "GHK H2O 10ml",
+    name: "GHK bac Water 10ml",
     price: 11.99,
     boxPrice: 107.91,
     purity: "N/A",
@@ -145,163 +175,196 @@ export const products: Product[] = [
     categoryLabel: "Research Supplies",
     description: "Sterile bacteriostatic water for laboratory reconstitution. Supplied for in vitro laboratory research.",
     lot: "GHK-2420-K",
-    image: "/images/refined-h2o.jpg"
+    image: "/images/refined-h2o.jpg",
+    stockQuantity: 0,
+    dosageOptions: [3, 10]
   },
   {
     slug: "pt-141",
     name: "PT-141 10mg",
-    price: 35.99,
-    boxPrice: 323.91,
+    price: 26.5,
+    boxPrice: 265,
     purity: "≥99%",
     category: "metabolic",
     categoryLabel: "Melanocortin",
     description: "Melanocortin-related sequence analog. Supplied for in vitro laboratory research.",
     lot: "GHK-2421-L",
-    image: "/images/pt-141.jpg"
+    image: "/images/pt-141.jpg",
+    marketTier: "premium",
+    dosageOptions: [10],
+    dosageBoxPrices: { 10: 125 }
   },
   {
     slug: "melanotan-2",
     name: "Melanotan II 10mg",
-    price: 23.99,
-    boxPrice: 215.91,
+    price: 11.5,
+    boxPrice: 115,
     purity: "≥99%",
     category: "metabolic",
     categoryLabel: "Melanocortin",
     description: "Melanocortin-related sequence analog. Supplied for in vitro laboratory research.",
     lot: "GHK-2422-M",
-    image: "/images/melanotan-2.jpg"
+    image: "/images/melanotan-2.jpg",
+    marketTier: "mid-market",
+    dosageOptions: [10],
+    dosageBoxPrices: { 10: 75 }
   },
   {
     slug: "ss-31",
     name: "SS-31 10mg",
-    price: 39.99,
-    boxPrice: 359.91,
+    price: 15,
+    boxPrice: 310,
     purity: "≥99%",
     category: "longevity",
     categoryLabel: "Mitochondrial",
     description: "Mitochondria-targeted four-residue synthetic sequence. Supplied for in vitro laboratory research.",
     lot: "GHK-2423-N",
-    image: "/images/ss-31.jpg"
+    image: "/images/ss-31.jpg",
+    dosageOptions: [10, 50],
+    dosageBoxPrices: { 10: 130, 50: 310 }
   },
   {
     slug: "melanotan-1",
     name: "Melanotan I 10mg",
-    price: 23.99,
-    boxPrice: 215.91,
+    price: 12.5,
+    boxPrice: 125,
     purity: "≥99%",
     category: "metabolic",
     categoryLabel: "Melanocortin",
     description: "Synthetic alpha-MSH related sequence. Supplied for in vitro laboratory research.",
     lot: "GHK-2424-O",
-    image: "/images/melanotan-1.jpg"
+    image: "/images/melanotan-1.jpg",
+    marketTier: "mid-market",
+    dosageOptions: [10],
+    dosageBoxPrices: { 10: 95 }
   },
   {
     slug: "wolverine",
     name: "Wolverine 10mg",
-    price: 45.99,
+    price: 15,
     boxPrice: 413.91,
     purity: "≥99%",
     category: "recovery",
     categoryLabel: "Copper Composite",
     description: "Copper-bound composite, lyophilized powder. Supplied for in vitro laboratory research.",
     lot: "GHK-2425-P",
-    image: "/images/wolverine.jpg"
+    image: "/images/wolverine.jpg",
+    dosageOptions: [10, 20],
+    dosageBoxPrices: { 10: 150, 20: 265 }
   },
   {
     slug: "kiss-peptin",
     name: "Kiss Peptin 10mg",
-    price: 27.99,
-    boxPrice: 251.91,
+    price: 14.5,
+    boxPrice: 145,
     purity: "≥99%",
     category: "recovery",
     categoryLabel: "Peptide",
     description: "Synthetic kisspeptin-10 sequence. Supplied for in vitro laboratory research.",
     lot: "GHK-2426-Q",
-    image: "/images/kiss-peptin.jpg"
+    image: "/images/kiss-peptin.jpg",
+    marketTier: "mid-market",
+    dosageOptions: [5, 10],
+    dosageBoxPrices: { 5: 90, 10: 110 }
   },
   {
     slug: "cagrilintide",
     name: "Cagrilintide 5mg",
-    price: 47.99,
-    boxPrice: 431.91,
+    price: 15,
+    boxPrice: 380,
     purity: "≥99%",
     category: "metabolic",
     categoryLabel: "Amylin Research",
     description: "Amylin-related sequence analog. Supplied for in vitro laboratory research.",
     lot: "GHK-2427-R",
-    image: "/images/cagrilintide.jpg"
+    image: "/images/cagrilintide.jpg",
+    dosageOptions: [5, 10, 20],
+    dosageBoxPrices: { 5: 130, 10: 225, 20: 380 }
   },
   {
     slug: "kpv",
     name: "KPV 10mg",
-    price: 31.99,
-    boxPrice: 287.91,
+    price: 6,
+    boxPrice: 140,
     purity: "≥99%",
     category: "recovery",
     categoryLabel: "Sequence Fragment",
     description: "Lys-Pro-Val sequence, C-terminal fragment of alpha-MSH. Supplied for in vitro laboratory research.",
     lot: "GHK-2428-S",
-    image: "/images/kpv.jpg"
+    image: "/images/kpv.jpg",
+    dosageOptions: [5, 10],
+    dosageBoxPrices: { 5: 75, 10: 95 }
   },
   {
     slug: "ipamorelin",
     name: "Ipamorelin 10mg",
-    price: 39.99,
-    boxPrice: 359.91,
+    price: 10,
+    boxPrice: 95,
     purity: "≥99%",
     category: "recovery",
     categoryLabel: "Peptide Research",
     description: "GHS-R1a related synthetic sequence. Supplied for in vitro laboratory research.",
     lot: "GHK-2429-T",
-    image: "/images/ipamorelin.jpg"
+    image: "/images/ipamorelin.jpg",
+    dosageOptions: [2, 5, 10],
+    dosageBoxPrices: { 2: 55, 5: 70, 10: 95 }
   },
   {
     slug: "glow",
     name: "GLOW 70mg",
-    price: 59.99,
-    boxPrice: 539.91,
+    price: 25,
+    boxPrice: 295,
     purity: "≥99%",
     category: "blend",
     categoryLabel: "Research Blend",
     description: "Co-lyophilized composite of GHK-Cu, BPC-157, and TB-500. Supplied for in vitro laboratory research.",
     lot: "GHK-2430-U",
-    image: "/images/glow.jpg"
+    image: "/images/glow.jpg",
+    dosageOptions: [70],
+    dosageBoxPrices: { 70: 295 }
   },
   {
     slug: "adamax",
-    name: "Adamax 10mg",
-    price: 43.99,
-    boxPrice: 395.91,
+    name: "Adamax 5mg",
+    price: 25,
+    boxPrice: 235,
     purity: "≥99%",
     category: "blend",
     categoryLabel: "Research Blend",
     description: "Synthetic research compound blend, lyophilized powder. Supplied for in vitro laboratory research.",
     lot: "GHK-2431-V",
-    image: "/images/adamax.jpg"
+    image: "/images/adamax.jpeg",
+    dosageOptions: [5],
+    dosageBoxPrices: { 5: 235 }
   },
   {
     slug: "ahk-cu",
     name: "AHK-Cu 100mg",
-    price: 41.99,
-    boxPrice: 377.91,
+    price: 15,
+    boxPrice: 130,
     purity: "≥99%",
     category: "recovery",
     categoryLabel: "Copper Complex",
     description: "Copper complex of the Ala-His-Lys sequence. Supplied for in vitro laboratory research.",
     lot: "GHK-2432-W",
-    image: "/images/ahk-cu.jpg"
+    image: "/images/ahk-cu.jpg",
+    dosageOptions: [100],
+    dosageBoxPrices: { 100: 130 }
   },
   {
     slug: "bpc-157",
     name: "BPC-157 10mg",
-    price: 31.99,
-    boxPrice: 287.91,
+    price: 22.5,
+    boxPrice: 225,
     purity: "99.2%",
     category: "recovery",
     categoryLabel: "Sequence Peptide",
     description: "Synthetic 15-residue sequence (GEPPPGKPADDAGLV). Supplied for in vitro laboratory research.",
     lot: "GHK-2433-X",
-    image: "/images/bpc-157.jpg"
+    image: "/images/bpc-157.jpg",
+    marketTier: "mid-market",
+    dosageOptions: [2, 5, 10, 20],
+    dosageBoxPrices: { 2: 45, 5: 70, 10: 90, 20: 140 }
   },
   {
     slug: "selank",
@@ -318,14 +381,16 @@ export const products: Product[] = [
   {
     slug: "tb-500",
     name: "TB-500 10mg",
-    price: 31.99,
-    boxPrice: 287.91,
+    price: 34.99,
+    boxPrice: 349,
     purity: "≥99%",
     category: "recovery",
     categoryLabel: "Thymosin Fragment",
     description: "Acetylated Thymosin beta-4 fragment. Lyophilized powder, ≥99% purity (HPLC). Supplied for in vitro laboratory research.",
     lot: "GHK-2435-Z",
-    image: "/images/tb-500.jpg"
+    image: "/images/tb-500.jpg",
+    dosageOptions: [5, 10, 20],
+    dosageBoxPrices: { 5: 110, 10: 205, 20: 425 }
   },
   {
     slug: "semax",
@@ -337,7 +402,22 @@ export const products: Product[] = [
     categoryLabel: "ACTH Research",
     description: "ACTH(4-10)-related synthetic seven-residue sequence. Supplied for in vitro laboratory research.",
     lot: "GHK-2436-AA",
-    image: "/images/semax.jpg"
+    image: "/images/semax.jpg",
+    dosageOptions: [5, 10, 30]
+  },
+  {
+    slug: "dsip",
+    name: "DSIP",
+    price: 14.99,
+    boxPrice: 149,
+    purity: "N/A",
+    category: "cognitive",
+    categoryLabel: "Research Peptide",
+    description: "Delta sleep-inducing peptide research material. Supplied for in vitro laboratory research.",
+    lot: "GHK-2437-AB",
+    image: "/images/DSIP.jpeg",
+    dosageOptions: [2, 5, 10, 15],
+    dosageBoxPrices: { 2: 50, 5: 70, 10: 110, 15: 165 }
   },
   {
     slug: "vial-organizer-3ml",

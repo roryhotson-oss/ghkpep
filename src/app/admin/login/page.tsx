@@ -49,7 +49,7 @@ export default function AdminLoginPage() {
           <p className="text-[#a7b0b2]">GHK Peptides Management</p>
         </div>
 
-        <div className="bg-[#141414] rounded-xl p-8 border border-[#2b3538]">
+        <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-8 border-4 border-[#FBFAF7] shadow-md">
           {error && (
             <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-sm">
               {error}
@@ -63,8 +63,8 @@ export default function AdminLoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
-                placeholder="admin@ghkpep.com"
+                className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
+                placeholder="Email address"
                 required
               />
             </div>
@@ -74,7 +74,7 @@ export default function AdminLoginPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
+                className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#8298aa] transition"
                 placeholder="Enter password"
                 required
               />
@@ -82,12 +82,12 @@ export default function AdminLoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full px-8 py-4 bg-[#8298aa] text-black font-bold rounded-lg hover:bg-[#657c8f] transition text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full px-8 py-4 bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-bold rounded-lg hover:bg-[#16283c] transition text-lg disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
-          <div className="mt-6 border-t border-[#2b3538] pt-5 text-center">
+          <div className="mt-6 border-t border-[#FBFAF7]/70 pt-5 text-center">
             <Link href="/shop" className="text-sm text-[#8298aa] hover:text-[#657c8f] transition">
               ← Return to Shop
             </Link>

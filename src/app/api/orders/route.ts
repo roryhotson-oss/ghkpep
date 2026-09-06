@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import { createServerClient } from '@supabase/ssr';
+import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { getCommerceProducts } from '@/lib/commerce-store';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { effectivePrice } from '@/lib/pricing';
 
 type Address = { name: string; line1: string; city: string; postcode: string; country: string; email?: string };
-type OrderItemInput = { slug: string; qty: number; type: 'vial' | 'box' };
+type OrderItemInput = { slug: string; qty: number; type: 'vial' | 'box'; strength?: number };
 
 export async function GET() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -17,7 +18,7 @@ export async function GET() {
   const authClient = createServerClient(url, anonKey, {
     cookies: {
       getAll: () => cookieStore.getAll(),
-      setAll: (cookiesToSet) => cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options)),
+      setAll: (cookiesToSet: { name: string; value: string; options: CookieOptions }[]) => cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options)),
     },
   });
   const { data: { user } } = await authClient.auth.getUser();
@@ -52,7 +53,7 @@ export async function POST(request: NextRequest) {
       const product = products.find((candidate) => candidate.slug === item.slug);
       const quantity = Number(item.qty);
       if (!product || !Number.isInteger(quantity) || quantity < 1 || quantity > 99) throw new Error('Invalid order item');
-      const unitPrice = item.type === 'box' ? product.boxPrice : product.price;
+      const unitPrice = item.type === 'box' ? effectivePrice(product, 'box', item.strength) : effectivePrice(product, 'vial', item.strength);
       return { product, quantity, unitPrice, type: item.type };
     });
     const total = orderItems.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
@@ -65,7 +66,7 @@ export async function POST(request: NextRequest) {
       const authClient = createServerClient(url, anonKey, {
         cookies: {
           getAll: () => cookieStore.getAll(),
-          setAll: (cookiesToSet) => cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options)),
+          setAll: (cookiesToSet: { name: string; value: string; options: CookieOptions }[]) => cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options)),
         },
       });
       const { data: { user } } = await authClient.auth.getUser();

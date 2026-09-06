@@ -1,0 +1,112 @@
+name: Security Audit
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * *' # Daily at midnight
+
+jobs:
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check for exposed secrets
+        run: |
+          echo "🔍 Checking for exposed secrets..."
+          
+          # Check for default credentials
+          SECRETS_FOUND=0
+          if grep -rq "ghkadmin2024" src/ .env* 2>/dev/null; then
+            echo "❌ Found default admin password"
+            SECRETS_FOUND=1
+          fi
+          
+          if grep -rq "change-this-to-a-random-secret" src/ .env* 2>/dev/null; then
+            echo "❌ Found default session secret"
+            SECRETS_FOUND=1
+          fi
+          
+          if grep -rq "re_your_api_key_here" src/ .env* 2>/dev/null; then
+            echo "❌ Found placeholder Resend API key"
+            SECRETS_FOUND=1
+          fi
+          
+          if grep -rq "your-cloudflare-turnstile" src/ .env* 2>/dev/null; then
+            echo "❌ Found placeholder Turnstile keys"
+            SECRETS_FOUND=1
+          fi
+          
+          if grep -rq "your-project.supabase.co" src/ .env* 2>/dev/null; then
+            echo "❌ Found placeholder Supabase URLs"
+            SECRETS_FOUND=1
+          fi
+          
+          if [ $SECRETS_FOUND -eq 0 ]; then
+            echo "✅ No default credentials found"
+          else
+            echo "❌ Security issues found - blocking merge"
+            exit 1
+          fi
+
+      - name: Check for sensitive files in git
+        run: |
+          echo "🔍 Checking for sensitive files..."
+          
+          SENSITIVE_FOUND=0
+          
+          # Check if .env.local is committed
+          if git ls-files | grep -q \.env.local; then
+            echo "❌ .env.local is committed to git"
+            SENSITIVE_FOUND=1
+          fi
+          
+          # Check for Vercel tokens
+          if grep -rq "VERCEL_OIDC_TOKEN" . --exclude-dir=.git --exclude-dir=node_modules --exclude=.gitignore 2>/dev/null; then
+            echo "❌ Vercel token found in source"
+            SENSITIVE_FOUND=1
+          fi
+          
+          if [ $SENSITIVE_FOUND -eq 0 ]; then
+            echo "✅ No sensitive files found"
+          else
+            echo "❌ Sensitive files found - blocking merge"
+            exit 1
+          fi
+
+      - name: Check dependency security
+        run: |
+          echo "🔍 Checking npm dependencies..."
+          # Note: npm audit can be slow and may fail in CI
+          npm audit --production --audit-level=critical || echo "⚠️  Some vulnerabilities found"
+
+  vulnerability-scan:
+    name: Vulnerability Database Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for known vulnerabilities
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'

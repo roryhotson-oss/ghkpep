@@ -59,20 +59,20 @@ export default function AgeGate() {
 
   return (
     <div className="fixed inset-0 z-[9999] bg-[#0a0a0a]/95 flex items-start sm:items-center justify-center p-3 sm:p-4 overflow-y-auto">
-      <div className="max-w-lg w-full text-center bg-[#141414] rounded-2xl border border-[#2b3538] p-5 sm:p-8 shadow-2xl max-h-[92vh] overflow-y-auto">
-        <h1 className="text-2xl sm:text-3xl font-bold mb-2"><span className="gradient-text">GHKpep</span></h1>
-        <p className="text-[#a7b0b2] text-sm sm:text-base leading-relaxed mb-5 sm:mb-8">GHKpep supplies batch documented research peptides to qualified laboratories and researchers conducting legitimate non clinical work. Nothing sold here is a medicine, treatment, or product for administration to a person or animal.</p>
+      <div className="max-w-lg w-full text-center text-[#e6edf3] bg-[#0c1622] rounded-2xl border border-[#FBFAF7]/70 p-5 sm:p-8 shadow-2xl max-h-[92vh] overflow-y-auto">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-2"><span className="gradient-text">GHK Peptides</span></h1>
+        <p className="text-[#a7b0b2] text-sm sm:text-base leading-relaxed mb-5 sm:mb-8">GHK Peptides supplies batch documented research peptides to qualified laboratories and researchers conducting legitimate non clinical work. Nothing sold here is a medicine, treatment, or product for administration to a person or animal.</p>
 
         <div className="space-y-3 text-left mb-5 sm:mb-8">
-          <label className="flex items-start gap-3 rounded-xl border border-[#2b3538] bg-[#101010] p-3 sm:p-4 cursor-pointer group">
+          <label className="flex items-start gap-3 rounded-xl border border-[#FBFAF7]/70 bg-[#101010] p-3 sm:p-4 cursor-pointer group">
             <input type="checkbox" checked={age} onChange={(e) => { setAge(e.target.checked); setErrorMessage(''); }} className="mt-0.5 h-5 w-5 shrink-0 accent-[#8298aa] cursor-pointer" />
             <span className="text-sm sm:text-base leading-relaxed text-[#e1e7e5] group-hover:text-white transition">I confirm that I am at least <strong>21 years of age</strong> and legally permitted to access this site and purchase research materials.</span>
           </label>
-          <label className="flex items-start gap-3 rounded-xl border border-[#2b3538] bg-[#101010] p-3 sm:p-4 cursor-pointer group">
+          <label className="flex items-start gap-3 rounded-xl border border-[#FBFAF7]/70 bg-[#101010] p-3 sm:p-4 cursor-pointer group">
             <input type="checkbox" checked={researcher} onChange={(e) => { setResearcher(e.target.checked); setErrorMessage(''); }} className="mt-0.5 h-5 w-5 shrink-0 accent-[#8298aa] cursor-pointer" />
             <span className="text-sm sm:text-base leading-relaxed text-[#e1e7e5] group-hover:text-white transition">I confirm that I am a <strong>qualified researcher</strong>. I will use these materials only for lawful laboratory or <strong>in vitro research</strong> and will never administer them to a person or animal.</span>
           </label>
-          <label className="flex items-start gap-3 rounded-xl border border-[#2b3538] bg-[#101010] p-3 sm:p-4 cursor-pointer group">
+          <label className="flex items-start gap-3 rounded-xl border border-[#FBFAF7]/70 bg-[#101010] p-3 sm:p-4 cursor-pointer group">
             <input type="checkbox" checked={globalSourcing} onChange={(e) => { setGlobalSourcing(e.target.checked); setErrorMessage(''); }} className="mt-0.5 h-5 w-5 shrink-0 accent-[#8298aa] cursor-pointer" />
             <span className="text-sm sm:text-base leading-relaxed text-[#e1e7e5] group-hover:text-white transition">I understand that products may be sourced internationally. I will check the rules that apply where I live and take responsibility for lawful purchase, import, storage, and research use.</span>
           </label>
@@ -80,9 +80,9 @@ export default function AgeGate() {
 
         {errorMessage && <div className="bg-red-900/30 border border-red-400/50 rounded-lg p-3 mb-4"><p className="text-red-300 text-sm font-medium">{errorMessage}</p></div>}
 
-        <button type="button" onClick={handleEnter} className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-[#8298aa] text-black font-bold rounded-lg hover:bg-[#657c8f] transition cursor-pointer text-base sm:text-lg">Enter GHK</button>
+        <button type="button" onClick={handleEnter} className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-[#0c1622] text-white font-bold rounded-lg hover:bg-[#16283c] shadow-lg shadow-[#3E6B93]/20 transition cursor-pointer text-base sm:text-lg">Enter GHK</button>
 
-        <p className="text-[#7b898e] text-xs leading-relaxed mt-4 sm:mt-6">By selecting Enter GHK, you confirm that these declarations are accurate and accept responsibility for your access and use of the materials. GHKpep does not accept liability for use outside the stated research purpose. These products are not for human or veterinary use or diagnostic procedures, and have not been evaluated by the MHRA.</p>
+        <p className="text-[#7b898e] text-xs leading-relaxed mt-4 sm:mt-6">By selecting Enter GHK, you confirm that these declarations are accurate and accept responsibility for your access and use of the materials. GHK Peptides does not accept liability for use outside the stated research purpose. These products are not for human or veterinary use or diagnostic procedures, and have not been evaluated by the MHRA.</p>
       </div>
 
       {accepted && consentChoice === null && (
@@ -104,7 +104,7 @@ export default function AgeGate() {
               <div className="grid sm:grid-cols-3 gap-3 mt-8">
                 <button type="button" onClick={() => handleConsent('denied')} className="px-5 py-4 bg-[#edf0f2] rounded-xl font-semibold hover:bg-[#dfe5e8] transition">Deny</button>
                 {showCookieSettings ? <button type="button" onClick={() => handleConsent(`custom:analytics=${analyticsCookies};marketing=${marketingCookies}`)} className="px-5 py-4 bg-[#edf0f2] rounded-xl font-semibold hover:bg-[#dfe5e8] transition">Save choices</button> : <button type="button" onClick={() => setShowCookieSettings(true)} className="px-5 py-4 bg-[#edf0f2] rounded-xl font-semibold hover:bg-[#dfe5e8] transition">Customize</button>}
-                <button type="button" onClick={() => handleConsent('all')} className="px-5 py-4 bg-[#8298aa] text-white rounded-xl font-semibold hover:bg-[#657c8f] transition">Allow all</button>
+                <button type="button" onClick={() => handleConsent('all')} className="px-5 py-4 bg-[#0c1622] text-white rounded-xl font-semibold hover:bg-[#16283c] transition">Allow all</button>
               </div>
             </div>
           </div>

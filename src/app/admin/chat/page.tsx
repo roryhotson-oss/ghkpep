@@ -53,23 +53,23 @@ export default function AdminChatPage() {
       </div>
       {error && <p className="mb-6 text-red-400 text-sm">{error}</p>}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="bg-[#141414] border border-[#2b3538] rounded-xl divide-y divide-[#2b3538]">
+        <div className="text-[#e6edf3] bg-[#0c1622] border border-[#FBFAF7]/70 rounded-xl divide-y divide-[#263344]">
           {messages.length === 0 ? <p className="p-6 text-[#a7b0b2] text-sm">No support messages yet.</p> : messages.map((message) => (
-            <button key={message.id} onClick={() => { setSelected(message); if (message.status === 'new') updateStatus(message.id, 'read'); }} className={`w-full text-left p-4 hover:bg-[#1a1a1a] transition ${selected?.id === message.id ? 'bg-[#1a1a1a]' : ''}`}>
+            <button key={message.id} onClick={() => { setSelected(message); if (message.status === 'new') updateStatus(message.id, 'read'); }} className={`w-full text-left p-4 hover:bg-[#111d2c] transition ${selected?.id === message.id ? 'bg-[#111d2c]' : ''}`}>
               <div className="flex justify-between gap-3"><span className="text-white text-sm font-medium truncate">{message.name}</span><span className="text-[#8298aa] text-xs">{message.status}</span></div>
               <p className="text-[#e1e7e5] text-sm truncate mt-1">{message.subject}</p>
               <p className="text-[#7b898e] text-xs mt-1">{new Date(message.created_at).toLocaleString('en-GB')}</p>
             </button>
           ))}
         </div>
-        <div className="lg:col-span-2 bg-[#141414] border border-[#2b3538] rounded-xl p-6">
+        <div className="lg:col-span-2 text-[#e6edf3] bg-[#0c1622] border border-[#FBFAF7]/70 rounded-xl p-6">
           {selected ? <>
-            <div className="flex flex-wrap justify-between gap-4 border-b border-[#2b3538] pb-4 mb-6">
+            <div className="flex flex-wrap justify-between gap-4 border-b border-[#FBFAF7]/70 pb-4 mb-6">
               <div><h2 className="text-xl font-bold text-white">{selected.subject}</h2><p className="text-[#a7b0b2] text-sm mt-1">{selected.name} · {selected.email}</p>{selected.institution && <p className="text-[#7b898e] text-xs mt-1">{selected.institution}</p>}</div>
-              <select value={selected.status} onChange={(event) => updateStatus(selected.id, event.target.value as Message['status'])} className="bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-sm text-white"><option value="new">New</option><option value="read">Read</option><option value="responded">Responded</option></select>
+              <select value={selected.status} onChange={(event) => updateStatus(selected.id, event.target.value as Message['status'])} className="bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-3 py-2 text-sm text-white"><option value="new">New</option><option value="read">Read</option><option value="responded">Responded</option></select>
             </div>
             <p className="text-[#e1e7e5] text-sm whitespace-pre-wrap leading-relaxed">{selected.message}</p>
-            <a href={`mailto:${selected.email}?subject=${encodeURIComponent(`Re: ${selected.subject}`)}`} className="inline-block mt-8 px-4 py-2 bg-[#8298aa] text-black font-semibold rounded-lg text-sm">Reply by email</a>
+            <a href={`mailto:${selected.email}?subject=${encodeURIComponent(`Re: ${selected.subject}`)}`} className="inline-block mt-8 px-4 py-2 bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-semibold rounded-lg text-sm">Reply by email</a>
           </> : <p className="text-[#a7b0b2] text-sm">Select a message to view the conversation.</p>}
         </div>
       </div>

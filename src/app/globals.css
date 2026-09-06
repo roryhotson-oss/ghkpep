@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #0a0a0a;
-  --color-foreground: #ededed;
+  --color-background: #ECE9E2;
+  --color-foreground: #1F2933;
   --color-primary: #8298aa;
   --color-primary-dark: #657c8f;
-  --color-card: #141414;
-  --color-card-hover: #1a1a1a;
-  --color-border: #2b3538;
+  --color-card: #0c1622;
+  --color-card-hover: #111d2c;
+  --color-border: #263344;
   --color-muted: #a7b0b2;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
 }
 
 body {
-  background: var(--color-background);
+  background: #ECE9E2;
   color: var(--color-foreground);
   font-family: var(--font-sans);
   font-size: 1rem;
@@ -35,7 +35,7 @@ body {
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #333 #0a0a0a;
+  scrollbar-color: #b9b5aa #ECE9E2;
 }
 
 .animate-marquee {

@@ -65,21 +65,21 @@ export default function OrdersPage() {
           <h1 className="text-3xl font-bold mb-2">Order History</h1>
           <p className="text-[#a7b0b2]">View and track all your orders</p>
         </div>
-        <Link href="/shop" className="px-6 py-2 bg-[#8298aa] text-black font-semibold rounded-lg hover:bg-[#657c8f] transition">
+        <Link href="/shop" className="px-6 py-2 bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-semibold rounded-xl hover:bg-[#16283c] transition">
           Shop Now
         </Link>
       </div>
 
       <div className="space-y-4">
         {orders.length > 0 ? orders.map((order) => (
-          <div key={order.id} className="bg-[#141414] rounded-xl border border-[#2b3538] overflow-hidden">
+          <div key={order.id} className="text-[#e6edf3] bg-[#0c1622] rounded-xl border border-[#FBFAF7]/70 overflow-hidden">
             {/* Order Header */}
-            <div className="p-6 border-b border-[#2b3538] bg-[#1a1a1a]">
+            <div className="p-6 border-b border-[#FBFAF7]/70 bg-[#111d2c]">
               <div className="flex flex-wrap justify-between items-start gap-4">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
                     <h2 className="text-xl font-bold">Order {order.id}</h2>
-                    <span className="px-3 py-1 bg-[#17232d] text-[#8298aa] rounded-full text-xs font-medium">
+                    <span className="px-3 py-1 bg-[#0c1622] border border-[#FBFAF7] text-[#e6edf3] rounded-lg text-xs font-medium">
                       {order.status}
                     </span>
                   </div>
@@ -102,7 +102,7 @@ export default function OrdersPage() {
             <div className="p-6 space-y-4">
               {order.items.map((item, idx) => (
                 <div key={idx} className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-[#1a1a1a] rounded-lg overflow-hidden flex-shrink-0 relative">
+                  <div className="w-16 h-16 bg-[#111d2c] rounded-lg overflow-hidden flex-shrink-0 relative">
                     <Image src={item.image} alt={item.name} fill className="object-cover" sizes="64px" />
                   </div>
                   <div className="flex-1">
@@ -115,7 +115,7 @@ export default function OrdersPage() {
             </div>
 
             {/* Order Details */}
-            <div className="p-6 border-t border-[#2b3538] bg-[#1a1a1a]">
+            <div className="p-6 border-t border-[#FBFAF7]/70 bg-[#111d2c]">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                 <div>
                   <p className="text-[#7b898e] mb-1">Shipping Method</p>

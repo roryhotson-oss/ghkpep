@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getCommerceProduct } from '@/lib/commerce-store';
+import { getCommerceProduct, getCommerceProducts } from '@/lib/commerce-store';
 import ProductPageClient from './ProductPageClient';
 
 interface Props {
@@ -18,10 +18,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const baseUrl = 'https://ghkpep.com';
+  const baseUrl = 'https://www.ghkpep.com';
 
   return {
-    title: `${product.name} | GHKpep UK`,
+    title: `${product.name} | GHK Peptides`,
     description: `${product.name} for laboratory research use in the UK, with lot documentation and clear product information.`,
     keywords: [
       product.name.toLowerCase(),
@@ -32,13 +32,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'research peptides UK',
     ],
     openGraph: {
-      title: `${product.name} | GHKpep UK`,
+      title: `${product.name} | GHK Peptides`,
       description: `${product.name} for laboratory research use in the UK with lot documentation and clear product information.`,
       type: 'website',
       url: `${baseUrl}/shop/${product.slug}`,
       images: [
         {
-          url: product.image || '/images/hero-lab.png',
+          url: product.image || '/images/box10.jpeg',
           width: 1200,
           height: 630,
           alt: `${product.name} research compound`,
@@ -47,9 +47,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${product.name} | GHKpep UK`,
+      title: `${product.name} | GHK Peptides`,
       description: `${product.name} for laboratory research use in the UK with lot documentation and clear product information.`,
-      images: [product.image || '/images/hero-lab.png'],
+      images: [product.image || '/images/box10.jpeg'],
     },
     alternates: {
       canonical: `${baseUrl}/shop/${product.slug}`,
@@ -59,11 +59,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
-  const product = await getCommerceProduct(slug);
+  const [product, allProducts] = await Promise.all([
+    getCommerceProduct(slug),
+    getCommerceProducts(),
+  ]);
 
   if (!product) {
     notFound();
   }
 
-  return <ProductPageClient product={product} />;
+  const pool = allProducts.filter((p) => p.slug !== product.slug && p.category !== 'accessories' && p.category !== 'peptide-holders');
+  const sameCategory = pool.filter((p) => p.category === product.category);
+  const others = pool.filter((p) => p.category !== product.category);
+  const related = [...sameCategory, ...others].slice(0, 8);
+
+  return <ProductPageClient product={product} related={related} />;
 }

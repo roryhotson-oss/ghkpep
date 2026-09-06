@@ -48,12 +48,12 @@ export default function PaymentSettingsPage() {
   return <div className="p-6 lg:p-8 max-w-3xl">
     <div className="mb-8"><h1 className="text-3xl font-bold text-white mb-2">Payment Settings</h1><p className="text-[#a7b0b2]">Update customer-facing payment destinations without redeploying.</p></div>
     <form onSubmit={save} className="space-y-4">
-      {fields.map(({ key, label, help, multiline }) => <div key={key} className="bg-[#141414] border border-[#2b3538] rounded-xl p-5">
+      {fields.map(({ key, label, help, multiline }) => <div key={key} className="text-[#e6edf3] bg-[#0c1622] border border-[#FBFAF7]/70 rounded-xl p-5">
         <label className="block text-sm text-white font-medium mb-2">{label}</label>
-        {multiline ? <textarea value={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: event.target.value })} rows={3} className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm" /> : <input type={key.endsWith('Url') ? 'url' : 'text'} value={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: event.target.value })} className="w-full bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-4 py-3 text-white text-sm" />}
+        {multiline ? <textarea value={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: event.target.value })} rows={3} className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-3 text-white text-sm" /> : <input type={key.endsWith('Url') ? 'url' : 'text'} value={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: event.target.value })} className="w-full bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-4 py-3 text-white text-sm" />}
         <p className="text-[#7b898e] text-xs mt-2">{help}</p>
       </div>)}
-      <div className="flex items-center gap-4"><button type="submit" className="px-6 py-3 bg-[#8298aa] text-black font-bold rounded-lg">Save Payment Settings</button>{status && <span className="text-sm text-[#a7b0b2]">{status}</span>}</div>
+      <div className="flex items-center gap-4"><button type="submit" className="px-6 py-3 bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-bold rounded-lg">Save Payment Settings</button>{status && <span className="text-sm text-[#a7b0b2]">{status}</span>}</div>
     </form>
   </div>;
 }

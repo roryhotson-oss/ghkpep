@@ -57,14 +57,14 @@ function sanitizeDescription(description: string): string {
 }
 
 function mapProduct(row: ProductRow): Product {
-  // Priority order: database image_url > local products image > slug-based fallback
-  const image = row.image_url || productImageMap[row.slug] || `/images/${row.slug}.png`;
+  // Keep curated local product images consistent while older database rows are updated.
+  const image = productImageMap[row.slug] || row.image_url || `/images/${row.slug}.jpg`;
 
   return {
     id: row.id,
     slug: row.slug,
-    name: row.name,
-    price: Number(row.price),
+    name: row.slug === 'refined-h2o' ? 'GHK bac Water 10ml' : row.slug === 'adamax' ? 'Adamax 5mg' : row.slug === 'dsip' ? 'DSIP' : row.name,
+    price: row.slug === 'nad-plus' ? 10.5 : row.slug === 'glp3-rt' ? 22.5 : row.slug === 'glutathione' ? 15 : row.slug === 'igf-1-lr3' ? 10 : row.slug === 'tesamorelin' ? 8.5 : row.slug === 'cjc-1295-ipamorelin' ? 14 : row.slug === 'pt-141' ? 12.5 : row.slug === 'melanotan-2' ? 8 : row.slug === 'ss-31' ? 15 : row.slug === 'melanotan-1' ? 10 : row.slug === 'wolverine' ? 15 : row.slug === 'kiss-peptin' ? 12 : row.slug === 'cagrilintide' ? 15 : row.slug === 'kpv' ? 10 : row.slug === 'ipamorelin' ? 10 : row.slug === 'glow' ? 25 : row.slug === 'adamax' ? 25 : row.slug === 'ahk-cu' ? 15 : row.slug === 'bpc-157' ? 6 : row.slug === 'tb-500' ? 10 : row.slug === 'dsip' ? 9.75 : Number(row.price),
     boxPrice: Number(row.box_price),
     purity: row.purity || 'N/A',
     category: row.category || 'recovery',
@@ -72,8 +72,11 @@ function mapProduct(row: ProductRow): Product {
     description: sanitizeDescription(row.description || ''),
     lot: row.lot_number || row.slug.toUpperCase(),
     image,
-    stockQuantity: Number(row.stock_quantity ?? 100),
+    stockQuantity: row.slug === 'refined-h2o' ? 0 : Number(row.stock_quantity ?? 100),
     discountPercent: Number(row.discount_percent ?? 0),
+    dosageOptions: row.slug === 'ghk-cu' ? [50, 100] : row.slug === 'mots-c' ? [10, 40] : row.slug === 'nad-plus' ? [100, 250, 500, 1000] : row.slug === 'klow' ? [80] : row.slug === 'glp3-rt' ? [5, 10, 15, 20, 39, 40, 50, 60] : row.slug === 'glutathione' ? [1200, 1500] : row.slug === 'igf-1-lr3' ? [0.1, 1] : row.slug === 'tesamorelin' ? [2, 5, 10, 20] : row.slug === 'glp2-tz' ? [5, 10, 15, 20, 30, 40, 50, 60, 100, 120] : row.slug === 'cjc-1295-ipamorelin' ? [10, 20] : row.slug === 'refined-h2o' ? [3, 10] : row.slug === 'pt-141' ? [10] : row.slug === 'melanotan-2' ? [10] : row.slug === 'ss-31' ? [10, 50] : row.slug === 'melanotan-1' ? [10] : row.slug === 'wolverine' ? [10, 20] : row.slug === 'kiss-peptin' ? [5, 10] : row.slug === 'cagrilintide' ? [5, 10, 20] : row.slug === 'kpv' ? [5, 10] : row.slug === 'ipamorelin' ? [2, 5, 10] : row.slug === 'glow' ? [70] : row.slug === 'adamax' ? [5] : row.slug === 'ahk-cu' ? [100] : row.slug === 'bpc-157' ? [2, 5, 10, 20] : row.slug === 'tb-500' ? [5, 10, 20] : row.slug === 'semax' ? [5, 10, 30] : row.slug === 'dsip' ? [2, 5, 10, 15] : row.slug === 'imported-epithalon' ? [10, 40, 50] : row.slug === 'imported-aicar' ? [50, 100] : [5, 10, 15],
+    dosageBoxPrices: row.slug === 'ghk-cu' ? { 50: 55, 100: 75 } : row.slug === 'mots-c' ? { 10: 95, 40: 170 } : row.slug === 'nad-plus' ? { 100: 75, 250: 95, 500: 120, 1000: 195 } : row.slug === 'klow' ? { 80: 255 } : row.slug === 'glp3-rt' ? { 5: 80, 10: 112, 15: 165, 20: 225, 39: 275, 40: 340, 50: 395, 60: 475 } : row.slug === 'glutathione' ? { 1200: 115, 1500: 150 } : row.slug === 'igf-1-lr3' ? { 0.1: 75, 1: 325 } : row.slug === 'tesamorelin' ? { 2: 85, 5: 145, 10: 270, 20: 310 } : row.slug === 'glp2-tz' ? { 5: 62.5, 10: 50, 15: 85, 20: 105, 30: 125, 40: 165, 50: 210, 60: 270, 100: 313, 120: 510 } : row.slug === 'cjc-1295-ipamorelin' ? { 10: 145, 20: 275 } : row.slug === 'pt-141' ? { 10: 125 } : row.slug === 'melanotan-2' ? { 10: 75 } : row.slug === 'ss-31' ? { 10: 130, 50: 310 } : row.slug === 'melanotan-1' ? { 10: 95 } : row.slug === 'wolverine' ? { 10: 150, 20: 265 } : row.slug === 'kiss-peptin' ? { 5: 90, 10: 110 } : row.slug === 'cagrilintide' ? { 5: 130, 10: 225, 20: 380 } : row.slug === 'kpv' ? { 5: 75, 10: 95 } : row.slug === 'ipamorelin' ? { 2: 55, 5: 70, 10: 95 } : row.slug === 'glow' ? { 70: 295 } : row.slug === 'adamax' ? { 5: 235 } : row.slug === 'ahk-cu' ? { 100: 130 } : row.slug === 'bpc-157' ? { 2: 45, 5: 70, 10: 90, 20: 140 } : row.slug === 'tb-500' ? { 5: 110, 10: 205, 20: 425 } : row.slug === 'dsip' ? { 2: 50, 5: 70, 10: 110, 15: 165 } : row.slug === 'imported-epithalon' ? { 10: 107.25, 40: 257.4, 50: 321.75 } : row.slug === 'imported-oxytocin-acetate' ? { 2: 40.95, 5: 68.25 } : row.slug === 'imported-aicar' ? { 50: 99.45, 100: 146.25 } : undefined,
+    dosageVialPrices: row.slug === 'imported-epithalon' ? { 10: 10.72, 40: 25.74, 50: 32.17 } : row.slug === 'imported-oxytocin-acetate' ? { 2: 4.1, 5: 6.83 } : row.slug === 'imported-aicar' ? { 50: 9.95, 100: 14.63 } : undefined,
   };
 }
 
@@ -100,7 +103,9 @@ export async function getCommerceProducts(): Promise<Product[]> {
   try {
     const { data, error } = await supabase.from('products').select('*').order('name');
     if (error || !data || data.length === 0) return getLocalProducts();
-    return (data as ProductRow[]).map(mapProduct);
+    return (data as ProductRow[])
+      .map(mapProduct)
+      .sort((a, b) => a.name.localeCompare(b.name));
   } catch (err) {
     console.warn('Supabase products fetch error, falling back to local:', err);
     return getLocalProducts();

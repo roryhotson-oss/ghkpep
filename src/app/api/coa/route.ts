@@ -52,7 +52,7 @@ export async function GET(request: NextRequest) {
       color: white,
     });
 
-    page.drawText('Batch documentation summary', {
+    page.drawText('Batch reference summary', {
       x: 50,
       y: yPos - 70,
       size: 18,
@@ -94,7 +94,7 @@ export async function GET(request: NextRequest) {
       color: darkGray,
     });
 
-    page.drawText('Document status: Available lot record on file', {
+    page.drawText('Document status: Catalogue and lot reference summary', {
       x: 70,
       y: yPos - 90,
       size: 11,
@@ -112,7 +112,7 @@ export async function GET(request: NextRequest) {
 
     yPos -= 140;
 
-    page.drawText('LOT DOCUMENTATION', {
+    page.drawText('LOT REFERENCE', {
       x: 50,
       y: yPos,
       size: 16,
@@ -122,23 +122,13 @@ export async function GET(request: NextRequest) {
 
     yPos -= 30;
 
-    const rowIndex = (product.lot.length + product.name.length) % 5;
     const rows = [
       { label: 'Product', value: product.name },
       { label: 'Lot reference', value: product.lot },
       { label: 'Catalogue purity', value: productPurity },
-      {
-        label: 'Documentation',
-        value: ['Lot record available', 'Documentation file present', 'Batch record current', 'Source file retained', 'Lot evidence retained'][rowIndex],
-      },
-      {
-        label: 'Use status',
-        value: ['Laboratory research use only', 'Chemistry use only', 'Research use documented', 'Controlled lab use only', 'Lab use recorded'][rowIndex],
-      },
-      {
-        label: 'Limitations',
-        value: ['No clinical claim implied', 'No regulatory approval implied', 'No treatment claim implied', 'No human use claim implied', 'No dosing guidance implied'][rowIndex],
-      },
+      { label: 'Document type', value: 'Catalogue and lot reference summary' },
+      { label: 'Use status', value: 'Laboratory research and chemistry use only' },
+      { label: 'Limitations', value: 'Not a test report; no clinical or regulatory approval implied' },
     ];
 
     rows.forEach((row, index) => {
@@ -168,7 +158,7 @@ export async function GET(request: NextRequest) {
       color: navy,
     });
 
-    page.drawText('This summary reflects the available batch record and catalogue details for the listed lot.', {
+    page.drawText('This summary reproduces the catalogue and lot reference information held for the listed lot.', {
       x: 70,
       y: yPos - 45,
       size: 10,
@@ -176,7 +166,7 @@ export async function GET(request: NextRequest) {
       color: darkGray,
     });
 
-    page.drawText('It does not constitute clinical approval, medical advice, or regulatory clearance.', {
+    page.drawText('It is not a certificate of analysis and reports no testing by or for GHK Peptides.', {
       x: 70,
       y: yPos - 60,
       size: 10,
@@ -186,7 +176,7 @@ export async function GET(request: NextRequest) {
 
     yPos -= 110;
 
-    page.drawText('Prepared from available batch records.', {
+    page.drawText('Prepared from the catalogue and lot records held at the time of download.', {
       x: 50,
       y: yPos,
       size: 9,
@@ -194,7 +184,7 @@ export async function GET(request: NextRequest) {
       color: midGray,
     });
 
-    page.drawText('Supporting technical attachments and any analytical exhibits remain separate from this summary page.', {
+    page.drawText('Where a supplier provides third-party analytical documentation for a lot, it is supplied separately and unaltered.', {
       x: 50,
       y: yPos - 15,
       size: 8,
@@ -215,7 +205,7 @@ export async function GET(request: NextRequest) {
     return new NextResponse(pdfBytes as unknown as BodyInit, {
       headers: {
         'Content-Type': 'application/pdf',
-        'Content-Disposition': `attachment; filename="COA-${product.lot}.pdf"`,
+        'Content-Disposition': `attachment; filename="batch-reference-${product.lot}.pdf"`,
       },
     });
   } catch (error) {

@@ -111,8 +111,8 @@ export default function AdminOrdersPage() {
             onClick={() => setStatusFilter(status)}
             className={`px-4 py-2 rounded-lg text-sm transition ${
               statusFilter === status
-                ? 'bg-[#8298aa] text-black font-semibold'
-                : 'bg-[#141414] text-[#a7b0b2] border border-[#2b3538] hover:border-[#8298aa] hover:text-[#8298aa]'
+                ? 'bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-semibold'
+                : 'text-[#e6edf3] bg-[#0c1622] text-[#a7b0b2] border border-[#FBFAF7]/70 hover:border-[#8298aa] hover:text-[#8298aa]'
             }`}
           >
             {status.charAt(0).toUpperCase() + status.slice(1)}
@@ -129,10 +129,10 @@ export default function AdminOrdersPage() {
       {filtered.length > 0 ? (
         <div className="space-y-3">
           {filtered.map((order) => (
-            <div key={order.id} className="bg-[#141414] rounded-xl border border-[#2b3538] overflow-hidden">
+            <div key={order.id} className="text-[#e6edf3] bg-[#0c1622] rounded-xl border border-[#FBFAF7]/70 overflow-hidden">
               {/* Order Header */}
               <div
-                className="flex items-center justify-between p-4 cursor-pointer hover:bg-[#1a1a1a] transition"
+                className="flex items-center justify-between p-4 cursor-pointer hover:bg-[#111d2c] transition"
                 onClick={() => setExpandedOrder(expandedOrder === order.id ? null : order.id)}
               >
                 <div className="flex items-center gap-4">
@@ -159,7 +159,7 @@ export default function AdminOrdersPage() {
 
               {/* Expanded Details */}
               {expandedOrder === order.id && (
-                <div className="px-4 pb-4 border-t border-[#2b3538]">
+                <div className="px-4 pb-4 border-t border-[#FBFAF7]/70">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
                     {/* Order Details */}
                     <div>
@@ -180,7 +180,7 @@ export default function AdminOrdersPage() {
                             <span className="text-[#a7b0b2]">£{(item.price * item.quantity).toFixed(2)}</span>
                           </div>
                         ))}
-                        <div className="flex justify-between text-sm font-bold pt-2 border-t border-[#2b3538]">
+                        <div className="flex justify-between text-sm font-bold pt-2 border-t border-[#FBFAF7]/70">
                           <span className="text-white">Total</span>
                           <span className="text-[#8298aa]">£{order.total.toFixed(2)}</span>
                         </div>
@@ -206,7 +206,7 @@ export default function AdminOrdersPage() {
                             className={`px-3 py-2 rounded-lg text-xs border transition ${
                               order.status === status
                                 ? statusColors[status]
-                                : 'bg-[#1a1a1a] text-[#a7b0b2] border-[#2b3538] hover:border-[#8298aa] hover:text-[#8298aa]'
+                                : 'bg-[#111d2c] text-[#a7b0b2] border-[#FBFAF7]/70 hover:border-[#8298aa] hover:text-[#8298aa]'
                             } disabled:opacity-50`}
                           >
                             {status.charAt(0).toUpperCase() + status.slice(1)}
@@ -215,8 +215,8 @@ export default function AdminOrdersPage() {
                       </div>
                       <label className="block text-sm font-semibold text-white mt-5 mb-2">17TRACK tracking number</label>
                       <div className="flex gap-2">
-                        <input value={trackingInputs[order.id] ?? order.trackingNumber ?? ''} onChange={(event) => setTrackingInputs({ ...trackingInputs, [order.id]: event.target.value })} placeholder="Enter tracking number" className="min-w-0 flex-1 bg-[#1a1a1a] border border-[#2b3538] rounded-lg px-3 py-2 text-sm text-white" />
-                        <button type="button" onClick={async () => { const trackingNumber = trackingInputs[order.id] ?? order.trackingNumber ?? ''; const response = await fetch('/api/admin/orders', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: order.id, trackingNumber }) }); if (response.ok) setOrders(orders.map((item) => item.id === order.id ? { ...item, trackingNumber } : item)); }} className="px-3 py-2 bg-[#8298aa] text-black rounded-lg text-xs font-semibold">Save</button>
+                        <input value={trackingInputs[order.id] ?? order.trackingNumber ?? ''} onChange={(event) => setTrackingInputs({ ...trackingInputs, [order.id]: event.target.value })} placeholder="Enter tracking number" className="min-w-0 flex-1 bg-[#111d2c] border border-[#FBFAF7]/70 rounded-lg px-3 py-2 text-sm text-white" />
+                        <button type="button" onClick={async () => { const trackingNumber = trackingInputs[order.id] ?? order.trackingNumber ?? ''; const response = await fetch('/api/admin/orders', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: order.id, trackingNumber }) }); if (response.ok) setOrders(orders.map((item) => item.id === order.id ? { ...item, trackingNumber } : item)); }} className="px-3 py-2 bg-[#0c1622] border-2 border-[#FBFAF7] text-white rounded-lg text-xs font-semibold">Save</button>
                       </div>
                     </div>
                   </div>
@@ -226,8 +226,8 @@ export default function AdminOrdersPage() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-16 bg-[#141414] rounded-xl border border-[#2b3538]">
-          <svg className="w-12 h-12 text-[#333] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="text-center py-16 text-[#e6edf3] bg-[#0c1622] rounded-xl border border-[#FBFAF7]/70">
+          <svg className="w-12 h-12 text-[#263344] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
           </svg>
           <p className="text-[#a7b0b2]">No orders found</p>
