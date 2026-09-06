@@ -3,6 +3,7 @@ import type { Product } from '@/data/products';
 import { products as localProducts } from '@/data/products';
 import type { Order } from '@/lib/admin-store';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { resolveCatalogImage } from '@/lib/catalogImages';
 
 // Build a complete image path map from local products
 const productImageMap: Record<string, string> = {};
@@ -56,9 +57,10 @@ function sanitizeDescription(description: string): string {
     .replace('Synthetic ACTH(4-10) analog, seven-residue sequence.', 'ACTH(4-10)-related synthetic seven-residue sequence.');
 }
 
-function mapProduct(row: ProductRow): Product {
+function mapProduct(row: ProductRow): Product | null {
   // Keep curated local product images consistent while older database rows are updated.
-  const image = productImageMap[row.slug] || row.image_url || `/images/${row.slug}.jpg`;
+  const image = resolveCatalogImage(row.slug, productImageMap[row.slug] || row.image_url || `/images/${row.slug}.jpg`);
+  if (!image) return null;
 
   return {
     id: row.id,
@@ -105,6 +107,7 @@ export async function getCommerceProducts(): Promise<Product[]> {
     if (error || !data || data.length === 0) return getLocalProducts();
     return (data as ProductRow[])
       .map(mapProduct)
+      .filter((product): product is Product => product !== null)
       .sort((a, b) => a.name.localeCompare(b.name));
   } catch (err) {
     console.warn('Supabase products fetch error, falling back to local:', err);
@@ -118,7 +121,7 @@ export async function getCommerceProduct(slug: string): Promise<Product | undefi
   try {
     const { data, error } = await supabase.from('products').select('*').eq('slug', slug).maybeSingle();
     if (error || !data) return getLocalProduct(slug);
-    return mapProduct(data as ProductRow);
+    return mapProduct(data as ProductRow) ?? undefined;
   } catch (err) {
     console.warn('Supabase product fetch error, falling back to local:', err);
     return getLocalProduct(slug);
@@ -206,7 +209,9 @@ export async function saveCommerceProduct(product: Product): Promise<Product> {
   }
   const { data, error } = await supabase.from('products').upsert(productRow(product), { onConflict: 'slug' }).select('*').single();
   if (error || !data) throw error || new Error('Product could not be saved');
-  return mapProduct(data as ProductRow);
+  const savedProduct = mapProduct(data as ProductRow);
+  if (!savedProduct) throw new Error('Product image policy rejected the saved product');
+  return savedProduct;
 }
 
 export async function updateCommerceProduct(slug: string, updates: Partial<Product>): Promise<Product | null> {

@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { products as initialProducts, type Product } from '@/data/products';
+import { resolveCatalogImage } from '@/lib/catalogImages';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 const PRODUCTS_FILE = path.join(DATA_DIR, 'products.json');
@@ -31,8 +32,10 @@ if (process.env.NODE_ENV !== 'production') {
 export function getProducts(): Product[] {
   const data = fs.readFileSync(PRODUCTS_FILE, 'utf-8');
   return JSON.parse(data)
+    .filter((product: Product) => resolveCatalogImage(product.slug, product.image))
     .map((product: Product) => ({
       ...product,
+      image: resolveCatalogImage(product.slug, product.image) as string,
       stockQuantity: product.stockQuantity ?? 100,
       discountPercent: product.discountPercent ?? 0,
     }))
