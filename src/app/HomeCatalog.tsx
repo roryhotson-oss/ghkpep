@@ -25,7 +25,7 @@ export default async function HomeCatalog() {
           <br />
           for Laboratory Research
         </h1>
-        <div className="hero-photo-board relative min-h-[360px] overflow-hidden rounded-[2rem] sm:min-h-[560px]">
+        <div className="hero-photo-board relative min-h-[280px] overflow-hidden rounded-[2rem] sm:min-h-[420px]">
           <div className="hero-photo-window absolute inset-3 overflow-hidden rounded-[1.5rem] sm:inset-5 sm:rounded-[1.75rem]">
             <Image
               src="/images/shop-hero.jpeg"
