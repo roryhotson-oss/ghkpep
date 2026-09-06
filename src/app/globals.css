@@ -93,7 +93,9 @@ button:disabled {
 }
 
 .product-photo-box {
-  background: #aebfca;
+  background-color: #d7dadd;
+  background-image: repeating-conic-gradient(#eef0f1 0 25%, #c4c9cd 0 50%);
+  background-size: 34px 34px;
   border: 2px solid #111827;
   box-shadow: inset 0 0 0 6px #ffffff;
 }
