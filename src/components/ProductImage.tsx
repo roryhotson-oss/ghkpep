@@ -10,7 +10,7 @@ export default function ProductImage({ src, alt, className = "w-full h-full obje
   const [hasError, setHasError] = useState(false);
 
   return (
-    <div className="relative w-full h-full bg-transparent">
+    <div className="product-photo-box relative w-full h-full">
       {!hasError ? <Image
         src={src}
         alt={alt}
