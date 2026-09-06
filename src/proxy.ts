@@ -58,7 +58,7 @@ export function proxy(request: NextRequest) {
 
   // Keep public routes on the maintenance page while leaving admin and API access available.
   if (
-    process.env.NEXT_PUBLIC_MAINTENANCE_MODE !== 'false' &&
+    process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true' &&
     pathname !== '/' &&
     !pathname.startsWith('/admin') &&
     !pathname.startsWith('/api/') &&
