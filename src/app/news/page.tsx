@@ -50,6 +50,12 @@ const editorPicks: { title: string; link: string; source: string; blurb: string 
     source: 'Daily Vial',
     blurb: 'A summary of what the Reddit peptide community recommends for sourcing in 2026.',
   },
+  {
+    title: 'Peptide Articles & Guides',
+    link: 'https://nootroholic.com/category/peptide',
+    source: 'Nootroholic',
+    blurb: 'A regularly updated category feed of peptide research, sourcing, and nootropic write-ups.',
+  },
 ];
 
 const GOOGLE_NEWS_RSS =
