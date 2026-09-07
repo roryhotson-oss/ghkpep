@@ -113,11 +113,11 @@ export default function MaintenanceContactForm() {
         Your question or order request
         <textarea required minLength={10} rows={4} value={formData.message} onChange={(event) => updateField('message', event.target.value)} className="mt-1 w-full resize-y border border-[#cbdbe6] px-3 py-2 font-normal text-[#10263d]" placeholder="Tell us which product you are interested in and how many vials you need." />
       </label>
-      {siteKey ? <><div id="turnstile-maintenance" className="min-h-[65px]" /><Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" onLoad={renderTurnstile} /></> : <p className="text-sm text-[#9b2c2c]">Cloudflare security is not configured.</p>}
+      {siteKey && <><div id="turnstile-maintenance" className="min-h-[65px]" /><Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" onLoad={renderTurnstile} /></>}
       {turnstileError && <p className="text-sm text-[#9b2c2c]">{turnstileError}</p>}
       {status === 'error' && <p className="text-sm text-[#9b2c2c]">We could not send your message. Please try again or email support@ghkpep.com.</p>}
       <input type="text" name="website" value={formData.website} onChange={(event) => updateField('website', event.target.value)} className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
-      <button type="submit" disabled={status === 'sending' || !siteKey || !turnstileToken} className="bg-[#2e617e] px-5 py-2.5 font-bold text-white disabled:opacity-60">
+      <button type="submit" disabled={status === 'sending' || Boolean(siteKey && !turnstileToken)} className="bg-[#2e617e] px-5 py-2.5 font-bold text-white disabled:opacity-60">
         {status === 'sending' ? 'Sending...' : 'Send enquiry'}
       </button>
     </form>

@@ -9,9 +9,9 @@ export async function POST(request: NextRequest) {
   try {
     const resend = getEmailClient();
 
-    // Check if Resend is configured
+    // Check if SMTP is configured
     if (!resend) {
-      console.error('Resend API key not configured');
+      console.error('SMTP is not configured');
       return NextResponse.json(
         { error: 'Service temporarily unavailable' },
         { status: 503 }

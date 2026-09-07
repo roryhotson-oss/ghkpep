@@ -7,7 +7,7 @@ export default function ShippingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <p className="text-[#8298aa] text-sm font-medium mb-2">Tracked Shipping</p>
           <h1 className="text-3xl font-bold">Shipping Information</h1>
-          <p className="text-[#a7b0b2] mt-3 max-w-2xl">Free, discreet tracked delivery. Single vials ship promptly; orders over 5 vials are sourced as a box of 10 and typically arrive within 5–10 days.</p>
+          <p className="text-[#a7b0b2] mt-3 max-w-2xl">Free, discreet tracked delivery orders over £400. Single vials ship promptly; orders over 5 vials are sourced as a box of 10 and typically arrive within 5–10 days.</p>
         </div>
       </section>
 

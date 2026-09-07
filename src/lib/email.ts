@@ -1,27 +1,39 @@
-import { Resend } from 'resend';
+import nodemailer, { type Transporter } from 'nodemailer';
 
+// Email is delivered via Fasthosts (livemail.co.uk) SMTP. The authenticated
+// mailbox (SMTP_USER) must be allowed to send as the From address, so the
+// default From is the mailbox itself unless SMTP_FROM_EMAIL overrides it.
 const DEFAULT_FROM_EMAIL = 'sales@ghkpep.com';
 const DEFAULT_FROM_NAME = 'GHK Peptides';
+const DEFAULT_SMTP_HOST = 'smtp.livemail.co.uk';
 
-export function getEmailClient() {
-  const apiKey = process.env.RESEND_API_KEY;
-  return apiKey ? new Resend(apiKey) : null;
+export interface EmailMessage {
+  from: string;
+  to: string[];
+  subject: string;
+  html: string;
+  replyTo?: string;
 }
 
-export function getFromAddress(name = process.env.RESEND_FROM_NAME || DEFAULT_FROM_NAME) {
-  const email = process.env.RESEND_FROM_EMAIL || DEFAULT_FROM_EMAIL;
+export function getEmailClient(): Transporter | null {
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASSWORD;
+  if (!user || !pass) return null;
+
+  const port = Number(process.env.SMTP_PORT) || 587;
+  return nodemailer.createTransport({
+    host: process.env.SMTP_HOST || DEFAULT_SMTP_HOST,
+    port,
+    secure: port === 465,
+    auth: { user, pass },
+  });
+}
+
+export function getFromAddress(name = process.env.SMTP_FROM_NAME || DEFAULT_FROM_NAME) {
+  const email = process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER || DEFAULT_FROM_EMAIL;
   return `${name} <${email}>`;
 }
 
-export async function sendEmail(
-  resend: Resend,
-  options: Parameters<Resend['emails']['send']>[0]
-) {
-  const result = await resend.emails.send(options);
-
-  if (result.error) {
-    throw new Error(result.error.message || 'Email provider rejected the message');
-  }
-
-  return result.data;
+export async function sendEmail(transporter: Transporter, options: EmailMessage) {
+  return transporter.sendMail(options);
 }

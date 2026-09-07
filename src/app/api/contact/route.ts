@@ -7,9 +7,9 @@ export async function POST(request: NextRequest) {
   try {
     const resend = getEmailClient();
 
-    // Check if Resend is configured
+    // Check if SMTP is configured
     if (!resend) {
-      console.error('Resend API key not configured');
+      console.error('SMTP is not configured');
       return NextResponse.json(
         { error: 'Service temporarily unavailable' },
         { status: 503 }
@@ -27,9 +27,7 @@ export async function POST(request: NextRequest) {
       ? undefined
       : process.env.TURNSTILE_SECRET_KEY;
     const token = body.turnstileToken;
-    if (!secret) {
-      return NextResponse.json({ error: 'Cloudflare verification is not configured' }, { status: 503 });
-    }
+    // Turnstile is optional: when no secret is configured, skip verification instead of blocking mail.
     if (secret && (typeof token !== 'string' || !token)) {
       return NextResponse.json({ error: 'Human verification is required' }, { status: 400 });
     }
@@ -94,8 +92,8 @@ export async function POST(request: NextRequest) {
         status: 'new',
       });
       if (error) {
+        // Non-fatal: the email below is the primary delivery path; the DB row is a convenience copy.
         console.error('Failed to save contact message:', error);
-        return NextResponse.json({ error: 'Failed to save message' }, { status: 500 });
       }
     }
 

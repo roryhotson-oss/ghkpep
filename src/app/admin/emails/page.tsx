@@ -313,7 +313,7 @@ export default function AdminEmailsPage() {
           <div className="text-[#e6edf3] bg-[#0c1622] rounded-2xl p-6 border-4 border-[#FBFAF7] shadow-md">
             <h2 className="text-lg font-bold text-white mb-2">Email Configuration</h2>
             <p className="text-[#a7b0b2] text-sm">
-              Email sending requires a Resend API key. Add <code className="text-[#8298aa]">RESEND_API_KEY</code> to your environment variables.
+              Email sending requires SMTP credentials. Set <code className="text-[#8298aa]">SMTP_USER</code> and <code className="text-[#8298aa]">SMTP_PASSWORD</code> in your environment variables.
             </p>
           </div>
         </div>

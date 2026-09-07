@@ -238,11 +238,11 @@ export default function ContactPage() {
                     Failed to send message. Please try again or contact us via WhatsApp or Telegram from the checkout page.
                   </div>
                 )}
-                {siteKey ? <><div id="turnstile-contact" className="min-h-[65px]" /><Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" onLoad={renderTurnstile} /></> : <p className="text-sm text-red-400">Cloudflare security is not configured.</p>}
+                {siteKey && <><div id="turnstile-contact" className="min-h-[65px]" /><Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" onLoad={renderTurnstile} /></>}
                 {turnstileError && <div className="bg-red-900/20 border border-red-500/50 rounded-lg p-3 text-sm text-red-400">{turnstileError}</div>}
                 <button
                   type="submit"
-                  disabled={status === 'loading' || !siteKey || !turnstileToken}
+                  disabled={status === 'loading' || Boolean(siteKey && !turnstileToken)}
                   className="w-full px-8 py-3 bg-[#5b8ca0] border border-[#5b8ca0] text-white font-semibold rounded-xl hover:bg-[#466f7f] transition disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {status === 'loading' ? 'Sending...' : 'Send message'}

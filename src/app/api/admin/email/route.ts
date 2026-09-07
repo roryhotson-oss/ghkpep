@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
 
     if (!resend) {
       return NextResponse.json(
-        { error: 'Email service not configured. Set RESEND_API_KEY environment variable.' },
+        { error: 'Email service not configured. Set SMTP_USER and SMTP_PASSWORD environment variables.' },
         { status: 503 }
       );
     }
