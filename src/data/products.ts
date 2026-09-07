@@ -132,7 +132,7 @@ export const products: Product[] = [
     categoryLabel: "Peptide Research",
     description: "Stabilized GHRH sequence analog. Supplied for in vitro laboratory research.",
     lot: "GHK-2412-H",
-    image: "/images/tesamorelin.jpeg",
+    image: "/images/tesamorelin-10mg.jpg",
     marketTier: "mid-market",
     dosageOptions: [2, 5, 10, 20],
     dosageBoxPrices: { 2: 85, 5: 145, 10: 270, 20: 310 }
@@ -189,7 +189,7 @@ export const products: Product[] = [
     categoryLabel: "Melanocortin",
     description: "Melanocortin-related sequence analog. Supplied for in vitro laboratory research.",
     lot: "GHK-2421-L",
-    image: "/images/pt-141.jpeg",
+    image: "/images/pt-141-10mg.jpg",
     marketTier: "premium",
     dosageOptions: [10],
     dosageBoxPrices: { 10: 125 }
@@ -204,7 +204,7 @@ export const products: Product[] = [
     categoryLabel: "Melanocortin",
     description: "Melanocortin-related sequence analog. Supplied for in vitro laboratory research.",
     lot: "GHK-2422-M",
-    image: "/images/melanotan-2.jpeg",
+    image: "/images/melanotan-2-10mg.jpg",
     marketTier: "mid-market",
     dosageOptions: [10],
     dosageBoxPrices: { 10: 75 }
@@ -219,7 +219,7 @@ export const products: Product[] = [
     categoryLabel: "Mitochondrial",
     description: "Mitochondria-targeted four-residue synthetic sequence. Supplied for in vitro laboratory research.",
     lot: "GHK-2423-N",
-    image: "/images/ss-31.jpeg",
+    image: "/images/ss-31-10mg.jpg",
     dosageOptions: [10, 50],
     dosageBoxPrices: { 10: 130, 50: 310 }
   },
@@ -233,7 +233,7 @@ export const products: Product[] = [
     categoryLabel: "Melanocortin",
     description: "Synthetic alpha-MSH related sequence. Supplied for in vitro laboratory research.",
     lot: "GHK-2424-O",
-    image: "/images/melanotan-1.jpg",
+    image: "/images/melanotan-1-10mg.jpg",
     marketTier: "mid-market",
     dosageOptions: [10],
     dosageBoxPrices: { 10: 95 }
@@ -248,7 +248,7 @@ export const products: Product[] = [
     categoryLabel: "Copper Composite",
     description: "Copper-bound composite, lyophilized powder. Supplied for in vitro laboratory research.",
     lot: "GHK-2425-P",
-    image: "/images/wolverine-10mg.png",
+    image: "/images/wolverine-10mg.jpg",
     dosageOptions: [10, 20],
     dosageBoxPrices: { 10: 150, 20: 265 }
   },
@@ -262,7 +262,7 @@ export const products: Product[] = [
     categoryLabel: "Peptide",
     description: "Synthetic kisspeptin-10 sequence. Supplied for in vitro laboratory research.",
     lot: "GHK-2426-Q",
-    image: "/images/kiss-peptin.jpeg",
+    image: "/images/kiss-peptin-10mg.jpg",
     marketTier: "mid-market",
     dosageOptions: [5, 10],
     dosageBoxPrices: { 5: 90, 10: 110 }
@@ -277,7 +277,7 @@ export const products: Product[] = [
     categoryLabel: "Amylin Research",
     description: "Amylin-related sequence analog. Supplied for in vitro laboratory research.",
     lot: "GHK-2427-R",
-    image: "/images/cagrilintide.jpg",
+    image: "/images/cagrilintide-5mg.jpg",
     dosageOptions: [5, 10, 20],
     dosageBoxPrices: { 5: 130, 10: 225, 20: 380 }
   },
@@ -376,7 +376,7 @@ export const products: Product[] = [
     categoryLabel: "Tuftsin Research",
     description: "Synthetic tuftsin analog (TP-7 sequence). Supplied for in vitro laboratory research.",
     lot: "GHK-2434-Y",
-    image: "/images/selank.jpg"
+    image: "/images/selank-10mg.jpg"
   },
   {
     slug: "tb-500",
@@ -388,7 +388,7 @@ export const products: Product[] = [
     categoryLabel: "Thymosin Fragment",
     description: "Acetylated Thymosin beta-4 fragment. Lyophilized powder, ≥99% purity (HPLC). Supplied for in vitro laboratory research.",
     lot: "GHK-2435-Z",
-    image: "/images/tb-500.jpg",
+    image: "/images/tb-500-10mg.jpg",
     dosageOptions: [5, 10, 20],
     dosageBoxPrices: { 5: 110, 10: 205, 20: 425 }
   },
@@ -402,7 +402,7 @@ export const products: Product[] = [
     categoryLabel: "ACTH Research",
     description: "ACTH(4-10)-related synthetic seven-residue sequence. Supplied for in vitro laboratory research.",
     lot: "GHK-2436-AA",
-    image: "/images/semax.jpg",
+    image: "/images/semax-10mg.jpg",
     dosageOptions: [5, 10, 30]
   },
   {
