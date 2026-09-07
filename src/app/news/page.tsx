@@ -140,144 +140,122 @@ export default async function NewsPage() {
   const items = await getPeptideNews();
 
   return (
-    <div className="bg-black min-h-screen">
+    <div>
       {/* Hero */}
-      <section className="border-b border-white/10 py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-block bg-teal-500/20 text-teal-400 px-4 py-1 rounded-full text-sm font-semibold mb-4">
-              Live Peptide News
-            </span>
-            <h1 className="text-5xl font-bold text-white mb-6">Peptide Research News</h1>
-            <p className="text-xl text-white/60">
-              Aggregated headlines from across the web on peptide research, regulation, and the
-              research-compound industry. Each card links out to the original publisher.
-            </p>
-            <p className="text-xs text-white/30 mt-4">
-              Updated automatically. Sources are third-party publishers; GHK Peptides does not write or
-              endorse the linked articles.
-            </p>
-          </div>
+      <section className="text-[#34414a] bg-[#dceff7] rounded-3xl border border-[#c8dfe7] shadow-[0_10px_24px_rgba(52,65,74,0.08)] max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <p className="text-[#8298aa] text-sm font-medium mb-2">Live peptide news</p>
+          <h1 className="text-3xl font-bold">Peptide Research News</h1>
+          <p className="text-[#a7b0b2] mt-3 max-w-2xl">
+            Aggregated headlines from across the web on peptide research, regulation, and the
+            research-compound industry. Each card links out to the original publisher.
+          </p>
+          <p className="text-[#a7b0b2] text-xs mt-4 max-w-2xl">
+            Updated automatically. Sources are third-party publishers; GHK Peptides does not write or
+            endorse the linked articles.
+          </p>
         </div>
       </section>
 
-      {/* Editor's picks */}
-      <section className="py-16 border-b border-white/10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold text-white mb-2">Editor&apos;s Picks</h2>
-            <p className="text-white/50 text-sm mb-8">
-              A few standout reads our team recommends, in addition to the live feed below.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {editorPicks.map((pick) => (
-                <article
-                  key={pick.link}
-                  className="bg-white/5 rounded-2xl p-6 hover:bg-white/10 transition group flex flex-col"
-                >
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="bg-teal-500 text-black px-3 py-1 rounded-full text-xs font-bold">
-                      {pick.source}
-                    </span>
-                    <span className="text-xs text-white/40">Featured</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-white mb-3 group-hover:text-teal-400 transition">
-                    {pick.title}
-                  </h3>
-                  <p className="text-white/60 text-sm mb-4 flex-1">{pick.blurb}</p>
-                  <a
-                    href={pick.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-teal-400 hover:text-teal-300 font-semibold text-sm"
-                  >
-                    Read on {pick.source}
-                    <span aria-hidden="true">↗</span>
-                  </a>
-                </article>
-              ))}
-            </div>
-          </div>
+      {/* Editor&apos;s picks */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="mb-10">
+          <p className="text-[#8298aa] text-sm font-medium mb-2">Editor&apos;s picks</p>
+          <h2 className="text-2xl font-bold text-[#34414a]">A few standout reads.</h2>
+          <p className="text-[#a7b0b2] mt-2 max-w-3xl">
+            Recommended reading from across the web, in addition to the live feed below.
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-4">
+          {editorPicks.map((pick) => (
+            <article
+              key={pick.link}
+              className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)] flex flex-col"
+            >
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-[10px] px-2 py-1 bg-[#111d2c] text-[#a7b0b2] rounded font-mono">
+                  {pick.source}
+                </span>
+              </div>
+              <h3 className="font-bold text-lg mb-2">{pick.title}</h3>
+              <p className="text-[#a7b0b2] text-sm leading-relaxed mb-4 flex-1">{pick.blurb}</p>
+              <a
+                href={pick.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#8298aa] text-sm hover:underline"
+              >
+                Read on {pick.source} →
+              </a>
+            </article>
+          ))}
         </div>
       </section>
 
       {/* News feed */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold text-white mb-8">Latest Headlines</h2>
-            {items.length === 0 ? (
-              <div className="max-w-xl mx-auto text-center py-16">
-                <p className="text-white/60 mb-4">
-                  The live news feed could not be loaded right now. You can browse the latest peptide
-                  headlines directly on Google News.
-                </p>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="mb-10">
+          <p className="text-[#8298aa] text-sm font-medium mb-2">The feed</p>
+          <h2 className="text-2xl font-bold text-[#34414a]">Latest headlines</h2>
+        </div>
+        {items.length === 0 ? (
+          <div className="max-w-xl mx-auto text-center py-16">
+            <p className="text-[#a7b0b2] mb-4">
+              The live news feed could not be loaded right now. You can browse the latest peptide
+              headlines directly on Google News.
+            </p>
+            <a
+              href="https://news.google.com/search?q=peptide+research&hl=en-GB&gl=GB&ceid=GB:en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-6 py-3 bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-semibold rounded-xl hover:bg-[#16283c] transition"
+            >
+              Open Peptide News on Google News
+            </a>
+          </div>
+        ) : (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {items.map((item, i) => (
+              <article
+                key={`${item.link}-${i}`}
+                className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)] flex flex-col"
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-[10px] px-2 py-1 bg-[#111d2c] text-[#a7b0b2] rounded font-mono">
+                    {item.source}
+                  </span>
+                  {item.pubDate && (
+                    <span className="text-[10px] text-[#8298aa]">{formatDate(item.pubDate)}</span>
+                  )}
+                </div>
+                <h3 className="font-bold text-base mb-4 flex-1">{item.title}</h3>
                 <a
-                  href="https://news.google.com/search?q=peptide+research&hl=en-GB&gl=GB&ceid=GB:en"
+                  href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-teal-500 text-black font-bold px-6 py-3 rounded-lg hover:bg-teal-600 transition"
+                  className="text-[#8298aa] text-sm hover:underline"
                 >
-                  Open Peptide News on Google News
+                  Read on {item.source} →
                 </a>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {items.map((item, i) => (
-                  <article
-                    key={`${item.link}-${i}`}
-                    className="bg-white/5 rounded-2xl overflow-hidden hover:bg-white/10 transition group flex flex-col"
-                  >
-                    <div className="aspect-video bg-gradient-to-br from-teal-500/20 to-blue-500/20 relative overflow-hidden">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-5xl opacity-40">📰</span>
-                      </div>
-                      <div className="absolute top-4 left-4">
-                        <span className="bg-teal-500 text-black px-3 py-1 rounded-full text-xs font-bold">
-                          {item.source}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="p-6 flex flex-col flex-1">
-                      {item.pubDate && (
-                        <div className="text-sm text-white/40 mb-3">{formatDate(item.pubDate)}</div>
-                      )}
-                      <h2 className="text-xl font-bold text-white mb-3 group-hover:text-teal-400 transition">
-                        {item.title}
-                      </h2>
-                      <a
-                        href={item.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-teal-400 hover:text-teal-300 font-semibold text-sm"
-                      >
-                        Read on {item.source}
-                        <span aria-hidden="true">↗</span>
-                      </a>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            )}
+              </article>
+            ))}
           </div>
-        </div>
+        )}
       </section>
 
       {/* CTA */}
-      <section className="border-t border-white/10 py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-white mb-6">Read Our Research Guides</h2>
-            <p className="text-lg text-white/60 mb-8">
-              Beyond the headlines, our blog covers peptide testing, storage, and quality standards in depth.
-            </p>
-            <Link
-              href="/blog"
-              className="inline-block bg-teal-500 text-black font-bold px-8 py-4 rounded-lg hover:bg-teal-600 transition"
-            >
-              Browse the Blog
-            </Link>
-          </div>
+      <section className="text-[#34414a] bg-[#dceff7] rounded-3xl border border-[#c8dfe7] shadow-[0_10px_24px_rgba(52,65,74,0.08)] max-w-7xl mx-4 sm:mx-6 xl:mx-auto mb-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+          <h2 className="text-2xl font-bold mb-4">Read our research guides</h2>
+          <p className="text-[#a7b0b2] mb-8 max-w-2xl mx-auto">
+            Beyond the headlines, our blog covers peptide testing, storage, and quality standards in depth.
+          </p>
+          <Link
+            href="/blog"
+            className="inline-block px-8 py-4 bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-bold rounded-xl hover:bg-[#16283c] transition"
+          >
+            Browse the Blog
+          </Link>
         </div>
       </section>
     </div>

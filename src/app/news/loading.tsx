@@ -1,34 +1,34 @@
 export default function Loading() {
   return (
-    <div className="bg-black min-h-screen">
-      <section className="border-b border-white/10 py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-block bg-teal-500/20 text-teal-400 px-4 py-1 rounded-full text-sm font-semibold mb-4">
-              Live Peptide News
-            </span>
-            <h1 className="text-5xl font-bold text-white mb-6">Peptide Research News</h1>
-            <p className="text-xl text-white/60">Loading the latest headlines&hellip;</p>
-          </div>
+    <div>
+      {/* Hero skeleton */}
+      <section className="text-[#34414a] bg-[#dceff7] rounded-3xl border border-[#c8dfe7] shadow-[0_10px_24px_rgba(52,65,74,0.08)] max-w-7xl mx-4 sm:mx-6 xl:mx-auto mt-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 animate-pulse">
+          <div className="h-4 w-32 bg-[#8298aa]/30 rounded mb-3" />
+          <div className="h-8 w-72 bg-[#8298aa]/30 rounded mb-3" />
+          <div className="h-4 w-full max-w-xl bg-[#8298aa]/20 rounded" />
+          <div className="h-4 w-2/3 max-w-xl bg-[#8298aa]/20 rounded mt-2" />
         </div>
       </section>
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="bg-white/5 rounded-2xl overflow-hidden animate-pulse">
-                <div className="aspect-video bg-white/5" />
-                <div className="p-6 space-y-3">
-                  <div className="h-4 w-1/3 bg-white/10 rounded" />
-                  <div className="h-6 w-3/4 bg-white/10 rounded" />
-                  <div className="h-4 w-full bg-white/10 rounded" />
-                  <div className="h-4 w-2/3 bg-white/10 rounded" />
-                </div>
-              </div>
-            ))}
-          </div>
+
+      {/* Cards skeleton */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="h-6 w-48 bg-[#8298aa]/30 rounded mb-10 animate-pulse" />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {Array.from({ length: 9 }).map((_, i) => (
+            <div
+              key={i}
+              className="bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)] animate-pulse"
+            >
+              <div className="h-4 w-20 bg-[#8298aa]/30 rounded mb-4" />
+              <div className="h-5 w-full bg-[#8298aa]/20 rounded mb-2" />
+              <div className="h-5 w-4/5 bg-[#8298aa]/20 rounded mb-6" />
+              <div className="h-4 w-32 bg-[#8298aa]/30 rounded" />
+            </div>
+          ))}
         </div>
       </section>
     </div>
   );
 }
+
