@@ -99,7 +99,7 @@ button:disabled {
 }
 
 .product-photo-box img.object-contain {
-  transform: scale(1.18);
+  transform: none;
 }
 
 .hero-photo-board {
