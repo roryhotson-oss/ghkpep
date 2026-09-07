@@ -2,6 +2,24 @@
 
 import { useState, useEffect } from 'react';
 
+const AGE_GATE_COOKIE = 'ghk-age-gate';
+
+function hasAgeGateCookie() {
+  return document.cookie.split('; ').includes(`${AGE_GATE_COOKIE}=true`);
+}
+
+// The middleware rewrites every request without this cookie back to the home page,
+// so it has to exist before any navigation happens. Returns whether it was stored.
+function writeAgeGateCookie() {
+  try {
+    const secure = window.location.protocol === 'https:' ? '; Secure' : '';
+    document.cookie = `${AGE_GATE_COOKIE}=true; path=/; max-age=2592000; SameSite=Lax${secure}`;
+  } catch {
+    return false;
+  }
+  return hasAgeGateCookie();
+}
+
 export default function AgeGate() {
   const [accepted, setAccepted] = useState(false);
   const [storageChecked, setStorageChecked] = useState(false);
@@ -13,6 +31,7 @@ export default function AgeGate() {
   const [researcher, setResearcher] = useState(false);
   const [globalSourcing, setGlobalSourcing] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [reloadOnClose, setReloadOnClose] = useState(false);
 
   useEffect(() => {
     const checkAgeGate = () => {
@@ -20,6 +39,12 @@ export default function AgeGate() {
         const stored = localStorage.getItem('ghk-age-gate');
         if (stored === 'true') {
           setAccepted(true);
+          // The cookie expires before the localStorage flag does. Without it the
+          // middleware would rewrite every page back to home, making links look dead.
+          if (!hasAgeGateCookie() && writeAgeGateCookie()) {
+            window.location.reload();
+            return;
+          }
         }
         setConsentChoice(localStorage.getItem('ghk-cookie-consent'));
       } catch {
@@ -31,6 +56,14 @@ export default function AgeGate() {
     checkAgeGate();
   }, []);
 
+  // Routes prefetched while the gate was up were rewritten to the home page.
+  // A full document load drops that poisoned client router cache.
+  useEffect(() => {
+    if (reloadOnClose && accepted && consentChoice !== null) {
+      window.location.reload();
+    }
+  }, [reloadOnClose, accepted, consentChoice]);
+
   const handleEnter = () => {
     if (!age || !researcher || !globalSourcing) {
       setErrorMessage('Please confirm all three statements below to continue');
@@ -39,10 +72,10 @@ export default function AgeGate() {
     setErrorMessage('');
     try {
       localStorage.setItem('ghk-age-gate', 'true');
-      document.cookie = 'ghk-age-gate=true; path=/; max-age=2592000; SameSite=Lax';
     } catch {
       // Ignore if localStorage is blocked
     }
+    setReloadOnClose(writeAgeGateCookie());
     setAccepted(true);
   };
 
