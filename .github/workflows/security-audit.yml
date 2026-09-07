@@ -35,23 +35,33 @@ jobs:
             echo "❌ Found default admin password"
             SECRETS_FOUND=1
           fi
+
+          check_env_for_pattern() {
+            local pattern="$1"
+            while IFS= read -r file; do
+              if grep -q "$pattern" "$file"; then
+                return 0
+              fi
+            done < <(git ls-files | grep -E '(^|/)\.env(\.|$)' | grep -vE '\.example$' || true)
+            return 1
+          }
           
-          if grep -rq "change-this-to-a-random-secret" src/ 2>/dev/null; then
+          if check_env_for_pattern "change-this-to-a-random-secret"; then
             echo "❌ Found default session secret"
             SECRETS_FOUND=1
           fi
           
-          if grep -rq "re_your_api_key_here" src/ 2>/dev/null; then
+          if check_env_for_pattern "re_your_api_key_here"; then
             echo "❌ Found placeholder Resend API key"
             SECRETS_FOUND=1
           fi
           
-          if grep -rq "your-cloudflare-turnstile" src/ 2>/dev/null; then
+          if check_env_for_pattern "your-cloudflare-turnstile"; then
             echo "❌ Found placeholder Turnstile keys"
             SECRETS_FOUND=1
           fi
           
-          if grep -rq "your-project.supabase.co" src/ 2>/dev/null; then
+          if check_env_for_pattern "your-project.supabase.co"; then
             echo "❌ Found placeholder Supabase URLs"
             SECRETS_FOUND=1
           fi
