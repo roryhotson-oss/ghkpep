@@ -13,6 +13,7 @@
 - [x] **End-to-end order test** — done 2026-09-07: test order `GHK-MTR0QH58` placed on prod (£35.99 ghk-cu vial, payment ref E2E-TEST), proof uploaded (the `payment-proofs` bucket didn't exist post-resume; the order-proof route auto-created it), order + items + signed proof URL all verified in the database. **The test order is still in the DB, labeled "E2E Test Order - safe to delete" — check it renders in /admin, then delete it there.**
 - [x] **Admin login check** — done 2026-09-07: the stored `adminPasswordHash` in `site_settings` was an empty string, so no password worked. Reset via a new scrypt hash written to the DB; login verified on prod. Credentials: admin@ghkpep.com + `ADMIN_PASSWORD` in `.env.local` (change anytime from the admin panel).
 - [ ] **Set up a Supabase backup habit**: dashboard → Database → Backups; free tier keeps limited backups, consider a monthly manual download
+- [x] **Fix GitHub Actions security scan** — stopped treating intentional placeholder checks and `.env.example` documentation as exposed secrets; CI now uses Node 22 to match the project engine.
 
 ## Backlog (nice-to-have, in rough priority order)
 
