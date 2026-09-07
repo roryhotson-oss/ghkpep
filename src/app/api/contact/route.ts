@@ -67,6 +67,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: messageValidation.error }, { status: 400 });
     }
 
+    const senderName = nameValidation.sanitized;
+    const senderEmail = emailValidation.sanitized;
+    const safeSubject = subjectValidation.sanitized;
+    const safeMessage = messageValidation.sanitized;
+
     const enquiryMessage = typeof product === 'string' && product
       ? `Product: ${product}\nQuantity: ${typeof quantity === 'string' && quantity ? quantity : '1'}\n\n${messageValidation.sanitized}`
       : messageValidation.sanitized;
@@ -87,10 +92,10 @@ export async function POST(request: NextRequest) {
     const supabase = getSupabaseAdmin();
     if (supabase) {
       const { error } = await supabase.from('contact_messages').insert({
-        name: nameValidation.sanitized,
-        email: emailValidation.sanitized,
+        name: senderName,
+        email: senderEmail,
         institution: typeof institution === 'string' ? institution.slice(0, 255) : null,
-        subject: subjectValidation.sanitized,
+        subject: safeSubject,
         message: enquiryMessage,
         status: 'new',
       });
@@ -108,28 +113,28 @@ export async function POST(request: NextRequest) {
         await sendEmail(resend, {
           from: getFromAddress('GHK Contact Form'),
           to: [contactEmail],
-          subject: `Contact Form: ${subjectValidation.sanitized}`,
+          subject: `Contact Form: ${safeSubject}`,
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
               <h2 style="color: #8298aa;">New Contact Form Submission</h2>
               <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                <p><strong>Name:</strong> ${nameValidation.sanitized}</p>
-                <p><strong>Email:</strong> ${emailValidation.sanitized}</p>
+                <p><strong>Name:</strong> ${senderName}</p>
+                <p><strong>Email:</strong> ${senderEmail}</p>
                 ${institution ? `<p><strong>Institution:</strong> ${institution}</p>` : ''}
-                <p><strong>Subject:</strong> ${subjectValidation.sanitized}</p>
+                <p><strong>Subject:</strong> ${safeSubject}</p>
                 ${product ? `<p><strong>Product:</strong> ${product}</p>` : ''}
                 ${quantity ? `<p><strong>Quantity:</strong> ${quantity}</p>` : ''}
               </div>
               <div style="background: #fff; padding: 20px; border-left: 4px solid #8298aa;">
                 <h3 style="margin-top: 0;">Message:</h3>
-                <p style="white-space: pre-wrap;">${messageValidation.sanitized}</p>
+                <p style="white-space: pre-wrap;">${safeMessage}</p>
               </div>
               <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; color: #7b898e; font-size: 12px;">
                 <p>This email was sent from the GHK contact form.</p>
               </div>
             </div>
           `,
-          replyTo: emailValidation.sanitized,
+          replyTo: senderEmail,
         });
         console.log(`Contact support email sent in ${Date.now() - started}ms`);
       } catch (error) {
@@ -140,7 +145,7 @@ export async function POST(request: NextRequest) {
       try {
         await sendEmail(resend, {
           from: getFromAddress(),
-          to: [emailValidation.sanitized],
+          to: [senderEmail],
           subject: 'We received your message - GHK Peptides',
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -153,7 +158,7 @@ export async function POST(request: NextRequest) {
               </p>
               <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
                 <p style="margin: 0;"><strong>Your message:</strong></p>
-                <p style="white-space: pre-wrap; margin: 10px 0 0 0; color: #555;">${messageValidation.sanitized}</p>
+                <p style="white-space: pre-wrap; margin: 10px 0 0 0; color: #555;">${safeMessage}</p>
               </div>
               <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; color: #999; font-size: 12px; text-align: center;">
                 <p>This is an automated confirmation email.</p>
