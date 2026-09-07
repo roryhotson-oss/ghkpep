@@ -28,6 +28,42 @@ export default function PrivacyPage() {
           <div>
             <h2 className="text-lg font-bold text-white mb-2">Cookies</h2>
             <p>We use first-party cookies for sessions and cart, and limited analytics cookies to understand site usage. You can disable cookies in your browser; some features may not work as a result.</p>
+            <table className="mt-4 w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-[#263344]">
+                  <th className="text-left py-2 pr-4 text-[#8298aa]">Cookie</th>
+                  <th className="text-left py-2 pr-4 text-[#8298aa]">Purpose</th>
+                  <th className="text-left py-2 text-[#8298aa]">Duration</th>
+                </tr>
+              </thead>
+              <tbody className="text-[#a7b0b2]">
+                <tr className="border-b border-[#263344]/50">
+                  <td className="py-2 pr-4">ghk-age-gate</td>
+                  <td className="py-2 pr-4">Remembers that you have confirmed the age gate</td>
+                  <td className="py-2">30 days</td>
+                </tr>
+                <tr className="border-b border-[#263344]/50">
+                  <td className="py-2 pr-4">ghk-cookie-consent</td>
+                  <td className="py-2 pr-4">Stores your cookie consent choice</td>
+                  <td className="py-2">Persistent</td>
+                </tr>
+                <tr className="border-b border-[#263344]/50">
+                  <td className="py-2 pr-4">va-disable</td>
+                  <td className="py-2 pr-4">Disables Vercel Analytics when consent is denied</td>
+                  <td className="py-2">Persistent</td>
+                </tr>
+                <tr className="border-b border-[#263344]/50">
+                  <td className="py-2 pr-4">admin_session</td>
+                  <td className="py-2 pr-4">Admin panel authentication (admin users only)</td>
+                  <td className="py-2">24 hours</td>
+                </tr>
+                <tr>
+                  <td className="py-2 pr-4">sb-*-auth-token</td>
+                  <td className="py-2 pr-4">Supabase user authentication (logged-in users only)</td>
+                  <td className="py-2">Session</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div>
             <h2 className="text-lg font-bold text-white mb-2">Retention</h2>

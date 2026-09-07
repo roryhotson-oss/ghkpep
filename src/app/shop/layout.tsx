@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     'Browse documented research compounds and laboratory accessories with lot references and batch documentation.',
   alternates: {
-    canonical: 'https://ghkpep.com/shop',
+    canonical: 'https://www.ghkpep.com/shop',
   },
   robots: {
     index: true,
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: 'Shop Research Compounds | GHK Peptides',
     description:
       'Browse documented research compounds and laboratory accessories with lot references and batch documentation.',
-    url: 'https://ghkpep.com/shop',
+    url: 'https://www.ghkpep.com/shop',
     images: [
       {
             url: '/images/box10.jpeg',

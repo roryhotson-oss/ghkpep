@@ -39,6 +39,7 @@ export default function AgeGate() {
     setErrorMessage('');
     try {
       localStorage.setItem('ghk-age-gate', 'true');
+      document.cookie = 'ghk-age-gate=true; path=/; max-age=2592000; SameSite=Lax';
     } catch {
       // Ignore if localStorage is blocked
     }

@@ -30,12 +30,17 @@ interface PaymentSettings {
   cryptoUrl: string;
   bankTransferUrl: string;
   wiseUrl: string;
+  revolutDetails: string;
+  coinbaseUrl: string;
+  bitcoinAddress: string;
+  ethereumAddress: string;
+  usdtAddress: string;
 }
 
 export default function CartPage() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [cartLoaded, setCartLoaded] = useState(false);
-  const [paymentSettings, setPaymentSettings] = useState<PaymentSettings>({ paypalUrl: '', alipayUrl: '/contact', alipayQrUrl: '', cryptoUrl: '/contact', bankTransferUrl: '/contact', wiseUrl: '/contact' });
+  const [paymentSettings, setPaymentSettings] = useState<PaymentSettings>({ paypalUrl: '', alipayUrl: '/contact', alipayQrUrl: '', cryptoUrl: '/contact', bankTransferUrl: '/contact', wiseUrl: '/contact', revolutDetails: '', coinbaseUrl: '', bitcoinAddress: '', ethereumAddress: '', usdtAddress: '' });
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('paypal');
   const [paypalAccount, setPaypalAccount] = useState('');
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
@@ -158,6 +163,7 @@ export default function CartPage() {
     if (file) {
       const uploadData = new FormData();
       uploadData.append('file', file);
+      uploadData.append('turnstileToken', turnstileToken);
       const response = await fetch('/api/order-proof', { method: 'POST', body: uploadData });
       const data = await response.json();
       if (!response.ok) {
@@ -175,12 +181,57 @@ export default function CartPage() {
       paymentMethod: selectedPaymentMethod,
       paymentReference: selectedPaymentMethod === 'paypal' ? paypalAccount : '',
       paymentProofUrl: uploadedProofUrl,
+      turnstileToken,
     }) });
     if (orderResponse.ok) {
       const orderData = await orderResponse.json();
       setPaymentProofName(orderData.orderNumber ? `order ${orderData.orderNumber}` : paymentProofName);
     }
+    setCartItems([]);
+    localStorage.setItem('cart', '[]');
+    window.dispatchEvent(new Event('cart-updated'));
     setCheckoutSubmitted(true);
+  };
+
+  const [stripeLoading, setStripeLoading] = useState(false);
+  const [stripeError, setStripeError] = useState('');
+
+  const handleStripeCheckout = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setStripeError('');
+    setCheckoutError('');
+    const shipping = sameAsBilling ? billingAddress : shippingAddress;
+    const requiredFields = [billingAddress.name, billingAddress.email, billingAddress.line1, billingAddress.city, billingAddress.postcode, billingAddress.country, shipping.name, shipping.line1, shipping.city, shipping.postcode, shipping.country];
+    if (requiredFields.some((value) => !value.trim())) {
+      setCheckoutError('Please complete both billing and shipping addresses.');
+      return;
+    }
+    if (turnstileSiteKey && !turnstileToken) {
+      setTurnstileError('Please complete the Cloudflare security check.');
+      return;
+    }
+    setStripeLoading(true);
+    try {
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: cartItems.map((item) => ({ slug: item.slug, qty: item.qty, type: item.type, strength: item.strength })),
+          billingAddress,
+          shippingAddress: shipping,
+          turnstileToken,
+        }),
+      });
+      const data = await response.json();
+      if (response.ok && data.url) {
+        window.location.href = data.url;
+      } else {
+        setStripeError(data.error || 'Could not start card payment. Try a different payment method.');
+      }
+    } catch {
+      setStripeError('Payment service unavailable. Please try a different payment method.');
+    }
+    setStripeLoading(false);
   };
 
   const handleWhatsApp = () => {
@@ -335,8 +386,31 @@ export default function CartPage() {
                   <button type="button" onClick={() => setSelectedPaymentMethod('crypto')} className={`w-full flex items-center gap-3 p-3 rounded-lg border text-left transition ${selectedPaymentMethod === 'crypto' ? 'border-[#8298aa] bg-[#e8f6fd]' : 'border-[#d7e3eb] bg-[#f3f7fa] hover:border-[#8298aa]'}`}>
                     <span className="text-lg">₿</span><span className="text-sm font-semibold text-[#38566d]">Crypto</span>
                   </button>
+                  {paymentSettings.wiseUrl && paymentSettings.wiseUrl !== '/contact' && <button type="button" onClick={() => setSelectedPaymentMethod('wise')} className={`w-full flex items-center gap-3 p-3 rounded-lg border text-left transition ${selectedPaymentMethod === 'wise' ? 'border-[#8298aa] bg-[#e8f6fd]' : 'border-[#d7e3eb] bg-[#f3f7fa] hover:border-[#8298aa]'}`}>
+                    <span className="text-lg">🌐</span><span className="text-sm font-semibold text-[#38566d]">Wise</span>
+                  </button>}
+                  {paymentSettings.revolutDetails && <button type="button" onClick={() => setSelectedPaymentMethod('revolut')} className={`w-full flex items-center gap-3 p-3 rounded-lg border text-left transition ${selectedPaymentMethod === 'revolut' ? 'border-[#8298aa] bg-[#e8f6fd]' : 'border-[#d7e3eb] bg-[#f3f7fa] hover:border-[#8298aa]'}`}>
+                    <span className="text-lg">💳</span><span className="text-sm font-semibold text-[#38566d]">Revolut</span>
+                  </button>}
                 </div>
-                <p className="text-xs text-[#607789] mt-2">Payment details are provided after checkout.</p>
+                <p className="text-xs text-[#607789] mt-2">
+                  {selectedPaymentMethod === 'crypto' && (paymentSettings.bitcoinAddress || paymentSettings.ethereumAddress || paymentSettings.usdtAddress) ? (
+                    <span className="block space-y-1">
+                      {paymentSettings.bitcoinAddress && <span className="block"><strong>BTC:</strong> {paymentSettings.bitcoinAddress}</span>}
+                      {paymentSettings.ethereumAddress && <span className="block"><strong>ETH:</strong> {paymentSettings.ethereumAddress}</span>}
+                      {paymentSettings.usdtAddress && <span className="block"><strong>USDT:</strong> {paymentSettings.usdtAddress}</span>}
+                      {paymentSettings.coinbaseUrl && <span className="block"><a href={paymentSettings.coinbaseUrl} target="_blank" rel="noopener noreferrer" className="text-[#8298aa] underline">Pay via Coinbase Commerce</a></span>}
+                    </span>
+                  ) : selectedPaymentMethod === 'bank' && paymentSettings.bankTransferUrl ? (
+                    <a href={paymentSettings.bankTransferUrl} className="text-[#8298aa] underline">View bank transfer details</a>
+                  ) : selectedPaymentMethod === 'wise' && paymentSettings.wiseUrl ? (
+                    <a href={paymentSettings.wiseUrl} className="text-[#8298aa] underline">Pay via Wise</a>
+                  ) : selectedPaymentMethod === 'revolut' && paymentSettings.revolutDetails ? (
+                    <span>{paymentSettings.revolutDetails}</span>
+                  ) : (
+                    'Payment details are provided after checkout.'
+                  )}
+                </p>
               </div>
 
               <button 
@@ -389,6 +463,11 @@ export default function CartPage() {
               {turnstileSiteKey && <><div id="turnstile-checkout" className="min-h-[65px]" /><Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" onLoad={renderTurnstile} /></>}
               {checkoutError && <p className="text-sm text-red-600" role="alert">{checkoutError}</p>}
               {turnstileError && <p className="text-sm text-red-600" role="alert">{turnstileError}</p>}
+              {stripeError && <p className="text-sm text-red-600" role="alert">{stripeError}</p>}
+              <button type="button" onClick={(e) => handleStripeCheckout(e as unknown as React.FormEvent<HTMLFormElement>)} disabled={stripeLoading} className="w-full px-6 py-4 bg-[#635bff] text-white font-bold rounded-lg hover:bg-[#4a3fd6] transition disabled:opacity-60 disabled:cursor-not-allowed">
+                {stripeLoading ? 'Redirecting to secure payment...' : 'Pay with Card'}
+              </button>
+              <div className="text-center text-xs text-[#607789]">or pay manually below</div>
               <button type="submit" className="w-full px-6 py-4 bg-[#8298aa] text-white font-bold rounded-lg hover:bg-[#16283c] transition">Continue to Contact Options</button>
             </form> : <>
             <p className="text-[#607789] text-sm mb-6">Your order details{paymentProofName ? ` and ${paymentProofName}` : ''} are ready. Discuss your order through WhatsApp, Telegram, phone, or email.</p>

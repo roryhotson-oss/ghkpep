@@ -76,7 +76,7 @@ export default function ShopPage() {
                   key={entry.key}
                   className="group flex flex-col text-[#34414a] bg-[#fbfaf7] rounded-2xl p-4 border-2 border-[#111827] shadow-[0_8px_20px_rgba(52,65,74,0.06)] hover:-translate-y-1 hover:shadow-[0_14px_28px_rgba(52,65,74,0.12)] transition"
                 >
-                  <div className="aspect-[16/9] rounded-xl mb-4 overflow-hidden relative">
+                  <div className="aspect-[4/3] rounded-xl mb-4 overflow-hidden relative">
                     <ProductImage
                       src={entry.image}
                       alt={entry.name}
@@ -159,7 +159,7 @@ export default function ShopPage() {
                 href={`/shop/${product.slug}`}
                 className="group flex flex-col text-[#34414a] bg-[#fbfaf7] rounded-2xl p-4 border-2 border-[#111827] shadow-[0_8px_20px_rgba(52,65,74,0.06)] hover:-translate-y-1 hover:shadow-[0_14px_28px_rgba(52,65,74,0.12)] transition"
               >
-                <div className="aspect-[16/9] rounded-xl mb-4 overflow-hidden relative">
+                <div className="aspect-[4/3] rounded-xl mb-4 overflow-hidden relative">
                   <ProductImage
                     src={product.image}
                     alt={product.name}

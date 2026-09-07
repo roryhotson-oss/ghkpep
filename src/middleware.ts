@@ -25,7 +25,7 @@ function isRateLimited(ip: string, limit: number, windowMs: number): boolean {
   return false;
 }
 
-export function proxy(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const response = NextResponse.next();
   const ip = getIP(request);
   const pathname = request.nextUrl.pathname;
@@ -45,7 +45,7 @@ export function proxy(request: NextRequest) {
   );
   response.headers.set(
     'Content-Security-Policy',
-    "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https:; frame-src 'self' https://challenges.cloudflare.com; upgrade-insecure-requests"
+    "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https:; frame-src 'self' https://challenges.cloudflare.com; upgrade-insecure-requests"
   );
 
   // Strict Transport Security
@@ -54,6 +54,29 @@ export function proxy(request: NextRequest) {
       'Strict-Transport-Security',
       'max-age=31536000; includeSubDomains'
     );
+  }
+
+  // Server-side age gate: require a signed cookie on public pages.
+  // Bots and direct requests without the cookie are served the age gate page.
+  // Search engine crawlers are exempt to allow indexing.
+  const userAgent = request.headers.get('user-agent') || '';
+  const isCrawler = /Googlebot|Bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|facebookexternalhit|Twitterbot|LinkedInBot|AhrefsBot|SemrushBot/i.test(userAgent);
+  if (
+    !isCrawler &&
+    pathname !== '/' &&
+    !pathname.startsWith('/admin') &&
+    !pathname.startsWith('/api/') &&
+    !pathname.startsWith('/_next/') &&
+    !pathname.startsWith('/images/') &&
+    !pathname.startsWith('/coas/') &&
+    pathname !== '/robots.txt' &&
+    pathname !== '/sitemap.xml' &&
+    pathname !== '/favicon.ico'
+  ) {
+    const ageGateCookie = request.cookies.get('ghk-age-gate');
+    if (!ageGateCookie || ageGateCookie.value !== 'true') {
+      return NextResponse.rewrite(new URL('/', request.url), response);
+    }
   }
 
   // Keep public routes on the maintenance page while leaving admin and API access available.
@@ -82,6 +105,15 @@ export function proxy(request: NextRequest) {
     } else if (pathname === '/api/auth') {
       limit = 3; // 3 attempts per 15 minutes
       windowMs = 15 * 60 * 1000; // 15 minutes
+    } else if (pathname === '/api/admin/auth') {
+      limit = 5; // 5 login attempts per 15 minutes
+      windowMs = 15 * 60 * 1000; // 15 minutes
+    } else if (pathname === '/api/orders') {
+      limit = 10; // 10 orders per hour
+      windowMs = 60 * 60 * 1000; // 1 hour
+    } else if (pathname === '/api/order-proof') {
+      limit = 10; // 10 uploads per hour
+      windowMs = 60 * 60 * 1000; // 1 hour
     }
 
     if (isRateLimited(ip, limit, windowMs)) {

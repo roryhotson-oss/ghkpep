@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { after } from 'next/server';
-import { validateEmail, validateName, validateMessage, validateSubject } from '@/lib/validation';
+import { validateEmail, validateName, validateMessage, validateSubject, escapeHtml } from '@/lib/validation';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { getEmailClient, getFromAddress, sendEmail } from '@/lib/email';
 
@@ -94,7 +94,7 @@ export async function POST(request: NextRequest) {
       const { error } = await supabase.from('contact_messages').insert({
         name: senderName,
         email: senderEmail,
-        institution: typeof institution === 'string' ? institution.slice(0, 255) : null,
+        institution: typeof institution === 'string' ? escapeHtml(institution).slice(0, 255) : null,
         subject: safeSubject,
         message: enquiryMessage,
         status: 'new',
@@ -120,10 +120,10 @@ export async function POST(request: NextRequest) {
               <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
                 <p><strong>Name:</strong> ${senderName}</p>
                 <p><strong>Email:</strong> ${senderEmail}</p>
-                ${institution ? `<p><strong>Institution:</strong> ${institution}</p>` : ''}
+                ${institution ? `<p><strong>Institution:</strong> ${escapeHtml(institution)}</p>` : ''}
                 <p><strong>Subject:</strong> ${safeSubject}</p>
-                ${product ? `<p><strong>Product:</strong> ${product}</p>` : ''}
-                ${quantity ? `<p><strong>Quantity:</strong> ${quantity}</p>` : ''}
+                ${product ? `<p><strong>Product:</strong> ${escapeHtml(product)}</p>` : ''}
+                ${quantity ? `<p><strong>Quantity:</strong> ${escapeHtml(quantity)}</p>` : ''}
               </div>
               <div style="background: #fff; padding: 20px; border-left: 4px solid #8298aa;">
                 <h3 style="margin-top: 0;">Message:</h3>

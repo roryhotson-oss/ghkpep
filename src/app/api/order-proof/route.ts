@@ -3,6 +3,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import crypto from 'crypto';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { verifyTurnstile } from '@/lib/validation';
 
 const allowedTypes: Record<string, string> = {
   'image/png': 'png',
@@ -14,9 +15,16 @@ export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
     const file = formData.get('file');
+    const turnstileToken = formData.get('turnstileToken');
 
     if (!(file instanceof File)) {
       return NextResponse.json({ error: 'Payment proof image is required' }, { status: 400 });
+    }
+
+    const ip = request.headers.get('x-forwarded-for') || '';
+    const turnstileOk = await verifyTurnstile(typeof turnstileToken === 'string' ? turnstileToken : undefined, ip);
+    if (!turnstileOk) {
+      return NextResponse.json({ error: 'Human verification failed' }, { status: 403 });
     }
 
     const extension = allowedTypes[file.type];

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getOrders, getSubscribers } from '@/lib/admin-store';
+import { getSubscribers } from '@/lib/admin-store';
+import { getCommerceOrders } from '@/lib/commerce-store';
 import { validateEmail } from '@/lib/validation';
 import { checkAdmin } from '@/lib/admin-auth';
 import { getEmailClient, getFromAddress, sendEmail } from '@/lib/email';
@@ -28,7 +29,7 @@ export async function POST(request: NextRequest) {
       const subscribers = getSubscribers();
       recipientList = subscribers.map(s => s.email);
     } else if (recipients === 'all-customers') {
-      const orders = getOrders();
+      const orders = await getCommerceOrders();
       recipientList = [...new Set(orders.map(order => order.customerEmail).filter(Boolean))];
     } else if (recipients === 'custom' && Array.isArray(to)) {
       recipientList = to.filter((email: string) => {
@@ -89,7 +90,8 @@ export async function GET() {
   }
 
   const subscribers = getSubscribers();
-  const customers = [...new Map(getOrders().filter(order => order.customerEmail).map(order => [order.customerEmail, {
+  const orders = await getCommerceOrders();
+  const customers = [...new Map(orders.filter(order => order.customerEmail).map(order => [order.customerEmail, {
     email: order.customerEmail,
     name: order.customerName,
   }])).values()];

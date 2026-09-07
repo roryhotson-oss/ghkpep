@@ -111,3 +111,30 @@ export function validateOrderMessage(message: string): ValidationResult {
 
   return { isValid: true, sanitized: sanitizeString(message) };
 }
+
+export function escapeHtml(input: unknown): string {
+  if (typeof input !== 'string') return '';
+  return input
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+export async function verifyTurnstile(token: string | undefined, ip: string): Promise<boolean> {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  if (!secret || secret.includes('your-cloudflare-turnstile-secret-key')) return false;
+  if (typeof token !== 'string' || !token) return false;
+  try {
+    const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ secret, response: token, remoteip: ip }),
+    });
+    const result = await response.json();
+    return result.success === true;
+  } catch {
+    return false;
+  }
+}

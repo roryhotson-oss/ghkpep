@@ -86,7 +86,7 @@ export default function ShippingPage() {
             <div>
               <h3 className="font-bold mb-2 text-[#8298aa]">Quality Testing Guarantee</h3>
               <p className="text-[#e1e7e5] text-sm leading-relaxed">
-                We&apos;re confident in our quality standards. If you independently test our products and find they don&apos;t meet the specifications stated on the COA, simply <span className="font-semibold text-[#8298aa]">send us your test results and we&apos;ll provide free replacements</span>. We work only with internationally recognised manufacturers and independently verify every batch, but we understand the importance of giving you complete peace of mind.
+                We&apos;re confident in our quality standards. If you independently test our products and find they don&apos;t meet the specifications stated on the COA, simply <span className="font-semibold text-[#8298aa]">send us your test results and we&apos;ll provide free replacements</span>. We work only with internationally recognised manufacturers and provide a Certificate of Analysis with every order for your own independent verification.
               </p>
             </div>
           </div>

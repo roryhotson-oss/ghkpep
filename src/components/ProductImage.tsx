@@ -6,11 +6,11 @@ interface ProductImageProps {
   className?: string;
 }
 
-export default function ProductImage({ src, alt, className = "w-full h-full object-contain" }: ProductImageProps) {
+export default function ProductImage({ src, alt, className = "h-full w-full object-cover" }: ProductImageProps) {
   const [hasError, setHasError] = useState(false);
 
   return (
-    <div className="product-photo-box relative w-full h-full">
+    <div className="product-photo-box relative h-full w-full overflow-hidden">
       {!hasError ? <Image
         src={src}
         alt={alt}

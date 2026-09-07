@@ -18,10 +18,10 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate file type
-    const allowedTypes = ['image/png', 'image/jpeg', 'image/webp', 'image/svg+xml'];
+    const allowedTypes = ['image/png', 'image/jpeg', 'image/webp'];
     if (!allowedTypes.includes(file.type)) {
       return NextResponse.json(
-        { error: 'Invalid file type. Allowed: PNG, JPEG, WebP, SVG' },
+        { error: 'Invalid file type. Allowed: PNG, JPEG, WebP' },
         { status: 400 }
       );
     }
@@ -38,7 +38,6 @@ export async function POST(request: NextRequest) {
       'image/png': 'png',
       'image/jpeg': 'jpg',
       'image/webp': 'webp',
-      'image/svg+xml': 'svg',
     };
     if (slug && !/^[a-z0-9]+(?:-[a-z0-9]+)*$/i.test(slug)) {
       return NextResponse.json({ error: 'Invalid image slug' }, { status: 400 });

@@ -27,6 +27,7 @@ yarn-error.log*
 .env*.local
 .env
 .env.local
+.env.supabase.example
 
 # Local data files (contains sensitive order/subscriber data) - never track these
 data/orders.json

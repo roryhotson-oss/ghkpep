@@ -1721,8 +1721,8 @@ export async function generateMetadata({ params }: BlogPostProps): Promise<Metad
     title: `${post.title} | GHK Peptides Blog`,
     description: post.excerpt,
       robots: {
-         index: false,
-         follow: false,
+         index: true,
+         follow: true,
       },
     keywords: [
       'research peptides',

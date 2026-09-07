@@ -109,7 +109,7 @@ export default function ProductActions({ product }: ProductActionsProps) {
             </div>
             <div className="text-right">
               <span className="font-bold text-lg">£{effectivePrice(product, 'box', selectedDosage).toFixed(2)}</span>
-              <p className="text-[#5B9BD5] text-xs">£{(product.price * 10 - effectivePrice(product, 'box', selectedDosage)).toFixed(2)} saved</p>
+              <p className="text-[#5B9BD5] text-xs">£{Math.max(0, effectivePrice(product, 'vial', selectedDosage) * 10 - effectivePrice(product, 'box', selectedDosage)).toFixed(2)} saved</p>
             </div>
           </label>
         </div>

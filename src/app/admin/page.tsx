@@ -98,7 +98,9 @@ export default function AdminDashboardPage() {
     );
   }
 
-  const growthRate = stats.totalOrders > 0 ? ((stats.recentOrders.length / Math.max(stats.totalOrders - stats.recentOrders.length, 1)) * 100).toFixed(1) : "0";
+  const currentMonthRevenue = stats.revenueByMonth[stats.revenueByMonth.length - 1]?.revenue || 0;
+  const prevMonthRevenue = stats.revenueByMonth[stats.revenueByMonth.length - 2]?.revenue || 0;
+  const growthRate = prevMonthRevenue > 0 ? (((currentMonthRevenue - prevMonthRevenue) / prevMonthRevenue) * 100).toFixed(1) : currentMonthRevenue > 0 ? "100.0" : "0";
 
   return (
     <div className="p-6 lg:p-8 max-w-7xl mx-auto">

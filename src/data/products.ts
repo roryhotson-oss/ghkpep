@@ -47,7 +47,7 @@ export const products: Product[] = [
     image: "/images/mots-c.jpg",
     marketTier: "premium",
     dosageOptions: [10, 40],
-    dosageBoxPrices: { 10: 95, 40: 170 }
+    dosageBoxPrices: { 10: 119, 40: 399 }
   },
   {
     slug: "nad-plus",
@@ -68,7 +68,7 @@ export const products: Product[] = [
     slug: "klow",
     name: "KLOW 80mg",
     price: 35,
-    boxPrice: 350,
+    boxPrice: 389,
     purity: "99.69%",
     category: "blend",
     categoryLabel: "Research Blend",
@@ -97,7 +97,7 @@ export const products: Product[] = [
     slug: "glutathione",
     name: "Glutathione 1500mg",
     price: 18.99,
-    boxPrice: 189,
+    boxPrice: 199,
     purity: "99.81%",
     category: "longevity",
     categoryLabel: "Antioxidant",
@@ -105,7 +105,7 @@ export const products: Product[] = [
     lot: "GHK-2414-F",
     image: "/images/glutathione.jpg",
     dosageOptions: [1200, 1500],
-    dosageBoxPrices: { 1200: 115, 1500: 150 }
+    dosageBoxPrices: { 1200: 125, 1500: 175 }
   },
   {
     slug: "igf-1-lr3",
@@ -120,7 +120,7 @@ export const products: Product[] = [
     image: "/images/igf-1-lr3.jpg",
     marketTier: "mid-market",
     dosageOptions: [0.1, 1],
-    dosageBoxPrices: { 0.1: 75, 1: 325 }
+    dosageBoxPrices: { 0.1: 75, 1: 399 }
   },
   {
     slug: "tesamorelin",
@@ -135,13 +135,13 @@ export const products: Product[] = [
     image: "/images/tesamorelin-10mg.jpg",
     marketTier: "mid-market",
     dosageOptions: [2, 5, 10, 20],
-    dosageBoxPrices: { 2: 85, 5: 145, 10: 270, 20: 310 }
+    dosageBoxPrices: { 2: 99, 5: 179, 10: 319, 20: 619 }
   },
   {
     slug: "glp2-tz",
     name: "GLP2-TZ 10mg",
     price: 10,
-    boxPrice: 95,
+    boxPrice: 119,
     purity: "99.62%",
     category: "metabolic",
     categoryLabel: "GLP-2 Research",
@@ -163,7 +163,7 @@ export const products: Product[] = [
     lot: "GHK-2410-J",
     image: "/images/cjc-1295-ipamorelin.jpeg",
     dosageOptions: [10, 20],
-    dosageBoxPrices: { 10: 145, 20: 275 }
+    dosageBoxPrices: { 10: 179, 20: 329 }
   },
   {
     slug: "refined-h2o",
@@ -198,7 +198,7 @@ export const products: Product[] = [
     slug: "melanotan-2",
     name: "Melanotan II 10mg",
     price: 11.5,
-    boxPrice: 115,
+    boxPrice: 125,
     purity: "≥99%",
     category: "metabolic",
     categoryLabel: "Melanocortin",
@@ -227,7 +227,7 @@ export const products: Product[] = [
     slug: "melanotan-1",
     name: "Melanotan I 10mg",
     price: 12.5,
-    boxPrice: 125,
+    boxPrice: 135,
     purity: "≥99%",
     category: "metabolic",
     categoryLabel: "Melanocortin",
@@ -256,7 +256,7 @@ export const products: Product[] = [
     slug: "kiss-peptin",
     name: "Kiss Peptin 10mg",
     price: 14.5,
-    boxPrice: 145,
+    boxPrice: 159,
     purity: "≥99%",
     category: "recovery",
     categoryLabel: "Peptide",
@@ -265,7 +265,7 @@ export const products: Product[] = [
     image: "/images/kiss-peptin-10mg.jpg",
     marketTier: "mid-market",
     dosageOptions: [5, 10],
-    dosageBoxPrices: { 5: 90, 10: 110 }
+    dosageBoxPrices: { 5: 99, 10: 149 }
   },
   {
     slug: "cagrilintide",
@@ -279,13 +279,13 @@ export const products: Product[] = [
     lot: "GHK-2427-R",
     image: "/images/cagrilintide-5mg.jpg",
     dosageOptions: [5, 10, 20],
-    dosageBoxPrices: { 5: 130, 10: 225, 20: 380 }
+    dosageBoxPrices: { 5: 149, 10: 279, 20: 469 }
   },
   {
     slug: "kpv",
     name: "KPV 10mg",
     price: 6,
-    boxPrice: 140,
+    boxPrice: 149,
     purity: "≥99%",
     category: "recovery",
     categoryLabel: "Sequence Fragment",
@@ -293,13 +293,13 @@ export const products: Product[] = [
     lot: "GHK-2428-S",
     image: "/images/kpv.jpg",
     dosageOptions: [5, 10],
-    dosageBoxPrices: { 5: 75, 10: 95 }
+    dosageBoxPrices: { 5: 75, 10: 109 }
   },
   {
     slug: "ipamorelin",
     name: "Ipamorelin 10mg",
     price: 10,
-    boxPrice: 95,
+    boxPrice: 119,
     purity: "≥99%",
     category: "recovery",
     categoryLabel: "Peptide Research",
@@ -307,13 +307,13 @@ export const products: Product[] = [
     lot: "GHK-2429-T",
     image: "/images/ipamorelin.jpg",
     dosageOptions: [2, 5, 10],
-    dosageBoxPrices: { 2: 55, 5: 70, 10: 95 }
+    dosageBoxPrices: { 2: 55, 5: 79, 10: 119 }
   },
   {
     slug: "glow",
     name: "GLOW 70mg",
     price: 25,
-    boxPrice: 295,
+    boxPrice: 369,
     purity: "≥99%",
     category: "blend",
     categoryLabel: "Research Blend",
@@ -327,7 +327,7 @@ export const products: Product[] = [
     slug: "adamax",
     name: "Adamax 5mg",
     price: 25,
-    boxPrice: 235,
+    boxPrice: 299,
     purity: "≥99%",
     category: "blend",
     categoryLabel: "Research Blend",
@@ -341,7 +341,7 @@ export const products: Product[] = [
     slug: "ahk-cu",
     name: "AHK-Cu 100mg",
     price: 15,
-    boxPrice: 130,
+    boxPrice: 149,
     purity: "≥99%",
     category: "recovery",
     categoryLabel: "Copper Complex",
@@ -349,13 +349,13 @@ export const products: Product[] = [
     lot: "GHK-2432-W",
     image: "/images/ahk-cu.jpg",
     dosageOptions: [100],
-    dosageBoxPrices: { 100: 130 }
+    dosageBoxPrices: { 100: 159 }
   },
   {
     slug: "bpc-157",
     name: "BPC-157 10mg",
     price: 22.5,
-    boxPrice: 225,
+    boxPrice: 249,
     purity: "99.2%",
     category: "recovery",
     categoryLabel: "Sequence Peptide",
@@ -390,7 +390,7 @@ export const products: Product[] = [
     lot: "GHK-2435-Z",
     image: "/images/tb-500-10mg.jpg",
     dosageOptions: [5, 10, 20],
-    dosageBoxPrices: { 5: 110, 10: 205, 20: 425 }
+    dosageBoxPrices: { 5: 149, 10: 249, 20: 529 }
   },
   {
     slug: "semax",

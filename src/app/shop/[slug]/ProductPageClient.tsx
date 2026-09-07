@@ -172,17 +172,25 @@ export default function ProductPageClient({ product, related = [] }: Props) {
               if (isOutOfStock(product)) return;
               const cart = JSON.parse(localStorage.getItem('cart') || '[]');
               const cartName = `${product.name} ${selectedDosage}${dosageUnit}`;
-              cart.push({
-                slug: product.slug,
-                name: cartName,
-                price: effectivePrice(product, 'box', selectedDosage),
-                boxPrice: effectivePrice(product, 'box', selectedDosage),
-                image: product.image,
-                lot: product.lot,
-                qty: quantity,
-                type: 'box',
-                strength: selectedDosage,
-              });
+              const existingIndex = cart.findIndex(
+                (item: { slug: string; type: string; strength: number }) =>
+                  item.slug === product.slug && item.type === 'box' && item.strength === selectedDosage
+              );
+              if (existingIndex >= 0) {
+                cart[existingIndex].qty += quantity;
+              } else {
+                cart.push({
+                  slug: product.slug,
+                  name: cartName,
+                  price: effectivePrice(product, 'box', selectedDosage),
+                  boxPrice: effectivePrice(product, 'box', selectedDosage),
+                  image: product.image,
+                  lot: product.lot,
+                  qty: quantity,
+                  type: 'box',
+                  strength: selectedDosage,
+                });
+              }
               localStorage.setItem('cart', JSON.stringify(cart));
               window.dispatchEvent(new Event('cart-updated'));
               alert('Added to cart!');
@@ -216,13 +224,13 @@ export default function ProductPageClient({ product, related = [] }: Props) {
               const relPrice = effectivePrice(rel, 'box', relDosage);
               const relSoldOut = isOutOfStock(rel);
               return (
-                <div key={rel.slug} className="snap-start flex w-[190px] shrink-0 flex-col rounded-2xl bg-[#fbfaf7] p-3 text-[#34414a] shadow-sm">
+                <div key={rel.slug} className="snap-start flex w-[220px] shrink-0 flex-col rounded-2xl bg-[#fbfaf7] p-3 text-[#34414a] shadow-sm">
                   <Link href={`/shop/${rel.slug}`} className="block">
-                    <div className="relative mb-2 aspect-square overflow-hidden rounded-xl">
+                    <div className="relative mb-2 aspect-[4/3] overflow-hidden rounded-xl">
                       <ProductImage
                         src={rel.image}
                         alt={rel.name}
-                        className="object-contain"
+                        className="object-contain !scale-100"
                       />
                     </div>
                     <p className="line-clamp-2 text-sm font-semibold leading-snug transition hover:text-[#5b8ca0]">{rel.name}</p>

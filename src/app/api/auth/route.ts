@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import crypto from 'crypto';
 import { validateEmail } from '@/lib/validation';
 import { getEmailClient, getFromAddress, sendEmail } from '@/lib/email';
 
@@ -29,7 +30,7 @@ export async function POST(request: NextRequest) {
 
     if (action === 'send-code') {
       // Generate 6-digit code
-      const code = Math.floor(100000 + Math.random() * 900000).toString();
+      const code = crypto.randomInt(100000, 1000000).toString();
       const expires = Date.now() + 10 * 60 * 1000; // 10 minutes
 
       // Store code
