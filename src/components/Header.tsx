@@ -79,6 +79,7 @@ export default function Header() {
             <Link href="/shop" className={headerLinkClass}>Shop</Link>
             <Link href="/about" className={headerLinkClass}>About</Link>
             <Link href="/testing" className={headerLinkClass}>Research</Link>
+            <Link href="/news" className={headerLinkClass}>News</Link>
             <Link href="/quality" className={headerLinkClass}>Certifications</Link>
             <Link href="/contact" className={headerLinkClass}>Support</Link>
             <Link href="/cart" className={`${headerLinkClass} relative pr-4`}>
@@ -157,6 +158,7 @@ export default function Header() {
             <Link href="/shop" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Shop</Link>
             <Link href="/about" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>About</Link>
             <Link href="/testing" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Research</Link>
+            <Link href="/news" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>News</Link>
             <Link href="/quality" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Certifications</Link>
             <Link href="/contact" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Support</Link>
             <Link href="/cart" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Cart</Link>

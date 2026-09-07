@@ -28,6 +28,7 @@ const footerMenus: FooterMenu[] = [
     title: 'Information',
     links: [
       { label: 'Testing', href: '/testing' },
+      { label: 'Peptide News', href: '/news' },
       { label: 'Sourcing & Review', href: '/quality' },
       { label: 'Batch References', href: '/coa' },
       { label: 'Search Janoshik Reports', href: '/coa#janoshik' },
