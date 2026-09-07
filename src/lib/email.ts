@@ -26,6 +26,10 @@ export function getEmailClient(): Transporter | null {
     port,
     secure: port === 465,
     auth: { user, pass },
+    // Fail fast instead of hanging a serverless function on a stalled connection.
+    connectionTimeout: 10_000,
+    greetingTimeout: 10_000,
+    socketTimeout: 15_000,
   });
 }
 

@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { after } from 'next/server';
 import { validateEmail, validateName, validateMessage, validateSubject } from '@/lib/validation';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { getEmailClient, getFromAddress, sendEmail } from '@/lib/email';
+
+export const maxDuration = 60;
 
 export async function POST(request: NextRequest) {
   try {
@@ -97,57 +100,71 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Send email to support
-    await sendEmail(resend, {
-      from: getFromAddress('GHK Contact Form'),
-      to: [contactEmail],
-      subject: `Contact Form: ${subjectValidation.sanitized}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #8298aa;">New Contact Form Submission</h2>
-          <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <p><strong>Name:</strong> ${nameValidation.sanitized}</p>
-            <p><strong>Email:</strong> ${emailValidation.sanitized}</p>
-            ${institution ? `<p><strong>Institution:</strong> ${institution}</p>` : ''}
-            <p><strong>Subject:</strong> ${subjectValidation.sanitized}</p>
-            ${product ? `<p><strong>Product:</strong> ${product}</p>` : ''}
-            ${quantity ? `<p><strong>Quantity:</strong> ${quantity}</p>` : ''}
-          </div>
-          <div style="background: #fff; padding: 20px; border-left: 4px solid #8298aa;">
-            <h3 style="margin-top: 0;">Message:</h3>
-            <p style="white-space: pre-wrap;">${messageValidation.sanitized}</p>
-          </div>
-          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; color: #7b898e; font-size: 12px;">
-            <p>This email was sent from the GHK contact form.</p>
-          </div>
-        </div>
-      `,
-      replyTo: emailValidation.sanitized,
-    });
+    // The DB row above is the durable copy; deliver both emails after the
+    // response so a slow SMTP conversation never blocks the visitor.
+    after(async () => {
+      const started = Date.now();
+      try {
+        await sendEmail(resend, {
+          from: getFromAddress('GHK Contact Form'),
+          to: [contactEmail],
+          subject: `Contact Form: ${subjectValidation.sanitized}`,
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+              <h2 style="color: #8298aa;">New Contact Form Submission</h2>
+              <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <p><strong>Name:</strong> ${nameValidation.sanitized}</p>
+                <p><strong>Email:</strong> ${emailValidation.sanitized}</p>
+                ${institution ? `<p><strong>Institution:</strong> ${institution}</p>` : ''}
+                <p><strong>Subject:</strong> ${subjectValidation.sanitized}</p>
+                ${product ? `<p><strong>Product:</strong> ${product}</p>` : ''}
+                ${quantity ? `<p><strong>Quantity:</strong> ${quantity}</p>` : ''}
+              </div>
+              <div style="background: #fff; padding: 20px; border-left: 4px solid #8298aa;">
+                <h3 style="margin-top: 0;">Message:</h3>
+                <p style="white-space: pre-wrap;">${messageValidation.sanitized}</p>
+              </div>
+              <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; color: #7b898e; font-size: 12px;">
+                <p>This email was sent from the GHK contact form.</p>
+              </div>
+            </div>
+          `,
+          replyTo: emailValidation.sanitized,
+        });
+        console.log(`Contact support email sent in ${Date.now() - started}ms`);
+      } catch (error) {
+        console.error('Contact support email failed:', error);
+      }
 
-    // Send confirmation email to the user
-    await sendEmail(resend, {
-      from: getFromAddress(),
-      to: [emailValidation.sanitized],
-      subject: 'We received your message - GHK Peptides',
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="color: #8298aa; font-size: 32px; margin: 0;">GHK Peptides</h1>
-          </div>
-          <h2 style="color: #333;">Thank you for contacting us!</h2>
-          <p style="color: #7b898e; line-height: 1.6;">
-            We've received your message and our team will get back to you within 24 hours.
-          </p>
-          <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <p style="margin: 0;"><strong>Your message:</strong></p>
-            <p style="white-space: pre-wrap; margin: 10px 0 0 0; color: #555;">${messageValidation.sanitized}</p>
-          </div>
-          <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; color: #999; font-size: 12px; text-align: center;">
-            <p>This is an automated confirmation email.</p>
-          </div>
-        </div>
-      `,
+      const confirmStarted = Date.now();
+      try {
+        await sendEmail(resend, {
+          from: getFromAddress(),
+          to: [emailValidation.sanitized],
+          subject: 'We received your message - GHK Peptides',
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+              <div style="text-align: center; margin-bottom: 30px;">
+                <h1 style="color: #8298aa; font-size: 32px; margin: 0;">GHK Peptides</h1>
+              </div>
+              <h2 style="color: #333;">Thank you for contacting us!</h2>
+              <p style="color: #7b898e; line-height: 1.6;">
+                We've received your message and our team will get back to you within 24 hours.
+              </p>
+              <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <p style="margin: 0;"><strong>Your message:</strong></p>
+                <p style="white-space: pre-wrap; margin: 10px 0 0 0; color: #555;">${messageValidation.sanitized}</p>
+              </div>
+              <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; color: #999; font-size: 12px; text-align: center;">
+                <p>This is an automated confirmation email.</p>
+              </div>
+            </div>
+          `,
+        });
+        console.log(`Contact confirmation email sent in ${Date.now() - confirmStarted}ms`);
+      } catch (error) {
+        console.error('Contact confirmation email failed:', error);
+      }
     });
 
     return NextResponse.json({ success: true });
