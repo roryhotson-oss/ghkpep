@@ -38,22 +38,22 @@ jobs:
             SECRETS_FOUND=1
           fi
           
-          if grep -rq "change-this-to-a-random-secret" src/ $ENV_FILES 2>/dev/null; then
+          if [ -n "$ENV_FILES" ] && grep -rq "change-this-to-a-random-secret" $ENV_FILES 2>/dev/null; then
             echo "❌ Found default session secret"
             SECRETS_FOUND=1
           fi
           
-          if grep -rq "re_your_api_key_here" src/ $ENV_FILES 2>/dev/null; then
+          if [ -n "$ENV_FILES" ] && grep -rq "re_your_api_key_here" $ENV_FILES 2>/dev/null; then
             echo "❌ Found placeholder Resend API key"
             SECRETS_FOUND=1
           fi
           
-          if grep -rq "your-cloudflare-turnstile" src/ $ENV_FILES 2>/dev/null; then
+          if [ -n "$ENV_FILES" ] && grep -rq "your-cloudflare-turnstile" $ENV_FILES 2>/dev/null; then
             echo "❌ Found placeholder Turnstile keys"
             SECRETS_FOUND=1
           fi
           
-          if grep -rq "your-project.supabase.co" src/ $ENV_FILES 2>/dev/null; then
+          if [ -n "$ENV_FILES" ] && grep -rq "your-project.supabase.co" $ENV_FILES 2>/dev/null; then
             echo "❌ Found placeholder Supabase URLs"
             SECRETS_FOUND=1
           fi
