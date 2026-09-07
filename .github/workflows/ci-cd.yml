@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 env:
-  NODE_VERSION: '20'
+  NODE_VERSION: '22'
   NEXT_PUBLIC_SITE_URL: 'https://ghkpep.com'
 
 jobs:
@@ -32,8 +32,9 @@ jobs:
 
       - name: Check for security issues
         run: |
-          # Check for secrets in code
-          if grep -rq "ghkadmin2024\|change-this-to-a-random-secret\|re_your_api_key_here" src/ .env* 2>/dev/null; then
+          # Example environment files intentionally contain placeholders.
+          ENV_FILES="$(git ls-files -- .env .env.\* ':!.env.example')"
+          if grep -rq "ghkadmin2024\|change-this-to-a-random-secret\|re_your_api_key_here" src/ $ENV_FILES 2>/dev/null; then
             echo "❌ Security issue: Default credentials found"
             exit 1
           else

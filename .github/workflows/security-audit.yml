@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies
@@ -31,27 +31,29 @@ jobs:
           
           # Check for default credentials
           SECRETS_FOUND=0
-          if grep -rq "ghkadmin2024" src/ .env* 2>/dev/null; then
+          # Example environment files intentionally contain placeholders.
+          ENV_FILES="$(git ls-files -- .env .env.\* ':!.env.example')"
+          if grep -rq "ghkadmin2024" src/ $ENV_FILES 2>/dev/null; then
             echo "❌ Found default admin password"
             SECRETS_FOUND=1
           fi
           
-          if grep -rq "change-this-to-a-random-secret" src/ .env* 2>/dev/null; then
+          if grep -rq "change-this-to-a-random-secret" src/ $ENV_FILES 2>/dev/null; then
             echo "❌ Found default session secret"
             SECRETS_FOUND=1
           fi
           
-          if grep -rq "re_your_api_key_here" src/ .env* 2>/dev/null; then
+          if grep -rq "re_your_api_key_here" src/ $ENV_FILES 2>/dev/null; then
             echo "❌ Found placeholder Resend API key"
             SECRETS_FOUND=1
           fi
           
-          if grep -rq "your-cloudflare-turnstile" src/ .env* 2>/dev/null; then
+          if grep -rq "your-cloudflare-turnstile" src/ $ENV_FILES 2>/dev/null; then
             echo "❌ Found placeholder Turnstile keys"
             SECRETS_FOUND=1
           fi
           
-          if grep -rq "your-project.supabase.co" src/ .env* 2>/dev/null; then
+          if grep -rq "your-project.supabase.co" src/ $ENV_FILES 2>/dev/null; then
             echo "❌ Found placeholder Supabase URLs"
             SECRETS_FOUND=1
           fi
