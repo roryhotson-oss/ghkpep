@@ -1,10 +1,17 @@
 import type { Metadata, Viewport } from 'next';
+import { IBM_Plex_Sans } from 'next/font/google';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import AnalyticsPrivacy from '@/components/AnalyticsPrivacy';
 import './globals.css';
 import SiteChrome from '@/components/SiteChrome';
 import FooterConditional from '@/components/FooterConditional';
 import StructuredData from '@/components/StructuredData';
+
+const ibmPlexSans = IBM_Plex_Sans({
+  subsets: ['latin'],
+  variable: '--font-ibm-plex-sans',
+  display: 'swap',
+});
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -95,7 +102,7 @@ export default function RootLayout({
         <meta name="geo.position" content="54.702354;-3.276575" />
         <meta name="ICBM" content="54.702354, -3.276575" />
       </head>
-      <body>
+      <body className={ibmPlexSans.variable}>
         <StructuredData />
         <SiteChrome />
         <main><ErrorBoundary>{children}</ErrorBoundary></main>

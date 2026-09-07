@@ -4,9 +4,10 @@ interface ProductImageProps {
   src: string;
   alt: string;
   className?: string;
+  sizes?: string;
 }
 
-export default function ProductImage({ src, alt, className = "w-full h-full object-contain" }: ProductImageProps) {
+export default function ProductImage({ src, alt, className = "w-full h-full object-cover", sizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" }: ProductImageProps) {
   const [hasError, setHasError] = useState(false);
 
   return (
@@ -16,7 +17,7 @@ export default function ProductImage({ src, alt, className = "w-full h-full obje
         alt={alt}
         fill
         className={className}
-        sizes="100vw"
+        sizes={sizes}
         onError={() => setHasError(true)}
       /> : <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
         <div className="text-[#8298aa] font-bold text-xl sm:text-2xl mb-1">GHK</div>

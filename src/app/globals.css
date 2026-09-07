@@ -2,14 +2,14 @@
 
 @theme inline {
   --color-background: #f6f7f5;
-  --color-foreground: #1F2933;
+  --color-foreground: #17212b;
   --color-primary: #8298aa;
   --color-primary-dark: #657c8f;
   --color-card: #0c1622;
   --color-card-hover: #111d2c;
   --color-border: #263344;
   --color-muted: #a7b0b2;
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-ibm-plex-sans), "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
 }
 
 :root {
@@ -18,7 +18,7 @@
   --public-border: #d8d4c9;
   --public-border-accent: #c8dfe7;
   --public-accent: #5b8ca0;
-  --public-ink: #34414a;
+  --public-ink: #1f2d38;
 }
 
 .admin-shell {
@@ -36,7 +36,18 @@ body {
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.6;
+  font-weight: 450;
   -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #17212b;
+  font-weight: 650;
 }
 
 button {

@@ -80,7 +80,7 @@ export default function ShopPage() {
                     <ProductImage
                       src={entry.image}
                       alt={entry.name}
-                      className="object-contain !scale-100"
+                      className="object-cover !scale-100"
                     />
                   </div>
                   <p className="text-[#6d8792] text-[11px] font-semibold uppercase tracking-[0.12em]">{entry.categoryLabel}</p>
@@ -163,7 +163,7 @@ export default function ShopPage() {
                   <ProductImage
                     src={product.image}
                     alt={product.name}
-                    className="object-contain !scale-100"
+                    className="object-cover !scale-100"
                   />
                 </div>
                 <p className="text-[#6d8792] text-[11px] font-semibold uppercase tracking-[0.12em]">{product.categoryLabel}</p>

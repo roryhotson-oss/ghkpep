@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
-import { getCommerceProducts, getCommerceProduct } from '@/lib/commerce-store';
+import { getProducts as getLocalProducts } from '@/lib/admin-store';
+import { getCommerceProduct } from '@/lib/commerce-store';
+
+export const revalidate = 300;
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -13,6 +16,6 @@ export async function GET(request: Request) {
     return NextResponse.json({ product });
   }
 
-  const products = await getCommerceProducts();
+  const products = getLocalProducts();
   return NextResponse.json({ products });
 }

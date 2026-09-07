@@ -77,7 +77,7 @@ export default function ProductPageClient({ product, related = [] }: Props) {
             <ProductImage
               src={product.image}
               alt={product.name}
-              className="object-contain scale-125"
+              className="object-cover scale-125"
             />
           </div>
         </div>
@@ -222,7 +222,7 @@ export default function ProductPageClient({ product, related = [] }: Props) {
                       <ProductImage
                         src={rel.image}
                         alt={rel.name}
-                        className="object-contain"
+                        className="object-cover"
                       />
                     </div>
                     <p className="line-clamp-2 text-sm font-semibold leading-snug transition hover:text-[#5b8ca0]">{rel.name}</p>

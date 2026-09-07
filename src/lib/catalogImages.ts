@@ -14,11 +14,10 @@ const singleVialImageOverrides: Record<string, string> = {
   'wolverine': '/images/wolverine-10mg.png',
 };
 
-function standardizedImagePath(image: string): string {
-  const match = image.match(/^\/images\/(.+)\.(avif|jpeg|jpg|png|webp)$/i);
-  if (!match) return image;
+function standardizedImagePath(slug: string, image: string): string {
+  if (!image.startsWith('/images/')) return image;
 
-  return `/images/standardized-v2/${match[1]}--${match[2].toLowerCase()}.jpg`;
+  return `/images/standardized-v3/${slug}.jpg`;
 }
 
 export const importedProductImageOverrides: Record<string, string> = {
@@ -34,8 +33,8 @@ export const importedProductImageOverrides: Record<string, string> = {
 };
 
 export function resolveCatalogImage(slug: string, image: string | null | undefined): string | null {
-  if (singleVialImageOverrides[slug]) return singleVialImageOverrides[slug];
-  if (importedProductImageOverrides[slug]) return standardizedImagePath(importedProductImageOverrides[slug]);
+  if (singleVialImageOverrides[slug] && !image?.startsWith('/images/')) return singleVialImageOverrides[slug];
+  if (importedProductImageOverrides[slug] && !image?.startsWith('/images/')) return standardizedImagePath(slug, importedProductImageOverrides[slug]);
   if (slug.startsWith('imported-') && image === genericImage) return null;
-  return image ? standardizedImagePath(image) : null;
+  return image ? standardizedImagePath(slug, image) : null;
 }
