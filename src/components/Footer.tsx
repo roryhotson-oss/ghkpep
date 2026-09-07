@@ -73,19 +73,19 @@ const finnrickListings: { label: string; href: string }[] = [
 
 export default function Footer() {
   return (
-    <footer className="text-[#e6edf3] bg-[#34414a] border-t border-[#c8dfe7] mt-20">
+    <footer className="text-[#17212b] bg-[#c7e8f5] border-2 border-[#111827] mt-20">
       {/* CTA Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="bg-[#3d515a] rounded-2xl p-8 sm:p-12 text-center shadow-[0_10px_24px_rgba(20,28,40,0.14)]">
+        <div className="bg-[#e3f5fb] border-2 border-[#111827] rounded-2xl p-8 sm:p-12 text-center shadow-[0_10px_24px_rgba(20,28,40,0.14)]">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">
             All the research compounds you need, with the peace of mind and research community at your fingertips.
           </h2>
-          <p className="max-w-2xl mx-auto text-[#c2ced5] leading-relaxed">
+          <p className="max-w-2xl mx-auto text-[#34414a] leading-relaxed">
             Looking for a specific vial? Let us know and we will check whether it can be sourced for your lawful laboratory research.
           </p>
           <Link
             href="/shop"
-            className="inline-block mt-6 px-8 py-3 bg-[#dceff7] border border-[#c8dfe7] text-[#34414a] font-semibold rounded-xl hover:bg-[#eef8fb] transition"
+            className="inline-block mt-6 px-8 py-3 bg-[#b6ddeb] border-2 border-[#111827] text-[#17212b] font-semibold rounded-xl hover:bg-[#d7f0f8] transition"
           >
             Shop Now
           </Link>
@@ -93,19 +93,19 @@ export default function Footer() {
       </div>
 
       {/* Links */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-[#5a6b72]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t-2 border-[#111827]">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 text-sm items-start">
           {footerMenus.map((menu) => (
             <details key={menu.title} className="group w-full">
-              <summary className="flex cursor-pointer list-none [&::-webkit-details-marker]:hidden items-center justify-between gap-3 rounded-lg border border-[#6d8792] bg-[#3d515a] px-4 py-2.5 font-semibold text-[#f4f8f9] shadow-sm transition hover:bg-[#46606a]">
+              <summary className="flex cursor-pointer list-none [&::-webkit-details-marker]:hidden items-center justify-between gap-3 rounded-lg border-2 border-[#111827] bg-[#b6ddeb] px-4 py-2.5 font-semibold text-[#17212b] shadow-sm transition hover:bg-[#d7f0f8]">
                 {menu.title}
                 <span className="text-[#8298aa] text-lg leading-none transition-transform group-open:rotate-45">+</span>
               </summary>
-              <div className="mt-2 rounded-lg border border-[#6d8792] bg-[#3d515a] p-4">
+              <div className="mt-2 rounded-lg border-2 border-[#111827] bg-[#d7f0f8] p-4">
                 {menu.blurb ? (
-                  <p className="text-[#a7b0b2] text-xs leading-relaxed">{menu.blurb}</p>
+                  <p className="text-[#34414a] text-xs leading-relaxed">{menu.blurb}</p>
                 ) : (
-                  <ul className="space-y-2 text-[#a7b0b2]">
+                    <ul className="space-y-2 text-[#34414a]">
                     {menu.links?.map((link) => (
                       <li key={link.href}>
                         {link.href.startsWith('mailto:') ? (

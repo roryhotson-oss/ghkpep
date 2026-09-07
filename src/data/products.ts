@@ -248,7 +248,7 @@ export const products: Product[] = [
     categoryLabel: "Copper Composite",
     description: "Copper-bound composite, lyophilized powder. Supplied for in vitro laboratory research.",
     lot: "GHK-2425-P",
-    image: "/images/wolverine.jpeg",
+    image: "/images/wolverine-10mg.png",
     dosageOptions: [10, 20],
     dosageBoxPrices: { 10: 150, 20: 265 }
   },

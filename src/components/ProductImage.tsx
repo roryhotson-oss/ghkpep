@@ -6,7 +6,7 @@ interface ProductImageProps {
   className?: string;
 }
 
-export default function ProductImage({ src, alt, className = "w-full h-full object-cover" }: ProductImageProps) {
+export default function ProductImage({ src, alt, className = "w-full h-full object-contain" }: ProductImageProps) {
   const [hasError, setHasError] = useState(false);
 
   return (

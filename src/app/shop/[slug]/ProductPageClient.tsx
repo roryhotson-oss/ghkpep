@@ -72,12 +72,14 @@ export default function ProductPageClient({ product, related = [] }: Props) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:items-start">
         {/* Product Image + related carousel */}
         <div className="flex flex-col gap-8">
-        <div className="relative mx-auto aspect-[4/3] w-full max-w-2xl overflow-hidden rounded-[1.5rem]">
-          <ProductImage
-            src={product.image}
-            alt={product.name}
-            className="object-contain"
-          />
+        <div className="hero-photo-board relative mx-auto aspect-[4/3] w-full max-w-2xl overflow-hidden rounded-[1.5rem]">
+          <div className="hero-photo-window absolute inset-3 overflow-hidden rounded-[1rem]">
+            <ProductImage
+              src={product.image}
+              alt={product.name}
+              className="object-contain scale-125"
+            />
+          </div>
         </div>
 
         </div>
