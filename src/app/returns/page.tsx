@@ -13,25 +13,25 @@ export default function ReturnsPage() {
 
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid sm:grid-cols-2 gap-4 mb-12">
-          <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
+          <div className="text-[#34414a] bg-[#dce5ea] rounded-2xl p-6 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
             <span className="text-[10px] px-2 py-1 bg-[#0c1622] border border-[#FBFAF7] text-[#e6edf3] rounded-lg">Free replacement</span>
             <h3 className="font-bold mt-3 mb-2">Damaged in transit</h3>
             <p className="text-[#a7b0b2] text-sm leading-relaxed">If a vial arrives broken, leaking, or with a compromised seal, email a photo of the package and the affected vials. We&apos;ll ship a replacement at no charge.</p>
             <p className="text-[#7b898e] text-xs mt-3">Window: 7 days from delivery</p>
           </div>
-          <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
+          <div className="text-[#34414a] bg-[#dce5ea] rounded-2xl p-6 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
             <span className="text-[10px] px-2 py-1 bg-[#0c1622] border border-[#FBFAF7] text-[#e6edf3] rounded-lg">Full refund or replace</span>
             <h3 className="font-bold mt-3 mb-2">COA mismatch</h3>
             <p className="text-[#a7b0b2] text-sm leading-relaxed">If independent verification shows a batch fails to match its published certificate of analysis, we will refund or replace the order in full and pull the lot from inventory immediately.</p>
             <p className="text-[#7b898e] text-xs mt-3">Window: 30 days from delivery</p>
           </div>
-          <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
+          <div className="text-[#34414a] bg-[#dce5ea] rounded-2xl p-6 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
             <span className="text-[10px] px-2 py-1 bg-[#0c1622] border border-[#FBFAF7] text-[#e6edf3] rounded-lg">Replacement + return label</span>
             <h3 className="font-bold mt-3 mb-2">Wrong item shipped</h3>
             <p className="text-[#a7b0b2] text-sm leading-relaxed">If you receive the wrong SKU, strength, or quantity, contact us and we&apos;ll send the correct item with a pre-paid return label for the original.</p>
             <p className="text-[#7b898e] text-xs mt-3">Window: 14 days from delivery</p>
           </div>
-          <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
+          <div className="text-[#34414a] bg-[#dce5ea] rounded-2xl p-6 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
             <span className="text-[10px] px-2 py-1 bg-[#0c1622] border border-[#FBFAF7] text-[#e6edf3] rounded-lg">Full refund</span>
             <h3 className="font-bold mt-3 mb-2">Pre-shipment cancellation</h3>
             <p className="text-[#a7b0b2] text-sm leading-relaxed">Orders can be cancelled for a full refund only before a shipping label has been assigned. As soon as a label is created, the order is no longer eligible for pre-shipment cancellation.</p>
@@ -62,7 +62,7 @@ export default function ReturnsPage() {
           ))}
         </div>
 
-        <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
+        <div className="text-[#34414a] bg-[#dce5ea] rounded-2xl p-6 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
           <h3 className="font-bold mb-3">Need help with a return?</h3>
           <p className="text-[#a7b0b2] text-sm mb-4">Contact us via WhatsApp, Telegram, or Email from the checkout page to file a claim.</p>
           <Link href="/cart" className="inline-block px-6 py-3 bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-semibold rounded-xl hover:bg-[#16283c] transition text-sm">

@@ -87,7 +87,7 @@ export default function ContactPage() {
         <div className="grid md:grid-cols-3 items-start gap-8">
           {/* Contact Info */}
           <div className="space-y-6">
-            <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
+            <div className="text-[#34414a] bg-[#dce5ea] rounded-2xl p-6 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
               <h3 className="font-bold mb-4">Get in touch</h3>
               <div className="space-y-4 text-sm">
                 <div>
@@ -117,7 +117,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
+            <div className="text-[#34414a] bg-[#dce5ea] rounded-2xl p-6 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
               <h3 className="font-bold mb-3">Payment Methods</h3>
               <div className="space-y-2 text-sm text-[#a7b0b2]">
                 <p>✓ Alipay</p>
@@ -126,7 +126,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
+            <div className="text-[#34414a] bg-[#dce5ea] rounded-2xl p-6 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
               <h3 className="font-bold mb-3">Shipping</h3>
               <p className="text-sm text-[#a7b0b2]">All orders shipped via <span className="text-[#8298aa] font-medium">Trusted Labs</span> — tracked, discreet, and insured.</p>
             </div>
@@ -135,7 +135,7 @@ export default function ContactPage() {
           {/* Contact Form */}
           <div className="md:col-span-2 min-w-0">
             {status === 'success' ? (
-              <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-8 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)] text-center">
+              <div className="text-[#34414a] bg-[#dce5ea] rounded-2xl p-8 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)] text-center">
                 <div className="text-[#8298aa] text-6xl mb-4">✓</div>
                 <h2 className="text-2xl font-bold mb-2">Message Sent!</h2>
                 <p className="text-[#a7b0b2] mb-6">Thank you for contacting us. We&apos;ll get back to you within 24 hours.</p>
@@ -147,7 +147,7 @@ export default function ContactPage() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 sm:p-8 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)] space-y-5">
+              <form onSubmit={handleSubmit} className="text-[#34414a] bg-[#dce5ea] rounded-2xl p-6 sm:p-8 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)] space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-sm text-[#53636b] mb-1">Name</label>

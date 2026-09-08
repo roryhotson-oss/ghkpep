@@ -40,7 +40,7 @@ export default function AboutPage() {
             { title: "Long-term partnerships", desc: "We'd rather earn one lab for ten years than chase one-time buyers. Pricing, allocation, and support are built around that." },
             { title: "Quietly premium", desc: "Discreet packaging, fast support, and an honest catalogue. Nothing flashy, nothing hidden." },
             ].map((item) => (
-              <div key={item.title} className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
+              <div key={item.title} className="text-[#34414a] bg-[#dce5ea] rounded-2xl p-6 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
                 <h3 className="font-bold mb-2 text-[#0c1622]">{item.title}</h3>
                 <p className="text-[#0c1622] text-sm leading-relaxed">{item.desc}</p>
               </div>

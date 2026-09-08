@@ -40,7 +40,7 @@ export default async function HomeCatalog() {
         </div>
       </section>
 
-      <section className="border-t border-[#d8d4c9] pt-10 sm:pt-14">
+      <section className="border-t border-[#b8c7d1] pt-10 sm:pt-14">
         <div className="mb-6 flex items-end justify-between gap-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#6d8792]">Explore the range</p>
@@ -51,7 +51,7 @@ export default async function HomeCatalog() {
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-5">
           {categoryHighlights.map((category) => (
             <Link key={category.title} href="/shop" className="group">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[#d8d4c9] bg-[#eef8fb]">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[#b8c7d1] bg-[#eef8fb]">
                 <Image
                   src={category.image}
                   alt={category.title}
@@ -66,7 +66,7 @@ export default async function HomeCatalog() {
         </div>
       </section>
 
-      <section className="mt-16 border-t border-[#d8d4c9] pt-10 sm:mt-20 sm:pt-14">
+      <section className="mt-16 border-t border-[#b8c7d1] pt-10 sm:mt-20 sm:pt-14">
         <div className="mb-6 flex items-end justify-between gap-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#6d8792]">Selected materials</p>
@@ -77,7 +77,7 @@ export default async function HomeCatalog() {
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-5">
           {popularMaterials.map((material) => (
             <Link key={material.slug} href={`/shop/${material.slug}`} className="group">
-              <div className="relative aspect-square overflow-hidden rounded-2xl border border-[#d8d4c9] bg-[#eef8fb]">
+              <div className="relative aspect-square overflow-hidden rounded-2xl border border-[#b8c7d1] bg-[#eef8fb]">
                 <Image
                   src={material.image}
                   alt={material.name}

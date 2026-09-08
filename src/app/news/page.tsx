@@ -170,7 +170,7 @@ export default async function NewsPage() {
           {editorPicks.map((pick) => (
             <article
               key={pick.link}
-              className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)] flex flex-col"
+              className="text-[#34414a] bg-[#dce5ea] rounded-2xl p-6 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)] flex flex-col"
             >
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-[10px] px-2 py-1 bg-[#111d2c] text-[#a7b0b2] rounded font-mono">
@@ -218,7 +218,7 @@ export default async function NewsPage() {
             {items.map((item, i) => (
               <article
                 key={`${item.link}-${i}`}
-                className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)] flex flex-col"
+                className="text-[#34414a] bg-[#dce5ea] rounded-2xl p-6 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)] flex flex-col"
               >
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-[10px] px-2 py-1 bg-[#111d2c] text-[#a7b0b2] rounded font-mono">

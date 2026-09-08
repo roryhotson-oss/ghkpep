@@ -37,7 +37,7 @@ export default function TestingPage() {
             { method: "LC-MS/MS", title: "Fentanyl Screen", desc: "Targeted screen for fentanyl and fentanyl analogues. Carried out by some laboratories as a contamination check." },
             { method: "Documentation review", title: "What we do", desc: "We review the documentation a supplier provides before listing a lot, record the lot reference, and publish the supplier's document unaltered where we hold one." },
           ].map((test) => (
-            <div key={test.title} className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
+            <div key={test.title} className="text-[#34414a] bg-[#dce5ea] rounded-2xl p-6 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-[10px] px-2 py-1 bg-[#111d2c] text-[#a7b0b2] rounded font-mono">{test.method}</span>
               </div>

@@ -33,7 +33,7 @@ export default class ErrorBoundary extends Component<Props, State> {
         return this.props.fallback;
       }
       return (
-        <div className="text-[#34414a] bg-[#fbfaf7] rounded-xl p-6 border border-red-200 text-center shadow-sm">
+        <div className="text-[#34414a] bg-[#dce5ea] rounded-xl p-6 border border-red-200 text-center shadow-sm">
           <h2 className="text-xl font-bold text-red-700 mb-2">Something went wrong</h2>
           <p className="text-[#66747b] text-sm mb-4">
             {this.state.error?.message || 'An unexpected error occurred'}

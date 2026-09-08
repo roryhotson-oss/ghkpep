@@ -20,6 +20,12 @@ export default function AgeGate() {
         const stored = localStorage.getItem('ghk-age-gate');
         if (stored === 'true') {
           setAccepted(true);
+          // Re-set the cookie if it expired — localStorage persists but the cookie
+          // expires in 30 days, and the middleware checks the cookie, not localStorage.
+          // Without this, the gate hides but the middleware rewrites every link back to /.
+          if (!document.cookie.includes('ghk-age-gate=true')) {
+            document.cookie = 'ghk-age-gate=true; path=/; max-age=2592000; SameSite=Lax';
+          }
         }
         setConsentChoice(localStorage.getItem('ghk-cookie-consent'));
       } catch {

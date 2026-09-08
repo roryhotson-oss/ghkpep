@@ -147,7 +147,7 @@ export default function ProductPageClient({ product, related = [] }: Props) {
         </div>
 
         {/* Product Info */}
-        <div className="text-[#34414a] bg-[#fbfaf7] rounded-3xl p-6 lg:p-8 border border-[#d8d4c9] shadow-[0_10px_24px_rgba(52,65,74,0.08)]">
+        <div className="text-[#34414a] bg-[#dce5ea] rounded-3xl p-6 lg:p-8 border border-[#b8c7d1] shadow-[0_10px_24px_rgba(52,65,74,0.08)]">
           <div className="mb-4">
             <span className="inline-block bg-[#eef8fb] text-[#5b8ca0] border border-[#c8dfe7] px-3 py-1 rounded-full text-sm font-semibold">
               {product.categoryLabel}
@@ -262,7 +262,7 @@ export default function ProductPageClient({ product, related = [] }: Props) {
             {isOutOfStock(product) ? 'Out of stock' : 'Add to Cart'}
           </button>
 
-          <div className="border-y border-[#d8d4c9] py-5 mb-6">
+          <div className="border-y border-[#b8c7d1] py-5 mb-6">
             <h2 className="text-lg font-semibold mb-2">Research context</h2>
             <p className="text-[#66747b] text-sm leading-relaxed">{researchContext} These are non clinical research areas only; no therapeutic, diagnostic, dosing, or administration use is implied.</p>
           </div>
@@ -272,7 +272,7 @@ export default function ProductPageClient({ product, related = [] }: Props) {
 
       {/* You may also like */}
       {related.length > 0 && (
-        <section className="mt-12 rounded-3xl border border-[#d8d4c9] bg-[#fbfaf7] p-6 shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
+        <section className="mt-12 rounded-3xl border border-[#b8c7d1] bg-[#dce5ea] p-6 shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
           <div className="mb-4 flex items-baseline justify-between gap-4">
             <div>
               <h2 className="text-2xl font-bold text-[#34414a]">You may also like</h2>
@@ -286,7 +286,7 @@ export default function ProductPageClient({ product, related = [] }: Props) {
               const relPrice = effectivePrice(rel, 'box', relDosage);
               const relSoldOut = isOutOfStock(rel);
               return (
-                <div key={rel.slug} className="snap-start flex w-[220px] shrink-0 flex-col rounded-2xl bg-[#fbfaf7] p-3 text-[#34414a] shadow-sm">
+                <div key={rel.slug} className="snap-start flex w-[220px] shrink-0 flex-col rounded-2xl bg-[#dce5ea] p-3 text-[#34414a] shadow-sm">
                   <Link href={`/shop/${rel.slug}`} className="block">
                     <div className="relative mb-2 aspect-[4/3] overflow-hidden rounded-xl">
                       <ProductImage

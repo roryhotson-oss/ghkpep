@@ -18,7 +18,7 @@ export default function Loading() {
           {Array.from({ length: 9 }).map((_, i) => (
             <div
               key={i}
-              className="bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)] animate-pulse"
+              className="bg-[#dce5ea] rounded-2xl p-6 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)] animate-pulse"
             >
               <div className="h-4 w-20 bg-[#8298aa]/30 rounded mb-4" />
               <div className="h-5 w-full bg-[#8298aa]/20 rounded mb-2" />

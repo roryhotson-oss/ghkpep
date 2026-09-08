@@ -13,19 +13,19 @@ export default function ShippingPage() {
 
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid sm:grid-cols-2 gap-4 mb-12">
-          <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
+          <div className="text-[#34414a] bg-[#dce5ea] rounded-2xl p-6 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
             <h3 className="font-bold mb-2">Discreet tracked dispatch</h3>
             <p className="text-[#a7b0b2] text-sm">Single-vial orders are dispatched promptly. Anything over 5 vials is sourced as a box of 10, with delivery factored into a typical 5–10 day wait.</p>
           </div>
-          <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
+          <div className="text-[#34414a] bg-[#dce5ea] rounded-2xl p-6 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
             <h3 className="font-bold mb-2">Plain packaging</h3>
             <p className="text-[#a7b0b2] text-sm">Outer packaging is unmarked. Inner documentation includes lot, COA link, and handling notes.</p>
           </div>
-          <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
+          <div className="text-[#34414a] bg-[#dce5ea] rounded-2xl p-6 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
             <h3 className="font-bold mb-2">Cold chain</h3>
             <p className="text-[#a7b0b2] text-sm">Temperature-sensitive compounds ship insulated with gel packs sized to your destination zone.</p>
           </div>
-          <div className="text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
+          <div className="text-[#34414a] bg-[#dce5ea] rounded-2xl p-6 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
             <h3 className="font-bold mb-2">Trusted Labs</h3>
             <p className="text-[#a7b0b2] text-sm">Shipments are discreet and tracked. Tracking details are provided when the parcel enters transit.</p>
           </div>
@@ -61,7 +61,7 @@ export default function ShippingPage() {
           </table>
         </div>
 
-        <div className="mt-8 text-[#34414a] bg-[#fbfaf7] rounded-2xl p-6 border border-[#d8d4c9] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
+        <div className="mt-8 text-[#34414a] bg-[#dce5ea] rounded-2xl p-6 border border-[#b8c7d1] shadow-[0_8px_20px_rgba(52,65,74,0.06)]">
           <h3 className="font-bold mb-3">Shipping protection</h3>
           <p className="text-[#a7b0b2] text-sm leading-relaxed">At checkout you can add shipping protection. The premium is priced against your order total and shown before you pay — it is optional and can be removed. When a protected parcel is lost, stolen, or damaged in transit, the claim is filed directly with Trusted Labs and resolved by them.</p>
         </div>

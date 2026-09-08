@@ -59,7 +59,7 @@ export default function Header() {
     <>
       {/* Main nav — floating pill */}
       <header className="sticky top-4 z-50 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto flex items-center justify-between rounded-full border-2 border-[#263344] bg-[#d4e0e6]/95 backdrop-blur shadow-[0_12px_28px_rgba(20,28,40,0.14)] px-5 sm:px-8 h-20">
+        <div className="max-w-7xl mx-auto flex items-center justify-between rounded-full border-2 border-[#3d515a] bg-[#d4e0e6]/95 backdrop-blur shadow-[0_12px_28px_rgba(20,28,40,0.14)] px-5 sm:px-8 h-20">
           <Link href="/" className="text-lg sm:text-xl font-black uppercase tracking-tight leading-none text-[#111827]">
             GHK PEPTIDES
           </Link>
@@ -100,7 +100,7 @@ export default function Header() {
                   <span className="text-sm">{user.name}</span>
                 </button>
                 {userMenuOpen && (
-                  <div className="absolute right-0 mt-3 w-48 bg-[#FBFAF7] rounded-2xl shadow-[0_8px_24px_rgba(20,28,40,0.16)] overflow-hidden">
+                  <div className="absolute right-0 mt-3 w-48 bg-[#dce5ea] rounded-2xl shadow-[0_8px_24px_rgba(20,28,40,0.16)] overflow-hidden">
                     <Link href="/dashboard" className="block px-4 py-3 text-sm text-[#1F2933] hover:bg-[#ECE9E2] transition" onClick={() => setUserMenuOpen(false)}>
                       Dashboard
                     </Link>
@@ -154,7 +154,7 @@ export default function Header() {
         </div>
 
         {mobileOpen && (
-          <div className="md:hidden max-w-6xl mx-auto mt-2 rounded-2xl border-2 border-[#263344] bg-[#d4e0e6]/95 backdrop-blur shadow-[0_8px_24px_rgba(20,28,40,0.16)] px-4 py-4 space-y-1 text-sm">
+          <div className="md:hidden max-w-6xl mx-auto mt-2 rounded-2xl border-2 border-[#3d515a] bg-[#d4e0e6]/95 backdrop-blur shadow-[0_8px_24px_rgba(20,28,40,0.16)] px-4 py-4 space-y-1 text-sm">
             <Link href="/shop" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Shop</Link>
             <Link href="/about" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>About</Link>
             <Link href="/testing" className={mobileHeaderLinkClass} onClick={() => setMobileOpen(false)}>Research</Link>

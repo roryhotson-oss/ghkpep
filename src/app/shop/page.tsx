@@ -40,7 +40,7 @@ export default function ShopPage() {
     <div className="min-h-screen">
       {/* Products Grid */}
       <div data-scroll-section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="mb-8 border-b border-[#d8d4c9] pb-6">
+        <div className="mb-8 border-b border-[#b8c7d1] pb-6">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#6d8792]">GHK Peptides</p>
@@ -74,7 +74,7 @@ export default function ShopPage() {
               return (
                 <div
                   key={entry.key}
-                  className="group flex flex-col text-[#34414a] bg-[#fbfaf7] rounded-2xl p-4 border-2 border-[#111827] shadow-[0_8px_20px_rgba(52,65,74,0.06)] hover:-translate-y-1 hover:shadow-[0_14px_28px_rgba(52,65,74,0.12)] transition"
+                  className="group flex flex-col text-[#34414a] bg-[#dce5ea] rounded-2xl p-4 border-2 border-[#3d515a] shadow-[0_8px_20px_rgba(52,65,74,0.06)] hover:-translate-y-1 hover:shadow-[0_14px_28px_rgba(52,65,74,0.12)] transition"
                 >
                   <div className="aspect-[4/3] rounded-xl mb-4 overflow-hidden relative">
                     <ProductImage
@@ -157,7 +157,7 @@ export default function ShopPage() {
               <Link
                 key={product.slug}
                 href={`/shop/${product.slug}`}
-                className="group flex flex-col text-[#34414a] bg-[#fbfaf7] rounded-2xl p-4 border-2 border-[#111827] shadow-[0_8px_20px_rgba(52,65,74,0.06)] hover:-translate-y-1 hover:shadow-[0_14px_28px_rgba(52,65,74,0.12)] transition"
+                className="group flex flex-col text-[#34414a] bg-[#dce5ea] rounded-2xl p-4 border-2 border-[#3d515a] shadow-[0_8px_20px_rgba(52,65,74,0.06)] hover:-translate-y-1 hover:shadow-[0_14px_28px_rgba(52,65,74,0.12)] transition"
               >
                 <div className="aspect-[4/3] rounded-xl mb-4 overflow-hidden relative">
                   <ProductImage

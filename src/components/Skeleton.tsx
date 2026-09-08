@@ -36,7 +36,7 @@ export default function Skeleton({
 
 export function ProductCardSkeleton() {
   return (
-    <div className="text-[#34414a] bg-[#fbfaf7] rounded-xl p-4 border border-[#d8d4c9] shadow-sm">
+    <div className="text-[#34414a] bg-[#dce5ea] rounded-xl p-4 border border-[#b8c7d1] shadow-sm">
       <div className="aspect-square bg-[#eef8fb] rounded-lg mb-3 overflow-hidden relative">
         <Skeleton variant="rounded" className="w-full h-full" />
       </div>

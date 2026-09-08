@@ -44,7 +44,7 @@ export default function GroupedCatalogRow({ group }: { group: ProductGroup }) {
     <tr className="group relative border-b border-[#e6e2da] last:border-0 hover:bg-[#eef8fb] transition text-[#34414a]">
       <td className="px-4 py-3 min-w-[280px]">
         <div className="flex items-center gap-3">
-          <Image src={group.image} alt={group.name} width={96} height={96} className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl border border-[#d8d4c9] object-cover bg-[#eef8fb] shrink-0" />
+          <Image src={group.image} alt={group.name} width={96} height={96} className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl border border-[#b8c7d1] object-cover bg-[#eef8fb] shrink-0" />
           <div className="min-w-0">
             <Link href={`/shop/${selectedProduct.slug}`} className="font-semibold text-[#34414a] hover:text-[#5b8ca0] transition">{group.name}</Link>
             <p className="mt-1 max-w-[280px] text-xs leading-relaxed text-[#6e8299] md:opacity-0 md:translate-y-1 md:transition-all md:duration-200 md:group-hover:translate-y-0 md:group-hover:opacity-100">{group.description}</p>
