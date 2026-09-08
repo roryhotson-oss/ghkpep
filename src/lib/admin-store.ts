@@ -30,8 +30,13 @@ if (process.env.NODE_ENV !== 'production') {
 
 // --- Products ---
 export function getProducts(): Product[] {
-  const data = fs.readFileSync(PRODUCTS_FILE, 'utf-8');
-  return JSON.parse(data)
+  let data: Product[];
+  try {
+    data = JSON.parse(fs.readFileSync(PRODUCTS_FILE, 'utf-8'));
+  } catch {
+    data = initialProducts;
+  }
+  return data
     .filter((product: Product) => resolveCatalogImage(product.slug, product.image))
     .map((product: Product) => ({
       ...product,
