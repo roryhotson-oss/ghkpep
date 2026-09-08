@@ -43,9 +43,10 @@ export function middleware(request: NextRequest) {
     'Permissions-Policy',
     'camera=(), microphone=(), geolocation=()'
   );
+  const isDev = process.env.NODE_ENV !== 'production';
   response.headers.set(
     'Content-Security-Policy',
-    "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https:; frame-src 'self' https://challenges.cloudflare.com; upgrade-insecure-requests"
+    `default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''} https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https:; frame-src 'self' https://challenges.cloudflare.com; upgrade-insecure-requests`
   );
 
   // Strict Transport Security
@@ -71,7 +72,8 @@ export function middleware(request: NextRequest) {
     !pathname.startsWith('/coas/') &&
     pathname !== '/robots.txt' &&
     pathname !== '/sitemap.xml' &&
-    pathname !== '/favicon.ico'
+    pathname !== '/favicon.ico' &&
+    pathname !== '/BingSiteAuth.xml'
   ) {
     const ageGateCookie = request.cookies.get('ghk-age-gate');
     if (!ageGateCookie || ageGateCookie.value !== 'true') {

@@ -2,17 +2,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const categoryHighlights = [
-  { title: 'Peptide Research', image: '/images/ghk-cu.jpg' },
-  { title: 'Research Blends', image: '/images/cjc-1295-ipamorelin.jpeg' },
-  { title: 'Metabolic Research', image: '/images/glp3-rt.jpg' },
+  { title: 'Peptide Research', image: '/images/ghk-cu.png' },
+  { title: 'Research Blends', image: '/images/cjc-ipamorelin.png' },
+  { title: 'Metabolic Research', image: '/images/glp3-rt.png' },
   { title: 'Laboratory Supplies', image: '/images/vial-organizer-3ml.jpg' },
 ];
 
 const popularMaterials = [
-  { name: 'GHK-Cu Research Peptide', slug: 'ghk-cu', image: '/images/ghk-cu.jpg', detail: 'Copper Complex' },
-  { name: 'MOTS-C Research Peptide', slug: 'mots-c', image: '/images/mots-c.jpg', detail: 'Mitochondrial' },
-  { name: 'KLOW 80mg', slug: 'klow', image: '/images/klow.jpg', detail: 'Research Blend' },
-  { name: 'GLP3-RT 10mg', slug: 'glp3-rt', image: '/images/glp3-rt.jpg', detail: 'Incretin Research' },
+  { name: 'GHK-Cu Research Peptide', slug: 'ghk-cu', image: '/images/ghk-cu.png', detail: 'Copper Complex' },
+  { name: 'MOTS-C Research Peptide', slug: 'mots-c', image: '/images/mots-c.png', detail: 'Mitochondrial' },
+  { name: 'KLOW 80mg', slug: 'klow', image: '/images/klow.png', detail: 'Research Blend' },
+  { name: 'GLP3-RT 10mg', slug: 'glp3-rt', image: '/images/glp3-rt.png', detail: 'Incretin Research' },
 ];
 
 export default async function HomeCatalog() {
@@ -28,7 +28,7 @@ export default async function HomeCatalog() {
         <div className="hero-photo-board relative min-h-[280px] overflow-hidden rounded-[2rem] sm:min-h-[420px]">
           <div className="hero-photo-window absolute inset-3 overflow-hidden rounded-[1.5rem] sm:inset-5 sm:rounded-[1.75rem]">
             <Image
-              src="/images/shop-hero.jpeg"
+              src="/images/shop-hero.jpg"
               alt="Box of 10 GHK Peptides research vials"
               fill
               priority

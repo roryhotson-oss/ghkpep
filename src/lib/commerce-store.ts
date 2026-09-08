@@ -123,17 +123,20 @@ function productRow(product: Product) {
 
 export async function getCommerceProducts(): Promise<Product[]> {
   const supabase = getSupabaseAdmin();
-  if (!supabase) return getLocalProducts();
+  const local = getLocalProducts();
+  if (!supabase) return local;
   try {
     const { data, error } = await supabase.from('products').select('*').order('name');
-    if (error || !data || data.length === 0) return getLocalProducts();
-    return (data as ProductRow[])
+    if (error || !data || data.length === 0) return local;
+    const supabaseProducts = (data as ProductRow[])
       .map(mapProduct)
-      .filter((product): product is Product => product !== null)
-      .sort((a, b) => a.name.localeCompare(b.name));
+      .filter((product): product is Product => product !== null);
+    const supabaseSlugs = new Set(supabaseProducts.map((p) => p.slug));
+    const localOnly = local.filter((p) => !supabaseSlugs.has(p.slug));
+    return [...supabaseProducts, ...localOnly].sort((a, b) => a.name.localeCompare(b.name));
   } catch (err) {
     console.warn('Supabase products fetch error, falling back to local:', err);
-    return getLocalProducts();
+    return local;
   }
 }
 
@@ -143,7 +146,7 @@ export async function getCommerceProduct(slug: string): Promise<Product | undefi
   try {
     const { data, error } = await supabase.from('products').select('*').eq('slug', slug).maybeSingle();
     if (error || !data) return getLocalProduct(slug);
-    return mapProduct(data as ProductRow) ?? undefined;
+    return mapProduct(data as ProductRow) ?? getLocalProduct(slug);
   } catch (err) {
     console.warn('Supabase product fetch error, falling back to local:', err);
     return getLocalProduct(slug);

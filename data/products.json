@@ -2,56 +2,57 @@
   {
     "slug": "ghk-cu",
     "name": "GHK-Cu Research Peptide",
-    "price": 5.1,
-    "boxPrice": 51,
+    "price": 27.95,
+    "boxPrice": 279,
     "purity": "99.84%",
     "category": "recovery",
     "categoryLabel": "Copper Complex",
-    "description": "Copper complex of the Gly-His-Lys sequence. Supplied for in-vitro laboratory research.",
+    "description": "Copper complex of the Gly-His-Lys sequence. Supplied for in vitro laboratory research.",
     "lot": "GHK-2419-A",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/ghk-cu.png",
+    "marketTier": "premium",
     "dosageOptions": [
       50,
       100
     ],
     "dosageBoxPrices": {
-      "50": 51,
-      "100": 63.75
-    },
-    "marketTier": "premium"
+      "50": 55,
+      "100": 75
+    }
   },
   {
     "slug": "mots-c",
     "name": "MOTS-C Research Peptide",
-    "price": 9.35,
-    "boxPrice": 93.5,
+    "price": 27.5,
+    "boxPrice": 275,
     "purity": "99.79%",
     "category": "longevity",
     "categoryLabel": "Mitochondrial",
-    "description": "Mitochondrial-derived 16-residue sequence. Supplied for in-vitro laboratory research.",
+    "description": "Mitochondrial-derived 16-residue sequence. Supplied for in vitro laboratory research.",
     "lot": "GHK-2411-I",
-    "image": "/images/mots-c.jpg",
+    "image": "/images/mots-c.png",
+    "marketTier": "premium",
     "dosageOptions": [
       10,
       40
     ],
     "dosageBoxPrices": {
-      "10": 93.5,
-      "40": 204
-    },
-    "marketTier": "premium"
+      "10": 119,
+      "40": 399
+    }
   },
   {
     "slug": "nad-plus",
     "name": "NAD+ 500mg",
-    "price": 8.07,
-    "boxPrice": 80.75,
+    "price": 54.99,
+    "boxPrice": 549,
     "purity": "99.78%",
     "category": "longevity",
     "categoryLabel": "Cellular Cofactor",
-    "description": "Nicotinamide adenine dinucleotide, oxidized form. Supplied for in-vitro laboratory research.",
+    "description": "Nicotinamide adenine dinucleotide, oxidized form. Supplied for in vitro laboratory research.",
     "lot": "GHK-2417-C",
-    "image": "/images/nad-plus.jpg",
+    "image": "/images/nad-plus.png",
+    "marketTier": "premium",
     "dosageOptions": [
       100,
       250,
@@ -59,24 +60,23 @@
       1000
     ],
     "dosageBoxPrices": {
-      "100": 80.75,
-      "250": 103.28,
-      "500": 140.82,
-      "1000": 215.9
-    },
-    "marketTier": "premium"
+      "100": 75,
+      "250": 95,
+      "500": 120,
+      "1000": 195
+    }
   },
   {
     "slug": "klow",
     "name": "KLOW 80mg",
-    "price": 30,
-    "boxPrice": 255,
+    "price": 35,
+    "boxPrice": 389,
     "purity": "99.69%",
     "category": "blend",
     "categoryLabel": "Research Blend",
-    "description": "Co-lyophilized composite of GHK-Cu, KPV, BPC-157, and TB-500. Supplied for in-vitro laboratory research.",
+    "description": "Co-lyophilized composite of GHK-Cu, KPV, BPC-157, and TB-500. Supplied for in vitro laboratory research.",
     "lot": "GHK-2415-E",
-    "image": "/images/klow.jpg",
+    "image": "/images/klow.png",
     "dosageOptions": [
       80
     ],
@@ -87,14 +87,15 @@
   {
     "slug": "glp3-rt",
     "name": "GLP3-RT 10mg",
-    "price": 22.5,
-    "boxPrice": 431.91,
+    "price": 32.5,
+    "boxPrice": 325,
     "purity": "99.71%",
     "category": "metabolic",
-    "categoryLabel": "Incretin Analog",
-    "description": "Triple receptor agonist analog. Supplied for in-vitro laboratory research.",
+    "categoryLabel": "Incretin Research",
+    "description": "Triple-sequence research analog. Supplied for in vitro laboratory research.",
     "lot": "GHK-2418-B",
-    "image": "/images/glp3-rt.jpg",
+    "image": "/images/glp3-rt.png",
+    "marketTier": "premium",
     "dosageOptions": [
       5,
       10,
@@ -119,54 +120,56 @@
   {
     "slug": "glutathione",
     "name": "Glutathione 1500mg",
-    "price": 15,
-    "boxPrice": 150,
+    "price": 18.99,
+    "boxPrice": 199,
     "purity": "99.81%",
     "category": "longevity",
     "categoryLabel": "Antioxidant",
-    "description": "Reduced glutathione (GSH), gamma-Glu-Cys-Gly. Supplied for in-vitro laboratory research.",
+    "description": "Reduced glutathione (GSH), gamma-Glu-Cys-Gly. Supplied for in vitro laboratory research.",
     "lot": "GHK-2414-F",
-    "image": "/images/glutathione.jpg",
+    "image": "/images/glutathione.png",
     "dosageOptions": [
       1200,
       1500
     ],
     "dosageBoxPrices": {
-      "1200": 115,
-      "1500": 150
+      "1200": 125,
+      "1500": 175
     }
   },
   {
     "slug": "igf-1-lr3",
     "name": "IGF-1 LR3",
-    "price": 10,
+    "price": 12.5,
     "boxPrice": 225,
     "purity": "99.74%",
     "category": "recovery",
-    "categoryLabel": "Growth Factor",
-    "description": "Long R3 analog of IGF-1. Supplied for in-vitro laboratory research.",
+    "categoryLabel": "Peptide Research",
+    "description": "Long R3 sequence analog of IGF-1. Supplied for in vitro laboratory research.",
     "lot": "GHK-2413-G",
-    "image": "/images/igf-1-lr3.jpg",
+    "image": "/images/igf-1-lr3.png",
+    "marketTier": "mid-market",
     "dosageOptions": [
       0.1,
       1
     ],
     "dosageBoxPrices": {
-      "1": 325,
+      "1": 399,
       "0.1": 75
     }
   },
   {
     "slug": "tesamorelin",
     "name": "Tesamorelin 10mg",
-    "price": 21.53,
-    "boxPrice": 215.33,
+    "price": 11.5,
+    "boxPrice": 310,
     "purity": "99.88%",
     "category": "recovery",
-    "categoryLabel": "Growth Hormone",
-    "description": "Stabilized GHRH analog. Supplied for in-vitro laboratory research.",
+    "categoryLabel": "Peptide Research",
+    "description": "Stabilized GHRH sequence analog. Supplied for in vitro laboratory research.",
     "lot": "GHK-2412-H",
-    "image": "/images/tesamorelin.jpeg",
+    "image": "/images/tesamorelin.png",
+    "marketTier": "mid-market",
     "dosageOptions": [
       2,
       5,
@@ -174,24 +177,23 @@
       20
     ],
     "dosageBoxPrices": {
-      "2": 102,
-      "5": 155.13,
-      "10": 215.33,
-      "20": 335.75
-    },
-    "marketTier": "premium"
+      "2": 99,
+      "5": 179,
+      "10": 319,
+      "20": 619
+    }
   },
   {
     "slug": "glp2-tz",
     "name": "GLP2-TZ 10mg",
     "price": 10,
-    "boxPrice": 95,
+    "boxPrice": 119,
     "purity": "99.62%",
     "category": "metabolic",
-    "categoryLabel": "GLP-2 Analog",
-    "description": "Long-acting GLP-2 receptor analog. Supplied for in-vitro laboratory research.",
+    "categoryLabel": "GLP-2 Research",
+    "description": "GLP-2 related sequence analog with extended stability profile. Supplied for in vitro laboratory research.",
     "lot": "GHK-2416-D",
-    "image": "/images/glp2-tz.jpeg",
+    "image": "/images/glp2-tz.png",
     "dosageOptions": [
       5,
       10,
@@ -220,23 +222,22 @@
   {
     "slug": "cjc-1295-ipamorelin",
     "name": "CJC-1295 (No DAC) + Ipamorelin 10mg",
-    "price": 17.4,
-    "boxPrice": 174,
+    "price": 14,
+    "boxPrice": 275,
     "purity": "99.83%",
     "category": "blend",
     "categoryLabel": "Research Blend",
-    "description": "Co-lyophilized blend of Mod GRF(1-29) and Ipamorelin. Supplied for in-vitro laboratory research.",
+    "description": "Co-lyophilized blend of Mod GRF(1-29) and Ipamorelin. Supplied for in vitro laboratory research.",
     "lot": "GHK-2410-J",
-    "image": "/images/cjc-1295-ipamorelin.jpeg",
+    "image": "/images/cjc-ipamorelin.png",
     "dosageOptions": [
       10,
       20
     ],
     "dosageBoxPrices": {
-      "10": 174,
-      "20": 275
-    },
-    "marketTier": "premium"
+      "10": 179,
+      "20": 329
+    }
   },
   {
     "slug": "refined-h2o",
@@ -246,7 +247,7 @@
     "purity": "N/A",
     "category": "accessories",
     "categoryLabel": "Research Supplies",
-    "description": "Sterile bacteriostatic water for laboratory reconstitution. Supplied for in-vitro laboratory research.",
+    "description": "Sterile bacteriostatic water for laboratory reconstitution. Supplied for in vitro laboratory research.",
     "lot": "GHK-2420-K",
     "image": "/images/refined-h2o.jpg",
     "stockQuantity": 0,
@@ -258,14 +259,15 @@
   {
     "slug": "pt-141",
     "name": "PT-141 10mg",
-    "price": 12.5,
-    "boxPrice": 125,
+    "price": 26.5,
+    "boxPrice": 265,
     "purity": "≥99%",
     "category": "metabolic",
     "categoryLabel": "Melanocortin",
-    "description": "Melanocortin receptor agonist analog. Supplied for in-vitro laboratory research.",
+    "description": "Melanocortin-related sequence analog. Supplied for in vitro laboratory research.",
     "lot": "GHK-2421-L",
-    "image": "/images/pt-141.jpeg",
+    "image": "/images/pt-141.png",
+    "marketTier": "premium",
     "dosageOptions": [
       10
     ],
@@ -276,14 +278,15 @@
   {
     "slug": "melanotan-2",
     "name": "Melanotan II 10mg",
-    "price": 8,
-    "boxPrice": 75,
+    "price": 11.5,
+    "boxPrice": 125,
     "purity": "≥99%",
     "category": "metabolic",
     "categoryLabel": "Melanocortin",
-    "description": "Non-selective melanocortin receptor agonist analog. Supplied for in-vitro laboratory research.",
+    "description": "Melanocortin-related sequence analog. Supplied for in vitro laboratory research.",
     "lot": "GHK-2422-M",
-    "image": "/images/melanotan-2.jpeg",
+    "image": "/images/melanotan-ii.png",
+    "marketTier": "mid-market",
     "dosageOptions": [
       10
     ],
@@ -299,9 +302,9 @@
     "purity": "≥99%",
     "category": "longevity",
     "categoryLabel": "Mitochondrial",
-    "description": "Mitochondria-targeted four-residue synthetic sequence. Supplied for in-vitro laboratory research.",
+    "description": "Mitochondria-targeted four-residue synthetic sequence. Supplied for in vitro laboratory research.",
     "lot": "GHK-2423-N",
-    "image": "/images/ss-31.jpeg",
+    "image": "/images/ss-31.png",
     "dosageOptions": [
       10,
       50
@@ -314,14 +317,15 @@
   {
     "slug": "melanotan-1",
     "name": "Melanotan I 10mg",
-    "price": 10,
-    "boxPrice": 95,
+    "price": 12.5,
+    "boxPrice": 135,
     "purity": "≥99%",
     "category": "metabolic",
     "categoryLabel": "Melanocortin",
-    "description": "Synthetic alpha-MSH analog. Supplied for in-vitro laboratory research.",
+    "description": "Synthetic alpha-MSH related sequence. Supplied for in vitro laboratory research.",
     "lot": "GHK-2424-O",
-    "image": "/images/melanotan-1.jpg",
+    "image": "/images/melanotan-i.png",
+    "marketTier": "mid-market",
     "dosageOptions": [
       10
     ],
@@ -337,9 +341,9 @@
     "purity": "≥99%",
     "category": "recovery",
     "categoryLabel": "Copper Composite",
-    "description": "Copper-bound composite, lyophilized powder. Supplied for in-vitro laboratory research.",
+    "description": "Copper-bound composite, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "GHK-2425-P",
-    "image": "/images/wolverine.jpeg",
+    "image": "/images/wolverine.png",
     "dosageOptions": [
       10,
       20
@@ -352,121 +356,117 @@
   {
     "slug": "kiss-peptin",
     "name": "Kiss Peptin 10mg",
-    "price": 12.33,
-    "boxPrice": 123.25,
+    "price": 14.5,
+    "boxPrice": 159,
     "purity": "≥99%",
     "category": "recovery",
     "categoryLabel": "Peptide",
-    "description": "Synthetic kisspeptin-10 sequence. Supplied for in-vitro laboratory research.",
+    "description": "Synthetic kisspeptin-10 sequence. Supplied for in vitro laboratory research.",
     "lot": "GHK-2426-Q",
-    "image": "/images/kiss-peptin.jpeg",
+    "image": "/images/kiss-peptin.png",
+    "marketTier": "mid-market",
     "dosageOptions": [
       5,
       10
     ],
     "dosageBoxPrices": {
-      "5": 83.81,
-      "10": 123.25
-    },
-    "marketTier": "premium"
+      "5": 99,
+      "10": 149
+    }
   },
   {
     "slug": "cagrilintide",
     "name": "Cagrilintide 5mg",
-    "price": 21.96,
-    "boxPrice": 219.58,
+    "price": 15,
+    "boxPrice": 380,
     "purity": "≥99%",
     "category": "metabolic",
-    "categoryLabel": "Amylin Analog",
-    "description": "Long-acting amylin analog. Supplied for in-vitro laboratory research.",
+    "categoryLabel": "Amylin Research",
+    "description": "Amylin-related sequence analog. Supplied for in vitro laboratory research.",
     "lot": "GHK-2427-R",
-    "image": "/images/cagrilintide.jpg",
+    "image": "/images/cagrilintide.png",
     "dosageOptions": [
       5,
       10,
       20
     ],
     "dosageBoxPrices": {
-      "5": 156,
-      "10": 219.58,
-      "20": 310.25
-    },
-    "marketTier": "premium"
+      "5": 149,
+      "10": 279,
+      "20": 469
+    }
   },
   {
     "slug": "kpv",
     "name": "KPV 10mg",
-    "price": 10.63,
-    "boxPrice": 106.25,
+    "price": 6,
+    "boxPrice": 149,
     "purity": "≥99%",
     "category": "recovery",
-    "categoryLabel": "Anti-Inflammatory",
-    "description": "Lys-Pro-Val sequence, C-terminal fragment of alpha-MSH. Supplied for in-vitro laboratory research.",
+    "categoryLabel": "Sequence Fragment",
+    "description": "Lys-Pro-Val sequence, C-terminal fragment of alpha-MSH. Supplied for in vitro laboratory research.",
     "lot": "GHK-2428-S",
-    "image": "/images/kpv.jpg",
+    "image": "/images/kpv.png",
     "dosageOptions": [
       5,
       10
     ],
     "dosageBoxPrices": {
-      "5": 85,
-      "10": 106.25
-    },
-    "marketTier": "premium"
+      "5": 75,
+      "10": 109
+    }
   },
   {
     "slug": "ipamorelin",
     "name": "Ipamorelin 10mg",
-    "price": 10.63,
-    "boxPrice": 106.25,
+    "price": 10,
+    "boxPrice": 119,
     "purity": "≥99%",
     "category": "recovery",
-    "categoryLabel": "Growth Hormone",
-    "description": "Selective GHS-R1a agonist. Supplied for in-vitro laboratory research.",
+    "categoryLabel": "Peptide Research",
+    "description": "GHS-R1a related synthetic sequence. Supplied for in vitro laboratory research.",
     "lot": "GHK-2429-T",
-    "image": "/images/ipamorelin.jpg",
+    "image": "/images/ipamorelin.png",
     "dosageOptions": [
       2,
       5,
       10
     ],
     "dosageBoxPrices": {
-      "2": 66,
-      "5": 84,
-      "10": 106.25
-    },
-    "marketTier": "premium"
+      "2": 55,
+      "5": 79,
+      "10": 119
+    }
   },
   {
     "slug": "glow",
     "name": "GLOW 70mg",
-    "price": 25.42,
-    "boxPrice": 254.15,
+    "price": 25,
+    "boxPrice": 369,
     "purity": "≥99%",
     "category": "blend",
     "categoryLabel": "Research Blend",
-    "description": "Co-lyophilized composite of GHK-Cu, BPC-157, and TB-500. Supplied for in-vitro laboratory research.",
+    "description": "Co-lyophilized composite of GHK-Cu, BPC-157, and TB-500. Supplied for in vitro laboratory research.",
     "lot": "GHK-2430-U",
-    "image": "/images/glow.jpg",
+    "image": "/images/glow.png",
     "dosageOptions": [
       70
     ],
     "dosageBoxPrices": {
-      "70": 254.15
-    },
-    "marketTier": "premium"
+      "70": 295
+    }
   },
   {
     "slug": "adamax",
     "name": "Adamax 5mg",
     "price": 25,
-    "boxPrice": 235,
+    "boxPrice": 299,
     "purity": "≥99%",
     "category": "blend",
     "categoryLabel": "Research Blend",
-    "description": "Synthetic research compound blend, lyophilized powder. Supplied for in-vitro laboratory research.",
+    "description": "Synthetic research compound blend, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "GHK-2431-V",
-    "image": "/images/adamax.jpeg",
+    "image": "/images/adamax.png",
     "dosageOptions": [
       5
     ],
@@ -477,33 +477,33 @@
   {
     "slug": "ahk-cu",
     "name": "AHK-Cu 100mg",
-    "price": 6.38,
-    "boxPrice": 63.75,
+    "price": 15,
+    "boxPrice": 149,
     "purity": "≥99%",
     "category": "recovery",
     "categoryLabel": "Copper Complex",
-    "description": "Copper complex of the Ala-His-Lys sequence. Supplied for in-vitro laboratory research.",
+    "description": "Copper complex of the Ala-His-Lys sequence. Supplied for in vitro laboratory research.",
     "lot": "GHK-2432-W",
-    "image": "/images/ahk-cu.jpg",
+    "image": "/images/ahk-cu.png",
     "dosageOptions": [
       100
     ],
     "dosageBoxPrices": {
-      "100": 63.75
-    },
-    "marketTier": "premium"
+      "100": 159
+    }
   },
   {
     "slug": "bpc-157",
     "name": "BPC-157 10mg",
-    "price": 6,
-    "boxPrice": 140,
+    "price": 22.5,
+    "boxPrice": 249,
     "purity": "99.2%",
     "category": "recovery",
-    "categoryLabel": "Healing Peptide",
-    "description": "Synthetic 15-residue sequence (GEPPPGKPADDAGLV). Supplied for in-vitro laboratory research.",
+    "categoryLabel": "Sequence Peptide",
+    "description": "Synthetic 15-residue sequence (GEPPPGKPADDAGLV). Supplied for in vitro laboratory research.",
     "lot": "GHK-2433-X",
-    "image": "/images/bpc-157.jpg",
+    "image": "/images/bpc-157.png",
+    "marketTier": "mid-market",
     "dosageOptions": [
       2,
       5,
@@ -524,33 +524,32 @@
     "boxPrice": 215.91,
     "purity": "99.0%",
     "category": "cognitive",
-    "categoryLabel": "Tuftsin Analog",
-    "description": "Synthetic tuftsin analog (TP-7 sequence). Supplied for in-vitro laboratory research.",
+    "categoryLabel": "Tuftsin Research",
+    "description": "Synthetic tuftsin analog (TP-7 sequence). Supplied for in vitro laboratory research.",
     "lot": "GHK-2434-Y",
-    "image": "/images/selank.jpg"
+    "image": "/images/selank.png"
   },
   {
     "slug": "tb-500",
     "name": "TB-500 10mg",
-    "price": 14.03,
-    "boxPrice": 140.25,
+    "price": 34.99,
+    "boxPrice": 349,
     "purity": "≥99%",
     "category": "recovery",
     "categoryLabel": "Thymosin Fragment",
-    "description": "Acetylated Thymosin beta-4 fragment. Lyophilized powder, ≥99% purity (HPLC). Supplied for in-vitro laboratory research.",
+    "description": "Acetylated Thymosin beta-4 fragment. Lyophilized powder, ≥99% purity (HPLC). Supplied for in vitro laboratory research.",
     "lot": "GHK-2435-Z",
-    "image": "/images/tb-500.jpg",
+    "image": "/images/tb-500.png",
     "dosageOptions": [
       5,
       10,
       20
     ],
     "dosageBoxPrices": {
-      "5": 110.5,
-      "10": 140.25,
-      "20": 199.75
-    },
-    "marketTier": "premium"
+      "5": 149,
+      "10": 249,
+      "20": 529
+    }
   },
   {
     "slug": "semax",
@@ -559,10 +558,10 @@
     "boxPrice": 215.91,
     "purity": "99.0%",
     "category": "cognitive",
-    "categoryLabel": "ACTH Analog",
-    "description": "Synthetic ACTH(4-10) analog, seven-residue sequence. Supplied for in-vitro laboratory research.",
+    "categoryLabel": "ACTH Research",
+    "description": "ACTH(4-10)-related synthetic seven-residue sequence. Supplied for in vitro laboratory research.",
     "lot": "GHK-2436-AA",
-    "image": "/images/semax.jpg",
+    "image": "/images/semax.png",
     "dosageOptions": [
       5,
       10,
@@ -572,14 +571,14 @@
   {
     "slug": "dsip",
     "name": "DSIP",
-    "price": 9.75,
-    "boxPrice": 165,
+    "price": 14.99,
+    "boxPrice": 149,
     "purity": "N/A",
     "category": "cognitive",
     "categoryLabel": "Research Peptide",
-    "description": "Delta sleep-inducing peptide research material. Supplied for in-vitro laboratory research.",
+    "description": "Delta sleep-inducing peptide research material. Supplied for in vitro laboratory research.",
     "lot": "GHK-2437-AB",
-    "image": "/images/DSIP.jpeg",
+    "image": "/images/dsip.png",
     "dosageOptions": [
       2,
       5,
@@ -618,184 +617,168 @@
     "image": "/images/protective-vial-storage-case.jpg"
   },
   {
-    "slug": "imported-gonadorelin-acetate-2mg",
+    "slug": "gonadorelin",
     "name": "Gonadorelin Acetate 2mg",
-    "price": 5.85,
-    "boxPrice": 58.5,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Gonadorelin Acetate research material. Supplied for in-vitro laboratory research.",
+    "price": 2.76,
+    "boxPrice": 24,
+    "purity": "≥99% (HPLC)",
+    "category": "longevity",
+    "categoryLabel": "Peptide Research",
+    "description": "Gonadorelin Acetate research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0031",
-    "image": "/images/Oxytocin Acetate.jpeg",
+    "image": "/images/gonadorelin.png",
     "dosageOptions": [
       2
     ],
     "dosageBoxPrices": {
-      "2": 58.5
+      "2": 24
     }
   },
   {
-    "slug": "imported-na-selank-amidate-30mg",
-    "name": "NA Selank amidate 30mg",
-    "price": 28.05,
-    "boxPrice": 280.5,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "NA Selank amidate research material. Supplied for in-vitro laboratory research.",
+    "slug": "na-selank-amidate",
+    "name": "NA Selank Amidate 30mg",
+    "price": 27.6,
+    "boxPrice": 240,
+    "purity": "≥99% (HPLC)",
+    "category": "cognitive",
+    "categoryLabel": "Tuftsin Research",
+    "description": "NA Selank Amidate research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0032",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/na-selank-amidate.png",
     "dosageOptions": [
       30
     ],
     "dosageBoxPrices": {
-      "30": 280.5
-    },
-    "marketTier": "premium"
+      "30": 240
+    }
   },
   {
-    "slug": "imported-oxytocin-acetate",
-    "name": "Oxytocin Acetate",
-    "price": 4.1,
-    "boxPrice": 40.95,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Oxytocin Acetate research material. Supplied for in-vitro laboratory research.",
+    "slug": "oxytocin-acetate",
+    "name": "Oxytocin Acetate 2mg",
+    "price": 2.76,
+    "boxPrice": 24,
+    "purity": "≥99% (HPLC)",
+    "category": "longevity",
+    "categoryLabel": "Peptide Research",
+    "description": "Oxytocin Acetate research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0033",
-    "image": "/images/Oxytocin Acetate.jpeg",
+    "image": "/images/oxytocin-acetate.png",
     "dosageOptions": [
       2,
       5
     ],
     "dosageBoxPrices": {
-      "2": 40.95,
-      "5": 68.25
-    },
-    "dosageVialPrices": {
-      "2": 4.1,
-      "5": 6.83
+      "2": 24,
+      "5": 52.5
     }
   },
   {
-    "slug": "imported-epithalon",
-    "name": "Epithalon",
-    "price": 7.65,
-    "boxPrice": 76.5,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Epithalon research material. Supplied for in-vitro laboratory research.",
+    "slug": "epithalon",
+    "name": "Epithalon 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "cognitive",
+    "categoryLabel": "Peptide Research",
+    "description": "Epithalon research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0036",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/epithalon.png",
     "dosageOptions": [
       10,
       40,
       50
     ],
     "dosageBoxPrices": {
-      "10": 76.5,
-      "40": 204,
-      "50": 246.5
-    },
-    "dosageVialPrices": {
-      "10": 10.72,
-      "40": 25.74,
-      "50": 32.17
-    },
-    "marketTier": "premium"
+      "10": 100,
+      "40": 310,
+      "50": 380
+    }
   },
   {
-    "slug": "imported-ace-031-1mg",
-    "name": "ACE‑031 1mg",
-    "price": 12.29,
-    "boxPrice": 122.85,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "ACE‑031 research material. Supplied for in-vitro laboratory research.",
+    "slug": "ace-031",
+    "name": "ACE-031 1mg",
+    "price": 1.38,
+    "boxPrice": 12,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Research Compound",
+    "description": "ACE-031 research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0041",
-    "image": "/images/ace-031.jpeg",
+    "image": "/images/ace-031.png",
     "dosageOptions": [
       1
     ],
     "dosageBoxPrices": {
-      "1": 122.85
+      "1": 12
     }
   },
   {
-    "slug": "imported-aicar",
-    "name": "AICAR",
-    "price": 9.95,
-    "boxPrice": 99.45,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "AICAR research material. Supplied for in-vitro laboratory research.",
+    "slug": "aicar",
+    "name": "AICAR 50mg",
+    "price": 43.7,
+    "boxPrice": 380,
+    "purity": "≥99% (HPLC)",
+    "category": "metabolic",
+    "categoryLabel": "Research Compound",
+    "description": "AICAR research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0042",
-    "image": "/images/aicar.jpeg",
+    "image": "/images/aicar.png",
     "dosageOptions": [
       50,
       100
     ],
     "dosageBoxPrices": {
-      "50": 99.45,
-      "100": 146.25
-    },
-    "dosageVialPrices": {
-      "50": 9.95,
-      "100": 14.63
+      "50": 380,
+      "100": 605
     }
   },
   {
-    "slug": "imported-adipotide-5mg",
+    "slug": "adipotide",
     "name": "Adipotide 5mg",
-    "price": 32.37,
-    "boxPrice": 323.7,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Adipotide research material. Supplied for in-vitro laboratory research.",
+    "price": 6.04,
+    "boxPrice": 52.5,
+    "purity": "≥99% (HPLC)",
+    "category": "metabolic",
+    "categoryLabel": "Sequence Fragment",
+    "description": "Adipotide research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0044",
-    "image": "/images/adipotide.jpeg",
+    "image": "/images/adipotide.png",
     "dosageOptions": [
       5
     ],
     "dosageBoxPrices": {
-      "5": 323.7
+      "5": 52.5
     }
   },
   {
-    "slug": "imported-semax-10-mg-selank-10-mg-20mg",
-    "name": "Semax 10 mg + Selank 10 mg 20mg",
-    "price": 18.7,
-    "boxPrice": 187,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Semax 10 mg + Selank 10 mg research material. Supplied for in-vitro laboratory research.",
+    "slug": "semax-selank",
+    "name": "Semax + Selank 20mg",
+    "price": 19.55,
+    "boxPrice": 170,
+    "purity": "≥99% (HPLC)",
+    "category": "cognitive",
+    "categoryLabel": "Research Blend",
+    "description": "Semax + Selank research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0046",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/semax-selank.png",
     "dosageOptions": [
       20
     ],
     "dosageBoxPrices": {
-      "20": 187
-    },
-    "marketTier": "premium"
+      "20": 170
+    }
   },
   {
-    "slug": "imported-semaglutide",
-    "name": "Semaglutide",
-    "price": 10.06,
-    "boxPrice": 100.62,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Semaglutide research material. Supplied for in-vitro laboratory research.",
+    "slug": "semaglutide",
+    "name": "Semaglutide 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "metabolic",
+    "categoryLabel": "Incretin Research",
+    "description": "Semaglutide research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0047",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/semaglutide.png",
     "dosageOptions": [
       2,
       5,
@@ -805,1542 +788,1032 @@
       30
     ],
     "dosageBoxPrices": {
-      "2": 51.48,
-      "5": 72.54,
-      "10": 100.62,
-      "15": 120.22,
-      "20": 135.4,
-      "30": 165.75
-    },
-    "dosageVialPrices": {
-      "2": 4.29,
-      "5": 6.04,
-      "10": 8.38,
-      "15": 10.33,
-      "20": 12.48,
-      "30": 16.38
-    },
-    "marketTier": "premium"
+      "2": 24,
+      "5": 52.5,
+      "10": 100,
+      "15": 135,
+      "20": 170,
+      "30": 240
+    }
   },
   {
-    "slug": "imported-ghrp-2-acetate",
-    "name": "GHRP‑2 Acetate",
-    "price": 6.38,
-    "boxPrice": 63.75,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "GHRP‑2 Acetate research material. Supplied for in-vitro laboratory research.",
+    "slug": "ghrp-2",
+    "name": "GHRP-2 Acetate 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Peptide Research",
+    "description": "GHRP-2 Acetate research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0053",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/ghrp-2.png",
     "dosageOptions": [
       5,
       10
     ],
     "dosageBoxPrices": {
-      "5": 42.5,
-      "10": 63.75
-    },
-    "dosageVialPrices": {
-      "5": 5.07,
-      "10": 9.95
-    },
-    "marketTier": "premium"
+      "5": 52.5,
+      "10": 100
+    }
   },
   {
-    "slug": "imported-ghrp-6-acetate",
-    "name": "GHRP‑6 Acetate",
-    "price": 6.8,
-    "boxPrice": 68,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "GHRP‑6 Acetate research material. Supplied for in-vitro laboratory research.",
+    "slug": "ghrp-6",
+    "name": "GHRP-6 Acetate 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Peptide Research",
+    "description": "GHRP-6 Acetate research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0055",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/ghrp-6.png",
     "dosageOptions": [
       5,
       10
     ],
     "dosageBoxPrices": {
-      "5": 46.75,
-      "10": 68
-    },
-    "dosageVialPrices": {
-      "5": 7.41,
-      "10": 12.29
-    },
-    "marketTier": "premium"
+      "5": 52.5,
+      "10": 100
+    }
   },
   {
-    "slug": "imported-cjc-1295-without-dac-2mg",
-    "name": "CJC‑1295 without DAC 2mg",
-    "price": 11.9,
-    "boxPrice": 119,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "CJC‑1295 without DAC research material. Supplied for in-vitro laboratory research.",
+    "slug": "cjc-1295-no-dac",
+    "name": "CJC-1295 (No DAC) 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Peptide Research",
+    "description": "CJC-1295 (No DAC) research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0057",
-    "image": "/images/GHK CJC‑1295 without DAC.jpeg",
+    "image": "/images/cjc-1295-no-dac.png",
     "dosageOptions": [
-      2
-    ],
-    "dosageBoxPrices": {
-      "2": 119
-    },
-    "marketTier": "premium"
-  },
-  {
-    "slug": "imported-cjc-1295-without-dac-5mg",
-    "name": "CJC‑1295 without DAC 5mg",
-    "price": 15.25,
-    "boxPrice": 152.47,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "CJC‑1295 without DAC research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0058",
-    "image": "/images/GHK CJC‑1295 without DAC.jpeg",
-    "dosageOptions": [
-      5
-    ],
-    "dosageBoxPrices": {
-      "5": 152.47
-    },
-    "marketTier": "premium"
-  },
-  {
-    "slug": "imported-cjc-1295-without-dac-10mg",
-    "name": "CJC‑1295 without DAC 10mg",
-    "price": 20.83,
-    "boxPrice": 208.25,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "CJC‑1295 without DAC research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0059",
-    "image": "/images/GHK CJC‑1295 without DAC.jpeg",
-    "dosageOptions": [
+      2,
+      5,
       10
     ],
     "dosageBoxPrices": {
-      "10": 208.25
-    },
-    "marketTier": "premium"
-  },
-  {
-    "slug": "imported-cjc-1295-without-dac-5-mg-ipa-5-mg-10mg",
-    "name": "CJC‑1295 without DAC 5 mg + IPA 5 mg 10mg",
-    "price": 19.98,
-    "boxPrice": 199.75,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "CJC‑1295 without DAC 5 mg + IPA 5 mg research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0060",
-    "image": "/images/CJC‑1295 without DAC 5 mg + IPA 5 mg 10mg .jpeg",
-    "dosageOptions": [
-      10
-    ],
-    "dosageBoxPrices": {
-      "10": 199.75
-    },
-    "marketTier": "premium"
-  },
-  {
-    "slug": "imported-cjc-1295-without-dac-10-mg-ipa-10-mg-20mg",
-    "name": "CJC‑1295 without DAC 10 mg + IPA 10 mg 20mg",
-    "price": 31.98,
-    "boxPrice": 319.8,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "CJC‑1295 without DAC 10 mg + IPA 10 mg research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0061",
-    "image": "/images/CJC‑1295 without DAC 10 mg + IPA 10 mg 20mg.jpeg",
-    "dosageOptions": [
-      20
-    ],
-    "dosageBoxPrices": {
-      "20": 319.8
+      "2": 24,
+      "5": 52.5,
+      "10": 100
     }
   },
   {
-    "slug": "imported-cjc-1295-with-dac-2mg",
-    "name": "CJC‑1295 with DAC 2mg",
-    "price": 11.9,
-    "boxPrice": 119,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "CJC‑1295 with DAC research material. Supplied for in-vitro laboratory research.",
+    "slug": "cjc-1295-with-dac",
+    "name": "CJC-1295 with DAC 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Peptide Research",
+    "description": "CJC-1295 with DAC research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0062",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/cjc-1295-with-dac.png",
     "dosageOptions": [
-      2
-    ],
-    "dosageBoxPrices": {
-      "2": 119
-    },
-    "marketTier": "premium"
-  },
-  {
-    "slug": "imported-cjc-1295-with-dac-5mg",
-    "name": "CJC‑1295 with DAC 5mg",
-    "price": 15.89,
-    "boxPrice": 158.85,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "CJC‑1295 with DAC research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0063",
-    "image": "/images/ghk-cu.jpg",
-    "dosageOptions": [
-      5
-    ],
-    "dosageBoxPrices": {
-      "5": 158.85
-    },
-    "marketTier": "premium"
-  },
-  {
-    "slug": "imported-cjc-1295-with-dac-10mg",
-    "name": "CJC‑1295 with DAC 10mg",
-    "price": 22.53,
-    "boxPrice": 225.25,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "CJC‑1295 with DAC research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0064",
-    "image": "/images/CJC‑1295 with DAC.jpeg",
-    "dosageOptions": [
+      2,
+      5,
       10
     ],
     "dosageBoxPrices": {
-      "10": 225.25
-    },
-    "marketTier": "premium"
+      "2": 24,
+      "5": 52.5,
+      "10": 100
+    }
   },
   {
-    "slug": "imported-tb-500-thymosin-b4-acetate-2mg",
-    "name": "TB‑500 (Thymosin B4 Acetate) 2mg",
-    "price": 8.89,
-    "boxPrice": 88.92,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "TB‑500 (Thymosin B4 Acetate) research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0065",
-    "image": "/images/ghk-cu.jpg",
-    "dosageOptions": [
-      2
-    ],
-    "dosageBoxPrices": {
-      "2": 88.92
-    },
-    "marketTier": "premium"
-  },
-  {
-    "slug": "imported-tb-500-frag-10mg",
-    "name": "TB‑500 (FRAG) 10mg",
-    "price": 14.03,
-    "boxPrice": 140.25,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "TB‑500 (FRAG) research material. Supplied for in-vitro laboratory research.",
+    "slug": "tb-500-frag",
+    "name": "TB-500 (FRAG) 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Thymosin Fragment",
+    "description": "TB-500 (FRAG) research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0069",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/tb-500-frag.png",
     "dosageOptions": [
       10
     ],
     "dosageBoxPrices": {
-      "10": 140.25
-    },
-    "marketTier": "premium"
+      "10": 100
+    }
   },
   {
-    "slug": "imported-mgf-2mg",
+    "slug": "mgf",
     "name": "MGF 2mg",
-    "price": 6.43,
-    "boxPrice": 64.35,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "MGF research material. Supplied for in-vitro laboratory research.",
+    "price": 2.76,
+    "boxPrice": 24,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Growth Factor Research",
+    "description": "MGF research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0070",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/mgf.png",
     "dosageOptions": [
       2
     ],
     "dosageBoxPrices": {
-      "2": 64.35
+      "2": 24
     }
   },
   {
-    "slug": "imported-peg-mgf-2mg",
+    "slug": "peg-mgf",
     "name": "PEG MGF 2mg",
-    "price": 16.38,
-    "boxPrice": 163.8,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "PEG MGF research material. Supplied for in-vitro laboratory research.",
+    "price": 2.76,
+    "boxPrice": 24,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Growth Factor Research",
+    "description": "PEG MGF research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0071",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/peg-mgf.png",
     "dosageOptions": [
       2
     ],
     "dosageBoxPrices": {
-      "2": 163.8
+      "2": 24
     }
   },
   {
-    "slug": "imported-sermorelin-acetate-2mg",
-    "name": "Sermorelin Acetate 2mg",
-    "price": 7.41,
-    "boxPrice": 74.1,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Sermorelin Acetate research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0072",
-    "image": "/images/ghk-cu.jpg",
-    "dosageOptions": [
-      2
-    ],
-    "dosageBoxPrices": {
-      "2": 74.1
-    }
-  },
-  {
-    "slug": "imported-sermorelin-acetate-5mg",
-    "name": "Sermorelin Acetate 5mg",
-    "price": 12.29,
-    "boxPrice": 122.85,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Sermorelin Acetate research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0073",
-    "image": "/images/ghk-cu.jpg",
-    "dosageOptions": [
-      5
-    ],
-    "dosageBoxPrices": {
-      "5": 122.85
-    }
-  },
-  {
-    "slug": "imported-sermorelin-acetate-10mg",
+    "slug": "sermorelin",
     "name": "Sermorelin Acetate 10mg",
-    "price": 22.04,
-    "boxPrice": 220.35,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Sermorelin Acetate research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0074",
-    "image": "/images/ghk-cu.jpg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Peptide Research",
+    "description": "Sermorelin Acetate research material, lyophilized powder. Supplied for in vitro laboratory research.",
+    "lot": "IMP-0072",
+    "image": "/images/sermorelin.png",
     "dosageOptions": [
-      10
-    ],
-    "dosageBoxPrices": {
-      "10": 220.35
-    }
-  },
-  {
-    "slug": "imported-sermorelin-acetate-15mg",
-    "name": "Sermorelin Acetate 15mg",
-    "price": 31.59,
-    "boxPrice": 315.9,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Sermorelin Acetate research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0075",
-    "image": "/images/ghk-cu.jpg",
-    "dosageOptions": [
+      2,
+      5,
+      10,
       15
     ],
     "dosageBoxPrices": {
-      "15": 315.9
+      "2": 24,
+      "5": 52.5,
+      "10": 100,
+      "15": 135
     }
   },
   {
-    "slug": "imported-aod-9604-2mg",
-    "name": "AOD‑9604 2mg",
-    "price": 9.75,
-    "boxPrice": 97.5,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "AOD‑9604 research material. Supplied for in-vitro laboratory research.",
+    "slug": "aod-9604",
+    "name": "AOD-9604 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "metabolic",
+    "categoryLabel": "Sequence Fragment",
+    "description": "AOD-9604 research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0076",
-    "image": "/images/aod-9604.jpeg",
+    "image": "/images/aod-9604.png",
     "dosageOptions": [
-      2
-    ],
-    "dosageBoxPrices": {
-      "2": 97.5
-    }
-  },
-  {
-    "slug": "imported-aod-9604-5mg",
-    "name": "AOD‑9604 5mg",
-    "price": 19.11,
-    "boxPrice": 191.1,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "AOD‑9604 research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0077",
-    "image": "/images/aod-9604.jpeg",
-    "dosageOptions": [
-      5
-    ],
-    "dosageBoxPrices": {
-      "5": 191.1
-    }
-  },
-  {
-    "slug": "imported-aod-9604-10mg",
-    "name": "AOD‑9604 10mg",
-    "price": 34.91,
-    "boxPrice": 349.05,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "AOD‑9604 research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0078",
-    "image": "/images/aod-9604.jpeg",
-    "dosageOptions": [
+      2,
+      5,
       10
     ],
     "dosageBoxPrices": {
-      "10": 349.05
+      "2": 24,
+      "5": 52.5,
+      "10": 100
     }
   },
   {
-    "slug": "imported-tesamorelin-12-mg-ipamorelin-6-mg-18mg",
-    "name": "Tesamorelin 12 mg + Ipamorelin 6 mg 18mg",
-    "price": 46.41,
-    "boxPrice": 464.1,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Tesamorelin 12 mg + Ipamorelin 6 mg research material. Supplied for in-vitro laboratory research.",
+    "slug": "tesamorelin-ipamorelin",
+    "name": "Tesamorelin + Ipamorelin 18mg",
+    "price": 17.94,
+    "boxPrice": 156,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Research Blend",
+    "description": "Tesamorelin + Ipamorelin research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0084",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/tesamorelin-ipamorelin.png",
     "dosageOptions": [
       18
     ],
     "dosageBoxPrices": {
-      "18": 464.1
+      "18": 156
     }
   },
   {
-    "slug": "imported-hexarelin-acetate-2mg",
+    "slug": "hexarelin",
     "name": "Hexarelin Acetate 2mg",
-    "price": 8.78,
-    "boxPrice": 87.75,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Hexarelin Acetate research material. Supplied for in-vitro laboratory research.",
+    "price": 2.76,
+    "boxPrice": 24,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Peptide Research",
+    "description": "Hexarelin Acetate research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0088",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/hexarelin.png",
     "dosageOptions": [
-      2
-    ],
-    "dosageBoxPrices": {
-      "2": 87.75
-    }
-  },
-  {
-    "slug": "imported-hexarelin-acetate-5mg",
-    "name": "Hexarelin Acetate 5mg",
-    "price": 14.63,
-    "boxPrice": 146.25,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Hexarelin Acetate research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0089",
-    "image": "/images/ghk-cu.jpg",
-    "dosageOptions": [
+      2,
       5
     ],
     "dosageBoxPrices": {
-      "5": 146.25
+      "2": 24,
+      "5": 52.5
     }
   },
   {
-    "slug": "imported-thymalin-10mg",
+    "slug": "thymalin",
     "name": "Thymalin 10mg",
-    "price": 13.84,
-    "boxPrice": 138.45,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Thymalin research material. Supplied for in-vitro laboratory research.",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "longevity",
+    "categoryLabel": "Thymus Research",
+    "description": "Thymalin research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0096",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/thymalin.png",
     "dosageOptions": [
       10
     ],
     "dosageBoxPrices": {
-      "10": 138.45
+      "10": 100
     }
   },
   {
-    "slug": "imported-thymosin-alpha-1-2mg",
-    "name": "Thymosin Alpha‑1 2mg",
-    "price": 7.9,
-    "boxPrice": 79.05,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Thymosin Alpha‑1 research material. Supplied for in-vitro laboratory research.",
+    "slug": "thymosin-alpha-1",
+    "name": "Thymosin Alpha-1 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Thymosin Research",
+    "description": "Thymosin Alpha-1 research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0097",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/thymosin-alpha-1.png",
     "dosageOptions": [
-      2
-    ],
-    "dosageBoxPrices": {
-      "2": 79.05
-    },
-    "marketTier": "premium"
-  },
-  {
-    "slug": "imported-thymosin-alpha-1-5mg",
-    "name": "Thymosin Alpha‑1 5mg",
-    "price": 16.58,
-    "boxPrice": 165.75,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Thymosin Alpha‑1 research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0098",
-    "image": "/images/ghk-cu.jpg",
-    "dosageOptions": [
-      5
-    ],
-    "dosageBoxPrices": {
-      "5": 165.75
-    },
-    "marketTier": "premium"
-  },
-  {
-    "slug": "imported-thymosin-alpha-1-10mg",
-    "name": "Thymosin Alpha‑1 10mg",
-    "price": 31.03,
-    "boxPrice": 310.25,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Thymosin Alpha‑1 research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0099",
-    "image": "/images/ghk-cu.jpg",
-    "dosageOptions": [
+      2,
+      5,
       10
     ],
     "dosageBoxPrices": {
-      "10": 310.25
-    },
-    "marketTier": "premium"
+      "2": 24,
+      "5": 52.5,
+      "10": 100
+    }
   },
   {
-    "slug": "imported-foxo4-10mg",
+    "slug": "foxo4",
     "name": "FOXO4 10mg",
-    "price": 87.75,
-    "boxPrice": 877.5,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "FOXO4 research material. Supplied for in-vitro laboratory research.",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Research Compound",
+    "description": "FOXO4 research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0102",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/foxo4.png",
     "dosageOptions": [
       10
     ],
     "dosageBoxPrices": {
-      "10": 877.5
+      "10": 100
     }
   },
   {
-    "slug": "imported-ll-37-5mg",
-    "name": "LL‑37 5mg",
-    "price": 17.16,
-    "boxPrice": 171.6,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "LL‑37 research material. Supplied for in-vitro laboratory research.",
+    "slug": "ll-37",
+    "name": "LL-37 5mg",
+    "price": 6.04,
+    "boxPrice": 52.5,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Antimicrobial Peptide",
+    "description": "LL-37 research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0103",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/ll-37.png",
     "dosageOptions": [
       5
     ],
     "dosageBoxPrices": {
-      "5": 171.6
+      "5": 52.5
     }
   },
   {
-    "slug": "imported-retatrutide-5mg",
-    "name": "Retatrutide 5mg",
-    "price": 11.23,
-    "boxPrice": 112.32,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Retatrutide research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0104",
-    "image": "/images/ghk-cu.jpg",
-    "dosageOptions": [
-      5
-    ],
-    "dosageBoxPrices": {
-      "5": 112.32
-    },
-    "marketTier": "premium"
-  },
-  {
-    "slug": "imported-retatrutide-10mg",
+    "slug": "retatrutide",
     "name": "Retatrutide 10mg",
-    "price": 17.08,
-    "boxPrice": 170.82,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Retatrutide research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0105",
-    "image": "/images/ghk-cu.jpg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "metabolic",
+    "categoryLabel": "Incretin Research",
+    "description": "Retatrutide research material, lyophilized powder. Supplied for in vitro laboratory research.",
+    "lot": "IMP-0104",
+    "image": "/images/retatrutide.png",
     "dosageOptions": [
-      10
-    ],
-    "dosageBoxPrices": {
-      "10": 170.82
-    },
-    "marketTier": "premium"
-  },
-  {
-    "slug": "imported-retatrutide-15mg",
-    "name": "Retatrutide 15mg",
-    "price": 21.52,
-    "boxPrice": 215.2,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Retatrutide research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0106",
-    "image": "/images/ghk-cu.jpg",
-    "dosageOptions": [
-      15
-    ],
-    "dosageBoxPrices": {
-      "15": 215.2
-    },
-    "marketTier": "premium"
-  },
-  {
-    "slug": "imported-retatrutide-20mg",
-    "name": "Retatrutide 20mg",
-    "price": 25.27,
-    "boxPrice": 252.68,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Retatrutide research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0107",
-    "image": "/images/ghk-cu.jpg",
-    "dosageOptions": [
-      20
-    ],
-    "dosageBoxPrices": {
-      "20": 252.68
-    },
-    "marketTier": "premium"
-  },
-  {
-    "slug": "imported-retatrutide-30mg",
-    "name": "Retatrutide 30mg",
-    "price": 32.76,
-    "boxPrice": 327.63,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Retatrutide research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0108",
-    "image": "/images/ghk-cu.jpg",
-    "dosageOptions": [
-      30
-    ],
-    "dosageBoxPrices": {
-      "30": 327.63
-    },
-    "marketTier": "premium"
-  },
-  {
-    "slug": "imported-retatrutide-40mg",
-    "name": "Retatrutide 40mg",
-    "price": 40.26,
-    "boxPrice": 402.59,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Retatrutide research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0109",
-    "image": "/images/ghk-cu.jpg",
-    "dosageOptions": [
-      40
-    ],
-    "dosageBoxPrices": {
-      "40": 402.59
-    },
-    "marketTier": "premium"
-  },
-  {
-    "slug": "imported-retatrutide-50mg",
-    "name": "Retatrutide 50mg",
-    "price": 47.76,
-    "boxPrice": 477.55,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Retatrutide research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0110",
-    "image": "/images/ghk-cu.jpg",
-    "dosageOptions": [
-      50
-    ],
-    "dosageBoxPrices": {
-      "50": 477.55
-    },
-    "marketTier": "premium"
-  },
-  {
-    "slug": "imported-retatrutide-60mg",
-    "name": "Retatrutide 60mg",
-    "price": 55.25,
-    "boxPrice": 552.5,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Retatrutide research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0111",
-    "image": "/images/ghk-cu.jpg",
-    "dosageOptions": [
+      5,
+      10,
+      15,
+      20,
+      30,
+      40,
+      50,
       60
     ],
     "dosageBoxPrices": {
-      "60": 552.5
-    },
-    "marketTier": "premium"
+      "5": 52.5,
+      "10": 100,
+      "15": 135,
+      "20": 170,
+      "30": 240,
+      "40": 310,
+      "50": 380,
+      "60": 425
+    }
   },
   {
-    "slug": "imported-hgh-fragment-176-191-2mg",
-    "name": "HGH Fragment 176‑191 2mg",
-    "price": 13.26,
-    "boxPrice": 132.6,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "HGH Fragment 176‑191 research material. Supplied for in-vitro laboratory research.",
+    "slug": "hgh-fragment-176-191",
+    "name": "HGH Fragment 176-191 2mg",
+    "price": 2.76,
+    "boxPrice": 24,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Sequence Fragment",
+    "description": "HGH Fragment 176-191 research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0112",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/hgh-fragment-176-191.png",
     "dosageOptions": [
-      2
-    ],
-    "dosageBoxPrices": {
-      "2": 132.6
-    }
-  },
-  {
-    "slug": "imported-hgh-fragment-176-191-5mg",
-    "name": "HGH Fragment 176‑191 5mg",
-    "price": 23.4,
-    "boxPrice": 234,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "HGH Fragment 176‑191 research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0113",
-    "image": "/images/ghk-cu.jpg",
-    "dosageOptions": [
+      2,
       5
     ],
     "dosageBoxPrices": {
-      "5": 234
+      "2": 24,
+      "5": 52.5
     }
   },
   {
-    "slug": "imported-dermorphin-5mg",
-    "name": "Dermorphin 5mg",
-    "price": 8.78,
-    "boxPrice": 87.75,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Dermorphin research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0114",
-    "image": "/images/ghk-cu.jpg",
-    "dosageOptions": [
-      5
-    ],
-    "dosageBoxPrices": {
-      "5": 87.75
-    }
-  },
-  {
-    "slug": "imported-dermorphin-10mg",
+    "slug": "dermorphin",
     "name": "Dermorphin 10mg",
-    "price": 14.63,
-    "boxPrice": 146.25,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Dermorphin research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0115",
-    "image": "/images/Dermorphin.jpeg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Peptide Research",
+    "description": "Dermorphin research material, lyophilized powder. Supplied for in vitro laboratory research.",
+    "lot": "IMP-0114",
+    "image": "/images/dermorphin.png",
     "dosageOptions": [
+      5,
       10
     ],
     "dosageBoxPrices": {
-      "10": 146.25
+      "5": 52.5,
+      "10": 100
     }
   },
   {
-    "slug": "imported-5-amino-1mq-5mg",
-    "name": "5‑amino‑1MQ 5mg",
-    "price": 6.08,
-    "boxPrice": 60.84,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "5‑amino‑1MQ research material. Supplied for in-vitro laboratory research.",
+    "slug": "5-amino-1mq",
+    "name": "5-Amino-1MQ 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "metabolic",
+    "categoryLabel": "Research Compound",
+    "description": "5-Amino-1MQ research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0118",
-    "image": "/images/5-amino-1mq.jpeg",
+    "image": "/images/5-amino-1mq.png",
     "dosageOptions": [
-      5
-    ],
-    "dosageBoxPrices": {
-      "5": 60.84
-    },
-    "marketTier": "premium"
-  },
-  {
-    "slug": "imported-5-amino-1mq-10mg",
-    "name": "5‑amino‑1MQ 10mg",
-    "price": 7.25,
-    "boxPrice": 72.54,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "5‑amino‑1MQ research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0119",
-    "image": "/images/5-amino-1mq.jpeg",
-    "dosageOptions": [
-      10
-    ],
-    "dosageBoxPrices": {
-      "10": 72.54
-    },
-    "marketTier": "premium"
-  },
-  {
-    "slug": "imported-5-amino-1mq-50mg",
-    "name": "5‑amino‑1MQ 50mg",
-    "price": 11.7,
-    "boxPrice": 117,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "5‑amino‑1MQ research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0120",
-    "image": "/images/5-amino-1mq.jpeg",
-    "dosageOptions": [
+      5,
+      10,
       50
     ],
     "dosageBoxPrices": {
-      "50": 117
-    },
-    "marketTier": "premium"
+      "5": 52.5,
+      "10": 100,
+      "50": 380
+    }
   },
   {
-    "slug": "imported-cerebrolysin-60mg",
+    "slug": "cerebrolysin",
     "name": "Cerebrolysin 60mg",
-    "price": 10.72,
-    "boxPrice": 107.25,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Cerebrolysin research material. Supplied for in-vitro laboratory research.",
+    "price": 48.87,
+    "boxPrice": 425,
+    "purity": "≥99% (HPLC)",
+    "category": "cognitive",
+    "categoryLabel": "Peptide Research",
+    "description": "Cerebrolysin research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0121",
-    "image": "/images/Cerebrolysin .jpeg",
+    "image": "/images/cerebrolysin.png",
     "dosageOptions": [
       60
     ],
     "dosageBoxPrices": {
-      "60": 107.25
+      "60": 425
     }
   },
   {
-    "slug": "imported-hyaluronic-acid-5mg",
-    "name": "Hyaluronic acid 5mg",
-    "price": 36.66,
-    "boxPrice": 366.6,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Hyaluronic acid research material. Supplied for in-vitro laboratory research.",
+    "slug": "hyaluronic-acid",
+    "name": "Hyaluronic Acid 5mg",
+    "price": 6.04,
+    "boxPrice": 52.5,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Research Compound",
+    "description": "Hyaluronic Acid research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0123",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/hyaluronic-acid.png",
     "dosageOptions": [
       5
     ],
     "dosageBoxPrices": {
-      "5": 366.6
+      "5": 52.5
     }
   },
   {
-    "slug": "imported-ara-290-10mg",
-    "name": "Ara‑290 10mg",
-    "price": 13.84,
-    "boxPrice": 138.45,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Ara‑290 research material. Supplied for in-vitro laboratory research.",
+    "slug": "ara-290",
+    "name": "Ara-290 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "longevity",
+    "categoryLabel": "Peptide Research",
+    "description": "Ara-290 research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0127",
-    "image": "/images/ara-290.jpeg",
+    "image": "/images/ara-290.png",
     "dosageOptions": [
       10
     ],
     "dosageBoxPrices": {
-      "10": 138.45
+      "10": 100
     }
   },
   {
-    "slug": "imported-snap-8-10mg",
-    "name": "SNAP‑8 10mg",
-    "price": 7.65,
-    "boxPrice": 76.5,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "SNAP‑8 research material. Supplied for in-vitro laboratory research.",
+    "slug": "snap-8",
+    "name": "SNAP-8 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Peptide Research",
+    "description": "SNAP-8 research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0128",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/snap-8.png",
     "dosageOptions": [
       10
     ],
     "dosageBoxPrices": {
-      "10": 76.5
-    },
-    "marketTier": "premium"
+      "10": 100
+    }
   },
   {
-    "slug": "imported-mazdutide",
-    "name": "Mazdutide",
-    "price": 14.63,
-    "boxPrice": 146.25,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Mazdutide research material. Supplied for in-vitro laboratory research.",
+    "slug": "mazdutide",
+    "name": "Mazdutide 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "metabolic",
+    "categoryLabel": "Incretin Research",
+    "description": "Mazdutide research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0129",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/mazdutide.png",
     "dosageOptions": [
       5,
       10
     ],
     "dosageBoxPrices": {
-      "5": 146.25,
-      "10": 292.5
-    },
-    "dosageVialPrices": {
-      "5": 14.63,
-      "10": 29.25
+      "5": 52.5,
+      "10": 100
     }
   },
   {
-    "slug": "imported-survodutide-10mg",
+    "slug": "survodutide",
     "name": "Survodutide 10mg",
-    "price": 41.54,
-    "boxPrice": 415.35,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Survodutide research material. Supplied for in-vitro laboratory research.",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "metabolic",
+    "categoryLabel": "Incretin Research",
+    "description": "Survodutide research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0136",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/survodutide.png",
     "dosageOptions": [
       10
     ],
     "dosageBoxPrices": {
-      "10": 415.35
+      "10": 100
     }
   },
   {
-    "slug": "imported-cagrilintide-5-mg-semaglutide-5-mg-10mg",
-    "name": "Cagrilintide 5 mg + Semaglutide 5 mg 10mg",
-    "price": 27.89,
-    "boxPrice": 278.85,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Cagrilintide 5 mg + Semaglutide 5 mg research material. Supplied for in-vitro laboratory research.",
+    "slug": "cagrilintide-semaglutide",
+    "name": "Cagrilintide + Semaglutide 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "metabolic",
+    "categoryLabel": "Research Blend",
+    "description": "Cagrilintide + Semaglutide research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0137",
-    "image": "/images/cagrilintide-semaglutide-10mg.jpeg",
+    "image": "/images/cagrilintide-semaglutide.png",
     "dosageOptions": [
       10
     ],
     "dosageBoxPrices": {
-      "10": 278.85
+      "10": 100
     }
   },
   {
-    "slug": "imported-retatrutide-5-mg-cagrilintide-5-mg-10mg",
-    "name": "Retatrutide 5 mg + Cagrilintide 5 mg 10mg",
-    "price": 22.04,
-    "boxPrice": 220.35,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Retatrutide 5 mg + Cagrilintide 5 mg research material. Supplied for in-vitro laboratory research.",
+    "slug": "retatrutide-cagrilintide",
+    "name": "Retatrutide + Cagrilintide 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "metabolic",
+    "categoryLabel": "Research Blend",
+    "description": "Retatrutide + Cagrilintide research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0138",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/retatrutide-cagrilintide.png",
     "dosageOptions": [
       10
     ],
     "dosageBoxPrices": {
-      "10": 220.35
+      "10": 100
     }
   },
   {
-    "slug": "imported-vip",
-    "name": "VIP",
-    "price": 16.57,
-    "boxPrice": 165.75,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "VIP research material. Supplied for in-vitro laboratory research.",
+    "slug": "vip",
+    "name": "VIP 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "longevity",
+    "categoryLabel": "Peptide Research",
+    "description": "VIP research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0139",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/vip.png",
     "dosageOptions": [
       5,
       10
     ],
     "dosageBoxPrices": {
-      "5": 165.75,
-      "10": 269.1
-    },
-    "dosageVialPrices": {
-      "5": 16.57,
-      "10": 26.91
+      "5": 52.5,
+      "10": 100
     }
   },
   {
-    "slug": "imported-pe-22-28-10mg",
-    "name": "PE 22‑28 10mg",
-    "price": 13.84,
-    "boxPrice": 138.45,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "PE 22‑28 research material. Supplied for in-vitro laboratory research.",
+    "slug": "pe-22-28",
+    "name": "PE 22-28 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "cognitive",
+    "categoryLabel": "Peptide Research",
+    "description": "PE 22-28 research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0144",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/pe-22-28.png",
     "dosageOptions": [
       10
     ],
     "dosageBoxPrices": {
-      "10": 138.45
+      "10": 100
     }
   },
   {
-    "slug": "imported-n-acetyl-epitalon-amidate",
-    "name": "N‑Acetyl Epitalon Amidate",
-    "price": 9.75,
-    "boxPrice": 97.5,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "N‑Acetyl Epitalon Amidate research material. Supplied for in-vitro laboratory research.",
+    "slug": "n-acetyl-epitalon",
+    "name": "N-Acetyl Epitalon Amidate 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "cognitive",
+    "categoryLabel": "Peptide Research",
+    "description": "N-Acetyl Epitalon Amidate research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0145",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/n-acetyl-epitalon.png",
     "dosageOptions": [
       5,
       10
     ],
     "dosageBoxPrices": {
-      "5": 97.5,
-      "10": 148.2
-    },
-    "dosageVialPrices": {
-      "5": 9.75,
-      "10": 14.82
+      "5": 52.5,
+      "10": 100
     }
   },
   {
-    "slug": "imported-vilon-20mg",
+    "slug": "vilon",
     "name": "Vilon 20mg",
-    "price": 22.04,
-    "boxPrice": 220.35,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Vilon research material. Supplied for in-vitro laboratory research.",
+    "price": 19.55,
+    "boxPrice": 170,
+    "purity": "≥99% (HPLC)",
+    "category": "cognitive",
+    "categoryLabel": "Peptide Research",
+    "description": "Vilon research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0147",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/vilon.png",
     "dosageOptions": [
       20
     ],
     "dosageBoxPrices": {
-      "20": 220.35
+      "20": 170
     }
   },
   {
-    "slug": "imported-pinealon",
-    "name": "Pinealon",
-    "price": 7.6,
-    "boxPrice": 76.05,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Pinealon research material. Supplied for in-vitro laboratory research.",
+    "slug": "pinealon",
+    "name": "Pinealon 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "cognitive",
+    "categoryLabel": "Peptide Research",
+    "description": "Pinealon research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0148",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/pinealon.png",
     "dosageOptions": [
       5,
       10,
       20
     ],
     "dosageBoxPrices": {
-      "5": 76.05,
-      "10": 122.85,
-      "20": 220.35
-    },
-    "dosageVialPrices": {
-      "5": 7.6,
-      "10": 12.29,
-      "20": 22.04
+      "5": 52.5,
+      "10": 100,
+      "20": 170
     }
   },
   {
-    "slug": "imported-pnc-27",
-    "name": "PNC 27",
-    "price": 17.16,
-    "boxPrice": 171.6,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "PNC 27 research material. Supplied for in-vitro laboratory research.",
+    "slug": "pnc-27",
+    "name": "PNC-27 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Research Compound",
+    "description": "PNC-27 research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0151",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/pnc-27.png",
     "dosageOptions": [
       5,
       10
     ],
     "dosageBoxPrices": {
-      "5": 171.6,
-      "10": 315.9
-    },
-    "dosageVialPrices": {
-      "5": 17.16,
-      "10": 31.59
+      "5": 52.5,
+      "10": 100
     }
   },
   {
-    "slug": "imported-bpc-157-10-mg-ghk-cu-50-mg-tb-500-10-mg-kpv-10-mg-80mg",
-    "name": "BPC‑157 10 mg + GHK‑Cu 50 mg + TB‑500 10 mg + KPV 10 mg 80mg",
-    "price": 28.05,
-    "boxPrice": 280.5,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "BPC‑157 10 mg + GHK‑Cu 50 mg + TB‑500 10 mg + KPV 10 mg research material. Supplied for in-vitro laboratory research.",
-    "lot": "IMP-0153",
-    "image": "/images/BPC‑157 10 mg + GHK‑Cu 50 mg + TB‑500 10 mg + KPV 10 mg 80mg.jpeg",
-    "dosageOptions": [
-      80
-    ],
-    "dosageBoxPrices": {
-      "80": 280.5
-    },
-    "marketTier": "premium"
-  },
-  {
-    "slug": "imported-testagen-20mg",
+    "slug": "testagen",
     "name": "Testagen 20mg",
-    "price": 22.04,
-    "boxPrice": 220.35,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Testagen research material. Supplied for in-vitro laboratory research.",
+    "price": 19.55,
+    "boxPrice": 170,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Bioregulator Research",
+    "description": "Testagen research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0154",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/testagen.png",
     "dosageOptions": [
       20
     ],
     "dosageBoxPrices": {
-      "20": 220.35
+      "20": 170
     }
   },
   {
-    "slug": "imported-p21-no-adamantane-10mg",
-    "name": "P21 (no adamantane) 10mg",
-    "price": 13.84,
-    "boxPrice": 138.45,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "P21 (no adamantane) research material. Supplied for in-vitro laboratory research.",
+    "slug": "p21-no-adamantane",
+    "name": "P21 (No Adamantane) 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "cognitive",
+    "categoryLabel": "Peptide Research",
+    "description": "P21 (No Adamantane) research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0155",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/p21-no-adamantane.png",
     "dosageOptions": [
       10
     ],
     "dosageBoxPrices": {
-      "10": 138.45
+      "10": 100
     }
   },
   {
-    "slug": "imported-p21-adamantane-10mg",
-    "name": "P21 (adamantane) 10mg",
-    "price": 58.5,
-    "boxPrice": 585,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "P21 (adamantane) research material. Supplied for in-vitro laboratory research.",
+    "slug": "p21-adamantane",
+    "name": "P21 (Adamantane) 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "cognitive",
+    "categoryLabel": "Peptide Research",
+    "description": "P21 (Adamantane) research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0156",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/p21-adamantane.png",
     "dosageOptions": [
       10
     ],
     "dosageBoxPrices": {
-      "10": 585
+      "10": 100
     }
   },
   {
-    "slug": "imported-humanin-10mg",
+    "slug": "humanin",
     "name": "Humanin 10mg",
-    "price": 36.66,
-    "boxPrice": 366.6,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Humanin research material. Supplied for in-vitro laboratory research.",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "cognitive",
+    "categoryLabel": "Peptide Research",
+    "description": "Humanin research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0157",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/humanin.png",
     "dosageOptions": [
       10
     ],
     "dosageBoxPrices": {
-      "10": 366.6
+      "10": 100
     }
   },
   {
-    "slug": "imported-teriparatide-10mg",
+    "slug": "teriparatide",
     "name": "Teriparatide 10mg",
-    "price": 36.66,
-    "boxPrice": 366.6,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Teriparatide research material. Supplied for in-vitro laboratory research.",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Peptide Research",
+    "description": "Teriparatide research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0158",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/teriparatide.png",
     "dosageOptions": [
       10
     ],
     "dosageBoxPrices": {
-      "10": 366.6
+      "10": 100
     }
   },
   {
-    "slug": "imported-bronchogen-20mg",
+    "slug": "bronchogen",
     "name": "Bronchogen 20mg",
-    "price": 23.4,
-    "boxPrice": 234,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Bronchogen research material. Supplied for in-vitro laboratory research.",
+    "price": 19.55,
+    "boxPrice": 170,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Bioregulator Research",
+    "description": "Bronchogen research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0159",
-    "image": "/images/bronchogen.jpeg",
+    "image": "/images/bronchogen.png",
     "dosageOptions": [
       20
     ],
     "dosageBoxPrices": {
-      "20": 234
+      "20": 170
     }
   },
   {
-    "slug": "imported-cardiogen-20mg",
+    "slug": "cardiogen",
     "name": "Cardiogen 20mg",
-    "price": 27.89,
-    "boxPrice": 278.85,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Cardiogen research material. Supplied for in-vitro laboratory research.",
+    "price": 19.55,
+    "boxPrice": 170,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Bioregulator Research",
+    "description": "Cardiogen research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0160",
-    "image": "/images/cardiogen.jpeg",
+    "image": "/images/cardiogen.png",
     "dosageOptions": [
       20
     ],
     "dosageBoxPrices": {
-      "20": 278.85
+      "20": 170
     }
   },
   {
-    "slug": "imported-cortagen-20mg",
+    "slug": "cortagen",
     "name": "Cortagen 20mg",
-    "price": 27.89,
-    "boxPrice": 278.85,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Cortagen research material. Supplied for in-vitro laboratory research.",
+    "price": 19.55,
+    "boxPrice": 170,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Bioregulator Research",
+    "description": "Cortagen research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0161",
-    "image": "/images/Cortagen 20mg.jpeg",
+    "image": "/images/cortagen.png",
     "dosageOptions": [
       20
     ],
     "dosageBoxPrices": {
-      "20": 278.85
+      "20": 170
     }
   },
   {
-    "slug": "imported-livagen-20mg",
+    "slug": "livagen",
     "name": "Livagen 20mg",
-    "price": 22.04,
-    "boxPrice": 220.35,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Livagen research material. Supplied for in-vitro laboratory research.",
+    "price": 19.55,
+    "boxPrice": 170,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Bioregulator Research",
+    "description": "Livagen research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0162",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/livagen.png",
     "dosageOptions": [
       20
     ],
     "dosageBoxPrices": {
-      "20": 220.35
+      "20": 170
     }
   },
   {
-    "slug": "imported-pancragen-20mg",
+    "slug": "pancragen",
     "name": "Pancragen 20mg",
-    "price": 22.04,
-    "boxPrice": 220.35,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Pancragen research material. Supplied for in-vitro laboratory research.",
+    "price": 19.55,
+    "boxPrice": 170,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Bioregulator Research",
+    "description": "Pancragen research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0163",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/pancragen.png",
     "dosageOptions": [
       20
     ],
     "dosageBoxPrices": {
-      "20": 220.35
+      "20": 170
     }
   },
   {
-    "slug": "imported-prostamax-20mg",
+    "slug": "prostamax",
     "name": "Prostamax 20mg",
-    "price": 22.04,
-    "boxPrice": 220.35,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Prostamax research material. Supplied for in-vitro laboratory research.",
+    "price": 19.55,
+    "boxPrice": 170,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Bioregulator Research",
+    "description": "Prostamax research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0164",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/prostamax.png",
     "dosageOptions": [
       20
     ],
     "dosageBoxPrices": {
-      "20": 220.35
+      "20": 170
     }
   },
   {
-    "slug": "imported-cartalax-20mg",
+    "slug": "cartalax",
     "name": "Cartalax 20mg",
-    "price": 22.04,
-    "boxPrice": 220.35,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Cartalax research material. Supplied for in-vitro laboratory research.",
+    "price": 19.55,
+    "boxPrice": 170,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Bioregulator Research",
+    "description": "Cartalax research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0165",
-    "image": "/images/cartalax.jpeg",
+    "image": "/images/cartalax.png",
     "dosageOptions": [
       20
     ],
     "dosageBoxPrices": {
-      "20": 220.35
+      "20": 170
     }
   },
   {
-    "slug": "imported-chonluten-20mg",
+    "slug": "chonluten",
     "name": "Chonluten 20mg",
-    "price": 27.89,
-    "boxPrice": 278.85,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Chonluten research material. Supplied for in-vitro laboratory research.",
+    "price": 19.55,
+    "boxPrice": 170,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Bioregulator Research",
+    "description": "Chonluten research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0166",
-    "image": "/images/Chonluten 20mg.jpeg",
+    "image": "/images/chonluten.png",
     "dosageOptions": [
       20
     ],
     "dosageBoxPrices": {
-      "20": 278.85
+      "20": 170
     }
   },
   {
-    "slug": "imported-crystagen-20mg",
+    "slug": "crystagen",
     "name": "Crystagen 20mg",
-    "price": 27.89,
-    "boxPrice": 278.85,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Crystagen research material. Supplied for in-vitro laboratory research.",
+    "price": 19.55,
+    "boxPrice": 170,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Bioregulator Research",
+    "description": "Crystagen research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0167",
-    "image": "/images/Crystagen 20mg.jpeg",
+    "image": "/images/crystagen.png",
     "dosageOptions": [
       20
     ],
     "dosageBoxPrices": {
-      "20": 278.85
+      "20": 170
     }
   },
   {
-    "slug": "imported-ovagen-20mg",
+    "slug": "ovagen",
     "name": "Ovagen 20mg",
-    "price": 22.04,
-    "boxPrice": 220.35,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Ovagen research material. Supplied for in-vitro laboratory research.",
+    "price": 19.55,
+    "boxPrice": 170,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Bioregulator Research",
+    "description": "Ovagen research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0168",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/ovagen.png",
     "dosageOptions": [
       20
     ],
     "dosageBoxPrices": {
-      "20": 220.35
+      "20": 170
     }
   },
   {
-    "slug": "imported-vesugen-20mg",
+    "slug": "vesugen",
     "name": "Vesugen 20mg",
-    "price": 22.04,
-    "boxPrice": 220.35,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Vesugen research material. Supplied for in-vitro laboratory research.",
+    "price": 19.55,
+    "boxPrice": 170,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Bioregulator Research",
+    "description": "Vesugen research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0169",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/vesugen.png",
     "dosageOptions": [
       20
     ],
     "dosageBoxPrices": {
-      "20": 220.35
+      "20": 170
     }
   },
   {
-    "slug": "imported-matrixyl-10mg",
+    "slug": "matrixyl",
     "name": "Matrixyl 10mg",
-    "price": 6.04,
-    "boxPrice": 60.45,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Matrixyl research material. Supplied for in-vitro laboratory research.",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "recovery",
+    "categoryLabel": "Peptide Research",
+    "description": "Matrixyl research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0170",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/matrixyl.png",
     "dosageOptions": [
       10
     ],
     "dosageBoxPrices": {
-      "10": 60.45
+      "10": 100
     }
   },
   {
-    "slug": "imported-ptd-dbm-5mg",
-    "name": "PTD‑DBM 5mg",
-    "price": 46.41,
-    "boxPrice": 464.1,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "PTD‑DBM research material. Supplied for in-vitro laboratory research.",
+    "slug": "ptd-dbm",
+    "name": "PTD-DBM 5mg",
+    "price": 6.04,
+    "boxPrice": 52.5,
+    "purity": "≥99% (HPLC)",
+    "category": "cognitive",
+    "categoryLabel": "Research Compound",
+    "description": "PTD-DBM research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0171",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/ptd-dbm.png",
     "dosageOptions": [
       5
     ],
     "dosageBoxPrices": {
-      "5": 464.1
+      "5": 52.5
     }
   },
   {
-    "slug": "imported-liraglutide",
-    "name": "Liraglutide",
-    "price": 14.82,
-    "boxPrice": 148.2,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Liraglutide research material. Supplied for in-vitro laboratory research.",
+    "slug": "liraglutide",
+    "name": "Liraglutide 10mg",
+    "price": 11.5,
+    "boxPrice": 100,
+    "purity": "≥99% (HPLC)",
+    "category": "metabolic",
+    "categoryLabel": "Incretin Research",
+    "description": "Liraglutide research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0172",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/liraglutide.png",
     "dosageOptions": [
       5,
       10,
       30
     ],
     "dosageBoxPrices": {
-      "5": 148.2,
-      "10": 220.35,
-      "30": 413.4
-    },
-    "dosageVialPrices": {
-      "5": 14.82,
-      "10": 22.04,
-      "30": 41.34
+      "5": 52.5,
+      "10": 100,
+      "30": 240
     }
   },
   {
-    "slug": "imported-triptorelin-2mg",
+    "slug": "triptorelin",
     "name": "Triptorelin 2mg",
-    "price": 6.04,
-    "boxPrice": 60.45,
-    "purity": "N/A",
-    "category": "research",
-    "categoryLabel": "Research Peptide",
-    "description": "Triptorelin research material. Supplied for in-vitro laboratory research.",
+    "price": 2.76,
+    "boxPrice": 24,
+    "purity": "≥99% (HPLC)",
+    "category": "longevity",
+    "categoryLabel": "Peptide Research",
+    "description": "Triptorelin research material, lyophilized powder. Supplied for in vitro laboratory research.",
     "lot": "IMP-0175",
-    "image": "/images/ghk-cu.jpg",
+    "image": "/images/triptorelin.png",
     "dosageOptions": [
       2
     ],
     "dosageBoxPrices": {
-      "2": 60.45
+      "2": 24
     }
   }
 ]

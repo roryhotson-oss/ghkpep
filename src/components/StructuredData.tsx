@@ -1,7 +1,7 @@
-import { getCommerceProducts } from '@/lib/commerce-store';
+import { products as localProducts } from '@/data/products';
 
-export default async function StructuredData() {
-  const products = await getCommerceProducts();
+export default function StructuredData() {
+  const products = localProducts;
   const structuredData = {
     '@context': 'https://schema.org',
     '@graph': [

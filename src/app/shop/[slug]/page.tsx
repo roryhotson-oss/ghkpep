@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getCommerceProduct, getCommerceProducts } from '@/lib/commerce-store';
+import { getCommerceProduct } from '@/lib/commerce-store';
+import { products as localProducts } from '@/data/products';
 import ProductPageClient from './ProductPageClient';
 
 interface Props {
@@ -59,16 +60,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
-  const [product, allProducts] = await Promise.all([
-    getCommerceProduct(slug),
-    getCommerceProducts(),
-  ]);
+  const product = await getCommerceProduct(slug);
 
   if (!product) {
     notFound();
   }
 
-  const pool = allProducts.filter((p) => p.slug !== product.slug && p.category !== 'accessories' && p.category !== 'peptide-holders');
+  const pool = localProducts.filter((p) => p.slug !== product.slug && p.category !== 'accessories' && p.category !== 'peptide-holders');
   const sameCategory = pool.filter((p) => p.category === product.category);
   const others = pool.filter((p) => p.category !== product.category);
   const related = [...sameCategory, ...others].slice(0, 8);
