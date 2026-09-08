@@ -111,29 +111,12 @@ export default function ShopPage() {
                     </select>
                   </div>
                   <div className="mt-3 flex gap-2">
-                    <button
-                      onClick={() => {
-                        if (!selectedProduct || isOutOfStock(selectedProduct)) return;
-                        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-                        cart.push({
-                          slug: selectedProduct.slug,
-                          name: `${selectedProduct.name} ${selectedDosage}${dosageUnit}`,
-                          price: effectivePrice(selectedProduct, 'box', selectedDosage),
-                          boxPrice: effectivePrice(selectedProduct, 'box', selectedDosage),
-                          image: selectedProduct.image,
-                          lot: selectedProduct.lot,
-                          qty: 1,
-                          type: 'box' as const,
-                          strength: selectedDosage,
-                        });
-                        localStorage.setItem('cart', JSON.stringify(cart));
-                        window.dispatchEvent(new Event('cart-updated'));
-                        alert('Added to cart!');
-                      }}
-                      className={`px-3 py-1.5 rounded-md border font-semibold shadow-sm transition ${isOutOfStock(selectedProduct) ? 'opacity-50 cursor-not-allowed border-[#c8dfe7] bg-[#eef8fb] text-[#8a989e]' : 'border-[#5b8ca0] bg-[#5b8ca0] text-white hover:bg-[#466f7f]'}`}
+                    <Link
+                      href={`/shop/${selectedProduct.slug}`}
+                      className="px-3 py-1.5 rounded-md border border-[#5b8ca0] bg-[#5b8ca0] text-white text-xs font-semibold shadow-sm transition hover:bg-[#466f7f]"
                     >
-                      {isOutOfStock(selectedProduct) ? 'Out of stock' : 'Add to Cart'}
-                    </button>
+                      Enquire
+                    </Link>
                     <Link
                       href={`/shop/${selectedProduct.slug}`}
                       aria-label={`View ${selectedProduct.name}`}
@@ -196,31 +179,11 @@ export default function ShopPage() {
                   </select>
                 </div>
                 <div className="mt-3 flex gap-2">
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      if (isOutOfStock(product)) return;
-                      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-                      cart.push({
-                        slug: product.slug,
-                        name: `${product.name} ${selectedDosage}${dosageUnit}`,
-                        price: effectivePrice(product, 'vial'),
-                        boxPrice: effectivePrice(product, 'box', selectedDosage),
-                        image: product.image,
-                        lot: product.lot,
-                        qty: 1,
-                        type: 'vial' as const,
-                        strength: selectedDosage,
-                      });
-                      localStorage.setItem('cart', JSON.stringify(cart));
-                      window.dispatchEvent(new Event('cart-updated'));
-                      alert('Added to cart!');
-                    }}
-                    className={`px-3 py-1.5 rounded-md border font-semibold shadow-sm transition ${isOutOfStock(product) ? 'opacity-50 cursor-not-allowed border-[#c8dfe7] bg-[#eef8fb] text-[#8a989e]' : 'border-[#5b8ca0] bg-[#5b8ca0] text-white hover:bg-[#466f7f]'}`}
+                  <span
+                    className="px-3 py-1.5 rounded-md border border-[#5b8ca0] bg-[#5b8ca0] text-white text-xs font-semibold shadow-sm"
                   >
-                    {isOutOfStock(product) ? 'Out of stock' : 'Add to Cart'}
-                  </button>
+                    Enquire
+                  </span>
                   <span aria-hidden="true" className="flex h-9 w-9 items-center justify-center rounded-full border border-[#c8dfe7] bg-white text-lg text-[#5b8ca0] shadow-sm transition group-hover:bg-[#eef8fb] group-hover:border-[#5b8ca0]">→</span>
                 </div>
               </Link>

@@ -25,8 +25,8 @@ export default async function HomeCatalog() {
           <br />
           for Laboratory Research
         </h1>
-        <div className="hero-photo-board relative min-h-[280px] overflow-hidden rounded-[2rem] sm:min-h-[420px]">
-          <div className="hero-photo-window absolute inset-3 overflow-hidden rounded-[1.5rem] sm:inset-5 sm:rounded-[1.75rem]">
+        <div className="hero-photo-board relative mx-auto mt-8 max-w-6xl min-h-[320px] overflow-hidden rounded-[2rem] sm:min-h-[520px] lg:min-h-[640px]">
+          <div className="hero-photo-window absolute inset-3 overflow-hidden rounded-[1.5rem] sm:inset-5 sm:rounded-[1.75rem] lg:inset-6 lg:rounded-[2rem]">
             <Image
               src="/images/shop-hero.jpg"
               alt="Box of 10 GHK Peptides research vials"

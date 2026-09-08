@@ -22,8 +22,8 @@ export const products: Product[] = [
   {
     slug: "ghk-cu",
     name: "GHK-Cu Research Peptide",
-    price: 27.95,
-    boxPrice: 279,
+    price: 6.50,
+    boxPrice: 55,
     purity: "99.84%",
     category: "recovery",
     categoryLabel: "Copper Complex",
@@ -37,8 +37,8 @@ export const products: Product[] = [
   {
     slug: "mots-c",
     name: "MOTS-C Research Peptide",
-    price: 27.5,
-    boxPrice: 275,
+    price: 9.50,
+    boxPrice: 95,
     purity: "99.79%",
     category: "longevity",
     categoryLabel: "Mitochondrial",
@@ -52,8 +52,8 @@ export const products: Product[] = [
   {
     slug: "nad-plus",
     name: "NAD+ 500mg",
-    price: 54.99,
-    boxPrice: 549,
+    price: 17.50,
+    boxPrice: 120,
     purity: "99.78%",
     category: "longevity",
     categoryLabel: "Cellular Cofactor",
@@ -67,8 +67,8 @@ export const products: Product[] = [
   {
     slug: "klow",
     name: "KLOW 80mg",
-    price: 35,
-    boxPrice: 389,
+    price: 12.50,
+    boxPrice: 125,
     purity: "99.69%",
     category: "blend",
     categoryLabel: "Research Blend",
@@ -81,8 +81,8 @@ export const products: Product[] = [
   {
     slug: "glp3-rt",
     name: "GLP3-RT 10mg",
-    price: 32.5,
-    boxPrice: 325,
+    price: 18.00,
+    boxPrice: 112,
     purity: "99.71%",
     category: "metabolic",
     categoryLabel: "Incretin Research",
@@ -110,8 +110,8 @@ export const products: Product[] = [
   {
     slug: "igf-1-lr3",
     name: "IGF-1 LR3",
-    price: 12.5,
-    boxPrice: 225,
+    price: 10.00,
+    boxPrice: 75,
     purity: "99.74%",
     category: "recovery",
     categoryLabel: "Peptide Research",
@@ -125,8 +125,8 @@ export const products: Product[] = [
   {
     slug: "tesamorelin",
     name: "Tesamorelin 10mg",
-    price: 11.5,
-    boxPrice: 310,
+    price: 12.50,
+    boxPrice: 125,
     purity: "99.88%",
     category: "recovery",
     categoryLabel: "Peptide Research",
@@ -135,7 +135,7 @@ export const products: Product[] = [
     image: "/images/tesamorelin.png",
     marketTier: "mid-market",
     dosageOptions: [2, 5, 10, 20],
-    dosageBoxPrices: { 2: 99, 5: 179, 10: 319, 20: 619 }
+    dosageBoxPrices: { 2: 45, 5: 75, 10: 125, 20: 225 }
   },
   {
     slug: "glp2-tz",
@@ -155,7 +155,7 @@ export const products: Product[] = [
     slug: "cjc-1295-ipamorelin",
     name: "CJC-1295 (No DAC) + Ipamorelin 10mg",
     price: 14,
-    boxPrice: 275,
+    boxPrice: 140,
     purity: "99.83%",
     category: "blend",
     categoryLabel: "Research Blend",
@@ -163,7 +163,7 @@ export const products: Product[] = [
     lot: "GHK-2410-J",
     image: "/images/cjc-ipamorelin.png",
     dosageOptions: [10, 20],
-    dosageBoxPrices: { 10: 179, 20: 329 }
+    dosageBoxPrices: { 10: 140, 20: 265 }
   },
   {
     slug: "refined-h2o",
@@ -182,8 +182,8 @@ export const products: Product[] = [
   {
     slug: "pt-141",
     name: "PT-141 10mg",
-    price: 26.5,
-    boxPrice: 265,
+    price: 13.50,
+    boxPrice: 125,
     purity: "≥99%",
     category: "metabolic",
     categoryLabel: "Melanocortin",
@@ -213,7 +213,7 @@ export const products: Product[] = [
     slug: "ss-31",
     name: "SS-31 10mg",
     price: 15,
-    boxPrice: 310,
+    boxPrice: 130,
     purity: "≥99%",
     category: "longevity",
     categoryLabel: "Mitochondrial",
@@ -241,8 +241,8 @@ export const products: Product[] = [
   {
     slug: "wolverine",
     name: "Wolverine 10mg",
-    price: 15,
-    boxPrice: 413.91,
+    price: 14.50,
+    boxPrice: 145,
     purity: "≥99%",
     category: "recovery",
     categoryLabel: "Copper Composite",
@@ -250,7 +250,7 @@ export const products: Product[] = [
     lot: "GHK-2425-P",
     image: "/images/wolverine.png",
     dosageOptions: [10, 20],
-    dosageBoxPrices: { 10: 150, 20: 265 }
+    dosageBoxPrices: { 10: 145, 20: 265 }
   },
   {
     slug: "kiss-peptin",
@@ -271,7 +271,7 @@ export const products: Product[] = [
     slug: "cagrilintide",
     name: "Cagrilintide 5mg",
     price: 15,
-    boxPrice: 380,
+    boxPrice: 149,
     purity: "≥99%",
     category: "metabolic",
     categoryLabel: "Amylin Research",
@@ -279,7 +279,7 @@ export const products: Product[] = [
     lot: "GHK-2427-R",
     image: "/images/cagrilintide.png",
     dosageOptions: [5, 10, 20],
-    dosageBoxPrices: { 5: 149, 10: 279, 20: 469 }
+    dosageBoxPrices: { 5: 149, 10: 249, 20: 449 }
   },
   {
     slug: "kpv",
@@ -312,8 +312,8 @@ export const products: Product[] = [
   {
     slug: "glow",
     name: "GLOW 70mg",
-    price: 25,
-    boxPrice: 369,
+    price: 12.50,
+    boxPrice: 125,
     purity: "≥99%",
     category: "blend",
     categoryLabel: "Research Blend",
@@ -321,13 +321,13 @@ export const products: Product[] = [
     lot: "GHK-2430-U",
     image: "/images/glow.png",
     dosageOptions: [70],
-    dosageBoxPrices: { 70: 295 }
+    dosageBoxPrices: { 70: 125 }
   },
   {
     slug: "adamax",
     name: "Adamax 5mg",
-    price: 25,
-    boxPrice: 299,
+    price: 20,
+    boxPrice: 199,
     purity: "≥99%",
     category: "blend",
     categoryLabel: "Research Blend",
@@ -335,7 +335,7 @@ export const products: Product[] = [
     lot: "GHK-2431-V",
     image: "/images/adamax.png",
     dosageOptions: [5],
-    dosageBoxPrices: { 5: 235 }
+    dosageBoxPrices: { 5: 199 }
   },
   {
     slug: "ahk-cu",
@@ -354,8 +354,8 @@ export const products: Product[] = [
   {
     slug: "bpc-157",
     name: "BPC-157 10mg",
-    price: 22.5,
-    boxPrice: 249,
+    price: 6.50,
+    boxPrice: 65,
     purity: "99.2%",
     category: "recovery",
     categoryLabel: "Sequence Peptide",
@@ -364,13 +364,13 @@ export const products: Product[] = [
     image: "/images/bpc-157.png",
     marketTier: "mid-market",
     dosageOptions: [2, 5, 10, 20],
-    dosageBoxPrices: { 2: 45, 5: 70, 10: 90, 20: 140 }
+    dosageBoxPrices: { 2: 25, 5: 40, 10: 65, 20: 120 }
   },
   {
     slug: "selank",
     name: "Selank 10mg",
-    price: 23.99,
-    boxPrice: 215.91,
+    price: 11.00,
+    boxPrice: 99,
     purity: "99.0%",
     category: "cognitive",
     categoryLabel: "Tuftsin Research",
@@ -381,8 +381,8 @@ export const products: Product[] = [
   {
     slug: "tb-500",
     name: "TB-500 10mg",
-    price: 34.99,
-    boxPrice: 349,
+    price: 4.99,
+    boxPrice: 50,
     purity: "≥99%",
     category: "recovery",
     categoryLabel: "Thymosin Fragment",
@@ -390,13 +390,13 @@ export const products: Product[] = [
     lot: "GHK-2435-Z",
     image: "/images/tb-500.png",
     dosageOptions: [5, 10, 20],
-    dosageBoxPrices: { 5: 149, 10: 249, 20: 529 }
+    dosageBoxPrices: { 5: 35, 10: 50, 20: 95 }
   },
   {
     slug: "semax",
     name: "Semax 10mg",
-    price: 23.99,
-    boxPrice: 215.91,
+    price: 11.50,
+    boxPrice: 99,
     purity: "99.0%",
     category: "cognitive",
     categoryLabel: "ACTH Research",
@@ -408,8 +408,8 @@ export const products: Product[] = [
   {
     slug: "dsip",
     name: "DSIP",
-    price: 14.99,
-    boxPrice: 149,
+    price: 9.00,
+    boxPrice: 90,
     purity: "N/A",
     category: "cognitive",
     categoryLabel: "Research Peptide",
@@ -417,7 +417,7 @@ export const products: Product[] = [
     lot: "GHK-2437-AB",
     image: "/images/dsip.png",
     dosageOptions: [2, 5, 10, 15],
-    dosageBoxPrices: { 2: 50, 5: 70, 10: 110, 15: 165 }
+    dosageBoxPrices: { 2: 35, 5: 50, 10: 90, 15: 130 }
   },
   {
     slug: "vial-organizer-3ml",
@@ -460,8 +460,8 @@ export const products: Product[] = [
   {
     slug: "na-selank-amidate",
     name: "NA Selank Amidate 30mg",
-    price: 27.6,
-    boxPrice: 240,
+    price: 18.00,
+    boxPrice: 175,
     purity: "≥99% (HPLC)",
     category: "cognitive",
     categoryLabel: "Tuftsin Research",
@@ -469,7 +469,7 @@ export const products: Product[] = [
     lot: "IMP-0032",
     image: "/images/na-selank-amidate.png",
     dosageOptions: [30],
-    dosageBoxPrices: { 30: 240 }
+    dosageBoxPrices: { 30: 175 }
   },
   {
     slug: "oxytocin-acetate",
@@ -516,8 +516,8 @@ export const products: Product[] = [
   {
     slug: "aicar",
     name: "AICAR 50mg",
-    price: 43.7,
-    boxPrice: 380,
+    price: 24.75,
+    boxPrice: 225,
     purity: "≥99% (HPLC)",
     category: "metabolic",
     categoryLabel: "Research Compound",
@@ -525,7 +525,7 @@ export const products: Product[] = [
     lot: "IMP-0042",
     image: "/images/aicar.png",
     dosageOptions: [50, 100],
-    dosageBoxPrices: { 50: 380, 100: 605.0 }
+    dosageBoxPrices: { 50: 225, 100: 375 }
   },
   {
     slug: "adipotide",
@@ -838,8 +838,8 @@ export const products: Product[] = [
   {
     slug: "cerebrolysin",
     name: "Cerebrolysin 60mg",
-    price: 48.87,
-    boxPrice: 425.0,
+    price: 17.75,
+    boxPrice: 175,
     purity: "≥99% (HPLC)",
     category: "cognitive",
     categoryLabel: "Peptide Research",
@@ -847,7 +847,7 @@ export const products: Product[] = [
     lot: "IMP-0121",
     image: "/images/cerebrolysin.png",
     dosageOptions: [60],
-    dosageBoxPrices: { 60: 425.0 }
+    dosageBoxPrices: { 60: 175 }
   },
   {
     slug: "hyaluronic-acid",

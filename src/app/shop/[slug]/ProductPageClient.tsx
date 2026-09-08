@@ -227,40 +227,25 @@ export default function ProductPageClient({ product, related = [] }: Props) {
             </div>}
           </div>
 
-          {/* Add to Cart Button */}
-          <button
-            disabled={isOutOfStock(product)}
-            onClick={() => {
-              if (isOutOfStock(product)) return;
-              const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-              const cartName = `${product.name} ${selectedDosage}${dosageUnit}`;
-              const existingIndex = cart.findIndex(
-                (item: { slug: string; type: string; strength: number }) =>
-                  item.slug === product.slug && item.type === 'box' && item.strength === selectedDosage
-              );
-              if (existingIndex >= 0) {
-                cart[existingIndex].qty += quantity;
-              } else {
-                cart.push({
-                  slug: product.slug,
-                  name: cartName,
-                  price: effectivePrice(product, 'box', selectedDosage),
-                  boxPrice: effectivePrice(product, 'box', selectedDosage),
-                  image: product.image,
-                  lot: product.lot,
-                  qty: quantity,
-                  type: 'box',
-                  strength: selectedDosage,
-                });
-              }
-              localStorage.setItem('cart', JSON.stringify(cart));
-              window.dispatchEvent(new Event('cart-updated'));
-              alert('Added to cart!');
-            }}
-            className="w-full bg-[#5b8ca0] border border-[#5b8ca0] text-white font-bold py-4 rounded-xl hover:bg-[#466f7f] shadow-md transition mb-6"
-          >
-            {isOutOfStock(product) ? 'Out of stock' : 'Add to Cart'}
-          </button>
+          {/* Enquire Buttons */}
+          <div className="space-y-3 mb-6">
+            <a
+              href={'https://wa.me/' + (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '447538373481') + '?text=' + encodeURIComponent('Enquiry about ' + product.name + ' (' + selectedDosage + dosageUnit + ', Box of 10)')}
+              target="_blank"
+              rel="noreferrer"
+              className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-[#25D366] text-white font-bold rounded-xl hover:bg-[#20bd5a] shadow-md transition"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Enquire on WhatsApp
+            </a>
+            <a
+              href={'mailto:' + (process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'support@ghkpep.com') + '?subject=' + encodeURIComponent('Enquiry: ' + product.name + ' (' + selectedDosage + dosageUnit + ')') + '&body=' + encodeURIComponent('I would like to enquire about:\n\nProduct: ' + product.name + '\nDosage: ' + selectedDosage + dosageUnit + '\nPack: Box of 10\nLot: ' + product.lot + '\n\nQuantity needed: \nDelivery location: ')}
+              className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-[#5b8ca0] border border-[#5b8ca0] text-white font-bold rounded-xl hover:bg-[#466f7f] shadow-md transition"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+              Enquire by Email
+            </a>
+          </div>
 
           <div className="border-y border-[#b8c7d1] py-5 mb-6">
             <h2 className="text-lg font-semibold mb-2">Research context</h2>
@@ -299,21 +284,12 @@ export default function ProductPageClient({ product, related = [] }: Props) {
                   </Link>
                   <p className="mt-1.5 font-bold text-[#34414a]">£{relPrice.toFixed(2)}</p>
                   <p className="text-[10px] uppercase tracking-wide text-[#6d8792]">Box of 10</p>
-                  <button
-                    type="button"
-                    disabled={relSoldOut}
-                    onClick={() => {
-                      if (relSoldOut) return;
-                      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-                      cart.push({ slug: rel.slug, name: `${rel.name}${relDosage ? ` ${relDosage}mg` : ''}`, price: relPrice, boxPrice: relPrice, image: rel.image, lot: rel.lot, qty: 1, type: 'box', strength: relDosage });
-                      localStorage.setItem('cart', JSON.stringify(cart));
-                      window.dispatchEvent(new Event('cart-updated'));
-                      alert('Added to cart!');
-                    }}
-                    className="mt-2 w-full rounded-xl border border-[#5b8ca0] bg-[#5b8ca0] py-2 text-xs font-bold text-white transition hover:bg-[#466f7f] disabled:cursor-not-allowed disabled:opacity-50"
+                  <Link
+                    href={`/shop/${rel.slug}`}
+                    className="mt-2 block w-full rounded-xl border border-[#5b8ca0] bg-[#5b8ca0] py-2 text-xs font-bold text-white text-center transition hover:bg-[#466f7f]"
                   >
-                    {relSoldOut ? 'Out of stock' : 'Add to Cart'}
-                  </button>
+                    View Product
+                  </Link>
                 </div>
               );
             })}

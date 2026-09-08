@@ -12,20 +12,11 @@ localProducts.forEach(p => {
 });
 
 // Override box prices from Supabase with curated local values
-const boxPriceOverrides: Record<string, number> = {
-  'klow': 389,
-  'glutathione': 199,
-  'glp2-tz': 119,
-  'melanotan-2': 125,
-  'melanotan-1': 135,
-  'kiss-peptin': 159,
-  'kpv': 149,
-  'ipamorelin': 119,
-  'glow': 369,
-  'adamax': 299,
-  'ahk-cu': 149,
-  'bpc-157': 249,
-};
+// Use curated local box prices as source of truth for all products
+const boxPriceOverrides: Record<string, number> = {};
+localProducts.forEach(p => {
+  boxPriceOverrides[p.slug] = p.boxPrice;
+});
 
 // Per-vial price overrides: use curated local product prices as source of truth
 const vialPriceMap: Record<string, number> = {};
