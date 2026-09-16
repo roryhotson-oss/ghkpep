@@ -8,23 +8,32 @@ const PRODUCTS_FILE = path.join(DATA_DIR, 'products.json');
 const ORDERS_FILE = path.join(DATA_DIR, 'orders.json');
 const SUBSCRIBERS_FILE = path.join(DATA_DIR, 'subscribers.json');
 
-// Ensure data directory exists
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
+// Ensure data directory exists. On read-only runtimes (e.g. Vercel serverless)
+// this is a no-op: missing files fall back to the in-memory initialProducts.
+try {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+} catch {
+  // Read-only filesystem or permission error; data files are optional.
 }
 
 if (process.env.NODE_ENV !== 'production') {
   // Keep local development data self-initializing without writing during Vercel builds.
-  if (!fs.existsSync(PRODUCTS_FILE)) {
-    fs.writeFileSync(PRODUCTS_FILE, JSON.stringify(initialProducts, null, 2));
-  }
+  try {
+    if (!fs.existsSync(PRODUCTS_FILE)) {
+      fs.writeFileSync(PRODUCTS_FILE, JSON.stringify(initialProducts, null, 2));
+    }
 
-  if (!fs.existsSync(ORDERS_FILE)) {
-    fs.writeFileSync(ORDERS_FILE, JSON.stringify([], null, 2));
-  }
+    if (!fs.existsSync(ORDERS_FILE)) {
+      fs.writeFileSync(ORDERS_FILE, JSON.stringify([], null, 2));
+    }
 
-  if (!fs.existsSync(SUBSCRIBERS_FILE)) {
-    fs.writeFileSync(SUBSCRIBERS_FILE, JSON.stringify([], null, 2));
+    if (!fs.existsSync(SUBSCRIBERS_FILE)) {
+      fs.writeFileSync(SUBSCRIBERS_FILE, JSON.stringify([], null, 2));
+    }
+  } catch {
+    // Writable filesystem unavailable; fall back to in-memory data at read time.
   }
 }
 
@@ -96,8 +105,12 @@ export interface Order {
 }
 
 export function getOrders(): Order[] {
-  const data = fs.readFileSync(ORDERS_FILE, 'utf-8');
-  return JSON.parse(data);
+  try {
+    const data = fs.readFileSync(ORDERS_FILE, 'utf-8');
+    return JSON.parse(data);
+  } catch {
+    return [];
+  }
 }
 
 export function addOrder(order: Order): void {
@@ -123,8 +136,12 @@ export interface Subscriber {
 }
 
 export function getSubscribers(): Subscriber[] {
-  const data = fs.readFileSync(SUBSCRIBERS_FILE, 'utf-8');
-  return JSON.parse(data);
+  try {
+    const data = fs.readFileSync(SUBSCRIBERS_FILE, 'utf-8');
+    return JSON.parse(data);
+  } catch {
+    return [];
+  }
 }
 
 export function addSubscriber(email: string, source: string = 'website'): void {
