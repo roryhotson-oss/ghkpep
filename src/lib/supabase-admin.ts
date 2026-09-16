@@ -22,9 +22,14 @@ export function getSupabaseAdmin(): SupabaseClient | null {
 
   if (!url || !serviceRoleKey) return null;
   if (isPlaceholder(url) || isPlaceholder(serviceRoleKey)) return null;
-  client ??= createClient(url, serviceRoleKey, {
-    auth: { autoRefreshToken: false, persistSession: false },
-    global: { fetch: fetchWithTimeout },
-  });
+  try {
+    client ??= createClient(url, serviceRoleKey, {
+      auth: { autoRefreshToken: false, persistSession: false },
+      global: { fetch: fetchWithTimeout },
+    });
+  } catch (err) {
+    console.warn('Supabase admin client init failed, falling back to local data:', err);
+    return null;
+  }
   return client;
 }
