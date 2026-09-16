@@ -25,17 +25,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const baseUrl = 'https://www.ghkpep.com';
 
+  const keywords = [
+    product.name.toLowerCase(),
+    `${product.name.toLowerCase()} UK`,
+    `${product.name.toLowerCase()} research compound`,
+    `${product.categoryLabel.toLowerCase()} research UK`,
+    'GHK peptides UK',
+    'laboratory research compounds UK',
+    'research peptides UK',
+  ];
+  if (product.slug === 'ghk-cu') {
+    keywords.unshift('GHK-Cu peptides UK', 'GHK Cu peptide UK', 'UK GHK-Cu peptides');
+  }
+
   return {
     title: `${product.name} | GHK Peptides`,
     description: `${product.name} for laboratory research use in the UK, with lot documentation and clear product information.`,
-    keywords: [
-      product.name.toLowerCase(),
-      `${product.name.toLowerCase()} UK`,
-      `${product.name.toLowerCase()} research compound`,
-      `${product.categoryLabel.toLowerCase()} research UK`,
-      'laboratory research compounds UK',
-      'research peptides UK',
-    ],
+    keywords,
     openGraph: {
       title: `${product.name} | GHK Peptides`,
       description: `${product.name} for laboratory research use in the UK with lot documentation and clear product information.`,

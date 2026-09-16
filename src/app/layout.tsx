@@ -16,11 +16,16 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ghkpep.com'),
   title: {
-    default: 'GHK Peptides | Research Peptides & Laboratory Compounds',
+    default: 'GHK Peptides UK | Research Peptides & Laboratory Compounds',
     template: '%s | GHK Peptides',
   },
-  description: 'GHK Peptides supplies documented research peptides and laboratory compounds for in vitro research use in the UK, with lot references and clear product information.',
+  description:
+    'GHK Peptides UK supplies GHK-Cu peptides and documented research compounds for in vitro laboratory use, with HPLC purity data, MS identity, lot references and certificates of analysis.',
   keywords: [
+    'GHK peptides UK',
+    'GHK-Cu peptides UK',
+    'UK GHK peptides',
+    'GHK Cu peptide UK',
     'research peptides UK',
     'BPC-157 UK',
     'GHK-Cu research compound',
@@ -47,21 +52,22 @@ export const metadata: Metadata = {
     locale: 'en_GB',
     url: 'https://www.ghkpep.com',
     siteName: 'GHK Peptides',
-    title: 'GHK Peptides | Research Peptides & Laboratory Compounds',
-    description: 'GHK Peptides supplies documented research peptides and laboratory compounds for in vitro research use in the UK, with lot references and clear product information.',
+    title: 'GHK Peptides UK | Research Peptides & Laboratory Compounds',
+    description:
+      'GHK Peptides UK supplies GHK-Cu peptides and documented research compounds for in vitro laboratory use, with HPLC purity data, MS identity, lot references and certificates of analysis.',
     images: [
       {
         url: '/images/box10.jpeg',
         width: 1200,
         height: 630,
-        alt: 'GHK Peptides - Research compounds and peptide documentation',
+        alt: 'GHK Peptides UK - Research compounds and peptide documentation',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GHK Peptides | Research Peptides & Laboratory Compounds',
-    description: 'Documented research peptides and laboratory compounds for in vitro research use in the UK.',
+    title: 'GHK Peptides UK | Research Peptides & Laboratory Compounds',
+    description: 'GHK-Cu peptides and documented research compounds for in vitro laboratory use in the UK.',
     images: ['/images/box10.jpeg'],
     creator: '@ghkpeptides',
   },

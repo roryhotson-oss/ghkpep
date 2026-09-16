@@ -10,7 +10,8 @@ export default function StructuredData() {
         '@id': 'https://www.ghkpep.com/#organization',
         name: 'GHK Peptides',
         url: 'https://www.ghkpep.com',
-        description: 'Documented research compounds for in vitro laboratory use.',
+        description: 'GHK-Cu peptides and documented research compounds for in vitro laboratory use in the UK.',
+        areaServed: { '@type': 'Country', name: 'United Kingdom' },
         contactPoint: {
           '@type': 'ContactPoint',
           contactType: 'customer service',
@@ -29,10 +30,10 @@ export default function StructuredData() {
         '@type': 'WebPage',
         '@id': 'https://www.ghkpep.com/#webpage',
         url: 'https://www.ghkpep.com',
-        name: 'GHK Peptides | Research Peptides & Laboratory Compounds',
+        name: 'GHK Peptides UK | Research Peptides & Laboratory Compounds',
         isPartOf: { '@id': 'https://www.ghkpep.com/#website' },
         about: { '@id': 'https://www.ghkpep.com/#organization' },
-        description: 'Documented research peptides and laboratory compounds for in vitro research use in the UK.',
+        description: 'GHK-Cu peptides and documented research compounds for in vitro laboratory use in the UK.',
       },
       {
         '@type': 'ItemList',

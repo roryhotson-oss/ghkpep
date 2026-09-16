@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Shop Research Compounds',
+  title: 'Shop Research Peptides UK',
   description:
-    'Browse documented research compounds and laboratory accessories with lot references and batch documentation.',
+    'Browse GHK-Cu peptides and documented research compounds supplied in the UK, with lot references, batch documentation and certificates of analysis.',
   alternates: {
     canonical: 'https://www.ghkpep.com/shop',
   },
@@ -12,9 +12,9 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: 'Shop Research Compounds | GHK Peptides',
+    title: 'Shop Research Peptides UK | GHK Peptides',
     description:
-      'Browse documented research compounds and laboratory accessories with lot references and batch documentation.',
+      'Browse GHK-Cu peptides and documented research compounds supplied in the UK, with lot references and batch documentation.',
     url: 'https://www.ghkpep.com/shop',
     images: [
       {

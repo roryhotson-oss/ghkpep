@@ -32,8 +32,19 @@ export async function GET(request: NextRequest) {
     '/news',
     '/blog',
   ];
+  const blogPostPaths = [
+    '/blog/ghk-cu-research-guide',
+    '/blog/peptide-purity-vs-net-content',
+    '/blog/top-5-peptides-research-2026',
+    '/blog/complete-guide-research-peptides',
+    '/blog/bpc-157-guide',
+    '/blog/how-to-read-coa',
+    '/blog/peptide-storage-guide',
+    '/blog/independent-testing',
+  ];
   const urlList = [
     ...staticPaths.map((p) => `${BASE_URL}${p}`),
+    ...blogPostPaths.map((p) => `${BASE_URL}${p}`),
     ...products.map((p) => `${BASE_URL}/shop/${p.slug}`),
   ];
 
