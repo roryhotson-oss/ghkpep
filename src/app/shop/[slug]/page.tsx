@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { getCommerceProduct } from '@/lib/commerce-store';
 import { products as localProducts } from '@/data/products';
+import Link from 'next/link';
 import ProductPageClient from './ProductPageClient';
 
 interface Props {
@@ -15,7 +15,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!product) {
     return {
       title: 'Product Not Found',
-      description: 'The product you are looking for does not exist.',
+      description: 'The research compound you are looking for is not in our catalogue. Browse the full range of documented research compounds and laboratory accessories.',
+      robots: {
+        index: false,
+        follow: true,
+      },
     };
   }
 
@@ -63,7 +67,20 @@ export default async function ProductPage({ params }: Props) {
   const product = await getCommerceProduct(slug);
 
   if (!product) {
-    notFound();
+    return (
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+        <h1 className="text-5xl font-bold text-[#8298aa] mb-4">Product not found</h1>
+        <p className="text-xl text-[#a7b0b2] mb-8">
+          We couldn&apos;t find that compound in our catalogue. It may have been renamed or removed.
+        </p>
+        <Link
+          href="/shop"
+          className="px-8 py-3 bg-[#0c1622] border-2 border-[#FBFAF7] text-white font-semibold rounded-xl hover:bg-[#16283c] transition"
+        >
+          Browse the catalogue
+        </Link>
+      </div>
+    );
   }
 
   const pool = localProducts.filter((p) => p.slug !== product.slug && p.category !== 'accessories' && p.category !== 'peptide-holders');

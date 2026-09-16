@@ -55,7 +55,12 @@ export default function OrdersPage() {
   }, [router]);
 
   if (!user) {
-    return <div className="min-h-[80vh] flex items-center justify-center">Loading...</div>;
+    return (
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h1 className="text-3xl font-bold mb-2">Order History</h1>
+        <p className="text-[#a7b0b2]">Loading your orders...</p>
+      </div>
+    );
   }
 
   return (
