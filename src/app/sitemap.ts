@@ -83,6 +83,33 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
+  // Blog pages
+  const blogPosts = [
+    { slug: 'ghk-cu-research-guide', date: '2026-09-16' },
+    { slug: 'peptide-purity-vs-net-content', date: '2026-09-16' },
+    { slug: 'top-5-peptides-research-2026', date: '2026-09-16' },
+    { slug: 'complete-guide-research-peptides', date: '2026-08-20' },
+    { slug: 'bpc-157-guide', date: '2026-08-15' },
+    { slug: 'how-to-read-coa', date: '2026-08-10' },
+    { slug: 'peptide-storage-guide', date: '2026-08-05' },
+    { slug: 'independent-testing', date: '2026-08-01' },
+  ];
+
+  const blogPages = [
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: SITE_UPDATED,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+    ...blogPosts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    })),
+  ];
+
   // Product pages
   const productPages = products.map((product) => ({
     url: `${baseUrl}/shop/${product.slug}`,
@@ -91,5 +118,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...productPages];
+  return [...staticPages, ...blogPages, ...productPages];
 }
