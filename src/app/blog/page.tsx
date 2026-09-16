@@ -20,6 +20,31 @@ export const metadata: Metadata = {
 
 const blogPosts = [
   {
+    slug: 'ghk-cu-research-guide',
+    title: 'GHK-Cu Copper Peptide: The Complete Research Guide',
+    excerpt: 'A referenced guide to the GHK-Cu copper tripeptide: discovery, biochemistry, documented research directions, and the quality standards that apply to research-grade material.',
+    date: '2026-09-16',
+    readTime: '10 min read',
+    category: 'Peptides',
+  },
+  {
+    slug: 'peptide-purity-vs-net-content',
+    title: 'Peptide Purity vs Net Peptide Content: Why the Difference Matters',
+    excerpt: 'HPLC purity and net peptide content answer different questions. Confusing them leads to concentration errors of 30 percent or more in reconstituted solutions.',
+    date: '2026-09-16',
+    readTime: '7 min read',
+    category: 'Quality',
+  },
+  {
+    slug: 'top-5-peptides-research-2026',
+    title: 'Top 5 Research Peptides in 2026',
+    excerpt: 'Discover the most popular research peptides of 2026, their applications, and why researchers choose them.',
+    date: '2026-09-16',
+    readTime: '9 min read',
+    category: 'Peptides',
+  },
+
+  {
     slug: 'complete-guide-research-peptides',
     title: 'The Complete Guide to Research Peptides in 2026',
     excerpt: 'Everything you need to know about research peptides, including types, applications, quality standards, and how to choose a reliable supplier.',
@@ -28,7 +53,7 @@ const blogPosts = [
     category: 'Guides',
   },
   {
-    slug: 'bpc-157-everything-you-need-to-know',
+    slug: 'bpc-157-guide',
     title: 'BPC-157: Everything Researchers Need to Know',
     excerpt: 'A comprehensive overview of BPC-157 peptide, its research applications, quality standards, and what to look for when sourcing.',
     date: '2026-08-15',
@@ -36,7 +61,7 @@ const blogPosts = [
     category: 'Peptides',
   },
   {
-    slug: 'how-to-read-certificate-of-analysis',
+    slug: 'how-to-read-coa',
     title: 'How to Read a Peptide Certificate of Analysis (COA)',
     excerpt: 'Learn how to interpret COA documents, understand purity testing, and verify the quality of your research peptides.',
     date: '2026-08-10',
@@ -44,7 +69,7 @@ const blogPosts = [
     category: 'Quality',
   },
   {
-    slug: 'peptide-storage-handling-guide',
+    slug: 'peptide-storage-guide',
     title: 'Peptide Storage & Handling: Best Practices',
     excerpt: 'Essential guidelines for storing and handling research peptides to maintain stability and purity.',
     date: '2026-08-05',
@@ -52,7 +77,7 @@ const blogPosts = [
     category: 'Guides',
   },
   {
-    slug: 'independent-testing-quality-promise',
+    slug: 'independent-testing',
     title: 'Independent Testing: Our Quality Promise',
     excerpt: 'Learn about our 8-point testing protocol and how batch documentation supports laboratory research.',
     date: '2026-08-01',
