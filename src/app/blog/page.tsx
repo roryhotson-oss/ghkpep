@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Research Peptide Guides & Resources | GHK Peptides',
+  title: 'Research Peptide Guides & Resources',
   description:
     'Expert guides on research peptides, BPC-157, GHK-Cu, and more. Learn about peptide testing, storage, and research applications from GHK Peptides, the UK research peptide supplier.',
   robots: {
