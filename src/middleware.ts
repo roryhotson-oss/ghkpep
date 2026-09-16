@@ -73,7 +73,8 @@ export function middleware(request: NextRequest) {
     pathname !== '/robots.txt' &&
     pathname !== '/sitemap.xml' &&
     pathname !== '/favicon.ico' &&
-    pathname !== '/BingSiteAuth.xml'
+    pathname !== '/BingSiteAuth.xml' &&
+    pathname !== '/ea81966f5ba61c64eaaef82ff6b84461.txt'
   ) {
     const ageGateCookie = request.cookies.get('ghk-age-gate');
     if (!ageGateCookie || ageGateCookie.value !== 'true') {
