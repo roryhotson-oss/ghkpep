@@ -60,8 +60,9 @@ jobs:
             SENSITIVE_FOUND=1
           fi
           
-          # Check for Vercel tokens
-          if grep -rq "VERCEL_OIDC_TOKEN" . --exclude-dir=.git --exclude-dir=node_modules --exclude=.gitignore 2>/dev/null; then
+          # Check for Vercel tokens. Exclude .github so the scan does not
+          # match the literal pattern inside this workflow file itself.
+          if grep -rq "VERCEL_OIDC_TOKEN" . --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=.github --exclude=.gitignore 2>/dev/null; then
             echo "❌ Vercel token found in source"
             SENSITIVE_FOUND=1
           fi
