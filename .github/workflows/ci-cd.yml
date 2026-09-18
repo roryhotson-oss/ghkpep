@@ -32,8 +32,11 @@ jobs:
 
       - name: Check for security issues
         run: |
-          # Check for secrets in code
-          if grep -rq "ghkadmin2024\|change-this-to-a-random-secret\|re_your_api_key_here" src/ .env* 2>/dev/null; then
+          # Check for default secrets in source code.
+          # .env.example legitimately documents placeholders, and source files
+          # reference those placeholders as sentinels (includes('...')) to detect
+          # unconfigured env vars, so exclude the template and guard lines.
+          if grep -rn --exclude=.env.example "ghkadmin2024\|change-this-to-a-random-secret\|re_your_api_key_here" src/ .env .env.* 2>/dev/null | grep -v "includes(" | grep -q .; then
             echo "❌ Security issue: Default credentials found"
             exit 1
           else
