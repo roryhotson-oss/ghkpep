@@ -191,15 +191,15 @@ export default function ProductPageClient({ product, related = [] }: Props) {
               </select>
             </label>
 
-            <div className="flex items-center gap-4">
-              <div className="flex items-center border border-[#c8dfe7] bg-white rounded-lg">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-4">
+              <div className="flex items-center self-start border border-[#c8dfe7] bg-white rounded-lg">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                   className="px-4 py-2 text-[#5b8ca0] hover:bg-[#dceff7] rounded-l-lg"
                 >
                   −
                 </button>
-                <span className="px-6 py-2 text-[#34414a] font-semibold">{quantity}</span>
+                <span className="px-6 py-2 text-[#34414a] font-semibold tabular-nums">{quantity}</span>
                 <button
                   onClick={() => setQuantity(Math.min(quantityLimit, quantity + 1))}
                   className="px-4 py-2 text-[#5b8ca0] hover:bg-[#dceff7] rounded-r-lg"
@@ -207,8 +207,8 @@ export default function ProductPageClient({ product, related = [] }: Props) {
                   +
                 </button>
               </div>
-              <div className="flex-1 text-right">
-                <div className="text-3xl font-bold text-[#34414a]">£{totalPrice.toFixed(2)}</div>
+              <div className="flex-1 text-left sm:text-right">
+                <div className="text-2xl font-bold text-[#34414a] break-words tabular-nums sm:text-3xl">£{totalPrice.toFixed(2)}</div>
                 <div className="text-sm text-[#66747b]">Total</div>
               </div>
             </div>
